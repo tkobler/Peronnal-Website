@@ -1,0 +1,898 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
+:root {
+  /* Font Families */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-tag: var(--font-mono);
+  --font-serif: var(--font-display);
+
+  /* Spacing Scale (8px base) */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 8rem;
+
+  /* Container */
+  --container-max: 1600px;
+  --container-padding: clamp(1.5rem, 5vw, 3rem);
+
+  /* Dark section colors */
+  --dark-bg: #0A1F2E;
+  --dark-text: #FFFFFF;
+  --dark-text-secondary: rgba(255, 255, 255, 0.85);
+  --dark-text-tertiary: rgba(255, 255, 255, 0.65);
+
+  /* Light section colors */
+  --light-bg: #EDF1F5;
+  --light-text: #0A1F2E;
+  --light-text-secondary: rgba(10, 31, 46, 0.85);
+  --light-text-tertiary: rgba(10, 31, 46, 0.65);
+
+  /* Z-index scale */
+  --z-glass: 1;
+  --z-dot-bg: 5;
+  --z-content: 10;
+  --z-hero-content: 20;
+  --z-dot-fg: 30;
+  --z-locale: 40;
+  --z-nav: 1000;
+  --z-menu-backdrop: 1010;
+  --z-menu-panel: 1020;
+  --z-skip-link: 9999;
+
+  /* Category colors */
+  --color-cat-engineering: #2563eb;
+  --color-cat-service: #10b981;
+  --color-cat-music: #8b5cf6;
+  --color-cat-management: #f59e0b;
+  --color-cat-entrepreneurship: #ec4899;
+  --color-cat-academic: #6366f1;
+
+  /* Transition timing scale
+     Convention: use Tailwind duration utilities that match these values:
+       micro  150ms  -> duration-150  (subtle state changes, e.g. opacity)
+       short  300ms  -> duration-300  (cards, interactive feedback)
+       standard 400ms -> duration-400 (layout shifts, panels)
+       long   500ms  -> duration-500  (page-level transitions)
+       elaborate 700ms -> duration-700 (cinematic / hero animations)
+     Footer links and small interactive elements use duration-200. */
+  --duration-micro: 150ms;
+  --duration-short: 300ms;
+  --duration-standard: 400ms;
+  --duration-long: 500ms;
+  --duration-elaborate: 700ms;
+
+  /* Standard easing curves */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Responsive text scale */
+  --text-xs: clamp(0.65rem, 1vw, 0.75rem);
+  --text-sm: clamp(0.8rem, 1.2vw, 0.9rem);
+  --text-base: clamp(0.875rem, 1.4vw, 1rem);
+  --text-lg: clamp(1rem, 2vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 2.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 4vw, 2.25rem);
+  --text-3xl: clamp(2rem, 5vw, 3rem);
+  --text-hero: clamp(3rem, 8vw, 6rem);
+
+  /* Portfolio dark background */
+  --portfolio-bg: #0a0a0a;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Global interactive element defaults */
+button, [role="button"] {
+  cursor: pointer;
+}
+
+/* Remove iOS tap highlight and eliminate touch delay */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a, button, [role="button"], input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* ============================================
+   SECTION BACKGROUNDS
+   ============================================ */
+.section-dark {
+  background: linear-gradient(
+    135deg,
+    #0A1F2E 0%,
+    #0D2B3A 50%,
+    #0E3340 100%
+  );
+  color: var(--dark-text);
+}
+
+.section-light {
+  background: linear-gradient(
+    135deg,
+    #F5F7FA 0%,
+    #E8EEF3 50%,
+    #DBE5ED 100%
+  );
+  color: var(--light-text);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+/* Hero title — Space Grotesk Bold, tight tracking */
+.hero-title {
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+}
+
+.hero-subtitle {
+  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font-tag);
+  opacity: 0.7;
+}
+
+/* Card typography */
+.card-tagline {
+  font-size: clamp(0.85rem, 1.6vw, 1.5rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  font-family: var(--font-serif);
+  opacity: 0.9;
+}
+
+.card-title {
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+}
+
+.card-descriptor {
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font-tag);
+  opacity: 0.6;
+}
+
+.card-number {
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-family: var(--font-tag);
+  opacity: 0.5;
+}
+
+/* Tag / label text — monospace, uppercase, wide tracking */
+.tag-text {
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font-tag);
+}
+
+/* Display font utility */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ============================================
+   GLASSMORPHISM CARD
+   ============================================ */
+.glass-dark {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+}
+
+.glass-dark:hover {
+  background: rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+}
+
+.glass-light:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   BACKDROP FILTER FALLBACK
+   ============================================ */
+@supports not (backdrop-filter: blur(20px)) {
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.55);
+  }
+  .glass-light {
+    background: rgba(255, 255, 255, 0.65);
+  }
+}
+
+/* ============================================
+   NAVIGATION — PILL BAR
+   ============================================ */
+.nav-pill {
+  position: fixed;
+  top: max(1.25rem, env(safe-area-inset-top, 0px));
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: 33.33%;
+  min-width: 260px;
+  max-width: min(480px, calc(100vw - 2rem));
+  height: 48px;
+  border-radius: 999px;
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease,
+              border-color 0.3s ease,
+              color 0.3s ease;
+}
+
+.nav-pill.hidden {
+  transform: translateX(-50%) translateY(calc(-100% - 1.5rem));
+  pointer-events: none;
+}
+
+.nav-pill[data-theme="light"] {
+  background: rgba(220, 228, 235, 0.75);
+  border: 1px solid rgba(10, 31, 46, 0.1);
+  color: var(--light-text);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+}
+
+.nav-pill[data-theme="dark"] {
+  background: rgba(10, 31, 46, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+}
+
+/* Replace expensive backdrop-filter with solid background on mobile */
+@media (max-width: 767px) {
+  .nav-pill[data-theme="light"] {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(220, 228, 235, 0.95);
+  }
+  .nav-pill[data-theme="dark"] {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(10, 31, 46, 0.95);
+  }
+}
+
+.nav-home-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.75rem;
+}
+
+.nav-home-text:hover {
+  opacity: 0.6;
+}
+
+/* ============================================
+   LOCALE TOGGLE (fixed top-right)
+   ============================================ */
+.nav-locale-toggle {
+  position: fixed;
+  top: max(1.55rem, calc(env(safe-area-inset-top, 0px) + 0.3rem));
+  right: 1.5rem;
+  z-index: var(--z-locale);
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  font-family: var(--font-tag);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  user-select: none;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s ease;
+}
+
+.nav-locale-toggle.hidden {
+  transform: translateY(calc(-100% - 2rem));
+  pointer-events: none;
+}
+
+.nav-locale-toggle[data-theme="light"] {
+  color: var(--light-text);
+}
+
+.nav-locale-toggle[data-theme="dark"] {
+  color: #FFFFFF;
+}
+
+.nav-locale-toggle button {
+  background: none;
+  border: none;
+  padding: 0.75rem 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  transition: opacity 0.2s, color 0.3s;
+}
+
+.nav-locale-toggle[data-theme="light"] button {
+  color: var(--light-text);
+  opacity: 0.55;
+}
+
+.nav-locale-toggle[data-theme="dark"] button {
+  color: #FFFFFF;
+  opacity: 0.55;
+}
+
+.nav-locale-toggle button:hover {
+  opacity: 0.8;
+}
+
+.nav-locale-toggle button.active {
+  opacity: 1;
+}
+
+.nav-locale-sep {
+  opacity: 0.4;
+}
+
+/* ============================================
+   HAMBURGER
+   ============================================ */
+.hamburger span {
+  display: block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ============================================
+   MENU OVERLAY — BACKDROP + PANEL
+   ============================================ */
+
+/* Blurred backdrop covering entire screen */
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu-backdrop);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-backdrop.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Centered panel — same width as nav pill, theme-adaptive */
+.menu-panel {
+  position: fixed;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%) scale(0.96);
+  width: 33.33%;
+  min-width: 260px;
+  max-width: 480px;
+  height: calc(100vh - 1.5rem);
+  border-radius: 1.25rem;
+  z-index: var(--z-menu-panel);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.menu-panel.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Light theme panel — matches light nav pill */
+.menu-panel[data-theme="light"] {
+  background: rgba(220, 228, 235, 0.88);
+  border: 1px solid rgba(10, 31, 46, 0.08);
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  color: #0A1F2E;
+}
+
+/* Dark theme panel — matches dark nav pill */
+.menu-panel[data-theme="dark"] {
+  background: rgba(10, 31, 46, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  color: #FFFFFF;
+}
+
+/* Close button (top-right of panel) */
+.menu-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  z-index: var(--z-glass);
+}
+
+.menu-close:hover {
+  opacity: 1;
+}
+
+/* Menu items in center */
+.menu-panel .menu-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 3vh, 2rem);
+  padding: 3rem 1.5rem;
+  list-style: none;
+  width: 100%;
+}
+
+.menu-panel .menu-items li {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s, transform 0.35s;
+}
+
+.menu-panel.active .menu-items li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-panel.active .menu-items li:nth-child(n) {
+  transition-delay: calc(0.05s + 0.05s * var(--i));
+}
+.menu-panel .menu-items li { --i: 0; }
+.menu-panel .menu-items li:nth-child(1) { --i: 1; }
+.menu-panel .menu-items li:nth-child(2) { --i: 2; }
+.menu-panel .menu-items li:nth-child(3) { --i: 3; }
+.menu-panel .menu-items li:nth-child(4) { --i: 4; }
+.menu-panel .menu-items li:nth-child(5) { --i: 5; }
+.menu-panel .menu-items li:nth-child(6) { --i: 6; }
+.menu-panel .menu-items li:nth-child(7) { --i: 7; }
+.menu-panel .menu-items li:nth-child(8) { --i: 8; }
+.menu-panel .menu-items li:nth-child(9) { --i: 9; }
+.menu-panel .menu-items li:nth-child(10) { --i: 10; }
+
+.menu-panel .menu-items a {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.menu-panel .menu-items a:hover {
+  opacity: 0.5;
+}
+
+/* Bottom contact link */
+.menu-bottom {
+  padding: 1.25rem 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-panel[data-theme="light"] .menu-bottom {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.menu-panel[data-theme="dark"] .menu-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu-bottom a {
+  font-family: var(--font-tag);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.4;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.menu-bottom a:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .menu-panel {
+    width: 92%;
+    max-width: none;
+  }
+}
+
+/* ============================================
+   ANIMATIONS — PAGE LOAD (HERO)
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-1 {
+  animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.hero-fade-2 {
+  animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+.hero-fade-3 {
+  animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+.hero-fade-4 {
+  animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+}
+
+.hero-fade-5 {
+  animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.5s both;
+}
+
+/* ============================================
+   ANIMATIONS — SCROLL INDICATOR PULSE
+   ============================================ */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(10px);
+  }
+}
+
+.scroll-indicator {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   ANIMATIONS — PAGE TRANSITIONS (View Transitions API)
+   ============================================ */
+.page-transition {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* --- View Transition cross-fade ("fade through") --- */
+::view-transition-old(root) {
+  animation: vt-fade-out 0.2s ease-out forwards;
+}
+
+::view-transition-new(root) {
+  animation: vt-fade-in 0.25s ease-in forwards;
+}
+
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Reduce motion: instant swap for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0s;
+  }
+}
+
+/* Fallback: simple fade-in for browsers without View Transitions API */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ============================================
+   ANIMATIONS — PROJECT ZOOM-DISSOLVE TRANSITION
+   ============================================ */
+
+/* Exit: project section zooms in and dissolves (projects → detail) */
+.project-transition-container.project-leaving .project-transition-inner {
+  animation: projectZoomOut 0.5s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes projectZoomOut {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: scale(1.04) translateY(-10px);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+/* Enter: detail page materialises upward */
+.project-detail-enter > * {
+  animation: projectRevealIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.1s;
+}
+
+@keyframes projectRevealIn {
+  0% {
+    transform: translateY(30px) scale(0.98);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Exit: detail page dissolves downward (detail → projects) */
+.project-detail-exit > * {
+  animation: projectRevealOut 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes projectRevealOut {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateY(20px) scale(0.98);
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+  }
+
+  /* Ensure scroll-reveal content is immediately visible */
+  [data-reduced-motion-visible] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Reduce heavy GPU filters on mobile for performance */
+@media (max-width: 768px) {
+  @keyframes projectZoomOut {
+    0% { transform: none; opacity: 1; filter: none; }
+    100% { transform: scale(1.02); opacity: 0; filter: none; }
+  }
+
+  @keyframes projectRevealIn {
+    0% { transform: scale(0.98); opacity: 0; filter: none; }
+    100% { transform: none; opacity: 1; filter: none; }
+  }
+}
+
+/* ============================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================ */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    line-height: 1;
+  }
+
+  .card-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .card-tagline {
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+  }
+
+  .card-descriptor,
+  .card-number {
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+  }
+
+  .tag-text {
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+  }
+
+  .nav-pill {
+    width: 50%;
+  }
+}
+
+@media (max-width: 320px) {
+  .nav-pill {
+    min-width: auto;
+    width: 90vw;
+    max-width: 90vw;
+  }
+}
+
+/* Portrait orientation: use vh-based scaling for
+   elements that would otherwise be too small on
+   tall narrow screens */
+@media (orientation: portrait) {
+  .card-title {
+    font-size: clamp(1.5rem, max(6vw, 3vh), 2.5rem);
+  }
+
+  .card-tagline {
+    font-size: clamp(0.85rem, max(3.5vw, 1.5vh), 1.125rem);
+  }
+
+  .card-descriptor,
+  .card-number,
+  .tag-text {
+    font-size: clamp(0.7rem, max(2.5vw, 1vh), 0.85rem);
+  }
+}
+
+/* ============================================
+   FLIGHT DASHBOARD — COMPASS TICK OFFSET
+   ============================================ */
+.compass-rose {
+  --compass-tick-offset: -55px;
+}
+
+@media (min-width: 640px) {
+  .compass-rose {
+    --compass-tick-offset: -80px;
+  }
+}
+
+/* ============================================
+   LIGHTBOX ANIMATION
+   ============================================ */
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-enter {
+  animation: lightbox-in 0.2s ease-out;
+}

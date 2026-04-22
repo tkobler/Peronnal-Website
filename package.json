@@ -1,0 +1,52 @@
+{
+  "name": "personnal-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test --config playwright.config.ts --reporter=json --output=tests/results/e2e-results.json",
+    "test:e2e:ui": "playwright test --config playwright.config.ts --ui",
+    "test:e2e:tier1": "playwright test --config playwright.config.ts tests/e2e/navigation.spec.ts tests/e2e/language-toggle.spec.ts tests/e2e/project-cards.spec.ts",
+    "test:e2e:tier2": "playwright test --config playwright.config.ts tests/e2e/responsive-matrix.spec.ts",
+    "test:e2e:tier3": "playwright test --config playwright.config.ts tests/e2e/canvas-performance.spec.ts",
+    "test:e2e:tier4": "playwright test --config playwright.config.ts tests/e2e/accessibility.spec.ts",
+    "test:visual": "playwright test --config playwright.visual.config.ts",
+    "test:visual:update": "playwright test --config playwright.visual.config.ts --update-snapshots",
+    "test:score": "npm run test:unit && playwright test --config playwright.config.ts && playwright test --config playwright.visual.config.ts; npx tsx tests/run-scorecard.ts",
+    "test": "npm run test:unit && npm run test:e2e",
+    "validate:i18n": "npx tsx scripts/validate-translations.ts",
+    "visual:repro": "npx tsx scripts/visual-repro.ts",
+    "cv:build": "bash cv/build.sh"
+  },
+  "dependencies": {
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
+    "@playwright/test": "^1.58.2",
+    "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "jsdom": "^29.0.1",
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4",
+    "typescript": "5.9.3",
+    "vitest": "^4.1.0"
+  }
+}
