@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swa
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
-const siteUrl = "https://example.com";
+const siteUrl = "https://timkobler.ch";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -18,31 +18,31 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Name",
-    template: "%s | Your Name",
+    default: "Tim Kobler",
+    template: "%s | Tim Kobler",
   },
-  description: "Engineering portfolio — replace this with your one-line specialty.",
+  description: "Robotics portfolio — EPFL Master's student in Robotics.",
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Your Name",
-    title: "Your Name",
-    description: "Engineering portfolio — replace this with your one-line specialty.",
+    siteName: "Tim Kobler",
+    title: "Tim Kobler",
+    description: "Robotics portfolio — EPFL Master's student in Robotics.",
     images: [
       {
         url: "/images/placeholders/square.svg",
         width: 400,
         height: 400,
-        alt: "Your Name",
+        alt: "Tim Kobler",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "Your Name",
-    description: "Engineering portfolio — replace this with your one-line specialty.",
+    title: "Tim Kobler",
+    description: "Robotics portfolio — EPFL Master's student in Robotics.",
     images: ["/images/placeholders/square.svg"],
   },
   robots: {
@@ -66,15 +66,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Your Name",
+              name: "Tim Kobler",
               url: siteUrl,
-              jobTitle: "Master's Student in Engineering",
+              jobTitle: "Robotics Master's Student",
               affiliation: [
                 { "@type": "Organization", name: "EPFL" },
               ],
               sameAs: [
-                "https://www.linkedin.com/in/your-name/",
-                "https://github.com/your-username",
+                "https://www.linkedin.com/in/kobler-tim/",
+                "https://github.com/tkobler",
               ],
             }),
           }}

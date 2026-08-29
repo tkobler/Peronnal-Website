@@ -1,19 +1,19 @@
 // ─── Personal Information ───
 
 #let personal = (
-  name: "Your Name",
+  name: "Tim Kobler",
   title: (
-    en: "Master's Student in Engineering",
-    fr: "Étudiant en Master d'Ingénierie",
+    en: "Robotics Master's Student",
+    fr: "Étudiant en Master de Robotique",
   ),
-  email: "you@example.com",
-  phone: "+41 00 000 00 00",
+  email: "kobler.tim@gmail.com",
+  phone: "+41 76 310 54 95",
   city: "Lausanne, Switzerland",
-  linkedin: "linkedin.com/in/your-name",
-  linkedin-url: "https://www.linkedin.com/in/your-name/",
-  website: "example.com",
-  github: "github.com/your-username",
-  nationality: "Your Nationality",
+  linkedin: "linkedin.com/in/kobler-tim",
+  linkedin-url: "https://www.linkedin.com/in/kobler-tim/",
+  website: "timkobler.ch",
+  github: "github.com/tkobler",
+  nationality: "[Your nationality]",
   drivers-license: "",
   photo: "../photo.jpg",
 )

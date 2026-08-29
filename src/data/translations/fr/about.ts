@@ -10,7 +10,7 @@ export const about: Translations["about"] = {
   ],
   educationTitle: "Éducation",
   degree: "École Polytechnique Fédérale de Lausanne (EPFL)",
-  section: "Section : Ingénierie",
+  section: "Section : Robotique",
   bachelorLabel: "Bachelor",
   masterLabel: "Master",
   gpaLabel: "Moyenne",
