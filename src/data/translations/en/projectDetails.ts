@@ -1,29 +1,26 @@
 import type { Translations } from "../index";
 
 export const projectDetailsContent: Translations["projectDetailsContent"] = {
-  durandal: {
+  "signal-relay": {
     metrics: [
-      { label: "Latency", value: "<10ms end-to-end" },
-      { label: "Target Market", value: "400k+ European fencers" },
-      { label: "Status", value: "Alpha Functional (Foil)" },
+      { label: "Battery Life", value: "Multi-week on single charge" },
+      { label: "Deployment", value: "6-node mesh, outdoor" },
     ],
     challenges: [
-      "Distinguishing valid metallic touches from sweat/body contact noise.",
-      "Ensuring wireless reliability in high-interference competition environments.",
+      "Balancing radio duty-cycle against end-to-end latency.",
+      "Enclosure sealing for outdoor exposure without blocking the antenna.",
     ],
   },
-  "hylab-modulators": {
+  "ring-resonator": {
     metrics: [
-      { label: "TFLT Yield", value: "95% (vs 75% for TFLN)" },
-      { label: "RF Loss", value: "17-75% lower in TFLT" },
-      { label: "Frequency Range", value: "100-300 GHz" },
+      { label: "Process", value: "SOI, full cleanroom cycle" },
+      { label: "Characterization", value: "SEM + optical bench" },
     ],
   },
-  "guardian-angel": {
+  "terrain-rover": {
     metrics: [
-      { label: "Market Opportunity", value: "$93B Global Care" },
-      { label: "Radar Logic", value: "Edge-processed Fall Detection" },
+      { label: "Success Rate", value: "90%+ on test course" },
+      { label: "Replanning Rate", value: "10 Hz" },
     ],
-    marketData: "Addresses the 'compliance gap' of wearable pendants which are often forgotten by the elderly.",
   },
 };

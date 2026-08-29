@@ -53,7 +53,7 @@ export interface Translations {
     close: string;
     projects: string;
     experience: string;
-    flight: string;
+    hobby: string;
     about: string;
     getInTouch: string;
   };
@@ -97,37 +97,10 @@ export interface Translations {
     heading: string;
   };
   experienceData: Record<string, ExperienceEntryTranslation>;
-  flight: {
-    systemNormal: string;
+  hobby: {
     heading: string;
-    pilot: string;
-    licence: string;
-    vfrOnly: string;
-    navDisplay: string;
-    noGpsSignal: string;
-    flightStats: string;
-    recentSorties: string;
-    tableDate: string;
-    tableRoute: string;
-    tableAircraft: string;
-    tableBlockTime: string;
-    tableRemarks: string;
-    radarName: string;
-    radarLastVisit: string;
-    radarAircraft: string;
-    totalHours: string;
-    cyclesLdg: string;
-    recentFlights: { remarks: string }[];
-  };
-  flightLog: {
-    stats: {
-      totalHours: string;
-      landings: string;
-      picHours: string;
-      aircraftTypes: string;
-      lastFlight: string;
-    };
-    airports: Record<string, string>;
+    intro: string;
+    highlights: string[];
   };
   contact: {
     heading: string;
@@ -140,7 +113,6 @@ export interface Translations {
     statusLabel: string;
     statusValue: string;
     currentTime: string;
-    whatsappValue: string;
     githubValue: string;
     copied: string;
   };

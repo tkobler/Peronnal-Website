@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swa
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
-const siteUrl = "https://clementchalut.com";
+const siteUrl = "https://example.com";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -18,32 +18,32 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Clément Chalut",
-    template: "%s | Clément Chalut",
+    default: "Your Name",
+    template: "%s | Your Name",
   },
-  description: "Microengineering portfolio — operations, manufacturing, photonics, and product engineering.",
+  description: "Engineering portfolio — replace this with your one-line specialty.",
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Clément Chalut",
-    title: "Clément Chalut",
-    description: "Microengineering portfolio — operations, manufacturing, photonics, and product engineering.",
+    siteName: "Your Name",
+    title: "Your Name",
+    description: "Engineering portfolio — replace this with your one-line specialty.",
     images: [
       {
-        url: "/images/profile/pp.png",
+        url: "/images/placeholders/square.svg",
         width: 400,
         height: 400,
-        alt: "Clément Chalut",
+        alt: "Your Name",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "Clément Chalut",
-    description: "Microengineering portfolio — operations, manufacturing, photonics, and product engineering.",
-    images: ["/images/profile/pp.png"],
+    title: "Your Name",
+    description: "Engineering portfolio — replace this with your one-line specialty.",
+    images: ["/images/placeholders/square.svg"],
   },
   robots: {
     index: true,
@@ -66,16 +66,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Clément Chalut",
+              name: "Your Name",
               url: siteUrl,
-              jobTitle: "Microengineering Master's Student & Manufacturing Manager",
+              jobTitle: "Master's Student in Engineering",
               affiliation: [
                 { "@type": "Organization", name: "EPFL" },
-                { "@type": "Organization", name: "Stérilux" },
               ],
               sameAs: [
-                "https://www.linkedin.com/in/cl%C3%A9ment-chalut-27853320b/",
-                "https://github.com/ccka",
+                "https://www.linkedin.com/in/your-name/",
+                "https://github.com/your-username",
               ],
             }),
           }}

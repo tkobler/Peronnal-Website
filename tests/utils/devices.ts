@@ -24,7 +24,7 @@ export const ROUTES = [
   "/",
   "/projects",
   "/experience",
-  "/flight",
+  "/hobby",
   "/contact",
   "/about",
 ] as const;

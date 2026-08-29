@@ -6,7 +6,7 @@ import { homeCards, explore } from "./fr/homeCards";
 import { experience, experienceData } from "./fr/experience";
 import { projects, projectsContent } from "./fr/projects";
 import { projectDetailsContent } from "./fr/projectDetails";
-import { flight, flightLog } from "./fr/flightLog";
+import { hobby } from "./fr/hobby";
 import { contact } from "./fr/contact";
 import { footer } from "./fr/footer";
 import { about } from "./fr/about";
@@ -22,8 +22,7 @@ export const fr: Translations = {
   projectDetailsContent,
   experience,
   experienceData,
-  flight,
-  flightLog,
+  hobby,
   contact,
   footer,
   about,

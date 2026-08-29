@@ -5,7 +5,7 @@ export const nav: Translations["nav"] = {
   close: "Fermer",
   projects: "Projets",
   experience: "Activités",
-  flight: "Aviation",
+  hobby: "Loisir",
   about: "À propos",
   getInTouch: "Me contacter",
 };

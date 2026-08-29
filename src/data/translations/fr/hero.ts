@@ -1,11 +1,11 @@
 import type { Translations } from "../index";
 
 export const hero: Translations["hero"] = {
-  greeting: "Bonjour, je suis Clément",
+  greeting: "Bonjour, je suis Votre Nom",
   phrases: [
-    "Je construis ce qui relie la recherche à la production — puces photoniques, drones autonomes, dispositifs médicaux.",
-    "EPFL Microtechnique · Actuellement Manufacturing Manager dans une startup medtech."
+    "Je construis ce qui relie la recherche à la production — remplacez cette ligne par ce sur quoi vous travaillez réellement.",
+    "EPFL Ingénierie · Ajoutez ici votre rôle ou votre spécialité actuelle.",
   ],
   contact: "Contactez-moi",
-  tagline: "À 16 ans, j'étais premier cornet à la Philharmonie de Paris avec l'ensemble Les Siècles. À 23 ans, je dirige une chaîne de production de dispositifs médicaux. Le point commun : savoir anticiper et performer au bon moment.",
+  tagline: "Une courte phrase personnelle à propos de vous — ce que vous faites, et pourquoi. Restez précis et évitez les superlatifs.",
 };
