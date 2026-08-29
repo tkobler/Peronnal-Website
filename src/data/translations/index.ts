@@ -140,7 +140,6 @@ export interface Translations {
     statusLabel: string;
     statusValue: string;
     currentTime: string;
-    whatsappValue: string;
     githubValue: string;
     copied: string;
   };

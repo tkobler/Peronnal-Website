@@ -11,7 +11,6 @@ export const contact: Translations["contact"] = {
   statusLabel: "Status",
   statusValue: "Robotics Master's Student at EPFL",
   currentTime: "Current Time (CET)",
-  whatsappValue: "Chat directly",
   githubValue: "Code Portfolio",
   copied: "Copied!",
 };
