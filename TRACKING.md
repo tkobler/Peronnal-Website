@@ -1,63 +1,64 @@
-# Mobile locale toggle — Tracking
+# Blank template branch — Tracking
 
 ## Current status
-Fix complete and verified. New regression test passes, CSS fix is live, BEFORE/AFTER screenshots captured. Ready for commit + PR.
-Last updated: 2026-04-15
+
+Complete and verified. Ready for commit.
+Last updated: 2026-08-29
 
 ## Tasks
-- [x] Phase 1 triage — reproduction questions answered
-- [x] Phase 1 — BEFORE screenshot captured (Pixel 7, 412×839)
-- [x] Phase 1 — panel consultation (qa + frontend-eng + ui-designer in parallel)
-- [x] Phase 1 — conflicts surfaced and decision made (proceed)
-- [x] Create `bug/mobile-locale-toggle` branch
+
+- [x] Create `template` branch from `main`
 - [x] Write STRATEGY.md
-- [x] Write TRACKING.md
-- [x] Write failing regression test in `tests/e2e/language-toggle.spec.ts`
-- [x] Run new test on main — confirmed failing for the right reason (`Expected >= 0.5, Received 0.25`)
-- [x] Apply CSS fix in `src/app/globals.css` (3 opacity values — also bumped `:hover` 0.6 → 0.8 for hierarchy coherence since inactive is now 0.55)
-- [x] Run new test after fix — passes
-- [x] Run tier 1 — isolated the 5 failures to pre-existing tier-1 flakiness on main (unrelated to this fix, see "Related issues observed" below)
-- [ ] Run CI gate locally: `lint` + `test:unit` + `validate:i18n`
-- [x] Capture AFTER screenshot at Pixel 7 (`tests/visual/repro/mobile-locale-toggle/after.png`)
-- [ ] Commit `git add -f` the before/after screenshots for PR evidence
-- [ ] Open PR with symptom / root cause / fix / verification sections
-- [ ] Stop for Clément's approval (do NOT auto-merge)
+- [x] Placeholder image SVGs (`wide`, `square`, `logo`) + delete all of Clément's real images
+- [x] `layout.tsx` metadata, structured data, OG/Twitter → generic placeholders
+- [x] Footer, Navigation, HeroSection, AboutClient → placeholder name + image
+- [x] Contact page → placeholder email/LinkedIn/GitHub (Email/LinkedIn/GitHub only, matching the simplification already made for Tim)
+- [x] `projects.ts` + `project_details.ts` → 4 example projects (one per domain)
+- [x] `homeCards.ts` → 4 cards (2 example projects, /experience, /hobby)
+- [x] `experience.ts` → 2 example entries
+- [x] `courses.ts` → trimmed curriculum, real EPFL course/professor refs, fictional grades
+- [x] Delete `/flight` route + `src/components/flight/*` + `flightLog.ts` (data + both translation files)
+- [x] Add `/hobby` route (page/layout/client) — deliberately minimal
+- [x] `translations/index.ts` — `nav.flight` → `nav.hobby`, `flight`/`flightLog` types → `hobby` type
+- [x] EN + FR translation content for hero, about, contact, homeCards, experience, projects, hobby, nav
+- [x] `public/CNAME`, `sitemap.xml`, `robots.txt` → `example.com`; delete `BingSiteAuth.xml`
+- [x] `cv/data/personal.typ` → placeholder fields
+- [x] `README.md`, `SETUP.md` → fix now-stale "Clément" references and the "replace X" instructions that no longer match the already-genericized state
+- [x] `.claude/` agent/doc files → "Your Name" placeholder, fixed a few sentences that asserted specific facts about Clément as if they were generic truths
+- [x] `.claude/settings.json` → removed leaked ProtonMail address + absolute machine path from Bash permissions
+- [x] Fix `Translations["contact"]` type — remove now-unused `whatsappValue`
+- [x] Found and fixed: orphaned `src/data/flightLog.ts` (missed on first pass, still referenced by a unit test) + `tests/unit/flight-stats.test.ts`
+- [x] Found and fixed: `tests/utils/devices.ts` `ROUTES` array still had `/flight`
+- [x] Found and fixed: `tests/e2e/navigation.spec.ts` stale comment
+- [x] `npm run lint` — clean
+- [x] `npm run build` — succeeds
+- [x] `npm run validate:i18n` — 138/138 match
+- [x] `npm run test:unit` — 17/17 pass
+- [x] `npm run test:e2e:tier1` — 232/248 passed on first run; diagnosed all 16 failures against a clean `main` baseline (see decisions log) — none are regressions from this branch's changes
+- [x] Full-repo grep sweep re-confirmed clean after final fixes
+- [ ] Commit
+- [ ] Push branch (no PR — this branch isn't merging to `main`)
 
 ## Decisions log
 
-### 2026-04-15 — Sided with frontend-eng + ui-designer over qa's procedural gate
-qa wanted additional reproduction detail before proceeding. The user's deterministic report ("every page, every time") combined with two independent builders reading the BEFORE screenshot and arriving at the same hypothesis (0.25 opacity is the bug) satisfied the reproduction quality bar. qa's concrete test proposal was adopted regardless — it's the right regression gate.
+### 2026-08-29 — Branched from `main`, not `dev/personalize-tim-kobler`
+`dev/personalize-tim-kobler` already has useful precedent (bracket-placeholder style, cleaned settings.json) but also has Tim's real contact info baked into metadata/contact/footer, which would need scrubbing right back out. Branching from `main` means one transformation (Clément → generic) instead of two (Clément → Tim → generic).
 
-### 2026-04-15 — Opacity bump, not visual affordance change
-Considered adding a border, pill background, or underline around the locale toggle as an alternative affordance. Rejected on ui-designer's recommendation: it would break the site's restrained, technical, schematic-inspired design language. The opacity change (0.25 → 0.55 inactive, 0.2 → 0.4 separator) is the minimum change that resolves the bug without introducing a new visual vocabulary.
+### 2026-08-29 — Real EPFL course/professor references kept, fictional projects
+Per Tim's explicit instruction to keep "professional writing style, the EPFL references, and some example projects." EPFL course codes and the professors who teach them are public institutional facts, not Clément's personal data — pairing them with fictional example projects is a legitimate template pattern (a friend who's also at EPFL could genuinely reuse the pairing for real work).
 
-### 2026-04-15 — Chose 0.55 for inactive, not 0.5 or 0.6
-ui-designer's stated minimum is 0.5; ft-eng proposed 0.55. The 0.05 difference matters: 0.5 is the edge of perceptibility, 0.55 gives a margin without lifting the inactive state into "competing with active" territory. 0.6 would be too bright — the active/inactive hierarchy would flatten. Left dark theme inactive at 0.55 for consistency; ui-designer's suggestion of 0.6 for dark theme is a nit that can be revisited if the test exposes a legibility gap there.
+### 2026-08-29 — `/flight` deleted, not emptied
+Considered keeping the route with placeholder data. Rejected: the page is 5 custom components (cockpit dashboard, radar map, live clock) built specifically for flight-log content — keeping the shell would mean a friend either fights that bespoke layout to repurpose it or deletes it anyway. A minimal, generic `/hobby` page demonstrates the same "portfolio can hold non-project content" idea with far less to strip out.
 
-### 2026-04-15 — Left font-size at 0.65rem, did NOT bump to 0.7rem
-ui-designer noted as an optional secondary improvement. Out of scope for this bug fix — it's a design tweak, not a root-cause fix. Note for a future `dev/` or separate `bug/`.
+### 2026-08-29 — tier1 e2e failures traced to pre-existing repo flakiness, not this branch
+First tier1 run (after fixing an unrelated Playwright-browsers-not-installed environment issue) showed 232 passed / 16 failed. Rather than assume any were caused by this branch's changes, stashed all changes and ran the identical suite against clean `main`: **22 failed** there — a superset covering every category seen on `template` (mobile `language-toggle.spec.ts` FR/EN switching and persistence on `iphone-se`/`iphone-14`; `navigation.spec.ts` hamburger-menu close/backdrop tests; `project-cards.spec.ts` dark/light theme alternation). This matches the flakiness this repo's own `TRACKING.md` (from the unrelated `bug/mobile-locale-toggle` branch) already documented for `navigation.spec.ts:90/103/121`.
+
+Three `template`-only test/project combinations weren't in the `main` baseline list: `navigation.spec.ts:129` (menu → correct page) on chromium-desktop/webkit-desktop/ultrawide, and `navigation.spec.ts:156` (route transition) on ultrawide. Restored the stash and re-ran just those with `--retries=2`: 4/9 passed outright, 3/9 were flaky (failed then passed on retry), 2/9 failed all three attempts — both on chromium-desktop, both with the same `toHaveCSS` assertion-timing error signature as the confirmed-pre-existing hamburger-menu failures. Conclusion: same underlying CSS-transition-timing race as the rest of `navigation.spec.ts`, not a regression — the specific browser/project it lands on is simply non-deterministic between runs (already true on unmodified `main`, where `:90` and `:103` swapped which browser failed between the two runs performed here).
 
 ## Blockers
-None.
 
-## Related issues observed (for separate branches — NOT fixed here)
-
-While running tier 1 as part of verification, 5 tests failed. I stashed my changes to run the same tests against the baseline `main` — at least 2 of them still failed on main, confirming they are pre-existing tier-1 instability, not caused by this fix.
-
-Pre-existing failures on main (confirmed):
-1. `navigation.spec.ts:90` — "Hamburger Menu › menu closes when clicking close button"
-2. `project-cards.spec.ts:31` — "Home Page Project Sections › project sections alternate dark/light themes"
-
-Likely flaky (failed once, passed on re-run):
-3. `navigation.spec.ts:30` — "Navigation Pill › pill hides on scroll down and reappears on scroll up"
-4. `navigation.spec.ts:103` — "Hamburger Menu › menu closes when clicking backdrop"
-5. `navigation.spec.ts:121` — "Hamburger Menu › menu locks body scroll when open"
-
-Both categories deserve separate branches:
-- A `bug/` branch for the 2 reproducible failures once the root cause is understood
-- Possibly an `audit/` branch to characterize the flake rate on the flaky 3 before deciding how to stabilize them
-
-Deliberately NOT touching any of these on this branch — one concern per branch.
+None. `src/app/favicon.ico` (binary, Clément's mark) intentionally left untouched — flagged in STRATEGY.md, not fixable with text-editing tools here.
 
 ## Team consultations during execution
-None. The fix was narrow enough that the Phase 1 panel input was sufficient.
+
+None — Tim gave direct, specific scope in conversation (placeholder-vs-real-content split, image strategy, EPFL/example-project retention, hobby-page concept) covering what a `pm`/`tech-lead` consult would normally surface for a `dev/` feature. Treated as equivalent to Phase 1 discovery.

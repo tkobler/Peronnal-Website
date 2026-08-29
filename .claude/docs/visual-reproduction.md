@@ -101,7 +101,7 @@ This folder is **gitignored by default** — see [.gitignore](../../.gitignore).
 
 ### When to commit a screenshot to the PR
 
-For most bugs and features: **do it**. The reviewer (Clément) benefits from seeing the evidence in the diff. Add individually with `-f`:
+For most bugs and features: **do it**. The reviewer (Your Name) benefits from seeing the evidence in the diff. Add individually with `-f`:
 
 ```bash
 git add -f tests/visual/repro/mobile-filters/before.png

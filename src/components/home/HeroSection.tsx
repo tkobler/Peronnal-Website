@@ -52,8 +52,8 @@ export default function HeroSection() {
         <div className="hero-fade-1 mb-8">
           <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-xl md:h-40 md:w-40">
             <Image
-              src="/images/profile/pp.png"
-              alt="Clément Chalut, engineering student and maker"
+              src="/images/placeholders/square.svg"
+              alt="Your profile photo"
               width={160}
               height={160}
               priority

@@ -9,10 +9,10 @@ interface DomainViewProps {
 }
 
 const domains: { key: ProjectDomain; image: string }[] = [
-  { key: "Microelectronics & Photonics", image: "/images/domains/cryo_setup.jpeg" },
-  { key: "Product Engineering & IoT", image: "/images/domains/durandal.jpg" },
-  { key: "Robotics & AI", image: "/images/domains/ant2.png" },
-  { key: "Industrial Design & Mechanical", image: "/images/domains/uveya2.png" },
+  { key: "Microelectronics & Photonics", image: "/images/placeholders/wide.svg" },
+  { key: "Product Engineering & IoT", image: "/images/placeholders/wide.svg" },
+  { key: "Robotics & AI", image: "/images/placeholders/wide.svg" },
+  { key: "Industrial Design & Mechanical", image: "/images/placeholders/wide.svg" },
 ];
 
 export default function DomainView({ onSelectDomain }: DomainViewProps) {

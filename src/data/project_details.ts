@@ -8,33 +8,30 @@ export interface ProjectTechnicalDetail {
 
 export const projectTechnicalDetails: ProjectTechnicalDetail[] = [
   {
-    id: "durandal",
+    id: "signal-relay",
     metrics: [
-      { label: "Latency", value: "<10ms end-to-end" },
-      { label: "Target Market", value: "400k+ European fencers" },
-      { label: "Status", value: "Alpha Functional (Foil)" }
+      { label: "Battery Life", value: "Multi-week on single charge" },
+      { label: "Deployment", value: "6-node mesh, outdoor" },
     ],
     challenges: [
-      "Distinguishing valid metallic touches from sweat/body contact noise.",
-      "Ensuring wireless reliability in high-interference competition environments."
-    ]
-  },
-  {
-    id: "hylab-modulators",
-    metrics: [
-      { label: "TFLT Yield", value: "95% (vs 75% for TFLN)" },
-      { label: "RF Loss", value: "17-75% lower in TFLT" },
-      { label: "Frequency Range", value: "100-300 GHz" }
-    ]
-  },
-  {
-    id: "guardian-angel",
-    metrics: [
-      { label: "Market Opportunity", value: "$93B Global Care" },
-      { label: "Radar Logic", value: "Edge-processed Fall Detection" }
+      "Balancing radio duty-cycle against end-to-end latency.",
+      "Enclosure sealing for outdoor exposure without blocking the antenna.",
     ],
-    marketData: "Addresses the 'compliance gap' of wearable pendants which are often forgotten by the elderly."
-  }
+  },
+  {
+    id: "ring-resonator",
+    metrics: [
+      { label: "Process", value: "SOI, full cleanroom cycle" },
+      { label: "Characterization", value: "SEM + optical bench" },
+    ],
+  },
+  {
+    id: "terrain-rover",
+    metrics: [
+      { label: "Success Rate", value: "90%+ on test course" },
+      { label: "Replanning Rate", value: "10 Hz" },
+    ],
+  },
 ];
 
 export function getTechnicalDetailById(id: string) {

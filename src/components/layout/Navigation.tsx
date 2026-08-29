@@ -11,7 +11,7 @@ export default function Navigation() {
   const MENU_ITEMS = [
     { label: t.nav.projects, href: "/projects" },
     { label: t.nav.experience, href: "/experience" },
-    { label: t.nav.flight, href: "/flight" },
+    { label: t.nav.hobby, href: "/hobby" },
     { label: t.nav.about, href: "/about" },
   ];
   const [menuOpen, setMenuOpen] = useState(false);
@@ -314,7 +314,7 @@ export default function Navigation() {
           </button>
 
           <span className="font-mono text-[9px] uppercase tracking-widest text-black/30">
-             © {new Date().getFullYear()} Clément Chalut
+             © {new Date().getFullYear()} Your Name
           </span>
         </div>
 

@@ -1,29 +1,26 @@
 import type { Translations } from "../index";
 
 export const projectDetailsContent: Translations["projectDetailsContent"] = {
-  durandal: {
+  "signal-relay": {
     metrics: [
-      { label: "Latence", value: "<10ms bout en bout" },
-      { label: "Marché cible", value: "400k+ escrimeurs européens" },
-      { label: "Statut", value: "Alpha Fonctionnel (Fleuret)" },
+      { label: "Autonomie", value: "Plusieurs semaines sur une charge" },
+      { label: "Déploiement", value: "Maillage de 6 nœuds, extérieur" },
     ],
     challenges: [
-      "Distinguer les touches métalliques valides du bruit dû à la sueur et au contact corporel.",
-      "Assurer la fiabilité sans fil dans des environnements de compétition à forte interférence.",
+      "Équilibrer le cycle de service radio avec la latence de bout en bout.",
+      "Étanchéité du boîtier pour un usage extérieur sans bloquer l'antenne.",
     ],
   },
-  "hylab-modulators": {
+  "ring-resonator": {
     metrics: [
-      { label: "Rendement TFLT", value: "95% (vs 75% pour TFLN)" },
-      { label: "Perte RF", value: "17-75% plus faible en TFLT" },
-      { label: "Plage de fréquence", value: "100-300 GHz" },
+      { label: "Procédé", value: "SOI, cycle salle blanche complet" },
+      { label: "Caractérisation", value: "SEM + banc optique" },
     ],
   },
-  "guardian-angel": {
+  "terrain-rover": {
     metrics: [
-      { label: "Opportunité marché", value: "93 Mrd$ Soins mondiaux" },
-      { label: "Logique radar", value: "Détection de chute en périphérie" },
+      { label: "Taux de réussite", value: "90%+ sur le parcours test" },
+      { label: "Fréquence de replanification", value: "10 Hz" },
     ],
-    marketData: "Répond au « déficit de conformité » des pendentifs portables souvent oubliés par les personnes âgées.",
   },
 };

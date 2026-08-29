@@ -35,8 +35,8 @@ export default function About() {
             <div className="flex justify-center lg:justify-start">
               <div className="relative h-52 w-52 lg:h-60 lg:w-60 overflow-hidden rounded-full border-4 border-white shadow-xl">
                 <Image
-                  src="/images/profile/pp.png"
-                  alt="Clément Chalut"
+                  src="/images/placeholders/square.svg"
+                  alt="Your profile photo"
                   fill
                   className="object-cover"
                   sizes="240px"

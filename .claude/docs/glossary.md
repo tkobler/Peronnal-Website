@@ -11,7 +11,7 @@ Terms used in this repo that don't mean what you'd expect from context alone.
 | **Tier 1–4** | Playwright e2e test groupings. Tier 1 = nav/lang/routing (fastest), Tier 2 = responsive matrix, Tier 3 = canvas performance, Tier 4 = accessibility. Run via `test:e2e:tier{N}` scripts. |
 | **Signal burst** | Specific canvas animation (radial pulse) used on the contact page. See [commits mentioning it](../../.) — coordinates are finicky, check existing use before reusing. |
 | **Schematic mode** | The `mode` field on a Schematic. One of `paths`, `pads`, `regions`, `bitmap`. Determines which interpreter in DotPattern renders it. |
-| **Flight log** | The `/flight` page + data in [flightLog.ts](../../src/data/flightLog.ts). Clément is a pilot; this is a cockpit-style dashboard of flights and airports, not a metaphor. |
+| **Flight log** | The `/flight` page + data in [flightLog.ts](../../src/data/flightLog.ts). Your Name is a pilot; this is a cockpit-style dashboard of flights and airports, not a metaphor. |
 | **Admin panel** | `/admin` route with GitHub API integration for editing content live. Local-only, gated on `NEXT_PUBLIC_GITHUB_*` env vars. Not a public feature. |
 | **Schematic vs canvas** | "Schematic" is the data. "Canvas" is the HTML `<canvas>` DotPattern draws on. Don't confuse them — editing the canvas code vs editing a Schematic are different jobs. |
 | **Projet-EPFL-Reports** | A separate, gitignored directory checked in as a sibling (historically). Academic reports, not part of the site. |

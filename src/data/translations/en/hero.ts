@@ -1,11 +1,11 @@
 import type { Translations } from "../index";
 
 export const hero: Translations["hero"] = {
-  greeting: "Hi, I'm Clément",
+  greeting: "Hi, I'm Your Name",
   phrases: [
-    "I build things that bridge research and production — photonic chips, autonomous drones, medical devices.",
-    "EPFL Microengineering · Currently Manufacturing Manager at a medical device startup."
+    "I build things that bridge research and production — replace this line with what you actually work on.",
+    "EPFL Engineering · Add your current role or focus here.",
   ],
   contact: "Let's connect",
-  tagline: "At 16 I played 1st Cornet at the Philharmonie de Paris with les Siècles. At 23 I manage a medical device production line. The common thread: anticipation and performing when it counts.",
+  tagline: "A short, personal line about you goes here — what you do, and why. Keep it specific and skip the superlatives.",
 };

@@ -3,7 +3,7 @@ import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Clément Chalut — EPFL Microengineering student, Manufacturing Manager at Stérilux, private pilot, and trumpet performer.",
+  description: "Your Name — Master's student in Engineering at EPFL.",
 };
 
 export default function AboutPage() {

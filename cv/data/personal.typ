@@ -1,19 +1,19 @@
 // ─── Personal Information ───
 
 #let personal = (
-  name: "Clément Chalut",
+  name: "Your Name",
   title: (
-    en: "Microengineering Master Student",
-    fr: "Étudiant en Master de Microtechnique",
+    en: "Master's Student in Engineering",
+    fr: "Étudiant en Master d'Ingénierie",
   ),
-  email: "clement.chalut@epfl.ch",
-  phone: "+33 6 74 71 17 67",
-  city: "Ecublens, Switzerland",
-  linkedin: "linkedin.com/in/clément-chalut",
-  linkedin-url: "https://www.linkedin.com/in/cl%C3%A9ment-chalut-27853320b/",
-  website: "clementchalut.com",
-  github: "github.com/ccka",
-  nationality: "French",
-  drivers-license: "Cat. B, PPL(A)",
+  email: "you@example.com",
+  phone: "+41 00 000 00 00",
+  city: "Lausanne, Switzerland",
+  linkedin: "linkedin.com/in/your-name",
+  linkedin-url: "https://www.linkedin.com/in/your-name/",
+  website: "example.com",
+  github: "github.com/your-username",
+  nationality: "Your Nationality",
+  drivers-license: "",
   photo: "../photo.jpg",
 )
