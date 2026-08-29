@@ -4,26 +4,6 @@ export type ProjectDomain =
   | "Robotics & AI"
   | "Industrial Design & Mechanical";
 
-export interface Schematic {
-  paths: [number, number, number, number][];
-  pads: [number, number][];
-  /** Animation mode: "reveal" = expanding wave reveal, "pulse" = traveling ECG-like signal pulse. */
-  mode?: "reveal" | "pulse";
-  /** Filled regions — arrays of [x, y] vertices (% of viewport) forming closed polygons. */
-  regions?: [number, number][][];
-  /** Image-based bitmap mask. Binary string of 0/1 chars, row-major.
-   *  Position and size in viewport %. Dark pixels = visible dots during reveal. */
-  bitmap?: {
-    data: string;       // "001110..." binary string, length = cols * rows
-    cols: number;       // bitmap width in cells
-    rows: number;       // bitmap height in cells
-    x: number;          // left edge in viewport %
-    y: number;          // top edge in viewport %
-    w: number;          // width in viewport %
-    h: number;          // height in viewport %
-  };
-}
-
 export interface Project {
   id: string;
   number: string;
