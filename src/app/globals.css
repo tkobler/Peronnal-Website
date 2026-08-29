@@ -42,10 +42,8 @@
 
   /* Z-index scale */
   --z-glass: 1;
-  --z-dot-bg: 5;
   --z-content: 10;
   --z-hero-content: 20;
-  --z-dot-fg: 30;
   --z-locale: 40;
   --z-nav: 1000;
   --z-menu-backdrop: 1010;
