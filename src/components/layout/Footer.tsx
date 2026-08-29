@@ -16,7 +16,7 @@ export default function Footer() {
 
         {/* Left: Copyright & Name */}
         <div className="flex flex-col items-center gap-2 md:items-start">
-          <span className="font-bold text-white">YOUR NAME</span>
+          <span className="font-bold text-white">TIM KOBLER</span>
           <span className="font-mono text-xs text-white/40">
             © {currentYear} ALL RIGHTS RESERVED
           </span>
@@ -24,13 +24,13 @@ export default function Footer() {
 
         {/* Center: Quick Links / Socials */}
         <div className="flex gap-6 font-mono text-xs font-bold uppercase tracking-wider">
-          <a href="https://www.linkedin.com/in/your-name/" target="_blank" rel="noopener noreferrer" className="text-white/60 underline decoration-white/20 underline-offset-4 hover:decoration-white hover:text-white transition-colors duration-200">
+          <a href="https://www.linkedin.com/in/kobler-tim/" target="_blank" rel="noopener noreferrer" className="text-white/60 underline decoration-white/20 underline-offset-4 hover:decoration-white hover:text-white transition-colors duration-200">
             LinkedIn
           </a>
-          <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" className="text-white/60 underline decoration-white/20 underline-offset-4 hover:decoration-white hover:text-white transition-colors duration-200">
+          <a href="https://github.com/tkobler" target="_blank" rel="noopener noreferrer" className="text-white/60 underline decoration-white/20 underline-offset-4 hover:decoration-white hover:text-white transition-colors duration-200">
             GitHub
           </a>
-          <a href="mailto:you@example.com" className="text-white/60 underline decoration-white/20 underline-offset-4 hover:decoration-white hover:text-white transition-colors duration-200">
+          <a href="mailto:kobler.tim@gmail.com" className="text-white/60 underline decoration-white/20 underline-offset-4 hover:decoration-white hover:text-white transition-colors duration-200">
             {t.footer.contact}
           </a>
         </div>

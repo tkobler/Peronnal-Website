@@ -314,7 +314,7 @@ export default function Navigation() {
           </button>
 
           <span className="font-mono text-[9px] uppercase tracking-widest text-black/30">
-             © {new Date().getFullYear()} Your Name
+             © {new Date().getFullYear()} Tim Kobler
           </span>
         </div>
 

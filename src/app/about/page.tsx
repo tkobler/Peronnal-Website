@@ -3,7 +3,7 @@ import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Your Name — Master's student in Engineering at EPFL.",
+  description: "Tim Kobler — Robotics Master's student at EPFL.",
 };
 
 export default function AboutPage() {
