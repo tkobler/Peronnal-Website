@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://clementchalut.com/sitemap.xml
+Sitemap: https://timkobler.ch/sitemap.xml

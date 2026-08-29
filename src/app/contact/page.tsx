@@ -3,7 +3,7 @@ import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Clément Chalut — currently at Stérilux, seeking a Master's thesis or internship in photonics, embedded systems, or product engineering.",
+  description: "Get in touch with Tim Kobler — Robotics Master's student at EPFL.",
 };
 
 export default function ContactPage() {

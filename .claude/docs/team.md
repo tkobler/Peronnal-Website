@@ -37,7 +37,7 @@
 | [`mit-prof-photonics`](../agents/mit-prof-photonics.md) | Validate optics / photonics / lasers / quantum claims. |
 | [`mit-prof-embedded`](../agents/mit-prof-embedded.md) | Validate MCU / firmware / real-time / hardware-peripheral claims. |
 
-All six career agents know where Clément's content lives (CV variants, `cv/data/`, `src/data/projects.ts`, translations). They also all respect the **ambitious-not-cocky** tone rule and respond in the language of the document under review.
+All six career agents know where Tim's content lives (CV variants, `cv/data/`, `src/data/projects.ts`, translations). They also all respect the **ambitious-not-cocky** tone rule and respond in the language of the document under review.
 
 ## The CV review pipeline
 

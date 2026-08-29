@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swa
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
-const siteUrl = "https://clementchalut.com";
+const siteUrl = "https://timkobler.ch";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -18,31 +18,31 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Clément Chalut",
-    template: "%s | Clément Chalut",
+    default: "Tim Kobler",
+    template: "%s | Tim Kobler",
   },
-  description: "Microengineering portfolio — operations, manufacturing, photonics, and product engineering.",
+  description: "Robotics portfolio — EPFL Master's student in Robotics.",
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Clément Chalut",
-    title: "Clément Chalut",
-    description: "Microengineering portfolio — operations, manufacturing, photonics, and product engineering.",
+    siteName: "Tim Kobler",
+    title: "Tim Kobler",
+    description: "Robotics portfolio — EPFL Master's student in Robotics.",
     images: [
       {
         url: "/images/profile/pp.png",
         width: 400,
         height: 400,
-        alt: "Clément Chalut",
+        alt: "Tim Kobler",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "Clément Chalut",
-    description: "Microengineering portfolio — operations, manufacturing, photonics, and product engineering.",
+    title: "Tim Kobler",
+    description: "Robotics portfolio — EPFL Master's student in Robotics.",
     images: ["/images/profile/pp.png"],
   },
   robots: {
@@ -66,16 +66,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Clément Chalut",
+              name: "Tim Kobler",
               url: siteUrl,
-              jobTitle: "Microengineering Master's Student & Manufacturing Manager",
+              jobTitle: "Robotics Master's Student",
               affiliation: [
                 { "@type": "Organization", name: "EPFL" },
-                { "@type": "Organization", name: "Stérilux" },
               ],
               sameAs: [
-                "https://www.linkedin.com/in/cl%C3%A9ment-chalut-27853320b/",
-                "https://github.com/ccka",
+                "https://www.linkedin.com/in/kobler-tim/",
+                "https://github.com/tkobler",
               ],
             }),
           }}

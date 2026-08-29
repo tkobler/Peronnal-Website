@@ -8,7 +8,7 @@ The goal: stop shipping "fixes" for symptoms nobody reproduced, stop forgetting 
 
 ## Phase 1 — Triage (before any branch)
 
-Clément reports a bug. Claude does **not** immediately open a branch and start patching. Instead:
+Tim reports a bug. Claude does **not** immediately open a branch and start patching. Instead:
 
 ### 1.1 Ask reproduction questions first
 
@@ -32,7 +32,7 @@ If the bug is visual (layout, spacing, color, missing element, broken interactio
 
 Store it at `tests/visual/repro/<bug-short-name>/before.png` (the folder is gitignored by default; see the procedure doc for the convention on committing screenshots to the PR).
 
-UI bug reports without a screenshot are incomplete. If Clément can't provide one, Claude captures one. If neither can reproduce the bug visually, downgrade it to "needs reproduction" and stop.
+UI bug reports without a screenshot are incomplete. If Tim can't provide one, Claude captures one. If neither can reproduce the bug visually, downgrade it to "needs reproduction" and stop.
 
 ### 1.3 Consult the triage panel in parallel
 
@@ -57,7 +57,7 @@ Conditional additions (in the same parallel block):
 - The career-writing agents — wrong domain
 
 Pass each agent the same brief:
-1. The reproduction steps Clément provided
+1. The reproduction steps Tim provided
 2. Any screenshots or artifacts
 3. A request for three things specifically: **(a)** their hypothesis for the root cause, **(b)** which test should exist to have caught this, **(c)** the smallest fix they'd recommend
 
@@ -69,12 +69,12 @@ Present the panel's takes honestly. If `qa` says "this is a missing test in tier
 > - **frontend-eng**: hypothesis is `.nav-locale-toggle` clips the FR button due to flex-wrap at the narrowest breakpoint; fix is a min-width adjustment
 > - These are complementary, not conflicting. Fix the CSS AND add the missing tier-2 test.
 
-When hypotheses actually contradict, say so and ask Clément to decide which path to investigate first.
+When hypotheses actually contradict, say so and ask Tim to decide which path to investigate first.
 
 ### 1.5 Stop conditions
 
 Do NOT proceed to Phase 2 if:
-- **Reproduction isn't reliable** — go back to Clément for more details; don't fix what you can't trigger
+- **Reproduction isn't reliable** — go back to Tim for more details; don't fix what you can't trigger
 - **The panel's root-cause hypotheses all contradict** — deeper investigation first, not a fix
 - **The "fix" requires architectural change** — this is no longer a bug, it's a `dev/` branch with full Phase 1 discovery from [feature-development.md](feature-development.md)
 - **The bug is actually a feature request in disguise** — escalate to `dev/`
@@ -184,7 +184,7 @@ This is the hard rule for bug branches. Before changing any production code:
 
 Why: a bug without a regression test will come back. Every. Single. Time.
 
-If a test genuinely cannot be written (rare — usually a visual-only bug that doesn't warrant a full visual baseline), document **explicitly** in TRACKING.md why, and get Clément's OK to proceed without one.
+If a test genuinely cannot be written (rare — usually a visual-only bug that doesn't warrant a full visual baseline), document **explicitly** in TRACKING.md why, and get Tim's OK to proceed without one.
 
 ### 2.4 Fix the root cause
 
@@ -204,7 +204,7 @@ If a test genuinely cannot be written (rare — usually a visual-only bug that d
 
 The PR body must include:
 
-- **Symptom** — what Clément (or the reporter) saw
+- **Symptom** — what Tim (or the reporter) saw
 - **Root cause** — the actual cause, with file:line references
 - **Fix** — what changed and why this is the minimal fix
 - **Verification** — what was run (test names + tier), what passed, link to before/after screenshots

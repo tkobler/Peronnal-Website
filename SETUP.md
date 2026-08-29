@@ -42,7 +42,7 @@ npm --version
    ```bash
    npm run dev
    ```
-   Visit http://localhost:3000 — you should see Clément's portfolio. Stop the server with Ctrl-C.
+   Visit http://localhost:3000 — you should see Tim's portfolio. Stop the server with Ctrl-C.
 
 **Done when**: the unmodified site runs locally at localhost:3000.
 
@@ -97,7 +97,7 @@ Also replace **[src/app/favicon.ico](src/app/favicon.ico)** (Next.js 13+ keeps t
 
 ### 2.4 Bio, hero, and metadata
 
-- **[src/app/layout.tsx](src/app/layout.tsx)** — root metadata: `title`, `description`, OG tags, Twitter card, structured data. Replace "Clément Chalut" everywhere. Also review the inline `<script>` that seeds `window.__LOCALE__` — keep it if you're keeping i18n, remove if you went single-locale.
+- **[src/app/layout.tsx](src/app/layout.tsx)** — root metadata: `title`, `description`, OG tags, Twitter card, structured data. Replace "Tim Kobler" everywhere. Also review the inline `<script>` that seeds `window.__LOCALE__` — keep it if you're keeping i18n, remove if you went single-locale.
 - **[src/data/translations/en/hero.ts](src/data/translations/en/hero.ts)** and `fr/hero.ts` — hero greeting, tagline, CTA
 - **[src/data/translations/en/about.ts](src/data/translations/en/about.ts)** — about page copy
 - **[src/data/translations/en/contact.ts](src/data/translations/en/contact.ts)** — contact info, email, links. Also check [src/app/contact/](src/app/contact/) for hardcoded links.
@@ -111,7 +111,7 @@ Each top-level route lives in [src/app/\<route>/](src/app/):
 
 After deleting a page, run `npm run dev` and click through every nav link to catch broken references.
 
-**Done when**: the site runs locally with your content, your images, and the routes you want. No "Clément Chalut" or "EPFL" leftovers (`grep -ri "clément\|EPFL" src/ public/`).
+**Done when**: the site runs locally with your content, your images, and the routes you want. No "Tim Kobler" or "EPFL" leftovers (`grep -ri "tim\|EPFL" src/ public/`).
 
 ---
 
@@ -144,7 +144,7 @@ Don't invent new arbitrary Tailwind values (`w-[173px]`, `text-[17px]`) — if y
 - **[public/CNAME](public/CNAME)** — replace with your custom domain, OR delete if you'll use the default `<user>.github.io/<repo>` URL.
 - **[public/sitemap.xml](public/sitemap.xml)** — update every `<loc>` URL to your domain.
 - **[public/robots.txt](public/robots.txt)** — update `Sitemap:` to your domain.
-- **[public/BingSiteAuth.xml](public/BingSiteAuth.xml)** — delete this file unless you're going to register the site with Bing Webmaster Tools yourself (it's tied to Clément's Bing account).
+- **[public/BingSiteAuth.xml](public/BingSiteAuth.xml)** — delete this file unless you're going to register the site with Bing Webmaster Tools yourself (it's tied to Tim's Bing account).
 
 ### 4.2 GitHub Pages configuration
 
@@ -250,7 +250,7 @@ This repo ships with a `.claude/` folder containing:
 - `hooks/block-main-commit.sh` — a safety hook that blocks Claude from committing to main
 - `settings.json` — Claude Code permissions and hook registration
 
-**If you use Claude Code**: keep the folder. The docs are specific to this stack and will give Claude useful context about your project. Review [.claude/CLAUDE.md](.claude/CLAUDE.md) and update the author name, project description, and any "Clément"-specific references. The branch-based workflow and the 20-subagent team are defaults you can modify or strip as you prefer.
+**If you use Claude Code**: keep the folder. The docs are specific to this stack and will give Claude useful context about your project. Review [.claude/CLAUDE.md](.claude/CLAUDE.md) and update the author name, project description, and any "Tim"-specific references. The branch-based workflow and the 20-subagent team are defaults you can modify or strip as you prefer.
 
 **If you don't use Claude Code**: delete the folder entirely.
 ```bash

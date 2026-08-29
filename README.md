@@ -1,6 +1,6 @@
 # Personnal-Website
 
-Engineering portfolio for Clément Chalut, built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**. Bilingual (EN/FR) with automatic locale detection. Deployed as a static site to GitHub Pages with a custom domain.
+Engineering portfolio for Tim Kobler, built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**. Bilingual (EN/FR) with automatic locale detection. Deployed as a static site to GitHub Pages with a custom domain.
 
 > **Using this repo as a template?** Start with **[SETUP.md](./SETUP.md)** — the step-by-step guide for customizing content, branding, SEO, and deployment before you start modifying code.
 

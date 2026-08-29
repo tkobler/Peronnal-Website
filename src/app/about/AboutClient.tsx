@@ -36,7 +36,7 @@ export default function About() {
               <div className="relative h-52 w-52 lg:h-60 lg:w-60 overflow-hidden rounded-full border-4 border-white shadow-xl">
                 <Image
                   src="/images/profile/pp.png"
-                  alt="Clément Chalut"
+                  alt="Tim Kobler"
                   fill
                   className="object-cover"
                   sizes="240px"

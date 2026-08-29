@@ -23,7 +23,7 @@ Feature development has a **discovery phase** before any branch is created. See 
 **Phase 1 — Discovery (no branch yet)**
 1. Claude asks clarifying questions until scope is real. Pushes back directly on bad ideas; offers compromises.
 2. Claude spawns `pm` + `tech-lead` in parallel (plus conditional agents like `ux-designer`, `qa`, `frontend-eng`, `ui-designer`, `typst-eng`) via the Agent tool. Opinions are independent — conflicts get surfaced, not averaged.
-3. Clément decides whether to proceed. Claude does NOT proceed to Phase 2 on a unanimous "don't build it" without explicit override.
+3. Tim decides whether to proceed. Claude does NOT proceed to Phase 2 on a unanimous "don't build it" without explicit override.
 
 **Phase 2 — Execution (branch + docs + code)**
 1. **Create the branch** off the latest `main`:
@@ -42,7 +42,7 @@ Feature development has a **discovery phase** before any branch is created. See 
    - If text changed: `npm run validate:i18n`
 6. **Run `/merge-check`** to confirm readiness against [pre-pr-checklist.md](pre-pr-checklist.md).
 7. **Open a PR.** `STRATEGY.md` and `TRACKING.md` are part of the PR — reviewers read them alongside the diff. PR description explains the **why**, not just the what. List which test tiers were run.
-8. **Wait for user validation.** Do not merge without explicit approval from Clément. The PR is a pause point, not a formality.
+8. **Wait for user validation.** Do not merge without explicit approval from Tim. The PR is a pause point, not a formality.
 9. **Merge into `main`** (preserve the history style the repo already uses — check `git log` before picking merge vs squash). STRATEGY/TRACKING files get merged along with the code.
 10. **Delete the branch** locally and remotely after merge.
 
@@ -67,7 +67,7 @@ Audits are read-only reviews that produce findings, not code changes.
 2. Run the `/audit` skill against the current state of `main` (or a specified scope).
 3. Write the findings to a timestamped file, e.g. `.claude/audits/2026-04-15.md`. Do not reproduce them only in chat — the branch should leave an artifact.
 4. Commit the audit file. No other changes.
-5. Open a PR so Clément can review and decide which findings become follow-up `bug/` or `dev/` branches.
+5. Open a PR so Tim can review and decide which findings become follow-up `bug/` or `dev/` branches.
 6. Audit branches never contain fixes. Fixes are separate branches that reference the audit.
 
 ## Documentation workflow (`doc/<description>`)
@@ -90,9 +90,9 @@ For changes to `.claude/` — adding skills, updating guidelines, tweaking CLAUD
 ## Rules that apply to all workflows
 
 - **Never push directly to `main`.** Every change goes through a branch and a PR, even tiny ones.
-- **Never merge without user approval.** Opening the PR is where Claude stops and Clément decides.
+- **Never merge without user approval.** Opening the PR is where Claude stops and Tim decides.
 - **Never commit build artifacts** (`out/`, `public/cv-*.pdf`, `cv/output/`, `tests/visual/baselines/`, `.next/`). If you see one in `git status`, stop and investigate.
-- **Never skip hooks** (`--no-verify`) unless Clément explicitly asks.
+- **Never skip hooks** (`--no-verify`) unless Tim explicitly asks.
 - **If you're blocked mid-task**, commit WIP to the branch and explain the blocker. Don't improvise around it.
 - **Keep branches short-lived.** If a branch is getting old, rebase on `main` to catch drift.
 

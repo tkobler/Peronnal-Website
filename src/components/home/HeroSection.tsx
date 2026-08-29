@@ -53,7 +53,7 @@ export default function HeroSection() {
           <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-xl md:h-40 md:w-40">
             <Image
               src="/images/profile/pp.png"
-              alt="Clément Chalut, engineering student and maker"
+              alt="Tim Kobler, robotics student and maker"
               width={160}
               height={160}
               priority

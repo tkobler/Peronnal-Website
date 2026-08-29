@@ -1,19 +1,19 @@
 // ─── Personal Information ───
 
 #let personal = (
-  name: "Clément Chalut",
+  name: "Tim Kobler",
   title: (
-    en: "Microengineering Master Student",
-    fr: "Étudiant en Master de Microtechnique",
+    en: "Robotics Master Student",
+    fr: "Étudiant en Master de Robotique",
   ),
-  email: "clement.chalut@epfl.ch",
-  phone: "+33 6 74 71 17 67",
-  city: "Ecublens, Switzerland",
-  linkedin: "linkedin.com/in/clément-chalut",
-  linkedin-url: "https://www.linkedin.com/in/cl%C3%A9ment-chalut-27853320b/",
-  website: "clementchalut.com",
-  github: "github.com/ccka",
-  nationality: "French",
-  drivers-license: "Cat. B, PPL(A)",
+  email: "kobler.tim@gmail.com",
+  phone: "+41 76 310 54 95",
+  city: "[Your city], Switzerland",
+  linkedin: "linkedin.com/in/kobler-tim",
+  linkedin-url: "https://www.linkedin.com/in/kobler-tim/",
+  website: "timkobler.ch",
+  github: "github.com/tkobler",
+  nationality: "[Your nationality]",
+  drivers-license: "[Your licenses]",
   photo: "../photo.jpg",
 )

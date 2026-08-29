@@ -1,6 +1,6 @@
 # Personnal-Website — Claude context
 
-Personal portfolio site for Clément Chalut (EPFL Microengineering). Next.js 16 static export, bilingual EN/FR, deployed to GitHub Pages. Also hosts a standalone Typst CV pipeline in [cv/](../cv/) that produces [public/cv-en.pdf](../public/cv-en.pdf) and [public/cv-fr.pdf](../public/cv-fr.pdf) as build artifacts.
+Personal portfolio site for Tim Kobler (EPFL Robotics). Next.js 16 static export, bilingual EN/FR, deployed to GitHub Pages. Also hosts a standalone Typst CV pipeline in [cv/](../cv/) that produces [public/cv-en.pdf](../public/cv-en.pdf) and [public/cv-fr.pdf](../public/cv-fr.pdf) as build artifacts.
 
 ## Stack snapshot
 - **Framework**: Next.js 16.1 (App Router, `output: "export"`, `images.unoptimized: true`)
@@ -31,7 +31,7 @@ npm run cv:build         # regenerate CV PDFs (requires typst)
 ```
 
 ## For template users
-If the conversation is about someone using this repo as a template for their own portfolio (not Clément developing his own site), the source of truth is **[SETUP.md](../SETUP.md)** at repo root. Read it before giving advice about customization, deployment, or which files to edit first.
+If the conversation is about someone using this repo as a template for their own portfolio (not Tim developing his own site), the source of truth is **[SETUP.md](../SETUP.md)** at repo root. Read it before giving advice about customization, deployment, or which files to edit first.
 
 ## Things that will trip you up
 1. **CV PDFs are build artifacts, not in git.** `public/cv-{en,fr}.pdf` and `cv/output/` are gitignored. CI does not build them. They must be rebuilt locally via `npm run cv:build`. Do not "fix" this by removing from gitignore — see [docs/project-map.md](docs/project-map.md).
