@@ -2,6 +2,7 @@
 
 import Navigation from "./Navigation";
 import PageTransition from "./PageTransition";
+import GlobalTopoBackground from "./GlobalTopoBackground";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { AdminProvider } from "@/context/AdminContext";
 
@@ -22,6 +23,9 @@ export default function ClientShell({ children }: { children: React.ReactNode })
         >
           Skip to main content
         </a>
+
+        {/* Fixed — mounted first so it paints behind everything that follows */}
+        <GlobalTopoBackground />
 
         {/* Renders OUTSIDE PageTransition — never affected by transforms */}
         <Navigation />

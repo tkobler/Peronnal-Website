@@ -1,6 +1,5 @@
 "use client";
 
-import TopoBackground from "@/components/layout/TopoBackground";
 import { useLanguage } from "@/context/LanguageContext";
 
 /**
@@ -13,11 +12,9 @@ export default function HobbyClient() {
 
   return (
     <main
-      className="relative min-h-screen bg-gray-50 pt-24 pb-20"
+      className="section-light relative min-h-screen pt-24 pb-20"
       data-section-theme="light"
     >
-      <TopoBackground theme="light" seed={30} />
-
       <section className="relative z-10 mx-auto max-w-3xl px-6 text-center">
         <h1 className="font-display font-bold tracking-tight text-gray-900" style={{ fontSize: "clamp(2.25rem, 6vw, 3.5rem)" }}>
           {t.hobby.heading}

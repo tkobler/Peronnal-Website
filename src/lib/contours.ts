@@ -9,7 +9,7 @@
  * output is stable across server/client renders (no hydration mismatch).
  */
 
-function mulberry32(seed: number): () => number {
+export function mulberry32(seed: number): () => number {
   let a = seed;
   return function () {
     a |= 0;
@@ -54,14 +54,28 @@ function smoothPath(points: Point[]): string {
   return d + ` L ${last.x.toFixed(2)} ${last.y.toFixed(2)}`;
 }
 
-/** Sum of broad Gaussian bumps — a few sweeping peaks, not dense/noisy terrain. */
-function makeHeightField(peaks: Peak[]) {
+interface Turbulence {
+  freqX: number;
+  freqY: number;
+  phase: number;
+  amp: number;
+}
+
+/**
+ * Sum of broad Gaussian bumps — several sweeping peaks, not one lone circle —
+ * plus a little low-frequency turbulence so contours read as real, slightly
+ * irregular terrain instead of perfect mathematical rings.
+ */
+function makeHeightField(peaks: Peak[], turbulence: Turbulence[], width: number, height: number) {
   return (x: number, y: number): number => {
     let h = 0;
     for (const p of peaks) {
       const dx = x - p.x;
       const dy = y - p.y;
       h += p.height * Math.exp(-(dx * dx + dy * dy) / (2 * p.radius * p.radius));
+    }
+    for (const t of turbulence) {
+      h += t.amp * Math.sin((x / width) * t.freqX * Math.PI * 2 + (y / height) * t.freqY * Math.PI * 2 + t.phase);
     }
     return h;
   };
@@ -200,17 +214,26 @@ export function generateTopoContours(
   height: number,
   options: { peakCount?: number; levels?: number; indexEvery?: number; gridCols?: number; gridRows?: number } = {}
 ): ContourLine[] {
-  const { peakCount = 3, levels = 11, indexEvery = 4, gridCols = 56, gridRows = 40 } = options;
+  const { peakCount = 5, levels = 11, indexEvery = 4, gridCols = 64, gridRows = 46 } = options;
   const rand = mulberry32(seed);
 
   const peaks: Peak[] = Array.from({ length: peakCount }, () => ({
-    x: width * (0.1 + rand() * 0.8),
-    y: height * (0.1 + rand() * 0.8),
-    height: 0.6 + rand() * 0.4,
+    x: width * (0.05 + rand() * 0.9),
+    y: height * (0.05 + rand() * 0.9),
+    height: 0.5 + rand() * 0.5,
     // Broad radii — sweeping, large-scale lines rather than dense/tight detail.
-    radius: width * (0.28 + rand() * 0.24),
+    radius: width * (0.2 + rand() * 0.22),
   }));
-  const field = makeHeightField(peaks);
+  // A little low-frequency turbulence — enough to rough up the perfectly
+  // smooth Gaussian peaks into something more sinuous/organic, not enough
+  // to break the broad, sweeping read into noisy detail.
+  const turbulence: Turbulence[] = Array.from({ length: 3 }, () => ({
+    freqX: 1 + rand() * 2.5,
+    freqY: 1 + rand() * 2.5,
+    phase: rand() * Math.PI * 2,
+    amp: 0.05 + rand() * 0.05,
+  }));
+  const field = makeHeightField(peaks, turbulence, width, height);
 
   const grid: number[][] = [];
   for (let j = 0; j <= gridRows; j++) {
@@ -236,4 +259,20 @@ export function generateTopoContours(
     }
   }
   return lines;
+}
+
+/**
+ * Serializes a contour field into a `data:image/svg+xml` URI for a given
+ * stroke color, for use as a plain CSS `background-image` rather than a
+ * live DOM SVG — see GlobalTopoBackground.tsx for why.
+ */
+export function contoursToDataUri(lines: ContourLine[], stroke: string): string {
+  const paths = lines
+    .map(
+      (line) =>
+        `<path d="${line.d}" fill="none" stroke="${stroke}" stroke-width="${line.major ? 0.24 : 0.12}" opacity="${line.major ? 1 : 0.55}"/>`
+    )
+    .join("");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">${paths}</svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
