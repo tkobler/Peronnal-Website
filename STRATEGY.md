@@ -34,7 +34,7 @@ This branch does **not** fit the repo's five standard workflow prefixes (`dev/`,
 
 ---
 
-# Addendum — Pre-deployment fix pass (2026-08-31)
+# Addendum 1 — Pre-deployment fix pass (2026-08-31)
 
 A separate pre-deployment diagnostic surfaced several claims; each was independently re-verified before acting (see [TRACKING.md](TRACKING.md) for the full log). One genuine, fixable bug was found and resolved as its own bounded fix, documented below rather than as a new top-level STRATEGY doc since it's a small, targeted correction on top of the template work above, not a new scope of work.
 
@@ -64,3 +64,33 @@ Added `test.skip(({ browserName }) => browserName === "firefox" && device.isMobi
 
 ## Process note
 This fix was applied directly on the working branch (`Tim_kobler`) rather than a separately checked-out `bug/` branch off `main`, because the branch under preparation for deployment is the one that needs the fix, and the bug is confirmed identical on `main` — branching off `main` and merging back would not change the outcome, only add an extra merge hop. Full Phase 1 triage (reproduction, panel consultation, root-cause agreement) was still followed as documented above.
+
+---
+
+# Addendum 2 — Locale hydration mismatch (2026-08-31)
+
+## Symptom
+User reported the Next.js dev-mode "Hydration failed because the server rendered text didn't match the client" popup, seen on a fresh `npm run dev` load of `/experience`.
+
+## Reproduction
+- `npm run dev`, navigate directly to `/experience` with the browser's stored/effective locale resolving to French (`window.__LOCALE__`, `localStorage.locale`, or `navigator.language` starting with `fr`).
+- Sitewide, not page-specific — `/experience` was simply the first page tested.
+- Confirmed identical on `main` (`git diff main -- src/context/LanguageContext.tsx` is empty) — pre-existing, not introduced by this branch.
+
+## Root cause
+`src/context/LanguageContext.tsx`'s `LanguageProvider` initialized `useState<Locale>(() => detectLocale())`, where `detectLocale()` branches on `typeof window !== "undefined"` — the textbook Next.js hydration anti-pattern (the first bullet point in React's own hydration error message). Server-side (static export, no `window` at build time) always resolves `"en"`. The client's first render — which happens during hydration itself, not after — runs the same function and can resolve `"fr"`, so every translated string differs from the server-rendered HTML for a French-preferring visitor. An existing code comment claimed this "doesn't occur in production static export"; the triage panel (qa, frontend-eng, tech-lead) unanimously judged that claim incorrect, since the static HTML is always built in English regardless of who requests it.
+
+## Fix approach
+`useState<Locale>("en")` unconditionally — an exact match to the server's output, so the first hydration pass never mismatches. The real locale is detected and applied afterward via a `useEffect`, deferred through `requestAnimationFrame` to satisfy this repo's `react-hooks/set-state-in-effect` lint rule (mirroring the existing pattern in `Navigation.tsx`'s `detectTheme`). This converts a hard React error into one intentional, quiet re-render for French-preferring visitors — a brief flash of English is traded for correctness, since `output: "export"` rules out any server-side locale detection that could avoid it entirely.
+
+## Test plan
+- [x] New regression test in `tests/e2e/language-toggle.spec.ts`: seeds `localStorage.locale = "fr"` before a fresh navigation to `/experience`, asserts no hydration-related console/page error. Confirmed it fails against the pre-fix code (captured the exact "Home"/"Accueil" React diff) and passes after the fix.
+- [x] Full `language-toggle.spec.ts` (chromium-desktop) — 9/9 pass
+- [x] Full `npm run test:e2e:tier1` — 246/256 pass; remaining 10 failures are a pre-existing, deterministic (not contention-related) mobile click-interception bug in `.nav-locale-toggle`, confirmed via `git stash` to reproduce identically against the pre-fix code — unrelated to this change, logged in TRACKING.md for the separately deferred flaky-tests ticket
+- [x] `npm run lint` / `npm run test:unit` — clean / 17/17
+
+## Panel input (Phase 1)
+- **qa**: confirmed root cause; the "doesn't occur in production" comment is wrong; recommended render-neutral-then-swap; flagged the missing regression-test coverage as the reason nothing caught this.
+- **frontend-eng**: confirmed root cause independently; recommended the same `useState("en")` + `useEffect` pattern; noted `suppressHydrationWarning` doesn't cover text nodes, so there's no way to keep the synchronous branching read without a real mismatch.
+- **tech-lead**: confirmed root cause; endorsed the fix as the standard `next-themes`-style pattern for this SSR-can't-know-the-client constraint; the residual flash-of-English is unavoidable at the React-state layer under `output: "export"` — eliminating it entirely would require route-based static locales (`/en/*`, `/fr/*`), a `dev/`-scale architecture change out of scope here.
+- **Conflicts surfaced**: none — all three converged independently on the same root cause and fix.

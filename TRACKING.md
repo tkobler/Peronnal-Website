@@ -2,7 +2,7 @@
 
 ## Current status
 
-Complete and verified. Ready for commit. See addendum below for a pre-deployment fix pass done separately on 2026-08-31.
+Complete and verified. Ready for commit. See Addendum 1 (Firefox/isMobile tier2 fix + CV pipeline) and Addendum 2 (locale hydration mismatch fix) below for two pre-deployment fix passes done separately on 2026-08-31.
 Last updated: 2026-08-31
 
 ## Tasks
@@ -65,7 +65,7 @@ None — Tim gave direct, specific scope in conversation (placeholder-vs-real-co
 
 ---
 
-# Addendum — Pre-deployment fix pass (2026-08-31)
+# Addendum 1 — Pre-deployment fix pass (2026-08-31)
 
 A user-supplied `DIAGNOSTIC-DEPLOIEMENT.md` claimed the branch was blocked by 3 tier3 failures, an unrun CV pipeline, and an untracked debug file. Every claim was independently re-verified before acting rather than trusted at face value.
 
@@ -109,3 +109,41 @@ None currently open.
 ## Related issues observed (for separate branches)
 - Pre-existing tier1/tier2 parallel-execution flakiness in hamburger-menu / language-toggle / route-transition tests (present on `main`, not a regression) — deferred per user decision above.
 - No CI job currently runs tier2 non-silently; any local/CI invocation of Playwright test scripts should use `set -o pipefail` (or avoid piping through `tail`/similar) so a real nonzero exit code is never masked, per both qa's and devops's triage.
+- **Refined finding (2026-08-31, see Addendum 2 below)**: the `iphone-se`/`iphone-14` slice of this flakiness — `language-toggle.spec.ts`'s "switching to FR", "locale persists in localStorage/across reload/across navigation", "switching back to EN" (5 tests × 2 devices = 10) — is NOT resolved by running sequentially (`--workers=1`): it fails 100% of the time, identically, both before and after the hydration fix below. This is a real, deterministic mobile click-interception bug (`.nav-pill` intercepts pointer events meant for `.nav-locale-toggle button`), not parallel-execution contention like the rest of the deferred category. Worth prioritizing over the harder-to-pin desktop flakes when the deferred `bug/` ticket is picked up, since it's actually reproducible every time.
+
+---
+
+# Addendum 2 — Locale hydration mismatch (2026-08-31)
+
+## Current status
+Fixed and verified. `tests/e2e/language-toggle.spec.ts` full suite (chromium-desktop): 9/9 pass, including a new regression test. Full tier1 rerun: 246/256 passed; the 10 failures are the pre-existing, deterministic mobile click-interception bug documented above, confirmed unrelated to this fix (reproduces identically against the pre-fix code — see decisions log).
+
+## Reported symptom
+User saw the Next.js dev-mode hydration-mismatch popup on a fresh `npm run dev` load of `/experience`.
+
+## Root cause
+`src/context/LanguageContext.tsx`'s `LanguageProvider` used `useState<Locale>(() => detectLocale())`, where `detectLocale()` branches on `typeof window !== "undefined"`. Server (static export, no `window` at build time) always resolves `"en"`. Client's first render — during hydration itself, not deferred — could resolve `"fr"` via `window.__LOCALE__`, `localStorage`, or `navigator.language`, mismatching every translated string against the server-rendered HTML for any French-preferring visitor. This is sitewide (every page), not specific to `/experience` — that was just the first page tested. An existing code comment claimed this "doesn't occur in production static export"; the panel unanimously judged that claim wrong, since production's static HTML is always built in English regardless of visitor.
+
+## Fix
+`useState<Locale>("en")` unconditionally (exact match to SSR output), with the real locale detected and applied post-mount via a `useEffect` (deferred through `requestAnimationFrame`, matching the existing `react-hooks/set-state-in-effect`-safe pattern already used in `Navigation.tsx`'s `detectTheme`). First hydration pass always matches the server exactly; French-preferring visitors get one quiet re-render immediately after, instead of a hard mismatch.
+
+## Test plan
+- [x] New regression test: `tests/e2e/language-toggle.spec.ts` → "Fresh load with a stored non-default locale" → seeds `localStorage.locale = "fr"` via `addInitScript` before navigating fresh to `/experience`, asserts zero hydration-related console/page errors. Confirmed failing against the pre-fix code (captured the exact "Home"/"Accueil" text diff), passing after the fix.
+- [x] Full `language-toggle.spec.ts` suite (chromium-desktop) — 9/9 pass
+- [x] Full `npm run test:e2e:tier1` — 246/256 pass; all 10 failures are the pre-existing mobile click-interception bug noted above, confirmed identical against pre-fix code via `git stash`
+- [x] `npm run lint` — clean (required an `requestAnimationFrame` deferral to satisfy `react-hooks/set-state-in-effect`, not just a plain `useEffect`)
+- [x] `npm run test:unit` — 17/17 pass
+
+## Panel input (Phase 1)
+- **qa**: confirmed root cause; the comment's "doesn't occur in production" claim is wrong; recommended a "render neutral, swap post-mount" pattern; flagged that no existing test covers a fresh load with a non-default locale already stored — a regression test needed to exist before the fix.
+- **frontend-eng**: confirmed root cause independently; recommended the same `useState("en")` + `useEffect` pattern; noted `suppressHydrationWarning` doesn't cover text nodes so there's no way to keep the synchronous branching read.
+- **tech-lead**: confirmed root cause; endorsed the same fix as the standard `next-themes`-style pattern for this SSR-can't-know-the-client constraint; noted the flash-of-English-then-French tradeoff is unavoidable at the React-state layer under `output: "export"` (no server-side locale detection available) — the only real elimination would be route-based static locales (`/en/*`, `/fr/*`), which is a `dev/`-scale architecture change, not in scope here.
+- **Conflicts surfaced**: none — all three converged independently on the same root cause and fix shape.
+
+## Decisions log
+
+### 2026-08-31 — Fixed directly on Tim_kobler, same rationale as Addendum 1
+Confirmed identical on `main` (`git diff main -- src/context/LanguageContext.tsx` empty). Same reasoning as the Firefox/isMobile fix above: fixing in place on the branch being prepared for its own PR is more useful than a nested `bug/` branch for no added safety.
+
+### 2026-08-31 — Verified the mobile test failures are not a regression from this fix
+After the fix, `npm run test:e2e:tier1` showed 10 failures, all in `language-toggle.spec.ts` on `iphone-se`/`iphone-14`. Ran those in isolation with `--workers=1` — still 10/10 failed, identically, ruling out parallel-execution contention as the explanation. To confirm this wasn't caused by the fix itself, `git stash`ed the fix and reran the identical isolated scenario against the original pre-fix code: same 10 failures, same error signature (`.nav-pill` intercepting pointer events). Confirmed pre-existing and unrelated; fix restored via `git stash pop`. Logged as a refined, more actionable version of the already-deferred flaky-tests item above.

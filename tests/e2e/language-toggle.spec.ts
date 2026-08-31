@@ -119,3 +119,34 @@ test.describe("Language Toggle", () => {
     expect(stored).toBe("en");
   });
 });
+
+test.describe("Fresh load with a stored non-default locale", () => {
+  // Regression test: LanguageProvider used to read window.__LOCALE__/localStorage/
+  // navigator.language synchronously inside a useState lazy initializer, which
+  // runs during the client's first (hydration) render. The static-export server
+  // HTML is always built in English, so any visitor whose stored/browser locale
+  // is French got a real text-content hydration mismatch on every page, not just
+  // a harmless flash — see React's "Hydration failed" console error.
+  test("loading a page with locale already set to fr does not trigger a hydration mismatch", async ({ page }) => {
+    const consoleErrors: string[] = [];
+    page.on("console", (msg) => {
+      if (msg.type() === "error") consoleErrors.push(msg.text());
+    });
+    page.on("pageerror", (err) => consoleErrors.push(err.message));
+
+    // Seed localStorage before any page script runs, simulating a returning
+    // French-preferring visitor loading the page fresh (not toggling in-session).
+    await page.addInitScript(() => {
+      window.localStorage.setItem("locale", "fr");
+    });
+
+    await page.goto("/experience", { waitUntil: "domcontentloaded" });
+    await page.waitForSelector("nav.nav-pill", { state: "visible" });
+    // Hydration is async and SSR already painted the nav, so give React a
+    // moment to finish reconciling (and, if buggy, to throw) before asserting.
+    await page.waitForTimeout(500);
+
+    const hydrationErrors = consoleErrors.filter((text) => /hydration/i.test(text));
+    expect(hydrationErrors).toEqual([]);
+  });
+});
