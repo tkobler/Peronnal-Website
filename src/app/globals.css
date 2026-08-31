@@ -120,13 +120,16 @@ a, button, [role="button"], input, select, textarea {
 
 /* ============================================
    SECTION BACKGROUNDS
+   Slightly translucent (not fully opaque) so the fixed GlobalTopoBackground
+   contour pattern shows through as sections scroll over it — see
+   ClientShell.tsx / GlobalTopoBackground.tsx.
    ============================================ */
 .section-dark {
   background: linear-gradient(
     135deg,
-    #0A1F2E 0%,
-    #0D2B3A 50%,
-    #0E3340 100%
+    rgba(10, 31, 46, 0.85) 0%,
+    rgba(13, 43, 58, 0.85) 50%,
+    rgba(14, 51, 64, 0.85) 100%
   );
   color: var(--dark-text);
 }
@@ -134,9 +137,9 @@ a, button, [role="button"], input, select, textarea {
 .section-light {
   background: linear-gradient(
     135deg,
-    #F5F7FA 0%,
-    #E8EEF3 50%,
-    #DBE5ED 100%
+    rgba(245, 247, 250, 0.85) 0%,
+    rgba(232, 238, 243, 0.85) 50%,
+    rgba(219, 229, 237, 0.85) 100%
   );
   color: var(--light-text);
 }
@@ -667,7 +670,6 @@ a, button, [role="button"], input, select, textarea {
    ============================================ */
 .page-transition {
   position: relative;
-  z-index: var(--z-content);
 }
 
 /* --- View Transition cross-fade ("fade through") --- */

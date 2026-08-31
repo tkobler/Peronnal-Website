@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import TopoBackground from "@/components/layout/TopoBackground";
 import { useLanguage } from "@/context/LanguageContext";
 import { bachelorGpa, bachelorCredits, masterGpa, masterCreditsObtained, masterCreditsTotal, highlightCourses } from "@/data/courses";
 
@@ -16,7 +15,6 @@ export default function About() {
         className="section-dark relative grid h-[50vh] place-items-center overflow-hidden"
         data-section-theme="dark"
       >
-        <TopoBackground theme="dark" seed={10} />
         <h1
           className="relative z-10 text-[length:var(--text-hero)] font-bold leading-[0.9] tracking-tight"
           style={{ fontFamily: "var(--font-display)" }}
@@ -31,7 +29,6 @@ export default function About() {
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="light"
       >
-        <TopoBackground theme="light" seed={11} />
         <div className="relative z-10 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-12 lg:gap-16 items-start">
             {/* Profile photo */}
@@ -78,7 +75,6 @@ export default function About() {
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="dark"
       >
-        <TopoBackground theme="dark" seed={12} />
         <div className="relative z-10 mx-auto max-w-5xl">
           <h2
             className="text-[length:var(--text-3xl)] font-bold tracking-tight"
@@ -153,7 +149,6 @@ export default function About() {
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="light"
       >
-        <TopoBackground theme="light" seed={13} />
         <div className="relative z-10 mx-auto max-w-5xl">
           <h2
             className="text-[length:var(--text-3xl)] font-bold tracking-tight"

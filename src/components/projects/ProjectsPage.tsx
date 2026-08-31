@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useRef, useCallback, useState } from "react";
 import { handleImageError } from "@/lib/imageHandlers";
 import { getFeaturedProjects, type ProjectDomain } from "@/data/projects";
-import TopoBackground from "@/components/layout/TopoBackground";
 import { useLanguage } from "@/context/LanguageContext";
 
 const DOMAIN_KEYS: ProjectDomain[] = [
@@ -50,7 +49,6 @@ export default function ProjectsPage() {
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="light"
       >
-        <TopoBackground theme="light" seed={40} />
         <div className="relative z-10 flex flex-col items-center text-center">
           <h1 className="font-display text-[clamp(3rem,8vw,6rem)] font-bold leading-[0.9] tracking-tight">
             {t.projects.heading}
@@ -106,7 +104,6 @@ export default function ProjectsPage() {
             className={`${theme === "dark" ? "section-dark" : "section-light"} relative min-h-screen py-16 lg:py-0 lg:h-screen flex items-center lg:overflow-hidden ${isFlipping ? "project-transition-container project-leaving" : "project-transition-container"}`}
             data-section-theme={theme}
           >
-            <TopoBackground theme={theme} seed={41 + i} />
             <div className="project-transition-inner relative z-10 w-full px-[var(--container-padding)]">
               <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-24 items-center">
 
@@ -182,9 +179,7 @@ export default function ProjectsPage() {
       <section
         className="section-dark relative grid h-[20vh] place-items-center overflow-hidden"
         data-section-theme="dark"
-      >
-        <TopoBackground theme="dark" seed={49} />
-      </section>
+      />
     </main>
   );
 }
