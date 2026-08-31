@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useViewTransitionRouter } from "@/hooks/useViewTransitionRouter";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import TopoBackground from "@/components/layout/TopoBackground";
 
 export default function HeroSection() {
   const { t, locale } = useLanguage();
@@ -45,6 +46,7 @@ export default function HeroSection() {
       aria-label="Hero introduction"
       data-section-theme="light"
     >
+      <TopoBackground theme="light" seed={1} />
       <div className="relative flex max-w-[var(--container-max)] flex-col items-center text-center" style={{ zIndex: "var(--z-hero-content)" }}>
 
         {/* --- Profile Picture --- */}
