@@ -4,6 +4,7 @@ import { useCallback, useMemo } from "react";
 import { useViewTransitionRouter } from "@/hooks/useViewTransitionRouter";
 import HeroSection from "./HeroSection";
 import ProjectSection from "./ProjectSection";
+import TopoBackground from "@/components/layout/TopoBackground";
 import { getHomeCards } from "@/data/homeCards";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -44,8 +45,9 @@ export default function HomePage() {
           data-section-theme="light"
           style={{ paddingLeft: "var(--container-padding)", paddingRight: "var(--container-padding)" }}
         >
+          <TopoBackground theme="light" seed={2} />
           <p
-            className="max-w-2xl text-center text-[length:var(--text-lg)] leading-relaxed opacity-70"
+            className="relative z-10 max-w-2xl text-center text-[length:var(--text-lg)] leading-relaxed opacity-70"
             style={{ fontFamily: "var(--font-body)" }}
           >
             {t.hero.tagline}

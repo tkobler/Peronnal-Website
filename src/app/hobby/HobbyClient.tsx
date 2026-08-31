@@ -1,5 +1,6 @@
 "use client";
 
+import TopoBackground from "@/components/layout/TopoBackground";
 import { useLanguage } from "@/context/LanguageContext";
 
 /**
@@ -12,10 +13,12 @@ export default function HobbyClient() {
 
   return (
     <main
-      className="min-h-screen bg-gray-50 pt-24 pb-20"
+      className="relative min-h-screen bg-gray-50 pt-24 pb-20"
       data-section-theme="light"
     >
-      <section className="mx-auto max-w-3xl px-6 text-center">
+      <TopoBackground theme="light" seed={30} />
+
+      <section className="relative z-10 mx-auto max-w-3xl px-6 text-center">
         <h1 className="font-display font-bold tracking-tight text-gray-900" style={{ fontSize: "clamp(2.25rem, 6vw, 3.5rem)" }}>
           {t.hobby.heading}
         </h1>
@@ -24,7 +27,7 @@ export default function HobbyClient() {
         </p>
       </section>
 
-      <section className="mx-auto mt-16 max-w-3xl px-6">
+      <section className="relative z-10 mx-auto mt-16 max-w-3xl px-6">
         <div className="grid gap-4 sm:grid-cols-3">
           {t.hobby.highlights.map((highlight, i) => (
             <div
