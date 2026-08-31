@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import SectionDivider from "@/components/layout/SectionDivider";
 import { useLanguage } from "@/context/LanguageContext";
 import { bachelorGpa, bachelorCredits, masterGpa, masterCreditsObtained, masterCreditsTotal, highlightCourses } from "@/data/courses";
 
@@ -22,6 +23,8 @@ export default function About() {
           {t.about.heading}
         </h1>
       </section>
+
+      <SectionDivider theme="light" seed={101} />
 
       {/* 2. BIO */}
       <section
@@ -68,6 +71,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <SectionDivider theme="dark" seed={102} />
 
       {/* 3. EDUCATION */}
       <section
@@ -142,6 +147,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <SectionDivider theme="light" seed={103} />
 
       {/* 4. MUSIC */}
       <section

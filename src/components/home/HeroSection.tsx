@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useViewTransitionRouter } from "@/hooks/useViewTransitionRouter";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import ContourField from "./ContourField";
+import { generateAscentPath } from "@/lib/contours";
 
 export default function HeroSection() {
   const { t, locale } = useLanguage();
@@ -21,6 +23,7 @@ export default function HeroSection() {
   }
 
   const done = charIndex >= greeting.length;
+  const ascentPath = useMemo(() => generateAscentPath(2026, 100, 22, 26, 9), []);
 
   useEffect(() => {
     if (done) return;
@@ -45,6 +48,22 @@ export default function HeroSection() {
       aria-label="Hero introduction"
       data-section-theme="light"
     >
+      <ContourField />
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 100 30"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-x-0 bottom-[20%] h-[14%] w-full"
+      >
+        <path
+          d={ascentPath}
+          fill="none"
+          stroke="var(--light-text)"
+          strokeWidth={0.6}
+          strokeLinecap="round"
+          className={`ascent-line ${done ? "ascent-line-revealed" : ""}`}
+        />
+      </svg>
       <div className="relative flex max-w-[var(--container-max)] flex-col items-center text-center" style={{ zIndex: "var(--z-hero-content)" }}>
 
         {/* --- Profile Picture --- */}
