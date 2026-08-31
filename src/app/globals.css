@@ -645,27 +645,6 @@ a, button, [role="button"], input, select, textarea {
 }
 
 /* ============================================
-   ANIMATIONS — HERO ASCENT LINE
-   Traces in once the typewriter greeting finishes typing.
-   ============================================ */
-.ascent-line {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  transition: stroke-dashoffset var(--duration-elaborate) var(--ease-spring);
-}
-
-.ascent-line-revealed {
-  stroke-dashoffset: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ascent-line {
-    transition: none;
-    stroke-dashoffset: 0;
-  }
-}
-
-/* ============================================
    ANIMATIONS — SCROLL INDICATOR PULSE
    ============================================ */
 @keyframes pulse {
