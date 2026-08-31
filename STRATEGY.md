@@ -31,3 +31,36 @@ This branch does **not** fit the repo's five standard workflow prefixes (`dev/`,
 - `npm run test:unit` — 17/17 pass (removed `flight-stats.test.ts`, which tested a file that no longer exists)
 - `npm run test:e2e:tier1` — run since this touched routing/navigation (`/flight` → `/hobby`), per CLAUDE.md's testing rule
 - Full-repo grep for "Clément"/"Chalut" (case-insensitive): zero hits in `src/`, `public/`, `cv/`, `.claude/`
+
+---
+
+# Addendum — Pre-deployment fix pass (2026-08-31)
+
+A separate pre-deployment diagnostic surfaced several claims; each was independently re-verified before acting (see [TRACKING.md](TRACKING.md) for the full log). One genuine, fixable bug was found and resolved as its own bounded fix, documented below rather than as a new top-level STRATEGY doc since it's a small, targeted correction on top of the template work above, not a new scope of work.
+
+## Symptom
+A pre-deployment diagnostic reported tier2 (`npm run test:e2e:tier2`) as "685 passed" but exiting with code `1`. Re-running with correct exit-code capture (the diagnostic's `tail`-piped invocation was masking it) confirmed the nonzero exit, and the actual failure log showed dozens of `firefox-desktop` tests failing with `Error: browser.newContext: options.isMobile is not supported in Firefox`.
+
+## Reproduction
+- Command: `npm run test:e2e:tier2`
+- 100% deterministic — not flaky. Every test under the 4 mobile-profile `test.describe` blocks (iPhone SE, iPhone 14, iPad Portrait, iPad Landscape) fails under the `firefox-desktop` project, every run.
+- Confirmed identical on `main` (`git diff main -- tests/e2e/responsive-matrix.spec.ts playwright.config.ts` is empty) — pre-existing repo debt, not introduced by this branch's template work.
+
+## Root cause
+`tests/e2e/responsive-matrix.spec.ts` (the device loop, ~line 46) calls `test.use({ isMobile: device.isMobile, ... })` unconditionally for every device in `tests/utils/devices.ts`, 4 of which have `isMobile: true`. Playwright's Firefox engine does not implement the `isMobile` context option at all (Chromium/WebKit-only capability) — `browser.newContext` throws immediately at context creation for any test under those describe blocks when the active project is `firefox-desktop`.
+
+## Fix approach
+Added `test.skip(({ browserName }) => browserName === "firefox" && device.isMobile, "isMobile is not supported in Firefox")` inside each device's `test.describe` block. Firefox now explicitly skips only the 4 mobile-profile blocks and continues to run (and pass) the 2 non-mobile device profiles (Desktop 1440p, Ultrawide). No coverage is lost: mobile-viewport coverage is already fully owned by the dedicated `iphone-se` / `iphone-14` / `ipad` / `ipad-landscape` Playwright projects, which don't touch Firefox at all.
+
+## Test plan
+- [x] No new regression test file — the existing (already-failing) `responsive-matrix.spec.ts` tests are themselves the reproducer; the fix modifies the buggy test file directly. If the `test.skip` guard is ever removed, these same tests immediately fail again under `firefox-desktop`, which is sufficient regression coverage.
+- [x] `npx playwright test tests/e2e/responsive-matrix.spec.ts --project=firefox-desktop` — 64 skipped (mobile profiles), 32 passed (Desktop 1440p / Ultrawide), 0 failed
+- [x] Full `npm run test:e2e:tier2` with correct exit-code capture (`pipefail`) — 0 isMobile/Firefox failures; 3 unrelated pre-existing flaky failures remain (see TRACKING.md)
+
+## Panel input (Phase 1)
+- **qa**: root cause confirmed; recommended `test.skip()` per describe block over silently omitting `isMobile` (which would make Firefox "pass" mobile tests without ever emulating mobile behavior — misleading). Also flagged that no CI job runs tier2 non-silently — a `tail`-piped invocation has been masking this exit code.
+- **devops**: root cause confirmed independently; same fix recommendation (candidate: scoped `test.skip`, not dropping `firefox-desktop` from the config entirely, since that would lose real desktop-Firefox coverage on the 2 non-mobile viewports). Flagged the exit-code-masking pattern (`| tail`) as a separate, general risk worth fixing in any test invocation going forward.
+- **Conflicts surfaced**: none — qa and devops converged independently on the same root cause and fix.
+
+## Process note
+This fix was applied directly on the working branch (`Tim_kobler`) rather than a separately checked-out `bug/` branch off `main`, because the branch under preparation for deployment is the one that needs the fix, and the bug is confirmed identical on `main` — branching off `main` and merging back would not change the outcome, only add an extra merge hop. Full Phase 1 triage (reproduction, panel consultation, root-cause agreement) was still followed as documented above.
