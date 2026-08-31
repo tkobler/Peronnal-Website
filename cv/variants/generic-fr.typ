@@ -11,7 +11,7 @@
 #let variant = "generic"
 #let accent = rgb("#1B3A5C")
 
-#show: industry-layout.with(lang: lang, accent: accent, show-photo: true)
+#show: industry-layout.with(lang: lang, accent: accent, show-photo: false)
 
 #profile-block(profiles.at(variant), lang, accent: accent)
 

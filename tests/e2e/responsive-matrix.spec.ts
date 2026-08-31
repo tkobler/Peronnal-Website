@@ -52,6 +52,17 @@ for (const device of DEVICES) {
       deviceScaleFactor: device.deviceScaleFactor,
     });
 
+    // Firefox's browser.newContext rejects isMobile outright — it's a
+    // Chromium/WebKit-only capability. Mobile-viewport coverage for these
+    // device profiles is already provided by the dedicated iphone-se/
+    // iphone-14/ipad/ipad-landscape projects, so skipping here loses no
+    // real coverage; Firefox still runs the non-mobile device profiles
+    // (Desktop 1440p, Ultrawide) below.
+    test.skip(
+      ({ browserName }) => browserName === "firefox" && device.isMobile,
+      "isMobile is not supported in Firefox"
+    );
+
     for (const route of ROUTES) {
       test(`${route} — no horizontal overflow`, async ({ page }) => {
         await page.goto(route, { waitUntil: "domcontentloaded" });
