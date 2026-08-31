@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import { Fragment, useCallback, useMemo } from "react";
 import { useViewTransitionRouter } from "@/hooks/useViewTransitionRouter";
 import HeroSection from "./HeroSection";
 import ProjectSection from "./ProjectSection";
+import SectionDivider from "@/components/layout/SectionDivider";
 import { getHomeCards } from "@/data/homeCards";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -53,12 +54,14 @@ export default function HomePage() {
         </section>
 
         {cards.map((card, i) => (
-          <ProjectSection
-            key={card.id}
-            card={card}
-            theme={sectionThemes[i]}
-            onSelect={() => handleExplore(card.linkTo)}
-          />
+          <Fragment key={card.id}>
+            <SectionDivider theme={sectionThemes[i]} seed={i} />
+            <ProjectSection
+              card={card}
+              theme={sectionThemes[i]}
+              onSelect={() => handleExplore(card.linkTo)}
+            />
+          </Fragment>
         ))}
       </main>
     </>
