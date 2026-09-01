@@ -178,4 +178,24 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Team project (10 members) · FIRST LEGO League Switzerland · 2019–2020",
     },
   },
+  "le-duplo": {
+    title: "Le Duplo",
+    tagline: "A pocket paragliding variometer, packaged inside a 3D-printed Duplo brick.",
+    descriptor: "Product Engineering & IoT · Personal",
+    detail: {
+      description: {
+        why: "Paragliding pilots need to hear whether they're climbing or sinking without looking at a screen mid-flight — Tim built his own variometer to fly with, starting from a colleague's firmware and designing the physical hardware himself.",
+        what: "A pocket-sized paragliding variometer packaged in a 3D-printed case shaped like an oversized Duplo brick, sensing climb or sink rate through a barometric pressure sensor and accelerometer and reporting it as a distinct beep tone through eight LEDs and a speaker.",
+        how: "Designed his first custom PCB around an MS5611 barometric pressure sensor, an accelerometer, and an Arduino Nano, adapted a colleague's variometer firmware to drive the audio and LED feedback, then 3D-printed and hand-wired the Duplo-shaped enclosure with a LiPo battery and speaker.",
+      },
+      images: [
+        { src: "/images/projects/le-duplo/01-pcb-board.jpeg", alt: "Custom PCB next to the 3D-printed Duplo-shaped enclosure", caption: "The Duplo variometer's PCB, built around an MS5611 pressure sensor, buzzer, and status LEDs", section: "how" },
+        { src: "/images/projects/le-duplo/02-open-case.jpeg", alt: "Open Duplo-shaped enclosure showing the PCB, speaker, and LiPo battery fitted inside", caption: "The assembled internals: PCB, speaker, and LiPo battery packed into the Duplo-shaped case", section: "how" },
+        { src: "/images/projects/le-duplo/03-pcb-back.jpeg", alt: "Back of the PCB, silkscreened 'Le Duplo by TK' next to the 3D-printed enclosure", caption: "Tim's first custom PCB design, silkscreened with its own name", section: "why" },
+      ],
+      role: "Hardware & PCB Design Engineer",
+      duration: "Spring 2021",
+      scope: "Personal project · Spring 2021",
+    },
+  },
 };

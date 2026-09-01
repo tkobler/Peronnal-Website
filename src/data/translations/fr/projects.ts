@@ -178,4 +178,24 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet d'équipe (10 membres) · FIRST LEGO League Suisse · 2019–2020",
     },
   },
+  "le-duplo": {
+    title: "Le Duplo",
+    tagline: "Un variomètre de poche pour le parapente, dans une brique Duplo imprimée en 3D.",
+    descriptor: "Ingénierie Produit & IoT · Personnel",
+    detail: {
+      description: {
+        why: "Un pilote de parapente doit savoir s'il monte ou descend sans regarder un écran en plein vol — Tim a construit son propre variomètre, en partant du firmware d'un collègue et en concevant lui-même la partie matérielle.",
+        what: "Un variomètre de poche pour le parapente, dans un boîtier imprimé en 3D en forme de brique Duplo géante, qui mesure la vitesse de montée ou de descente via un capteur de pression barométrique et un accéléromètre, et la restitue par un bip distinct via huit LEDs et un haut-parleur.",
+        how: "Conception de son premier PCB sur-mesure, articulé autour d'un capteur de pression barométrique MS5611, d'un accéléromètre et d'un Arduino Nano, adaptation du firmware variomètre d'un collègue pour piloter le son et les LEDs, puis impression 3D et câblage à la main du boîtier en forme de Duplo avec batterie LiPo et haut-parleur.",
+      },
+      images: [
+        { src: "/images/projects/le-duplo/01-pcb-board.jpeg", alt: "PCB sur-mesure à côté du boîtier imprimé en 3D en forme de Duplo", caption: "Le PCB du variomètre Duplo, construit autour d'un capteur de pression MS5611, d'un buzzer et de LEDs d'état", section: "how" },
+        { src: "/images/projects/le-duplo/02-open-case.jpeg", alt: "Boîtier Duplo ouvert montrant le PCB, le haut-parleur et la batterie LiPo à l'intérieur", caption: "L'intérieur assemblé : PCB, haut-parleur et batterie LiPo logés dans le boîtier en forme de Duplo", section: "how" },
+        { src: "/images/projects/le-duplo/03-pcb-back.jpeg", alt: "Dos du PCB, sérigraphié « Le Duplo by TK », à côté du boîtier imprimé en 3D", caption: "Le tout premier PCB sur-mesure de Tim, sérigraphié à son propre nom", section: "why" },
+      ],
+      role: "Ingénieur Hardware & Conception PCB",
+      duration: "Printemps 2021",
+      scope: "Projet personnel · Printemps 2021",
+    },
+  },
 };
