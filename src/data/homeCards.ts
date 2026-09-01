@@ -18,10 +18,10 @@ const homeCards: HomeCard[] = [
   {
     id: "academic-research",
     number: "01",
-    title: "Integrated Ring Resonator",
+    title: "Global Control Logic for a Foiling Hydrogen Boat",
     tagline: "",
-    descriptor: "Silicon photonics filter design and characterization",
-    linkTo: "/projects#ring-resonator",
+    descriptor: "Designed the real-time safety architecture that unified every subsystem of a hydrogen-powered foiling boat",
+    linkTo: "/projects#solar-boat-control-logic",
     image: "/images/placeholders/wide.svg",
     layout: "boxed",
   },
@@ -54,16 +54,6 @@ const homeCards: HomeCard[] = [
     linkTo: "/hobby",
     image: "/images/placeholders/wide.svg",
     layout: "boxed",
-  },
-  {
-    id: "solar-boat",
-    number: "05",
-    title: "Global Control Logic for a Foiling Hydrogen Boat",
-    tagline: "",
-    descriptor: "Designed the real-time safety architecture that unified every subsystem of a hydrogen-powered foiling boat",
-    linkTo: "/projects#solar-boat-control-logic",
-    image: "/images/placeholders/wide.svg",
-    layout: "full-screen",
   },
 ];
 

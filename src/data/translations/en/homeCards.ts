@@ -2,8 +2,8 @@ import type { Translations } from "../index";
 
 export const homeCards: Translations["homeCards"] = {
   "academic-research": {
-    title: "Integrated Ring Resonator",
-    descriptor: "Designed and fabricated a silicon photonics filter, then characterized it against the design target",
+    title: "Global Control Logic for a Foiling Hydrogen Boat",
+    descriptor: "Designed the real-time safety architecture that unified every subsystem of a hydrogen-powered foiling boat",
   },
   "job-experience": {
     title: "Work Experience",
@@ -16,10 +16,6 @@ export const homeCards: Translations["homeCards"] = {
   hobby: {
     title: "Beyond Engineering",
     descriptor: "A portfolio can hold more than projects — this page shows how",
-  },
-  "solar-boat": {
-    title: "Global Control Logic for a Foiling Hydrogen Boat",
-    descriptor: "Designed the real-time safety architecture that unified every subsystem of a hydrogen-powered foiling boat",
   },
 };
 
