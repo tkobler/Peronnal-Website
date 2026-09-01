@@ -133,4 +133,22 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet d'équipe (4 membres, avec Noé Syfrig, Alec Horth, Alessandro Schlatter) · Programme CanSat de l'EPFL Spacecraft Team · 2022–2023",
     },
   },
+  "toucan-pcb-assembly-epfl-spacecraft-team": {
+    title: "Assemblage du PCB Toucan - EPFL Spacecraft Team",
+    tagline: "Un ordinateur de bord assemblé à la main lors d'un marathon d'intégration de précision de trois jours, envoyé dans l'espace.",
+    descriptor: "Microélectronique & Photonique · Académique",
+    detail: {
+      description: {
+        why: "Toucan est l'ordinateur de bord de l'EPFL Spacecraft Team, et faire passer une carte peuplée à la main de PCB nu à un état prêt pour l'espace demandait une précision de soudure que l'équipe ne pouvait pas sous-traiter — trois membres, dont Tim, ont donc consacré trois jours complets à l'assembler eux-mêmes.",
+        what: "Un PCB Toucan entièrement assemblé à la main et à la machine — l'ordinateur de bord de l'EPFL Spacecraft Team — peuplé de chaque puce et composant passif et vérifié fonctionnel, la carte exacte ensuite envoyée dans l'espace.",
+        how: "Processus complet d'assemblage SMT réalisé à la main sur trois jours continus — application de pâte à souder, placement des composants au pick-and-place, positionnement fin guidé au laser et soudure au four à refusion — avec trois coéquipiers se relayant pour garder concentration et précision tout au long du travail.",
+      },
+      images: [
+        { src: "/images/projects/toucan-pcb-assembly-epfl-spacecraft-team/01-pcb-fixture.jpg", alt: "Carte de l'ordinateur de bord Toucan montée dans un support de test pendant l'intégration", caption: "La carte de l'ordinateur de bord Toucan assemblée", section: "what" },
+      ],
+      role: "Technicien d'assemblage PCB",
+      duration: "Printemps 2024",
+      scope: "Projet d'équipe (3 membres) · EPFL Spacecraft Team · Printemps 2024",
+    },
+  },
 };

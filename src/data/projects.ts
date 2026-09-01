@@ -168,6 +168,30 @@ const projects: Project[] = [
       scope: "Team project (4 members, with Noé Syfrig, Alec Horth, Alessandro Schlatter) · EPFL Spacecraft Team CanSat programme · 2022–2023",
     },
   },
+  {
+    id: "toucan-pcb-assembly-epfl-spacecraft-team",
+    number: "06",
+    title: "Toucan PCB Assembly - EPFL Spacecraft Team",
+    tagline: "A hand-assembled onboard flight computer, built in a three-day precision integration marathon and sent to space.",
+    descriptor: "Microelectronics & Photonics · Academic",
+    domain: "Microelectronics & Photonics",
+    featured: true,
+    heroImage: "/images/projects/toucan-pcb-assembly-epfl-spacecraft-team/hero.jpeg",
+    detail: {
+      description: {
+        why: "Toucan is EPFL Spacecraft Team's onboard flight computer, and getting a hand-populated board from bare PCB to space-ready demanded a level of soldering precision the team couldn't outsource — so three members, including Tim, committed three full days of dedicated bench time to assemble it themselves.",
+        what: "A fully hand- and machine-assembled Toucan flight computer PCB — EPFL Spacecraft Team's onboard computer — populated with every chip and passive component and verified functional, the exact board later flown to space.",
+        how: "Ran the complete SMT assembly process by hand over three continuous days — solder-paste application, pick-and-place component placement, laser-guided fine positioning, and reflow oven soldering — with three teammates rotating in shifts to keep concentration and precision high throughout.",
+      },
+      images: [
+        { src: "/images/projects/toucan-pcb-assembly-epfl-spacecraft-team/01-pcb-fixture.jpg", alt: "Toucan onboard computer PCB mounted in a test fixture during integration", caption: "The assembled Toucan flight computer board", section: "what" },
+      ],
+      role: "PCB Assembly Technician",
+      duration: "Spring 2024",
+      technologies: ["SMT PCB Assembly", "Pick-and-Place", "Reflow Soldering", "Laser Component Alignment", "Hot-Air Rework", "Microscope Inspection"],
+      scope: "Team project (3 members) · EPFL Spacecraft Team · Spring 2024",
+    },
+  },
 ];
 
 export function getFeaturedProjects(): Project[] {
