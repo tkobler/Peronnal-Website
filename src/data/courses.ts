@@ -102,6 +102,7 @@ export const curriculum: AcademicYear[] = [
           { code: "MICRO-502", name: "Aerial Robotics", grade: 5, credits: 5, session: "07.2025", domain: "Robotics & AI", projectId: "terrain-rover" },
           { code: "MICRO-455", name: "Machine Learning I", grade: 4.5, credits: 4, session: "02.2025", domain: "Robotics & AI" },
           { code: "MGT-434", name: "Technology Ventures I", credits: 3, session: "02.2026", domain: "Robotics & AI", projectId: "motion-focus" },
+          { code: "ME-425", name: "Model Predictive Control", grade: 5.25, credits: 6, session: "02.2026", domain: "Robotics & AI", projectId: "mpc-rocket-landing-controller" },
         ],
       },
     ],

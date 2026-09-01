@@ -198,4 +198,19 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet personnel · Printemps 2021",
     },
   },
+  "mpc-rocket-landing-controller": {
+    title: "Contrôleur MPC pour l'atterrissage d'une fusée",
+    tagline: "Un contrôleur prédictif (MPC) qui fait atterrir verticalement un prototype de fusée à poussée vectorielle, à la SpaceX.",
+    descriptor: "Robotique & IA · Académique",
+    detail: {
+      description: {
+        why: "Les exercices précédents du cours avaient appris à identifier et programmer un contrôleur MPC — ce projet en était la suite directe, demandant à des équipes de trois de concevoir toute la chaîne de contrôle MPC nécessaire pour faire atterrir un petit prototype de fusée à poussée vectorielle (des hélices remplaçant le moteur-fusée) à la manière du booster Falcon de SpaceX.",
+        what: "Un ensemble complet de contrôleurs MPC — nominal, sans décalage statique (offset-free), tube robuste et non linéaire — pilotant un modèle de fusée à 12 états depuis une descente initiale jusqu'à un atterrissage vertical stationnaire sur une plateforme « chopsticks » simulée, développé et validé pour le cours ME-425 Model Predictive Control de l'EPFL avec Noé Syfrig et Marwane Mroueh.",
+        how: "Linéarisation et découplage de la dynamique non linéaire de la fusée en quatre sous-systèmes indépendants (x, y, z, roulis), conception de contrôleurs MPC à ensemble terminal LQR contraints pour la stabilisation et le suivi de vitesse/position, ajout d'un observateur de perturbation pour un suivi sans décalage à mesure que le carburant réduit la masse, puis construction d'un contrôleur tube-MPC robuste pour la phase finale d'atterrissage et d'un MPC non linéaire basé sur CasADi pour comparaison — le tout vérifié en boucle fermée par simulation sur le modèle non linéaire.",
+      },
+      role: "Étudiant",
+      duration: "Automne 2025",
+      scope: "Projet d'équipe (3 membres, avec Noé Syfrig et Marwane Mroueh) · Cours EPFL ME-425 Model Predictive Control · Automne 2025",
+    },
+  },
 };

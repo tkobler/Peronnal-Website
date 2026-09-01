@@ -251,6 +251,28 @@ const projects: Project[] = [
       scope: "Personal project · Spring 2021",
     },
   },
+  {
+    id: "mpc-rocket-landing-controller",
+    number: "09",
+    title: "MPC Rocket Landing Controller",
+    tagline: "Model Predictive Control that lands a thrust-vectored rocket prototype vertically, SpaceX-style.",
+    descriptor: "Robotics & AI · Academic",
+    domain: "Robotics & AI",
+    featured: true,
+    course: "ME-425",
+    heroImage: "/images/projects/mpc-rocket-landing-controller/hero.png",
+    detail: {
+      description: {
+        why: "The course's earlier exercises taught how to identify and implement an MPC controller — this project was the direct continuation, tasking three-person teams with designing the full MPC stack needed to land a small thrust-vectored rocket prototype (propellers standing in for a combustion engine) the way SpaceX lands the Falcon booster.",
+        what: "A complete set of MPC controllers — nominal, offset-free, robust tube, and nonlinear — that fly a 12-state rocket model from an initial descent down to a stationary vertical landing on a simulated \"chopsticks\" platform, built and validated for the EPFL ME-425 Model Predictive Control course with Noé Syfrig and Marwane Mroueh.",
+        how: "Linearized and decoupled the nonlinear rocket dynamics into four independent subsystems (x, y, z, roll), designed constrained LQR-terminal MPC controllers for stabilization and velocity/position tracking, added a disturbance observer for offset-free tracking as fuel burns off mass, then built a robust tube-MPC controller for the final landing approach and a CasADi-based nonlinear MPC to compare against it — all verified in closed-loop simulation on the nonlinear model.",
+      },
+      role: "Student",
+      duration: "Fall 2025",
+      technologies: ["Python", "Model Predictive Control (MPC)", "CasADi / IPOPT (Nonlinear MPC)", "Robust Tube-MPC", "Infinite-Horizon LQR", "Convex Optimization (QP)", "Polyhedral Invariant Sets (mpt4py)"],
+      scope: "Team project (3 members, with Noé Syfrig and Marwane Mroueh) · EPFL ME-425 Model Predictive Control · Fall 2025",
+    },
+  },
 ];
 
 export function getFeaturedProjects(): Project[] {
