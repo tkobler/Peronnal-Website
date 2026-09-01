@@ -128,4 +128,24 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet de semestre · Swiss Solar Boat · Printemps 2026",
     },
   },
+  "cochlear-implant-insertion-mechanism": {
+    title: "Mécanisme d'insertion pour implant cochléaire",
+    tagline: "Un mécanisme d'insertion à mesure de force et une plateforme d'entraînement étanche pour la chirurgie d'implant cochléaire",
+    descriptor: "Ingénierie Produit & IoT · Professionnel",
+    detail: {
+      description: {
+        why: "L'insertion d'un implant cochléaire se fait au toucher, sans mesure objective de la force appliquée à la fragile scala tympani — le prototype du laboratoire pour étudier ce phénomène avait besoin d'une refonte plus simple et plus fiable.",
+        what: "Un mécanisme d'insertion instrumenté et redessiné pour les électrodes d'implant cochléaire, associé à une plateforme d'entraînement in vitro qui étanchéifie un modèle imprimé en 3D de la scala tympani pour simuler l'écoulement réel des fluides de l'oreille interne.",
+        how: "Itération de la table de mesure de force à travers des prototypes imprimés en SLA, caractérisation de la linéarité et de la dérive du capteur de charge, développement d'un firmware ESP32 pour une insertion pilotée par pédale avec enregistrement en temps réel, puis validation sur des modèles de cochlée et de crâne imprimés en 3D.",
+      },
+      role: "Ingénieur R&D",
+      duration: "Printemps 2025",
+      keyResults: [
+        "Caractérisation du capteur de force sur-mesure à un facteur de correction d'environ 1.04, avec une dérive thermique mesurée d'environ 4 mN/°C, toutes deux corrigeables dans le firmware",
+        "Validation du mécanisme d'insertion redessiné sur des modèles de cochlée et de crâne imprimés en 3D, avec enregistrement de la force et de la température en temps réel sur des cycles complets d'insertion et d'extraction",
+        "Simplification et refonte du mécanisme compliant imprimé en SLA et de l'électronique (PCB sur-mesure + firmware ESP32), remplaçant un prototype antérieur selon les critères de stérilisabilité, de fiabilité et de compacité du projet",
+      ],
+      scope: "Professionnel · ARTORG Center, Inselspital · Printemps 2025",
+    },
+  },
 };
