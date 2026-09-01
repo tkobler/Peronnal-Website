@@ -109,4 +109,28 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Personal project (with Léonard) · student micro-business · 2022–2024",
     },
   },
+  "cansat-epfl-spacecraft-team": {
+    title: "CanSat - EPFL Spacecraft Team",
+    tagline: "A can-sized satellite recovered by a self-built Rogallo parachute, launched twice from a student rocket.",
+    descriptor: "Product Engineering & IoT · Academic",
+    detail: {
+      description: {
+        why: "EPFL Spacecraft Team's CanSat programme tasks student teams with building a soda-can-sized satellite that survives a rocket launch to ~500 m and returns usable science — El Tonio was built over a full academic year by a team of four (with Noé Syfrig, Alec Horth, and Alessandro Schlatter).",
+        what: "A CanSat carrying redundant environmental sensors, an IMU, GPS, and a camera inside a butterfly-opening 3D-printed shell, recovered under a hand-built Rogallo parachute designed to glide it in a controlled circle and stretch its time aloft.",
+        how: "Went from a preliminary design review through a custom PCB (dual BME688/BME280 sensors, BNO055 IMU, LoRa 868 MHz telemetry to a ground station) built around a Raspberry Pi Zero, cut and sewed the Rogallo parachute in-house, validated it with ground throws and drone drop tests, then flew it on two rocket launches — the second surviving a full descent with a 90-second-plus controlled circular glide from ~500 m.",
+      },
+      challenges: [
+        "Fitting redundant environmental sensors, an IMU, GPS, a camera, LoRa telemetry, and battery management onto a single PCB within a 70 mm-diameter, 300–350 g CanSat.",
+        "Designing and hand-sewing a Rogallo parachute that opened reliably and flew the CanSat in a controlled circle to maximize time aloft, validated first through ground throws and then drone drop tests before trusting it to a live rocket launch.",
+      ],
+      role: "PCB & Parachute Design Engineer",
+      duration: "2022 – 2023",
+      keyResults: [
+        "Flew two rocket-launched test campaigns; the second CanSat completed a stable, 90+ second controlled circular glide under the self-built Rogallo parachute after deployment at ~500 m.",
+        "Delivered a custom PCB integrating dual redundant environmental sensors (BME688 + BME280), a BNO055 IMU, GPS, and 868 MHz LoRa telemetry to a ground station, all within the programme's 300–350 g mass budget.",
+        "Designed a butterfly-opening 3D-printed and polystyrene structure that kept every component accessible while surviving up to 20 g of launch acceleration.",
+      ],
+      scope: "Team project (4 members, with Noé Syfrig, Alec Horth, Alessandro Schlatter) · EPFL Spacecraft Team CanSat programme · 2022–2023",
+    },
+  },
 };

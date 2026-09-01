@@ -109,4 +109,28 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet personnel (avec Léonard) · micro-entreprise étudiante · 2022–2024",
     },
   },
+  "cansat-epfl-spacecraft-team": {
+    title: "CanSat - EPFL Spacecraft Team",
+    tagline: "Un satellite miniature récupéré par un parachute Rogallo fait maison, lancé deux fois depuis une fusée étudiante.",
+    descriptor: "Ingénierie Produit & IoT · Académique",
+    detail: {
+      description: {
+        why: "Le programme CanSat de l'EPFL Spacecraft Team demande à des équipes étudiantes de construire un mini-satellite de la taille d'une canette capable de survivre au lancement par fusée jusqu'à environ 500 m et d'en rapporter des données exploitables — El Tonio a été construit sur toute une année académique par une équipe de quatre (avec Noé Syfrig, Alec Horth et Alessandro Schlatter).",
+        what: "Un CanSat embarquant des capteurs environnementaux redondants, une centrale inertielle, un GPS et une caméra dans une coque imprimée en 3D à ouverture « papillon », récupéré sous un parachute Rogallo fait maison conçu pour le faire planer en cercle et prolonger son temps de vol.",
+        how: "De la revue de conception préliminaire à un PCB sur-mesure (double capteurs BME688/BME280, IMU BNO055, télémétrie LoRa 868 MHz vers une station au sol) construit autour d'un Raspberry Pi Zero, découpe et couture du parachute Rogallo en interne, validation par des lâchers au sol puis des tests de largage au drone, puis deux lancements en fusée — le second concluant par un vol plané circulaire contrôlé de plus de 90 secondes.",
+      },
+      challenges: [
+        "Faire tenir des capteurs environnementaux redondants, une IMU, un GPS, une caméra, une télémétrie LoRa et la gestion de batterie sur un seul PCB, dans un CanSat de 70 mm de diamètre pour 300 à 350 g.",
+        "Concevoir et coudre un parachute Rogallo s'ouvrant de manière fiable et faisant planer le CanSat en cercle pour maximiser son temps de vol, validé d'abord par des lâchers au sol puis des tests de largage au drone avant de lui faire confiance lors d'un vrai lancement en fusée.",
+      ],
+      role: "Ingénieur PCB & Conception du parachute",
+      duration: "2022 – 2023",
+      keyResults: [
+        "Deux campagnes de lancement en fusée ; le second CanSat a réalisé un vol plané circulaire contrôlé de plus de 90 secondes sous le parachute Rogallo fait maison après largage à environ 500 m.",
+        "PCB sur-mesure intégrant des capteurs environnementaux redondants (BME688 + BME280), une IMU BNO055, un GPS et une télémétrie LoRa 868 MHz vers une station au sol, le tout dans le budget masse de 300–350 g imposé par le programme.",
+        "Structure imprimée en 3D et en polystyrène à ouverture papillon, gardant chaque composant accessible tout en résistant à une accélération de lancement jusqu'à 20 g.",
+      ],
+      scope: "Projet d'équipe (4 membres, avec Noé Syfrig, Alec Horth, Alessandro Schlatter) · Programme CanSat de l'EPFL Spacecraft Team · 2022–2023",
+    },
+  },
 };
