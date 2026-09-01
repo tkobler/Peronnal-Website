@@ -45,7 +45,7 @@ const projects: Project[] = [
     descriptor: "Product Engineering & IoT · Academic",
     domain: "Product Engineering & IoT",
     featured: true,
-    heroImage: "/images/placeholders/wide.svg",
+    heroImage: "/images/projects/solar-boat-control-logic/hero.jpg",
     detail: {
       description: {
         why: "Individual subsystems (HV, hydrogen, cooling, dashboard, foil control) had each been developed and validated in isolation across prior semesters, but the boat had no unifying control layer to bring them into one safety-first system ready for on-water testing.",
@@ -91,7 +91,7 @@ const projects: Project[] = [
     tagline: "A drop-in PCB that gives any brushless motor onboard torque, position, and velocity control over USB-C, Bluetooth, or WiFi",
     descriptor: "Robotics & AI · Personal",
     domain: "Robotics & AI",
-    featured: false,
+    featured: true,
     course: "MGT-434",
     heroImage: "/images/projects/motion-focus/hero.jpeg",
     detail: {
@@ -114,6 +114,28 @@ const projects: Project[] = [
       duration: "2024 – 2026",
       technologies: ["ESP32", "FOC (Field-Oriented Control)", "4-Layer PCB Design", "DRV8313 Motor Driver", "AS5048A Magnetic Encoder", "BLDC Motor Control", "Bluetooth / WiFi", "USB-C", "C++ / Arduino Framework"],
       scope: "Personal project (with Alec Horth) → startup exploration, EPFL Technology Ventures I (MGT-434) · 2024–2026",
+    },
+  },
+  {
+    id: "la-raclonette",
+    number: "04",
+    title: "La Raclonette",
+    tagline: "A screw-on pan that turns a campfire into a raclette station.",
+    descriptor: "Industrial Design & Mechanical · Personal",
+    domain: "Industrial Design & Mechanical",
+    featured: true,
+    heroImage: "/images/projects/la-raclonette/hero.jpeg",
+    detail: {
+      description: {
+        why: "Grilling sausages over a wood fire got repetitive — Tim and Léonard wanted to melt real raclette straight over the embers instead.",
+        what: "A small non-stick raclette pan on a screw-in handle that clips onto a stick, sold as a self-produced student micro-business with a companion recipe booklet.",
+        how: "Hand-built each pan and clamp from TIG-welded sheet steel in a home garage, then sold more than 50 units through a self-built website and Instagram shop.",
+      },
+      role: "Co-Founder",
+      duration: "2022 – 2024",
+      technologies: ["TIG Welding", "Sheet Metal Fabrication", "Small-Batch Manufacturing", "E-Commerce (Website + Instagram)"],
+      keyResults: ["Sold more than 50 units through a self-run e-commerce site and Instagram shop"],
+      scope: "Personal project (with Léonard) · student micro-business · 2022–2024",
     },
   },
 ];

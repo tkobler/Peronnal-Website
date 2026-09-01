@@ -93,4 +93,20 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Personal project (with Alec Horth) → startup exploration, EPFL Technology Ventures I (MGT-434) · 2024–2026",
     },
   },
+  "la-raclonette": {
+    title: "La Raclonette",
+    tagline: "A screw-on pan that turns a campfire into a raclette station.",
+    descriptor: "Industrial Design & Mechanical · Personal",
+    detail: {
+      description: {
+        why: "Grilling sausages over a wood fire got repetitive — Tim and Léonard wanted to melt real raclette straight over the embers instead.",
+        what: "A small non-stick raclette pan on a screw-in handle that clips onto a stick, sold as a self-produced student micro-business with a companion recipe booklet.",
+        how: "Hand-built each pan and clamp from TIG-welded sheet steel in a home garage, then sold more than 50 units through a self-built website and Instagram shop.",
+      },
+      role: "Co-Founder",
+      duration: "2022 – 2024",
+      keyResults: ["Sold more than 50 units through a self-run e-commerce site and Instagram shop"],
+      scope: "Personal project (with Léonard) · student micro-business · 2022–2024",
+    },
+  },
 };

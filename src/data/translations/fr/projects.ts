@@ -93,4 +93,20 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet personnel (avec Alec Horth) → exploration startup, cours EPFL Technology Ventures I (MGT-434) · 2024–2026",
     },
   },
+  "la-raclonette": {
+    title: "La Raclonette",
+    tagline: "Une poêle vissable qui transforme un feu de camp en station à raclette.",
+    descriptor: "Design Industriel & Mécanique · Personnel",
+    detail: {
+      description: {
+        why: "Griller des saucisses sur un feu de bois devenait répétitif — Tim et Léonard ont voulu faire fondre une vraie raclette directement sur les braises.",
+        what: "Une petite poêle à raclette antiadhésive montée sur un manche à visser sur un bâton, vendue comme micro-entreprise étudiante autoproduite, avec un livret de recettes compagnon.",
+        how: "Fabrication artisanale de chaque poêle et de son mécanisme de serrage en tôle soudée au TIG, dans un garage transformé en atelier, puis vente de plus de 50 exemplaires via un site web et une boutique Instagram autoproduits.",
+      },
+      role: "Co-Fondateur",
+      duration: "2022 – 2024",
+      keyResults: ["Plus de 50 exemplaires vendus via un site e-commerce et une boutique Instagram autoproduits"],
+      scope: "Projet personnel (avec Léonard) · micro-entreprise étudiante · 2022–2024",
+    },
+  },
 };
