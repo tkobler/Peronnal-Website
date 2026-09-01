@@ -151,4 +151,31 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet d'équipe (3 membres) · EPFL Spacecraft Team · Printemps 2024",
     },
   },
+  "first-lego-league": {
+    title: "FIRST LEGO League",
+    tagline: "Un robot autonome Lego Mindstorms et un projet d'habitation à régulation thermique automatique, réalisés avec une équipe de dix pour la FIRST LEGO League Suisse.",
+    descriptor: "Robotique & IA · Académique",
+    detail: {
+      description: {
+        why: "La FIRST LEGO League associe un tournoi de robot-game à un projet d'innovation mené en parallèle — notre équipe de dix personnes s'est donné pour objectif de construire un robot Lego Mindstorms capable d'accomplir l'ensemble du plateau de missions, tout en traitant le thème de durabilité de l'année via un projet d'habitation à régulation thermique automatique.",
+        what: "Un robot autonome LEGO Mindstorms EV3 accomplissant une série de missions chronométrées (faire tomber des cibles, pousser des objets, etc.) sur un plateau de compétition d'environ 2m×3m, accompagné d'un concept d'habitation conçu et présenté, capable de réguler automatiquement sa température intérieure.",
+        how: "Construction et itération du robot EV3 avec des mécanismes interchangeables pour chaque mission, programmation de routines autonomes pour naviguer et les exécuter dans le temps imparti, et en parallèle recherche et présentation du projet de durabilité devant un jury — la saison s'est conclue par la 1ère place au régional de Lausanne et la 7e place à la finale nationale suisse.",
+      },
+      challenges: [
+        "Concevoir un robot capable d'accomplir de manière fiable plusieurs missions chronométrées (faire tomber des objets, pousser un drapeau) sur un plateau d'environ 2m×3m dans le temps imparti, à l'aide de mécanismes interchangeables plutôt que d'un seul outil polyvalent.",
+        "Concilier le travail d'ingénierie du robot-game avec un projet de durabilité mené en parallèle sur toute l'année : la conception d'une habitation qui régule automatiquement sa propre température intérieure.",
+      ],
+      images: [
+        { src: "/images/projects/first-lego-league/01-robot-build.jpg", alt: "Robot LEGO Mindstorms EV3 avec pince et bras releveur interchangeables, à côté d'un modèle de mission", caption: "Le robot EV3 de l'équipe en cours de construction, avec ses accessoires pour accomplir chaque mission", section: "how" },
+        { src: "/images/projects/first-lego-league/02-trophies.jpg", alt: "Trois trophées régionaux FIRST LEGO League : Meilleur Robot, Champion FLL et Vainqueur Robot-Game, saison 2019/2020", caption: "Meilleur Robot, Champion régional et Vainqueur Robot-Game — régional de Lausanne, 2019/2020", section: "what" },
+      ],
+      role: "Membre de l'équipe",
+      duration: "2019 – 2020",
+      keyResults: [
+        "Remporté la 1ère place au concours régional FLL (Lausanne, Suisse), avec les prix Meilleur Robot, Champion FLL et Vainqueur Robot-Game",
+        "Terminé 7e à la finale nationale FLL Suisse après une saison complète de développement du robot et du projet d'innovation",
+      ],
+      scope: "Projet d'équipe (10 membres) · FIRST LEGO League Suisse · 2019–2020",
+    },
+  },
 };

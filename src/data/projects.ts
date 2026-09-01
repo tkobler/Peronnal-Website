@@ -192,6 +192,39 @@ const projects: Project[] = [
       scope: "Team project (3 members) · EPFL Spacecraft Team · Spring 2024",
     },
   },
+  {
+    id: "first-lego-league",
+    number: "07",
+    title: "FIRST LEGO League",
+    tagline: "An autonomous Lego Mindstorms robot and a self-regulating habitat design, built with a 10-person team for FIRST LEGO League Switzerland.",
+    descriptor: "Robotics & AI · Academic",
+    domain: "Robotics & AI",
+    featured: true,
+    heroImage: "/images/projects/first-lego-league/hero.jpg",
+    detail: {
+      description: {
+        why: "FIRST LEGO League pairs a robot-game tournament with a parallel innovation project — our team of ten set out to build a Lego Mindstorms robot that could reliably execute a full mission board, while also tackling that year's sustainability theme with a self-regulating habitat design.",
+        what: "An autonomous LEGO Mindstorms EV3 robot that completed a series of timed missions (knocking down targets, pushing objects, and more) on a roughly 2m×3m competition field, alongside a designed and presented concept for a habitat that automatically regulates its own indoor temperature.",
+        how: "Built and iterated the EV3 robot with swappable mechanical attachments for each mission, programmed autonomous routines to navigate and execute them within the round's time limit, and in parallel researched and pitched the sustainability project to a jury — the season culminated in 1st place at the Lausanne regional and 7th place at the Swiss national final.",
+      },
+      challenges: [
+        "Designing a robot that could reliably complete multiple timed missions (object drops, flag pushes) on a ~2m×3m field within the round's time limit, using swappable attachments rather than one all-purpose tool.",
+        "Balancing the robot-game engineering work with a parallel year-long sustainability project: designing a habitat that automatically regulates its own internal temperature.",
+      ],
+      images: [
+        { src: "/images/projects/first-lego-league/01-robot-build.jpg", alt: "LEGO Mindstorms EV3 robot with swappable gripper and lift attachments next to a mission model", caption: "The team's EV3 robot mid-build, with attachments for scoring individual missions", section: "how" },
+        { src: "/images/projects/first-lego-league/02-trophies.jpg", alt: "Three FIRST LEGO League regional trophies: Best Robot, Champion FLL, and Robot Game Winner, season 2019/2020", caption: "Best Robot, Regional Champion, and Robot Game Winner — Lausanne regional, 2019/2020", section: "what" },
+      ],
+      role: "Team Member",
+      duration: "2019 – 2020",
+      technologies: ["LEGO Mindstorms EV3", "EV3-G Robot Programming", "Autonomous Mission Navigation", "Mechanical Attachment Design", "Sustainable Habitat Design (Innovation Project)", "Team Collaboration & Project Management"],
+      keyResults: [
+        "Won 1st place at the FLL regional competition (Lausanne, Switzerland), earning Best Robot, Regional Champion, and Robot Game Winner awards",
+        "Placed 7th at the FLL Switzerland national finals after a full season of robot and innovation-project development",
+      ],
+      scope: "Team project (10 members) · FIRST LEGO League Switzerland · 2019–2020",
+    },
+  },
 ];
 
 export function getFeaturedProjects(): Project[] {
