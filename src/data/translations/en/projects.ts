@@ -25,10 +25,10 @@ export const projects: Translations["projects"] = {
   publicationLabel: "Publication",
   filterAll: "All",
   domains: {
-    "Microelectronics & Photonics": { name: "Microelectronics & Photonics", desc: "IC Design, Silicon Photonics & RF Systems" },
-    "Product Engineering & IoT": { name: "Product Engineering & IoT", desc: "Embedded Systems & Connected Devices" },
-    "Robotics & AI": { name: "Robotics & AI", desc: "Autonomous Agents & Neural Control" },
-    "Industrial Design & Mechanical": { name: "Industrial Design & Mechanical", desc: "Precision Mechanisms & Product Design" },
+    "Embedded Systems & Electronics": { name: "Embedded Systems & Electronics", desc: "Custom PCBs, Firmware & Connected Hardware" },
+    "Robotics & Autonomous Control": { name: "Robotics & Autonomous Control", desc: "Control Architectures, Navigation & Autonomy" },
+    "Biomedical & Precision Instrumentation": { name: "Biomedical & Precision Instrumentation", desc: "Force Sensing & Flexure-Based Measurement" },
+    "Mechanism Design & Fabrication": { name: "Mechanism Design & Fabrication", desc: "Mechanism Design, CAD & Hands-On Fabrication" },
   },
 };
 
@@ -36,7 +36,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "solar-boat-control-logic": {
     title: "Global Control Logic for a Foiling Hydrogen Boat",
     tagline: "Safety-first FSM architecture for a hydrogen-powered foiling boat",
-    descriptor: "Product Engineering & IoT · Academic",
+    descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
         why: "Individual subsystems (HV, hydrogen, cooling, dashboard, foil control) had each been developed and validated in isolation across prior semesters, but the boat had no unifying control layer to bring them into one safety-first system ready for on-water testing.",
@@ -51,7 +51,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "cochlear-implant-insertion-mechanism": {
     title: "Cochlear Implant Insertion Mechanism",
     tagline: "A force-sensing insertion mechanism and fluid-sealed training platform for cochlear implant surgery",
-    descriptor: "Product Engineering & IoT · Professional",
+    descriptor: "Biomedical & Precision Instrumentation · Professional",
     detail: {
       description: {
         why: "Cochlear implant insertion is done by feel, with no objective measurement of the force applied to the fragile scala tympani — the lab's prototype for studying this needed a simpler, more reliable redesign.",
@@ -71,7 +71,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "motion-focus": {
     title: "Motion Focus",
     tagline: "A drop-in PCB that gives any brushless motor onboard torque, position, and velocity control over USB-C, Bluetooth, or WiFi",
-    descriptor: "Robotics & AI · Personal",
+    descriptor: "Embedded Systems & Electronics · Personal",
     detail: {
       description: {
         why: "Off-the-shelf brushless motors need a separate driver, encoder, and firmware wired up before they can even spin — friction that keeps BLDC motors out of everyday DIY and rapid-prototyping projects. Motion Focus, built with Alec Horth from day one, puts all of that electronics directly on the motor.",
@@ -96,7 +96,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "la-raclonette": {
     title: "La Raclonette",
     tagline: "A screw-on pan that turns a campfire into a raclette station.",
-    descriptor: "Industrial Design & Mechanical · Personal",
+    descriptor: "Mechanism Design & Fabrication · Personal",
     detail: {
       description: {
         why: "Grilling sausages over a wood fire got repetitive — Tim and Léonard wanted to melt real raclette straight over the embers instead.",
@@ -112,7 +112,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "cansat-epfl-spacecraft-team": {
     title: "CanSat - EPFL Spacecraft Team",
     tagline: "A can-sized satellite recovered by a self-built Rogallo parachute, launched twice from a student rocket.",
-    descriptor: "Product Engineering & IoT · Academic",
+    descriptor: "Embedded Systems & Electronics · Academic",
     detail: {
       description: {
         why: "EPFL Spacecraft Team's CanSat programme tasks student teams with building a soda-can-sized satellite that survives a rocket launch to ~500 m and returns usable science — El Tonio was built over a full academic year by a team of four (with Noé Syfrig, Alec Horth, and Alessandro Schlatter).",
@@ -136,7 +136,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "toucan-pcb-assembly-epfl-spacecraft-team": {
     title: "Toucan PCB Assembly - EPFL Spacecraft Team",
     tagline: "A hand-assembled onboard flight computer, built in a three-day precision integration marathon and sent to space.",
-    descriptor: "Microelectronics & Photonics · Academic",
+    descriptor: "Embedded Systems & Electronics · Academic",
     detail: {
       description: {
         why: "Toucan is EPFL Spacecraft Team's onboard flight computer, and getting a hand-populated board from bare PCB to space-ready demanded a level of soldering precision the team couldn't outsource — so three members, including Tim, committed three full days of dedicated bench time to assemble it themselves.",
@@ -154,7 +154,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "first-lego-league": {
     title: "FIRST LEGO League",
     tagline: "An autonomous Lego Mindstorms robot and a self-regulating habitat design, built with a 10-person team for FIRST LEGO League Switzerland.",
-    descriptor: "Robotics & AI · Academic",
+    descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
         why: "FIRST LEGO League pairs a robot-game tournament with a parallel innovation project — our team of ten set out to build a Lego Mindstorms robot that could reliably execute a full mission board, while also tackling that year's sustainability theme with a self-regulating habitat design.",
@@ -181,7 +181,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "le-duplo": {
     title: "Le Duplo",
     tagline: "A pocket paragliding variometer, packaged inside a 3D-printed Duplo brick.",
-    descriptor: "Product Engineering & IoT · Personal",
+    descriptor: "Embedded Systems & Electronics · Personal",
     detail: {
       description: {
         why: "Paragliding pilots need to hear whether they're climbing or sinking without looking at a screen mid-flight — Tim built his own variometer to fly with, starting from a colleague's firmware and designing the physical hardware himself.",
@@ -201,7 +201,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "mpc-rocket-landing-controller": {
     title: "MPC Rocket Landing Controller",
     tagline: "Model Predictive Control that lands a thrust-vectored rocket prototype vertically, SpaceX-style.",
-    descriptor: "Robotics & AI · Academic",
+    descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
         why: "The course's earlier exercises taught how to identify and implement an MPC controller — this project was the direct continuation, tasking three-person teams with designing the full MPC stack needed to land a small thrust-vectored rocket prototype (propellers standing in for a combustion engine) the way SpaceX lands the Falcon booster.",
@@ -216,7 +216,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "dynabal-nanoforce-sensor": {
     title: "DYNABAL - Balanced Dynamometer",
     tagline: "A flexure-guided force sensor built to resolve sub-10-nanonewton forces through a balanced, stiffness-compensated compliant mechanism.",
-    descriptor: "Industrial Design & Mechanical · Academic",
+    descriptor: "Biomedical & Precision Instrumentation · Academic",
     detail: {
       description: {
         why: "EPFL's Mechanism Design II course tasked five-person teams with building a miniaturized, flexure-only force sensor able to resolve forces down to 500 nN while staying insensitive to acceleration — Tim and four teammates built DYNABAL to clear that bar with room to spare.",
@@ -239,7 +239,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "thymio-autonomous-navigation": {
     title: "Autonomous Navigation for a Thymio Robot",
     tagline: "A camera-guided planner, Kalman filter, and reactive obstacle avoidance for a Thymio robot.",
-    descriptor: "Robotics & AI · Academic",
+    descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
         why: "For EPFL's Basics of Mobile Robotics, a team of four (with Jules Villaret, Amir Lahlou, and Ana Schwabedal) built a complete autonomous navigation stack for the Thymio robot, taught by Prof. Francesco Mondada in fall 2025.",
@@ -254,7 +254,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "l-epluche-carotte": {
     title: "L'Épluche-Carotte",
     tagline: "A hand-cranked mechanism that peels a carrot's full length in one motion, engineered from a blank cahier des charges.",
-    descriptor: "Industrial Design & Mechanical · Academic",
+    descriptor: "Mechanism Design & Fabrication · Academic",
     detail: {
       description: {
         why: "EPFL's Construction Mécanique II project (Microtechnique BA2) tasked four-person teams with designing, from a fixed cahier des charges, a fully hand-powered carrot peeler ready for production — Tim's first mechanical construction project at EPFL, built with Vincent Bouzereau, Rim El Qabli, and Ranjeet Sapkota.",
@@ -279,7 +279,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "timit-connected-door-lock": {
     title: "TimiT Connected Door Lock",
     tagline: "A WiFi-controlled door lock, built from scratch as a Swiss high-school engineering thesis.",
-    descriptor: "Product Engineering & IoT · Academic",
+    descriptor: "Embedded Systems & Electronics · Academic",
     detail: {
       description: {
         why: "The door to Tim's bedroom had no key, and any fix had to leave the glass door itself untouched — his Travail de Maturité (Swiss high-school thesis project) set out to lock and unlock it wirelessly instead, his first real engineering project.",

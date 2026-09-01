@@ -56,9 +56,9 @@ below for the guardrails that keep it that way.
    - `detail.role` — the job title/role on this project.
    - `detail.duration` — a period string like `"Spring 2025"`.
    - `domain` — must be one of the four `ProjectDomain` literals
-     (`"Microelectronics & Photonics"`, `"Product Engineering & IoT"`,
-     `"Robotics & AI"`, `"Industrial Design & Mechanical"`). Offer your best
-     inferred guess as one option alongside the other three.
+     (`"Embedded Systems & Electronics"`, `"Robotics & Autonomous Control"`,
+     `"Biomedical & Precision Instrumentation"`, `"Mechanism Design & Fabrication"`).
+     Offer your best inferred guess as one option alongside the other three.
    - `detail.keyResults[]` — quantified outcomes. Never invent numbers or
      metrics; offer to skip since this field is optional.
    - `detail.scope` and optional `course` — course project vs. team vs.
@@ -88,7 +88,7 @@ below for the guardrails that keep it that way.
    ```
    ## Draft: <id> (number 05)
 
-   domain: Product Engineering & IoT   featured: false   course: (none)
+   domain: Embedded Systems & Electronics   featured: false   course: (none)
    heroImage: /images/projects/<id>/hero.jpg   (or: placeholder — no images found)
 
    EN

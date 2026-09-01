@@ -25,10 +25,10 @@ export const projects: Translations["projects"] = {
   publicationLabel: "Publication",
   filterAll: "Tout",
   domains: {
-    "Microelectronics & Photonics": { name: "Microélectronique & Photonique", desc: "Conception CI, Photonique Silicium & Systèmes RF" },
-    "Product Engineering & IoT": { name: "Ingénierie Produit & IoT", desc: "Systèmes Embarqués & Objets Connectés" },
-    "Robotics & AI": { name: "Robotique & IA", desc: "Agents Autonomes & Contrôle Neuronal" },
-    "Industrial Design & Mechanical": { name: "Design Industriel & Mécanique", desc: "Mécanismes de Précision & Design Produit" },
+    "Embedded Systems & Electronics": { name: "Systèmes Embarqués & Électronique", desc: "PCB sur Mesure, Firmware & Objets Connectés" },
+    "Robotics & Autonomous Control": { name: "Robotique & Contrôle Autonome", desc: "Architectures de Contrôle, Navigation & Autonomie" },
+    "Biomedical & Precision Instrumentation": { name: "Biomédical & Instrumentation de Précision", desc: "Mesure de Force & Instrumentation à Flexions" },
+    "Mechanism Design & Fabrication": { name: "Conception de Mécanismes & Fabrication", desc: "Conception de Mécanismes, CAO & Fabrication Artisanale" },
   },
 };
 
@@ -36,7 +36,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "solar-boat-control-logic": {
     title: "Logique de contrôle globale pour un bateau à hydrogène à foils",
     tagline: "Architecture FSM sécuritaire et temps réel pour un bateau à foils propulsé à l'hydrogène",
-    descriptor: "Ingénierie Produit & IoT · Académique",
+    descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
         why: "Chaque sous-système (HV, hydrogène, refroidissement, tableau de bord, contrôle des foils) avait été développé et validé isolément au fil des semestres précédents, mais le bateau ne disposait d'aucune couche de contrôle unifiée pour les réunir dans un système sécuritaire prêt pour les essais sur l'eau.",
@@ -51,7 +51,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "cochlear-implant-insertion-mechanism": {
     title: "Mécanisme d'insertion pour implant cochléaire",
     tagline: "Un mécanisme d'insertion à mesure de force et une plateforme d'entraînement étanche pour la chirurgie d'implant cochléaire",
-    descriptor: "Ingénierie Produit & IoT · Professionnel",
+    descriptor: "Biomédical & Instrumentation de Précision · Professionnel",
     detail: {
       description: {
         why: "L'insertion d'un implant cochléaire se fait au toucher, sans mesure objective de la force appliquée à la fragile scala tympani — le prototype du laboratoire pour étudier ce phénomène avait besoin d'une refonte plus simple et plus fiable.",
@@ -71,7 +71,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "motion-focus": {
     title: "Motion Focus",
     tagline: "Un PCB embarqué qui donne à tout moteur brushless un contrôle de couple, position et vitesse via USB-C, Bluetooth ou WiFi",
-    descriptor: "Robotique & IA · Personnel",
+    descriptor: "Systèmes Embarqués & Électronique · Personnel",
     detail: {
       description: {
         why: "Un moteur brushless du commerce nécessite un driver, un encodeur et un firmware de contrôle séparés avant même de pouvoir tourner — un frein qui écarte les moteurs BLDC des projets DIY et du prototypage rapide. Motion Focus, développé avec Alec Horth depuis le début, embarque toute cette électronique directement sur le moteur.",
@@ -96,7 +96,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "la-raclonette": {
     title: "La Raclonette",
     tagline: "Une poêle vissable qui transforme un feu de camp en station à raclette.",
-    descriptor: "Design Industriel & Mécanique · Personnel",
+    descriptor: "Conception de Mécanismes & Fabrication · Personnel",
     detail: {
       description: {
         why: "Griller des saucisses sur un feu de bois devenait répétitif — Tim et Léonard ont voulu faire fondre une vraie raclette directement sur les braises.",
@@ -112,7 +112,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "cansat-epfl-spacecraft-team": {
     title: "CanSat - EPFL Spacecraft Team",
     tagline: "Un satellite miniature récupéré par un parachute Rogallo fait maison, lancé deux fois depuis une fusée étudiante.",
-    descriptor: "Ingénierie Produit & IoT · Académique",
+    descriptor: "Systèmes Embarqués & Électronique · Académique",
     detail: {
       description: {
         why: "Le programme CanSat de l'EPFL Spacecraft Team demande à des équipes étudiantes de construire un mini-satellite de la taille d'une canette capable de survivre au lancement par fusée jusqu'à environ 500 m et d'en rapporter des données exploitables — El Tonio a été construit sur toute une année académique par une équipe de quatre (avec Noé Syfrig, Alec Horth et Alessandro Schlatter).",
@@ -136,7 +136,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "toucan-pcb-assembly-epfl-spacecraft-team": {
     title: "Assemblage du PCB Toucan - EPFL Spacecraft Team",
     tagline: "Un ordinateur de bord assemblé à la main lors d'un marathon d'intégration de précision de trois jours, envoyé dans l'espace.",
-    descriptor: "Microélectronique & Photonique · Académique",
+    descriptor: "Systèmes Embarqués & Électronique · Académique",
     detail: {
       description: {
         why: "Toucan est l'ordinateur de bord de l'EPFL Spacecraft Team, et faire passer une carte peuplée à la main de PCB nu à un état prêt pour l'espace demandait une précision de soudure que l'équipe ne pouvait pas sous-traiter — trois membres, dont Tim, ont donc consacré trois jours complets à l'assembler eux-mêmes.",
@@ -154,7 +154,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "first-lego-league": {
     title: "FIRST LEGO League",
     tagline: "Un robot autonome Lego Mindstorms et un projet d'habitation à régulation thermique automatique, réalisés avec une équipe de dix pour la FIRST LEGO League Suisse.",
-    descriptor: "Robotique & IA · Académique",
+    descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
         why: "La FIRST LEGO League associe un tournoi de robot-game à un projet d'innovation mené en parallèle — notre équipe de dix personnes s'est donné pour objectif de construire un robot Lego Mindstorms capable d'accomplir l'ensemble du plateau de missions, tout en traitant le thème de durabilité de l'année via un projet d'habitation à régulation thermique automatique.",
@@ -181,7 +181,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "le-duplo": {
     title: "Le Duplo",
     tagline: "Un variomètre de poche pour le parapente, dans une brique Duplo imprimée en 3D.",
-    descriptor: "Ingénierie Produit & IoT · Personnel",
+    descriptor: "Systèmes Embarqués & Électronique · Personnel",
     detail: {
       description: {
         why: "Un pilote de parapente doit savoir s'il monte ou descend sans regarder un écran en plein vol — Tim a construit son propre variomètre, en partant du firmware d'un collègue et en concevant lui-même la partie matérielle.",
@@ -201,7 +201,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "mpc-rocket-landing-controller": {
     title: "Contrôleur MPC pour l'atterrissage d'une fusée",
     tagline: "Un contrôleur prédictif (MPC) qui fait atterrir verticalement un prototype de fusée à poussée vectorielle, à la SpaceX.",
-    descriptor: "Robotique & IA · Académique",
+    descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
         why: "Les exercices précédents du cours avaient appris à identifier et programmer un contrôleur MPC — ce projet en était la suite directe, demandant à des équipes de trois de concevoir toute la chaîne de contrôle MPC nécessaire pour faire atterrir un petit prototype de fusée à poussée vectorielle (des hélices remplaçant le moteur-fusée) à la manière du booster Falcon de SpaceX.",
@@ -216,7 +216,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "dynabal-nanoforce-sensor": {
     title: "DYNABAL - Dynamomètre équilibré",
     tagline: "Un capteur de force en guidage flexible conçu pour résoudre des forces sous la dizaine de nanonewtons, via un mécanisme compliant équilibré et à rigidité compensée.",
-    descriptor: "Design Industriel & Mécanique · Académique",
+    descriptor: "Biomédical & Instrumentation de Précision · Académique",
     detail: {
       description: {
         why: "Le cours de Conception de Mécanismes II de l'EPFL demandait à des équipes de cinq de construire un capteur de force miniaturisé, tout en guidages flexibles, capable de résoudre 500 nN sans être perturbé par l'accélération — Tim et quatre coéquipiers ont construit DYNABAL pour largement dépasser cet objectif.",
@@ -239,7 +239,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "thymio-autonomous-navigation": {
     title: "Navigation Autonome pour un Robot Thymio",
     tagline: "Un planificateur guidé par caméra, un filtre de Kalman et un évitement d'obstacles réactif pour un robot Thymio.",
-    descriptor: "Robotique & IA · Académique",
+    descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
         why: "Pour le cours Basics of Mobile Robotics de l'EPFL, une équipe de quatre (avec Jules Villaret, Amir Lahlou et Ana Schwabedal) a développé un système de navigation autonome complet pour le robot Thymio, donné par le Prof. Francesco Mondada à l'automne 2025.",
@@ -254,7 +254,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "l-epluche-carotte": {
     title: "L'Épluche-Carotte",
     tagline: "Un mécanisme à manivelle qui épluche une carotte sur toute sa longueur en un seul geste, conçu à partir d'un cahier des charges vierge.",
-    descriptor: "Design Industriel & Mécanique · Académique",
+    descriptor: "Conception de Mécanismes & Fabrication · Académique",
     detail: {
       description: {
         why: "Le projet de Construction Mécanique II de l'EPFL (Microtechnique BA2) demandait à des équipes de quatre de concevoir, à partir d'un cahier des charges fixe, un épluche-carotte entièrement manuel prêt pour la production — le premier projet de construction mécanique de Tim à l'EPFL, réalisé avec Vincent Bouzereau, Rim El Qabli et Ranjeet Sapkota.",
@@ -279,7 +279,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "timit-connected-door-lock": {
     title: "Serrure Connectée TimiT",
     tagline: "Une serrure de porte pilotée en wifi, conçue de A à Z pour un travail de maturité gymnasiale.",
-    descriptor: "Ingénierie Produit & IoT · Académique",
+    descriptor: "Systèmes Embarqués & Électronique · Académique",
     detail: {
       description: {
         why: "La porte de la chambre de Tim n'avait plus de clé, et toute solution devait laisser la porte vitrée elle-même intacte — son travail de maturité gymnasiale s'est donné pour but de la verrouiller et déverrouiller sans fil à la place, son tout premier vrai projet d'ingénierie.",

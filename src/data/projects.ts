@@ -1,8 +1,8 @@
 export type ProjectDomain =
-  | "Microelectronics & Photonics"
-  | "Product Engineering & IoT"
-  | "Robotics & AI"
-  | "Industrial Design & Mechanical";
+  | "Embedded Systems & Electronics"
+  | "Robotics & Autonomous Control"
+  | "Biomedical & Precision Instrumentation"
+  | "Mechanism Design & Fabrication";
 
 export interface Project {
   id: string;
@@ -42,8 +42,8 @@ const projects: Project[] = [
     number: "01",
     title: "Global Control Logic for a Foiling Hydrogen Boat",
     tagline: "Safety-first FSM architecture for a hydrogen-powered foiling boat",
-    descriptor: "Product Engineering & IoT · Academic",
-    domain: "Product Engineering & IoT",
+    descriptor: "Robotics & Autonomous Control · Academic",
+    domain: "Robotics & Autonomous Control",
     featured: true,
     heroImage: "/images/projects/solar-boat-control-logic/hero.jpg",
     detail: {
@@ -63,8 +63,8 @@ const projects: Project[] = [
     number: "02",
     title: "Cochlear Implant Insertion Mechanism",
     tagline: "A force-sensing insertion mechanism and fluid-sealed training platform for cochlear implant surgery",
-    descriptor: "Product Engineering & IoT · Professional",
-    domain: "Product Engineering & IoT",
+    descriptor: "Biomedical & Precision Instrumentation · Professional",
+    domain: "Biomedical & Precision Instrumentation",
     featured: true,
     heroImage: "/images/projects/cochlear-implant-insertion-mechanism/hero.jpeg",
     detail: {
@@ -89,8 +89,8 @@ const projects: Project[] = [
     number: "03",
     title: "Motion Focus",
     tagline: "A drop-in PCB that gives any brushless motor onboard torque, position, and velocity control over USB-C, Bluetooth, or WiFi",
-    descriptor: "Robotics & AI · Personal",
-    domain: "Robotics & AI",
+    descriptor: "Embedded Systems & Electronics · Personal",
+    domain: "Embedded Systems & Electronics",
     featured: true,
     course: "MGT-434",
     heroImage: "/images/projects/motion-focus/hero.jpeg",
@@ -121,8 +121,8 @@ const projects: Project[] = [
     number: "04",
     title: "La Raclonette",
     tagline: "A screw-on pan that turns a campfire into a raclette station.",
-    descriptor: "Industrial Design & Mechanical · Personal",
-    domain: "Industrial Design & Mechanical",
+    descriptor: "Mechanism Design & Fabrication · Personal",
+    domain: "Mechanism Design & Fabrication",
     featured: true,
     heroImage: "/images/projects/la-raclonette/hero.jpeg",
     detail: {
@@ -143,8 +143,8 @@ const projects: Project[] = [
     number: "05",
     title: "CanSat - EPFL Spacecraft Team",
     tagline: "A can-sized satellite recovered by a self-built Rogallo parachute, launched twice from a student rocket.",
-    descriptor: "Product Engineering & IoT · Academic",
-    domain: "Product Engineering & IoT",
+    descriptor: "Embedded Systems & Electronics · Academic",
+    domain: "Embedded Systems & Electronics",
     featured: true,
     heroImage: "/images/projects/cansat-epfl-spacecraft-team/hero.jpeg",
     detail: {
@@ -173,8 +173,8 @@ const projects: Project[] = [
     number: "06",
     title: "Toucan PCB Assembly - EPFL Spacecraft Team",
     tagline: "A hand-assembled onboard flight computer, built in a three-day precision integration marathon and sent to space.",
-    descriptor: "Microelectronics & Photonics · Academic",
-    domain: "Microelectronics & Photonics",
+    descriptor: "Embedded Systems & Electronics · Academic",
+    domain: "Embedded Systems & Electronics",
     featured: true,
     heroImage: "/images/projects/toucan-pcb-assembly-epfl-spacecraft-team/hero.jpeg",
     detail: {
@@ -197,8 +197,8 @@ const projects: Project[] = [
     number: "07",
     title: "FIRST LEGO League",
     tagline: "An autonomous Lego Mindstorms robot and a self-regulating habitat design, built with a 10-person team for FIRST LEGO League Switzerland.",
-    descriptor: "Robotics & AI · Academic",
-    domain: "Robotics & AI",
+    descriptor: "Robotics & Autonomous Control · Academic",
+    domain: "Robotics & Autonomous Control",
     featured: true,
     heroImage: "/images/projects/first-lego-league/hero.jpg",
     detail: {
@@ -230,8 +230,8 @@ const projects: Project[] = [
     number: "08",
     title: "Le Duplo",
     tagline: "A pocket paragliding variometer, packaged inside a 3D-printed Duplo brick.",
-    descriptor: "Product Engineering & IoT · Personal",
-    domain: "Product Engineering & IoT",
+    descriptor: "Embedded Systems & Electronics · Personal",
+    domain: "Embedded Systems & Electronics",
     featured: true,
     heroImage: "/images/projects/le-duplo/hero.jpeg",
     detail: {
@@ -256,8 +256,8 @@ const projects: Project[] = [
     number: "09",
     title: "MPC Rocket Landing Controller",
     tagline: "Model Predictive Control that lands a thrust-vectored rocket prototype vertically, SpaceX-style.",
-    descriptor: "Robotics & AI · Academic",
-    domain: "Robotics & AI",
+    descriptor: "Robotics & Autonomous Control · Academic",
+    domain: "Robotics & Autonomous Control",
     featured: true,
     course: "ME-425",
     heroImage: "/images/projects/mpc-rocket-landing-controller/hero.png",
@@ -278,8 +278,8 @@ const projects: Project[] = [
     number: "10",
     title: "DYNABAL - Balanced Dynamometer",
     tagline: "A flexure-guided force sensor built to resolve sub-10-nanonewton forces through a balanced, stiffness-compensated compliant mechanism.",
-    descriptor: "Industrial Design & Mechanical · Academic",
-    domain: "Industrial Design & Mechanical",
+    descriptor: "Biomedical & Precision Instrumentation · Academic",
+    domain: "Biomedical & Precision Instrumentation",
     featured: true,
     course: "MICRO-201",
     heroImage: "/images/projects/dynabal-nanoforce-sensor/hero.png",
@@ -308,8 +308,8 @@ const projects: Project[] = [
     number: "11",
     title: "Autonomous Navigation for a Thymio Robot",
     tagline: "A camera-guided planner, Kalman filter, and reactive obstacle avoidance for a Thymio robot.",
-    descriptor: "Robotics & AI · Academic",
-    domain: "Robotics & AI",
+    descriptor: "Robotics & Autonomous Control · Academic",
+    domain: "Robotics & Autonomous Control",
     featured: true,
     course: "MICRO-452",
     heroImage: "/images/projects/thymio-autonomous-navigation/hero.png",
@@ -330,8 +330,8 @@ const projects: Project[] = [
     number: "12",
     title: "L'Épluche-Carotte",
     tagline: "A hand-cranked mechanism that peels a carrot's full length in one motion, engineered from a blank cahier des charges.",
-    descriptor: "Industrial Design & Mechanical · Academic",
-    domain: "Industrial Design & Mechanical",
+    descriptor: "Mechanism Design & Fabrication · Academic",
+    domain: "Mechanism Design & Fabrication",
     featured: true,
     course: "ME-102",
     heroImage: "/images/projects/l-epluche-carotte/hero.png",
@@ -362,8 +362,8 @@ const projects: Project[] = [
     number: "13",
     title: "TimiT Connected Door Lock",
     tagline: "A WiFi-controlled door lock, built from scratch as a Swiss high-school engineering thesis.",
-    descriptor: "Product Engineering & IoT · Academic",
-    domain: "Product Engineering & IoT",
+    descriptor: "Embedded Systems & Electronics · Academic",
+    domain: "Embedded Systems & Electronics",
     featured: true,
     heroImage: "/images/projects/timit-connected-door-lock/hero.jpg",
     detail: {

@@ -7,10 +7,10 @@ import { getFeaturedProjects, type ProjectDomain } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 
 const DOMAIN_KEYS: ProjectDomain[] = [
-  "Microelectronics & Photonics",
-  "Product Engineering & IoT",
-  "Robotics & AI",
-  "Industrial Design & Mechanical",
+  "Embedded Systems & Electronics",
+  "Robotics & Autonomous Control",
+  "Biomedical & Precision Instrumentation",
+  "Mechanism Design & Fabrication",
 ];
 
 export default function ProjectsPage() {
