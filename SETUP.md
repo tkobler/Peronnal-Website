@@ -299,6 +299,8 @@ After setup, these are the docs worth knowing about:
 
 Once you've finished sections 0–5, you have a working, deployable, personalized template. Sections 6–8 are optional and can be addressed whenever.
 
+For the ongoing work after this — adding a project, editing copy, refreshing your CV, deploying a change — see **[MAINTAINING.md](./MAINTAINING.md)**.
+
 The [.claude/docs/workflow.md](.claude/docs/workflow.md) file describes a branch-based development flow (`dev/`, `bug/`, `audit/`, `doc/`, `claude/`) that's opinionated but worth reading before you start real feature work — even if you don't use Claude Code, the conventions are sensible.
 
 Good luck.
