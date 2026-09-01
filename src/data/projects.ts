@@ -325,6 +325,38 @@ const projects: Project[] = [
       scope: "Team project (4 members, with Jules Villaret, Amir Lahlou, Ana Schwabedal) · MICRO-452 Basics of Mobile Robotics, EPFL · Fall 2025",
     },
   },
+  {
+    id: "l-epluche-carotte",
+    number: "12",
+    title: "L'Épluche-Carotte",
+    tagline: "A hand-cranked mechanism that peels a carrot's full length in one motion, engineered from a blank cahier des charges.",
+    descriptor: "Industrial Design & Mechanical · Academic",
+    domain: "Industrial Design & Mechanical",
+    featured: true,
+    course: "ME-102",
+    heroImage: "/images/projects/l-epluche-carotte/hero.png",
+    detail: {
+      description: {
+        why: "EPFL's Construction Mécanique II project (Microtechnique BA2) tasked four-person teams with designing, from a fixed cahier des charges, a fully hand-powered carrot peeler ready for production — Tim's first mechanical construction project at EPFL, built with Vincent Bouzereau, Rim El Qabli, and Ranjeet Sapkota.",
+        what: "A hand-cranked carrot peeler where a rail-mounted blade carriage strips the carrot on the return stroke of a crank-rocker mechanism, while a partial gear indexes the carrot's rotation on the forward stroke so five crank turns cover its full length and circumference.",
+        how: "Scored four mechanism concepts (ring-drive, pen-click/Geneva, pendulum, and the chosen crank-rocker \"locomotive\") against a weighted criteria matrix, then modeled the kinematics, power/efficiency and gear-mesh calculations, and produced full 2D/3D technical drawings with ISO 2768-mk tolerancing for 3-axis-machined stainless steel, aluminum, and glass-fiber-nylon parts.",
+      },
+      challenges: [
+        "Separating the carrot's rotation from the blade's translation to avoid a helical peeling motion, after early concepts (a rotating ring, a pen-click/Geneva mechanism) proved too bulky or unsafe.",
+        "Housing the partial-gear indexing drive out of reach of the user while keeping the whole mechanism foldable and compact enough for a kitchen counter.",
+      ],
+      role: "Student",
+      duration: "Spring 2022",
+      technologies: ["Compliant Mechanism Design (Crank-Rocker)", "Partial Gear Indexing", "CAD & Technical Drawing (CATIA)", "ISO 2768-mk Tolerancing", "3-Axis Machining", "Stainless Steel & Aluminum (EN AW-AlMg3)", "Glass-Fiber-Reinforced Nylon Gears"],
+      keyResults: [
+        "Reached 95.5% mechanical efficiency on the translation phase and 92% on the rotation phase, both above the 90% target",
+        "Kept total mass to 5.25 kg against an 8 kg budget, and required under 30 W of hand-crank effort over 5 seconds",
+        "Folded down to about half its deployed height and 15 cm shorter for storage",
+        "Graded 5.75/6",
+      ],
+      scope: "Team project (4 members, with Vincent Bouzereau, Rim El Qabli, Ranjeet Sapkota) · EPFL Construction Mécanique II (ME-102/107) · Spring 2022",
+    },
+  },
 ];
 
 export function getFeaturedProjects(): Project[] {

@@ -251,4 +251,29 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet d'équipe (4 membres, avec Jules Villaret, Amir Lahlou, Ana Schwabedal) · MICRO-452 Basics of Mobile Robotics, EPFL · Automne 2025",
     },
   },
+  "l-epluche-carotte": {
+    title: "L'Épluche-Carotte",
+    tagline: "Un mécanisme à manivelle qui épluche une carotte sur toute sa longueur en un seul geste, conçu à partir d'un cahier des charges vierge.",
+    descriptor: "Design Industriel & Mécanique · Académique",
+    detail: {
+      description: {
+        why: "Le projet de Construction Mécanique II de l'EPFL (Microtechnique BA2) demandait à des équipes de quatre de concevoir, à partir d'un cahier des charges fixe, un épluche-carotte entièrement manuel prêt pour la production — le premier projet de construction mécanique de Tim à l'EPFL, réalisé avec Vincent Bouzereau, Rim El Qabli et Ranjeet Sapkota.",
+        what: "Un épluche-carotte à manivelle où un chariot de lames monté sur rail épluche la carotte au retour d'un mécanisme bielle-manivelle, tandis qu'une roue partiellement dentée fait tourner la carotte à l'aller, de sorte que cinq tours de manivelle couvrent toute sa longueur et sa circonférence.",
+        how: "Comparaison de quatre concepts de mécanisme (anneau rotatif, stylo-bille/croix de Malte, pendule, et le mécanisme bielle-manivelle « locomotive » retenu) via une matrice de critères pondérés, puis modélisation de la cinématique, calculs de puissance/rendement et d'engrenage, et réalisation des dessins techniques 2D/3D complets avec tolérancement ISO 2768-mk pour des pièces usinées 3 axes en acier inoxydable, aluminium et nylon renforcé fibre de verre.",
+      },
+      challenges: [
+        "Séparer la rotation de la carotte de la translation des lames pour éviter un mouvement d'épluchage hélicoïdal, après que les premiers concepts (anneau rotatif, mécanisme stylo-bille/croix de Malte) se soient révélés trop volumineux ou dangereux.",
+        "Loger l'entraînement à roue partiellement dentée hors d'atteinte de l'utilisateur, tout en gardant un mécanisme pliable et assez compact pour un plan de travail de cuisine.",
+      ],
+      role: "Étudiant",
+      duration: "Printemps 2022",
+      keyResults: [
+        "Rendement mécanique de 95,5% en phase de translation et 92% en phase de rotation, tous deux au-dessus de l'objectif de 90%",
+        "Masse totale limitée à 5,25 kg pour un budget de 8 kg, avec un effort de manivelle inférieur à 30 W sur 5 secondes",
+        "Rangement réduit à environ la moitié de la hauteur déployée et 15 cm de moins en longueur",
+        "Note obtenue : 5,75/6",
+      ],
+      scope: "Projet d'équipe (4 membres, avec Vincent Bouzereau, Rim El Qabli, Ranjeet Sapkota) · Construction Mécanique II EPFL (ME-102/107) · Printemps 2022",
+    },
+  },
 };
