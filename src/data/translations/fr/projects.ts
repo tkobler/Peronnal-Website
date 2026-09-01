@@ -68,4 +68,29 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Professionnel · ARTORG Center, Inselspital · Printemps 2025",
     },
   },
+  "motion-focus": {
+    title: "Motion Focus",
+    tagline: "Un PCB embarqué qui donne à tout moteur brushless un contrôle de couple, position et vitesse via USB-C, Bluetooth ou WiFi",
+    descriptor: "Robotique & IA · Personnel",
+    detail: {
+      description: {
+        why: "Un moteur brushless du commerce nécessite un driver, un encodeur et un firmware de contrôle séparés avant même de pouvoir tourner — un frein qui écarte les moteurs BLDC des projets DIY et du prototypage rapide. Motion Focus, développé avec Alec Horth depuis le début, embarque toute cette électronique directement sur le moteur.",
+        what: "Un PCB quatre couches qui se monte sur un moteur BLDC et le transforme en actionneur autonome et pilotable : contrôle en boucle fermée du couple, de la vitesse et de la position à 24V via USB-C, Bluetooth ou WiFi grâce à un ESP32 embarqué.",
+        how: "Trois révisions successives du PCB (ESP32, driver DRV8313, encodeur AS5048A, double mesure de courant) et un firmware FOC repris de SimpleFOC jusqu'à une version 3 stable, puis exploration du potentiel startup du projet dans le cours Technology Ventures I de l'EPFL — étude de marché et plan de lancement, avec une équipe passée de deux à cinq personnes — avant d'entamer sa transition vers l'open source.",
+      },
+      methodology: "Itération du PCB sur trois révisions KiCad, validées à chaque étape sur banc avec le firmware FOC ; la viabilité startup a été testée séparément via des entretiens utilisateurs à l'EPFL et une analyse du marché de niche.",
+      challenges: [
+        "Faire tenir le driver, l'encodeur, la mesure de courant et un convertisseur buck sur un PCB quatre couches assez compact pour être monté sur le moteur, sans dégrader le signal de mesure de courant du FOC.",
+        "Concilier trois itérations matérielles avec les exigences du parcours startup — marché clair, modèle économique — alors que l'équipe passait de deux à cinq personnes.",
+      ],
+      images: [
+        { src: "/images/projects/motion-focus/01-motor-mount.jpeg", alt: "Moteur et support de test imprimé en 3D, vue arrière", caption: "Support de test imprimé en 3D pour la validation sur banc", section: "how" },
+        { src: "/images/projects/motion-focus/02-two-units-side.jpeg", alt: "Deux unités Motion Focus côte à côte", caption: "Deux actionneurs Motion Focus assemblés", section: "what" },
+        { src: "/images/projects/motion-focus/03-two-units-wired.jpeg", alt: "Deux PCB Motion Focus V3 câblés ensemble pour les tests", caption: "PCB V3 en test sur banc, câblés pour un contrôle synchronisé", section: "how" },
+      ],
+      role: "Ingénieur Produit",
+      duration: "2024 – 2026",
+      scope: "Projet personnel (avec Alec Horth) → exploration startup, cours EPFL Technology Ventures I (MGT-434) · 2024–2026",
+    },
+  },
 };

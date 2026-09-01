@@ -84,6 +84,38 @@ const projects: Project[] = [
       scope: "Professional · ARTORG Center, Inselspital · Spring 2025",
     },
   },
+  {
+    id: "motion-focus",
+    number: "03",
+    title: "Motion Focus",
+    tagline: "A drop-in PCB that gives any brushless motor onboard torque, position, and velocity control over USB-C, Bluetooth, or WiFi",
+    descriptor: "Robotics & AI · Personal",
+    domain: "Robotics & AI",
+    featured: false,
+    course: "MGT-434",
+    heroImage: "/images/projects/motion-focus/hero.jpeg",
+    detail: {
+      description: {
+        why: "Off-the-shelf brushless motors need a separate driver, encoder, and firmware wired up before they can even spin — friction that keeps BLDC motors out of everyday DIY and rapid-prototyping projects. Motion Focus, built with Alec Horth from day one, puts all of that electronics directly on the motor.",
+        what: "A four-layer PCB that mounts on a BLDC motor and turns it into a self-contained, commandable actuator — closed-loop torque, velocity, and position control at 24V over USB-C, Bluetooth, or WiFi via an onboard ESP32.",
+        how: "Iterated through three PCB revisions (ESP32, DRV8313 driver, AS5048A encoder, dual current sensing) and a FOC firmware adapted from SimpleFOC to reach a stable V3, then explored its startup potential in EPFL's Technology Ventures I course — market research and go-to-market with a team that grew from two to five — before starting its transition to open source.",
+      },
+      methodology: "Iterated the PCB across three KiCad revisions, validating each against the FOC firmware on the bench; startup viability was tested separately through EPFL user interviews and a beachhead-market analysis.",
+      challenges: [
+        "Fitting driver, encoder, current sensing, and a buck converter onto a four-layer board small enough to mount on the motor, without degrading the FOC current-sense signal.",
+        "Balancing three hardware iterations against the startup track's demands for a clear market and business model as the team grew from two to five.",
+      ],
+      images: [
+        { src: "/images/projects/motion-focus/01-motor-mount.jpeg", alt: "Motor and 3D-printed test mount, back view", caption: "Custom 3D-printed test stand for bench validation", section: "how" },
+        { src: "/images/projects/motion-focus/02-two-units-side.jpeg", alt: "Two Motion Focus units side by side", caption: "Two assembled Motion Focus actuators", section: "what" },
+        { src: "/images/projects/motion-focus/03-two-units-wired.jpeg", alt: "Two Motion Focus V3 boards wired together for testing", caption: "V3 boards under bench test, wired for synchronized control", section: "how" },
+      ],
+      role: "Product Engineer",
+      duration: "2024 – 2026",
+      technologies: ["ESP32", "FOC (Field-Oriented Control)", "4-Layer PCB Design", "DRV8313 Motor Driver", "AS5048A Magnetic Encoder", "BLDC Motor Control", "Bluetooth / WiFi", "USB-C", "C++ / Arduino Framework"],
+      scope: "Personal project (with Alec Horth) → startup exploration, EPFL Technology Ventures I (MGT-434) · 2024–2026",
+    },
+  },
 ];
 
 export function getFeaturedProjects(): Project[] {
