@@ -113,4 +113,24 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Course project · MICRO-201 · Spring 2023",
     },
   },
+  "cochlear-implant-insertion-mechanism": {
+    title: "Cochlear Implant Insertion Mechanism",
+    tagline: "A force-sensing insertion mechanism and fluid-sealed training platform for cochlear implant surgery",
+    descriptor: "Product Engineering & IoT · Professional",
+    detail: {
+      description: {
+        why: "Cochlear implant electrode insertion is done almost entirely by feel — surgeons have no objective measurement of the force applied to the fragile scala tympani during the procedure, and the lab's existing prototype for studying this needed a simpler, sterilizable, and more reliable redesign before it could support real testing.",
+        what: "A redesigned, force-instrumented insertion mechanism for cochlear implant electrodes — with a custom PCB, ESP32 firmware, and foot-pedal control — paired with an in-vitro training platform that seals a 3D-printed scala tympani model with a cast silicone joint to realistically simulate inner-ear fluid flow during implantation.",
+        how: "Iterated the mechanism's compliant force-sensing table through SLA-printed prototypes, characterized the SPI-based load cell's linearity and thermal drift, wrote ESP32 firmware to drive the insertion motor from a foot pedal while logging force and temperature to a Python-based plotter, and validated the full system on 3D-printed cochlea and skull models with real-time force capture.",
+      },
+      role: "R&D Engineer",
+      duration: "Spring 2025",
+      keyResults: [
+        "Characterized the custom load-cell force sensor to a correction factor of ~1.04 with a measured ~4 mN/°C thermal drift, both correctable in firmware",
+        "Validated the redesigned insertion mechanism on 3D-printed cochlea and skull models, logging real-time force and temperature through full insertion and extraction cycles",
+        "Simplified and redesigned the SLA-printed compliant mechanism and electronics (custom PCB + ESP32 firmware), replacing an earlier prototype per the project's sterilizability, reliability, and compactness criteria",
+      ],
+      scope: "Professional · ARTORG Center, Inselspital · Spring 2025",
+    },
+  },
 };

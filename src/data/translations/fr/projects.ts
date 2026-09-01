@@ -113,4 +113,24 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet de cours · MICRO-201 · Printemps 2023",
     },
   },
+  "cochlear-implant-insertion-mechanism": {
+    title: "Mécanisme d'insertion pour implant cochléaire",
+    tagline: "Un mécanisme d'insertion à mesure de force et une plateforme d'entraînement étanche pour la chirurgie d'implant cochléaire",
+    descriptor: "Ingénierie Produit & IoT · Professionnel",
+    detail: {
+      description: {
+        why: "L'insertion de l'électrode d'un implant cochléaire se fait presque entièrement au toucher — le chirurgien n'a aucune mesure objective de la force appliquée à la fragile scala tympani pendant l'intervention, et le prototype existant du laboratoire pour étudier ce phénomène avait besoin d'une refonte plus simple, stérilisable et fiable avant de pouvoir supporter de vrais essais.",
+        what: "Un mécanisme d'insertion instrumenté et redessiné pour les électrodes d'implant cochléaire — avec un PCB sur-mesure, un firmware ESP32 et un contrôle par pédale — associé à une plateforme d'entraînement in vitro qui étanchéifie un modèle imprimé en 3D de la scala tympani avec un joint en silicone moulé, pour simuler de façon réaliste l'écoulement des fluides de l'oreille interne pendant l'implantation.",
+        how: "Itération de la table de mesure de force à mécanisme compliant à travers des prototypes imprimés en SLA, caractérisation de la linéarité et de la dérive thermique du capteur de charge en SPI, développement du firmware ESP32 pilotant le moteur d'insertion depuis une pédale tout en enregistrant force et température vers un traceur Python, puis validation du système complet sur des modèles de cochlée et de crâne imprimés en 3D avec capture de force en temps réel.",
+      },
+      role: "Ingénieur R&D",
+      duration: "Printemps 2025",
+      keyResults: [
+        "Caractérisation du capteur de force sur-mesure à un facteur de correction d'environ 1.04, avec une dérive thermique mesurée d'environ 4 mN/°C, toutes deux corrigeables dans le firmware",
+        "Validation du mécanisme d'insertion redessiné sur des modèles de cochlée et de crâne imprimés en 3D, avec enregistrement de la force et de la température en temps réel sur des cycles complets d'insertion et d'extraction",
+        "Simplification et refonte du mécanisme compliant imprimé en SLA et de l'électronique (PCB sur-mesure + firmware ESP32), remplaçant un prototype antérieur selon les critères de stérilisabilité, de fiabilité et de compacité du projet",
+      ],
+      scope: "Professionnel · ARTORG Center, Inselspital · Printemps 2025",
+    },
+  },
 };
