@@ -17,6 +17,10 @@ export const homeCards: Translations["homeCards"] = {
     title: "Au-delà de l'ingénierie",
     descriptor: "Un portfolio peut contenir plus que des projets — cette page montre comment",
   },
+  "solar-boat": {
+    title: "Logique de contrôle globale pour un bateau à hydrogène à foils",
+    descriptor: "Conception de l'architecture de sécurité temps réel unifiant chaque sous-système d'un bateau à hydrogène à foils",
+  },
 };
 
 export const explore: Translations["explore"] = "Explorer";

@@ -145,6 +145,27 @@ const projects: Project[] = [
       scope: "Course project · MICRO-201 · Spring 2023",
     },
   },
+  {
+    id: "solar-boat-control-logic",
+    number: "05",
+    title: "Global Control Logic for a Foiling Hydrogen Boat",
+    tagline: "Safety-first FSM architecture for a hydrogen-powered foiling boat",
+    descriptor: "Product Engineering & IoT · Academic",
+    domain: "Product Engineering & IoT",
+    featured: true,
+    heroImage: "/images/placeholders/wide.svg",
+    detail: {
+      description: {
+        why: "Individual subsystems (HV, hydrogen, cooling, dashboard, foil control) had each been developed and validated in isolation across prior semesters, but the boat had no unifying control layer to bring them into one safety-first system ready for on-water testing.",
+        what: "A hierarchical, safety-first finite state machine that governs every subsystem of the Lobst'air, a three-passenger hydrogen-powered foiling boat, from a single real-time control architecture running on the boat's onboard computer.",
+        how: "Built a modular MATLAB Simulink/Stateflow architecture — Safety first approach and per-subsystem CAN-connected blocks — compiled to C++ and deployed on a Speedgoat target, developed through three Agile-inspired phases: architecture, integration, then on-water validation.",
+      },
+      role: "Overall Software Architecture Engineer and Coordinator",
+      duration: "Spring 2026",
+      technologies: ["MATLAB Simulink", "Stateflow", "Speedgoat / Simulink Real-Time", "CAN Bus (DBC)", "XCP Protocol"],
+      scope: "Semester project · Swiss Solar Boat · Spring 2026",
+    },
+  },
 ];
 
 export function getFeaturedProjects(): Project[] {

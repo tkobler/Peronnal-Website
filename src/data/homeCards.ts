@@ -55,6 +55,16 @@ const homeCards: HomeCard[] = [
     image: "/images/placeholders/wide.svg",
     layout: "boxed",
   },
+  {
+    id: "solar-boat",
+    number: "05",
+    title: "Global Control Logic for a Foiling Hydrogen Boat",
+    tagline: "",
+    descriptor: "Designed the real-time safety architecture that unified every subsystem of a hydrogen-powered foiling boat",
+    linkTo: "/projects#solar-boat-control-logic",
+    image: "/images/placeholders/wide.svg",
+    layout: "full-screen",
+  },
 ];
 
 export function getHomeCards(): HomeCard[] {

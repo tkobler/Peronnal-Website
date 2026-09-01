@@ -113,4 +113,19 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet de cours · MICRO-201 · Printemps 2023",
     },
   },
+  "solar-boat-control-logic": {
+    title: "Logique de contrôle globale pour un bateau à hydrogène à foils",
+    tagline: "Architecture FSM sécuritaire et temps réel pour un bateau à foils propulsé à l'hydrogène",
+    descriptor: "Ingénierie Produit & IoT · Académique",
+    detail: {
+      description: {
+        why: "Chaque sous-système (HV, hydrogène, refroidissement, tableau de bord, contrôle des foils) avait été développé et validé isolément au fil des semestres précédents, mais le bateau ne disposait d'aucune couche de contrôle unifiée pour les réunir dans un système sécuritaire prêt pour les essais sur l'eau.",
+        what: "Une machine à états finis hiérarchique et sécuritaire qui pilote chaque sous-système du Lobst'air, un bateau à foils à hydrogène de trois passagers, depuis une architecture de contrôle temps réel unique exécutée sur l'ordinateur de bord.",
+        how: "Architecture modulaire MATLAB Simulink/Stateflow — approche axée sur la sécurité et blocs par sous-système reliés par CAN — compilée en C++ et déployée sur une cible Speedgoat, développée en trois phases inspirées d'Agile : architecture, intégration, puis validation sur l'eau.",
+      },
+      role: "Ingénieur Architecture Logicielle Globale et Coordination",
+      duration: "Printemps 2026",
+      scope: "Projet de semestre · Swiss Solar Boat · Printemps 2026",
+    },
+  },
 };
