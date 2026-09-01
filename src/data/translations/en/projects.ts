@@ -119,9 +119,9 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Product Engineering & IoT · Professional",
     detail: {
       description: {
-        why: "Cochlear implant electrode insertion is done almost entirely by feel — surgeons have no objective measurement of the force applied to the fragile scala tympani during the procedure, and the lab's existing prototype for studying this needed a simpler, sterilizable, and more reliable redesign before it could support real testing.",
-        what: "A redesigned, force-instrumented insertion mechanism for cochlear implant electrodes — with a custom PCB, ESP32 firmware, and foot-pedal control — paired with an in-vitro training platform that seals a 3D-printed scala tympani model with a cast silicone joint to realistically simulate inner-ear fluid flow during implantation.",
-        how: "Iterated the mechanism's compliant force-sensing table through SLA-printed prototypes, characterized the SPI-based load cell's linearity and thermal drift, wrote ESP32 firmware to drive the insertion motor from a foot pedal while logging force and temperature to a Python-based plotter, and validated the full system on 3D-printed cochlea and skull models with real-time force capture.",
+        why: "Cochlear implant insertion is done by feel, with no objective measurement of the force applied to the fragile scala tympani — the lab's prototype for studying this needed a simpler, more reliable redesign.",
+        what: "A redesigned, force-instrumented insertion mechanism for cochlear implant electrodes, paired with an in-vitro training platform that seals a 3D-printed scala tympani model to simulate real inner-ear fluid flow.",
+        how: "Iterated the force-sensing table through SLA-printed prototypes, characterized the load cell's linearity and drift, wrote ESP32 firmware for foot-pedal-controlled insertion with real-time logging, and validated on 3D-printed cochlea and skull models.",
       },
       role: "R&D Engineer",
       duration: "Spring 2025",

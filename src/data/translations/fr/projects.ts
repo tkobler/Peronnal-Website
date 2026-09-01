@@ -119,9 +119,9 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Ingénierie Produit & IoT · Professionnel",
     detail: {
       description: {
-        why: "L'insertion de l'électrode d'un implant cochléaire se fait presque entièrement au toucher — le chirurgien n'a aucune mesure objective de la force appliquée à la fragile scala tympani pendant l'intervention, et le prototype existant du laboratoire pour étudier ce phénomène avait besoin d'une refonte plus simple, stérilisable et fiable avant de pouvoir supporter de vrais essais.",
-        what: "Un mécanisme d'insertion instrumenté et redessiné pour les électrodes d'implant cochléaire — avec un PCB sur-mesure, un firmware ESP32 et un contrôle par pédale — associé à une plateforme d'entraînement in vitro qui étanchéifie un modèle imprimé en 3D de la scala tympani avec un joint en silicone moulé, pour simuler de façon réaliste l'écoulement des fluides de l'oreille interne pendant l'implantation.",
-        how: "Itération de la table de mesure de force à mécanisme compliant à travers des prototypes imprimés en SLA, caractérisation de la linéarité et de la dérive thermique du capteur de charge en SPI, développement du firmware ESP32 pilotant le moteur d'insertion depuis une pédale tout en enregistrant force et température vers un traceur Python, puis validation du système complet sur des modèles de cochlée et de crâne imprimés en 3D avec capture de force en temps réel.",
+        why: "L'insertion d'un implant cochléaire se fait au toucher, sans mesure objective de la force appliquée à la fragile scala tympani — le prototype du laboratoire pour étudier ce phénomène avait besoin d'une refonte plus simple et plus fiable.",
+        what: "Un mécanisme d'insertion instrumenté et redessiné pour les électrodes d'implant cochléaire, associé à une plateforme d'entraînement in vitro qui étanchéifie un modèle imprimé en 3D de la scala tympani pour simuler l'écoulement réel des fluides de l'oreille interne.",
+        how: "Itération de la table de mesure de force à travers des prototypes imprimés en SLA, caractérisation de la linéarité et de la dérive du capteur de charge, développement d'un firmware ESP32 pour une insertion pilotée par pédale avec enregistrement en temps réel, puis validation sur des modèles de cochlée et de crâne imprimés en 3D.",
       },
       role: "Ingénieur R&D",
       duration: "Printemps 2025",
