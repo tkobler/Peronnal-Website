@@ -113,4 +113,24 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Course project · MICRO-201 · Spring 2023",
     },
   },
+  "cochlear-implant-insertion-mechanism": {
+    title: "Cochlear Implant Insertion Mechanism",
+    tagline: "A force-sensing insertion mechanism and fluid-sealed training platform for cochlear implant surgery",
+    descriptor: "Product Engineering & IoT · Professional",
+    detail: {
+      description: {
+        why: "Cochlear implant insertion is done by feel, with no objective measurement of the force applied to the fragile scala tympani — the lab's prototype for studying this needed a simpler, more reliable redesign.",
+        what: "A redesigned, force-instrumented insertion mechanism for cochlear implant electrodes, paired with an in-vitro training platform that seals a 3D-printed scala tympani model to simulate real inner-ear fluid flow.",
+        how: "Iterated the force-sensing table through SLA-printed prototypes, characterized the load cell's linearity and drift, wrote ESP32 firmware for foot-pedal-controlled insertion with real-time logging, and validated on 3D-printed cochlea and skull models.",
+      },
+      role: "R&D Engineer",
+      duration: "Spring 2025",
+      keyResults: [
+        "Characterized the custom load-cell force sensor to a correction factor of ~1.04 with a measured ~4 mN/°C thermal drift, both correctable in firmware",
+        "Validated the redesigned insertion mechanism on 3D-printed cochlea and skull models, logging real-time force and temperature through full insertion and extraction cycles",
+        "Simplified and redesigned the SLA-printed compliant mechanism and electronics (custom PCB + ESP32 firmware), replacing an earlier prototype per the project's sterilizability, reliability, and compactness criteria",
+      ],
+      scope: "Professional · ARTORG Center, Inselspital · Spring 2025",
+    },
+  },
 };
