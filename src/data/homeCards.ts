@@ -22,7 +22,7 @@ const homeCards: HomeCard[] = [
     tagline: "",
     descriptor: "Designed the real-time safety architecture that unified every subsystem of a hydrogen-powered foiling boat",
     linkTo: "/projects#solar-boat-control-logic",
-    image: "/images/placeholders/wide.svg",
+    image: "/images/projects/solar-boat-control-logic/home-hero.jpg",
     layout: "boxed",
   },
   {
