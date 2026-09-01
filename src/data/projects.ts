@@ -357,6 +357,36 @@ const projects: Project[] = [
       scope: "Team project (4 members, with Vincent Bouzereau, Rim El Qabli, Ranjeet Sapkota) · EPFL Construction Mécanique II (ME-102/107) · Spring 2022",
     },
   },
+  {
+    id: "timit-connected-door-lock",
+    number: "13",
+    title: "TimiT Connected Door Lock",
+    tagline: "A WiFi-controlled door lock, built from scratch as a Swiss high-school engineering thesis.",
+    descriptor: "Product Engineering & IoT · Academic",
+    domain: "Product Engineering & IoT",
+    featured: true,
+    heroImage: "/images/projects/timit-connected-door-lock/hero.jpg",
+    detail: {
+      description: {
+        why: "The door to Tim's bedroom had no key, and any fix had to leave the glass door itself untouched — his Travail de Maturité (Swiss high-school thesis project) set out to lock and unlock it wirelessly instead, his first real engineering project.",
+        what: "A WiFi-connected door lock: a high-torque DC motor and 3D-printed housing clamp onto the existing latch, driven by an ESP8266 microcontroller and controlled from a smartphone app, with limit switches reporting whether the door is locked or open.",
+        how: "Measured the latch's real torque need, drove a geared DC motor through a DRV8871 H-bridge with a voltage-spike filter, wrote the ESP8266 firmware (WiFi, motor control, Blynk app, limit-switch logic) in the Arduino IDE, and designed and 3D-printed the clamp-on housing in Fusion 360 over nine months.",
+      },
+      challenges: [
+        "The first H-bridge chip (SN754410) could only supply 1 A and sagged the motor's 5 V supply to 3 V under load — swapped to a DRV8871 driver rated to 3.6 A to get full torque.",
+        "Motor switching created voltage spikes that risked resetting the microcontroller — diagnosed the noise on an oscilloscope and added an LC filter to clean the supply.",
+        "3D-printed housing parts warped off the print bed on the first attempt — recalibrated the printer to get flat, accurately fitting parts.",
+      ],
+      images: [
+        { src: "/images/projects/timit-connected-door-lock/01-electronics-assembly.jpg", alt: "Open 3D-printed housing showing the DC gear motor, DRV8871 driver, and limit switches wired inside", caption: "The lock's electronics, wired inside the printed housing", section: "how" },
+      ],
+      role: "Solo Design & Firmware Engineer",
+      duration: "2020 – 2021",
+      technologies: ["ESP8266 (Wemos D1 Mini)", "Blynk App (WiFi Control)", "DRV8871 H-Bridge Motor Driver", "DC Gear Motor (15 kg·cm)", "Arduino IDE / C++ Firmware", "Custom PCB & Soldering (EasyEDA)", "Fusion 360 (3D CAD)", "3D-Printed Enclosure", "Limit-Switch State Sensing"],
+      keyResults: ["Delivered a working WiFi-to-latch lock system within a self-imposed ~100 CHF prototyping budget (50 CHF target for the finished unit)"],
+      scope: "Personal project (Travail de Maturité) · Gymnase de Morges · 2020–2021",
+    },
+  },
 ];
 
 export function getFeaturedProjects(): Project[] {

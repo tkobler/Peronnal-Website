@@ -276,4 +276,28 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet d'équipe (4 membres, avec Vincent Bouzereau, Rim El Qabli, Ranjeet Sapkota) · Construction Mécanique II EPFL (ME-102/107) · Printemps 2022",
     },
   },
+  "timit-connected-door-lock": {
+    title: "Serrure Connectée TimiT",
+    tagline: "Une serrure de porte pilotée en wifi, conçue de A à Z pour un travail de maturité gymnasiale.",
+    descriptor: "Ingénierie Produit & IoT · Académique",
+    detail: {
+      description: {
+        why: "La porte de la chambre de Tim n'avait plus de clé, et toute solution devait laisser la porte vitrée elle-même intacte — son travail de maturité gymnasiale s'est donné pour but de la verrouiller et déverrouiller sans fil à la place, son tout premier vrai projet d'ingénierie.",
+        what: "Une serrure de porte connectée en wifi : un moteur à fort couple et un boîtier imprimé en 3D se fixent sur le verrou existant, pilotés par un microcontrôleur ESP8266 et contrôlés depuis une application smartphone, avec des fins de course renvoyant l'état verrouillé/ouvert de la porte.",
+        how: "Mesure du couple réellement nécessaire au verrou, entraînement d'un moteur CC à engrenage via un pont H DRV8871 avec filtre anti-pics de tension, écriture du firmware ESP8266 (wifi, contrôle moteur, application Blynk, logique des fins de course) sous l'IDE Arduino, puis conception et impression 3D du boîtier clipsable sous Fusion 360, le tout sur neuf mois.",
+      },
+      challenges: [
+        "Le premier pont H (SN754410) ne délivrait qu'1 A et faisait chuter l'alimentation 5 V du moteur à 3 V en charge — remplacé par un driver DRV8871 supportant 3,6 A pour retrouver le couple complet.",
+        "La commutation du moteur créait des pics de tension risquant de réinitialiser le microcontrôleur — bruit diagnostiqué à l'oscilloscope, puis filtre LC ajouté pour assainir l'alimentation.",
+        "Les pièces imprimées en 3D du boîtier se sont déformées (warping) sur le plateau au premier essai — imprimante recalibrée pour obtenir des pièces plates et bien ajustées.",
+      ],
+      images: [
+        { src: "/images/projects/timit-connected-door-lock/01-electronics-assembly.jpg", alt: "Boîtier imprimé en 3D ouvert montrant le moteur CC, le driver DRV8871 et les fins de course câblés à l'intérieur", caption: "L'électronique de la serrure, câblée à l'intérieur du boîtier imprimé", section: "how" },
+      ],
+      role: "Ingénieur solo, conception & firmware",
+      duration: "2020 – 2021",
+      keyResults: ["Système serrure connectée fonctionnel, de l'application au verrou, livré dans un budget de prototypage auto-imposé d'environ 100 CHF (objectif de 50 CHF pour l'unité finale)"],
+      scope: "Projet personnel (Travail de Maturité) · Gymnase de Morges · 2020–2021",
+    },
+  },
 };
