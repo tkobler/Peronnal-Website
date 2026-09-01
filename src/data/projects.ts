@@ -303,6 +303,28 @@ const projects: Project[] = [
       scope: "Team project (5 members, with Léo Bosch, Sven Profichet, Vincent Bouzereau, Clémence Rey) · EPFL Mechanism Design II (MICRO-201) · Spring 2023",
     },
   },
+  {
+    id: "thymio-autonomous-navigation",
+    number: "11",
+    title: "Autonomous Navigation for a Thymio Robot",
+    tagline: "A camera-guided planner, Kalman filter, and reactive obstacle avoidance for a Thymio robot.",
+    descriptor: "Robotics & AI · Academic",
+    domain: "Robotics & AI",
+    featured: true,
+    course: "MICRO-452",
+    heroImage: "/images/projects/thymio-autonomous-navigation/hero.png",
+    detail: {
+      description: {
+        why: "For EPFL's Basics of Mobile Robotics, a team of four (with Jules Villaret, Amir Lahlou, and Ana Schwabedal) built a complete autonomous navigation stack for the Thymio robot, taught by Prof. Francesco Mondada in fall 2025.",
+        what: "An autonomous navigation system letting a Thymio robot reach any goal on a marked arena, combining a camera-based visibility-graph planner, an Extended Kalman Filter for pose estimation, and reactive local obstacle avoidance.",
+        how: "Built in Python with OpenCV/ArUco localization, a Dijkstra visibility-graph planner, and a 5-state EKF fusing camera pose with wheel odometry — Tim's part was the filtering module, tuning the EKF's noise from calibration runs and handling fallback to odometry when the camera lost the robot.",
+      },
+      role: "Filtering & State Estimation Engineer",
+      duration: "Fall 2025",
+      technologies: ["Python", "OpenCV / ArUco Marker Detection", "Extended Kalman Filter (EKF)", "Visibility-Graph Path Planning (Dijkstra)", "Homography-Based Camera Calibration", "tdmclient (Thymio Robot Interface)", "Multithreaded Real-Time Vision Pipeline"],
+      scope: "Team project (4 members, with Jules Villaret, Amir Lahlou, Ana Schwabedal) · MICRO-452 Basics of Mobile Robotics, EPFL · Fall 2025",
+    },
+  },
 ];
 
 export function getFeaturedProjects(): Project[] {

@@ -236,4 +236,19 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet d'équipe (5 membres, avec Léo Bosch, Sven Profichet, Vincent Bouzereau, Clémence Rey) · Cours EPFL Conception de Mécanismes II (MICRO-201) · Printemps 2023",
     },
   },
+  "thymio-autonomous-navigation": {
+    title: "Navigation Autonome pour un Robot Thymio",
+    tagline: "Un planificateur guidé par caméra, un filtre de Kalman et un évitement d'obstacles réactif pour un robot Thymio.",
+    descriptor: "Robotique & IA · Académique",
+    detail: {
+      description: {
+        why: "Pour le cours Basics of Mobile Robotics de l'EPFL, une équipe de quatre (avec Jules Villaret, Amir Lahlou et Ana Schwabedal) a développé un système de navigation autonome complet pour le robot Thymio, donné par le Prof. Francesco Mondada à l'automne 2025.",
+        what: "Un système de navigation autonome permettant à un robot Thymio de rejoindre n'importe quel objectif sur une arène balisée, combinant un planificateur par graphe de visibilité basé caméra, un filtre de Kalman étendu pour l'estimation de pose, et un évitement d'obstacles local réactif.",
+        how: "Développé en Python avec localisation OpenCV/ArUco, un planificateur par graphe de visibilité résolu par Dijkstra, et un filtre de Kalman étendu à 5 états fusionnant pose caméra et odométrie — la contribution de Tim portait sur le filtrage : réglage du bruit du filtre à partir de mesures empiriques et repli sur l'odométrie seule en cas de perte caméra.",
+      },
+      role: "Ingénieur Filtrage & Estimation d'État",
+      duration: "Automne 2025",
+      scope: "Projet d'équipe (4 membres, avec Jules Villaret, Amir Lahlou, Ana Schwabedal) · MICRO-452 Basics of Mobile Robotics, EPFL · Automne 2025",
+    },
+  },
 };
