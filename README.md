@@ -19,6 +19,7 @@ This repo has documentation at three layers — pick the one that matches what y
 
 ### Humans using this as a template
 - **[SETUP.md](./SETUP.md)** — step-by-step customization guide
+- **[MAINTAINING.md](./MAINTAINING.md)** — ongoing upkeep after setup: adding projects, editing content, images, CV, deployment
 
 ### Humans who want implementation details
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)** — component internals, CSS catalog, DotPattern canvas, how-to guides

@@ -25,6 +25,15 @@ Feature development has a **discovery phase** before any branch is created. See 
 2. Claude spawns `pm` + `tech-lead` in parallel (plus conditional agents like `ux-designer`, `qa`, `frontend-eng`, `ui-designer`, `typst-eng`) via the Agent tool. Opinions are independent — conflicts get surfaced, not averaged.
 3. Your Name decides whether to proceed. Claude does NOT proceed to Phase 2 on a unanimous "don't build it" without explicit override.
 
+**Exception — skill-driven content branches.** A narrowly-scoped,
+already-reviewed content-authoring skill (e.g. `.claude/skills/add-project/`)
+may open a `dev/` branch without the Phase‑1 panel above. The skill's own
+mandatory clarifying-questions step and full-draft user confirmation serve as
+the equivalent gate — there's no architecture or scope decision left for
+`pm`/`tech-lead` to weigh in on by the time the branch is created. This
+exception applies only to branches created by such a skill, not to
+hand-authored `dev/` features.
+
 **Phase 2 — Execution (branch + docs + code)**
 1. **Create the branch** off the latest `main`:
    ```bash
