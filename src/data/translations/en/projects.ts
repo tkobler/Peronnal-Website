@@ -213,4 +213,27 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Team project (3 members, with Noé Syfrig and Marwane Mroueh) · EPFL ME-425 Model Predictive Control · Fall 2025",
     },
   },
+  "dynabal-nanoforce-sensor": {
+    title: "DYNABAL - Balanced Dynamometer",
+    tagline: "A flexure-guided force sensor built to resolve sub-10-nanonewton forces through a balanced, stiffness-compensated compliant mechanism.",
+    descriptor: "Industrial Design & Mechanical · Academic",
+    detail: {
+      description: {
+        why: "EPFL's Mechanism Design II course tasked five-person teams with building a miniaturized, flexure-only force sensor able to resolve forces down to 500 nN while staying insensitive to acceleration — Tim and four teammates built DYNABAL to clear that bar with room to spare.",
+        what: "A compliant force sensor whose flexure-guided proof body is preloaded by a five-blade parallel-spring stage to tune its own stiffness toward zero, read out capacitively, and mechanically balanced — statically, in force, and in moment — against gravity and acceleration.",
+        how: "Modeled the proof body's stiffness and energy analytically across crossed-blade pivots and two lead-screw-driven stages (stiffness tuning, zero adjustment), then verified static/force/moment balance by hand-sizing four counterweight masses.",
+      },
+      images: [
+        { src: "/images/projects/dynabal-nanoforce-sensor/01-kinematic-architecture.png", alt: "Labeled kinematic diagram of the DYNABAL mechanism, showing masses M1–M4, the probe P, and the zero-adjustment actuator Z", caption: "Kinematic architecture: four balanced masses (M1–M4) keep the mechanism insensitive to gravity and acceleration", section: "how" },
+        { src: "/images/projects/dynabal-nanoforce-sensor/02-construction-drawing.png", alt: "Detailed construction drawing of the DYNABAL sensor sub-assembly with numbered part callouts", caption: "Construction drawing of the preload and anti-rotation sub-assembly", section: "how" },
+      ],
+      role: "Student",
+      duration: "Spring 2023",
+      keyResults: [
+        "Reached a computed force resolution of 9.45 nN (50× finer than the 500 nN brief) with a max force of 2.58 N and a 272×10⁶ virtual dynamic range.",
+        "Verified full SFM balance (static, force, moment) across all four moving masses, and sized the preload drive to deliver 217 N from a 78 mNm motor — 5× the torque actually needed.",
+      ],
+      scope: "Team project (5 members, with Léo Bosch, Sven Profichet, Vincent Bouzereau, Clémence Rey) · EPFL Mechanism Design II (MICRO-201) · Spring 2023",
+    },
+  },
 };

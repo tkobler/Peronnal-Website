@@ -63,10 +63,10 @@ export const highlightCourses: HighlightCourse[] = [
     projectId: "signal-relay",
   },
   {
-    code: "MICRO-201", name: "Mechanism Design II", professor: "Prof. Y. Bellouard",
+    code: "MICRO-201", name: "Mechanism Design II", professor: "Prof. S. Henein",
     courseUrl: "https://edu.epfl.ch/coursebook/en/mechanism-design-ii-MICRO-201",
-    professorLinks: [{ name: "Yves Bellouard", url: "https://people.epfl.ch/yves.bellouard" }],
-    projectId: "modular-toolkit",
+    professorLinks: [{ name: "Simon Henein", url: "https://people.epfl.ch/simon.henein" }],
+    projectId: "dynabal-nanoforce-sensor",
   },
 ];
 
@@ -78,7 +78,7 @@ export const curriculum: AcademicYear[] = [
       {
         label: "Block 1",
         courses: [
-          { code: "MICRO-201", name: "Mechanism Design II", grade: 5.5, credits: 6, session: "07.2023", domain: "Industrial Design & Mechanical", projectId: "modular-toolkit" },
+          { code: "MICRO-201", name: "Mechanism Design II", grade: 5.5, credits: 6, session: "07.2023", domain: "Industrial Design & Mechanical", projectId: "dynabal-nanoforce-sensor" },
           { code: "EE-202", name: "Electronics I", grade: 4.75, credits: 4, session: "02.2023", domain: "Microelectronics & Photonics" },
           { code: "MICRO-210", name: "Microcontrollers", grade: 5.25, credits: 3, session: "07.2023", domain: "Product Engineering & IoT" },
         ],

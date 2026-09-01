@@ -213,4 +213,27 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet d'équipe (3 membres, avec Noé Syfrig et Marwane Mroueh) · Cours EPFL ME-425 Model Predictive Control · Automne 2025",
     },
   },
+  "dynabal-nanoforce-sensor": {
+    title: "DYNABAL - Dynamomètre équilibré",
+    tagline: "Un capteur de force en guidage flexible conçu pour résoudre des forces sous la dizaine de nanonewtons, via un mécanisme compliant équilibré et à rigidité compensée.",
+    descriptor: "Design Industriel & Mécanique · Académique",
+    detail: {
+      description: {
+        why: "Le cours de Conception de Mécanismes II de l'EPFL demandait à des équipes de cinq de construire un capteur de force miniaturisé, tout en guidages flexibles, capable de résoudre 500 nN sans être perturbé par l'accélération — Tim et quatre coéquipiers ont construit DYNABAL pour largement dépasser cet objectif.",
+        what: "Un capteur de force compliant dont le corps d'épreuve en guidage flexible est préchargé par une table à cinq lames parallèles pour ramener sa rigidité vers zéro, mesuré par voie capacitive, et équilibré mécaniquement — statiquement, en force et en moment — contre la gravité et l'accélération.",
+        how: "Modélisation analytique de la rigidité et de l'énergie du corps d'épreuve à travers des pivots à lames croisées et deux étages pilotés par vis (réglage de rigidité, réglage du zéro), puis vérification de l'équilibrage statique/force/moment par dimensionnement de quatre masses de contrepoids.",
+      },
+      images: [
+        { src: "/images/projects/dynabal-nanoforce-sensor/01-kinematic-architecture.png", alt: "Schéma cinématique annoté du mécanisme DYNABAL, montrant les masses M1 à M4, la sonde P et l'actionneur de réglage du zéro Z", caption: "Architecture cinématique : quatre masses équilibrées (M1–M4) rendent le mécanisme insensible à la gravité et aux accélérations", section: "how" },
+        { src: "/images/projects/dynabal-nanoforce-sensor/02-construction-drawing.png", alt: "Dessin de construction détaillé du sous-ensemble du capteur DYNABAL avec repères de pièces numérotés", caption: "Dessin de construction du sous-ensemble de précharge et anti-rotation", section: "how" },
+      ],
+      role: "Étudiant",
+      duration: "Printemps 2023",
+      keyResults: [
+        "Résolution de force calculée de 9.45 nN (50 fois plus fine que l'objectif de 500 nN), avec une force max de 2.58 N et une gamme dynamique virtuelle de 272×10⁶.",
+        "Équilibrage complet SFM (statique, force, moment) vérifié sur les quatre masses mobiles, et système de précharge dimensionné pour délivrer 217 N à partir d'un moteur de 78 mNm — 5 fois le couple réellement nécessaire.",
+      ],
+      scope: "Projet d'équipe (5 membres, avec Léo Bosch, Sven Profichet, Vincent Bouzereau, Clémence Rey) · Cours EPFL Conception de Mécanismes II (MICRO-201) · Printemps 2023",
+    },
+  },
 };
