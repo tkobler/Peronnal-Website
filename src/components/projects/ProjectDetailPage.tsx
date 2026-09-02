@@ -111,6 +111,7 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
   const challenges = tc?.detail.challenges ?? project.detail.challenges;
   const publication = tc?.detail.publication ?? project.detail.publication;
   const images = tc?.detail.images ?? project.detail.images;
+  const link = project.detail.link;
 
   const sectionImage = (section: string) => images?.find(img => img.section === section);
 
@@ -341,6 +342,23 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
                       ))}
                     </div>
                   </div>
+                  {link && (
+                    <div>
+                      <a
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-1.5 font-medium underline underline-offset-4 transition-colors duration-200 ${
+                          isDark
+                            ? "text-white/80 decoration-white/30 hover:text-white hover:decoration-white"
+                            : "text-black/70 decoration-black/25 hover:text-black hover:decoration-black"
+                        }`}
+                        style={{ fontSize: "var(--text-base)" }}
+                      >
+                        {t.projects.learnMoreLabel}
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
 

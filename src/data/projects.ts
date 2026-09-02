@@ -29,6 +29,7 @@ export interface Project {
     technologies: string[];
     keyResults?: string[];
     scope?: string;
+    link?: string;
   };
 }
 
@@ -56,6 +57,7 @@ const projects: Project[] = [
       duration: "Spring 2026",
       technologies: ["MATLAB Simulink", "Stateflow", "Speedgoat / Simulink Real-Time", "CAN Bus (DBC)", "XCP Protocol"],
       scope: "Semester project · Swiss Solar Boat · Spring 2026",
+      link: "https://swisssolarboat.ch",
     },
   },
   {

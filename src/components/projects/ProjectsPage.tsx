@@ -167,6 +167,17 @@ export default function ProjectsPage() {
                       </span>
                     ))}
                   </div>
+
+                  {project.detail.link && (
+                    <a
+                      href={project.detail.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-fit text-sm font-medium underline underline-offset-4 opacity-80 transition-opacity duration-200 hover:opacity-100"
+                    >
+                      {t.projects.learnMoreLabel}
+                    </a>
+                  )}
                 </div>
 
               </div>

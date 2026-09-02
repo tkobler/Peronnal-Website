@@ -88,6 +88,7 @@ export interface Translations {
     methodologyLabel: string;
     challengesLabel: string;
     publicationLabel: string;
+    learnMoreLabel: string;
     filterAll: string;
     domains: Record<string, { name: string; desc: string }>;
   };

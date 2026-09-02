@@ -23,6 +23,7 @@ export const projects: Translations["projects"] = {
   methodologyLabel: "Methodology",
   challengesLabel: "Challenges & Decisions",
   publicationLabel: "Publication",
+  learnMoreLabel: "Learn more →",
   filterAll: "All",
   domains: {
     "Embedded Systems & Electronics": { name: "Embedded Systems & Electronics", desc: "Custom PCBs, Firmware & Connected Hardware" },
