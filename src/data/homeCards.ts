@@ -30,9 +30,9 @@ const homeCards: HomeCard[] = [
     number: "02",
     title: "Work Experience",
     tagline: "",
-    descriptor: "From internships to hands-on production and research roles",
+    descriptor: "Developed and optimized a cochlear implant insertion tool as an R&D assistant in surgical robotics",
     linkTo: "/experience",
-    image: "/images/placeholders/wide.svg",
+    image: "/images/projects/cochlear-implant-insertion-mechanism/hero.jpeg",
     layout: "full-screen",
   },
   {

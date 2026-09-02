@@ -7,7 +7,7 @@ export const homeCards: Translations["homeCards"] = {
   },
   "job-experience": {
     title: "Work Experience",
-    descriptor: "From internships to hands-on production and research roles",
+    descriptor: "Developed and optimized a cochlear implant insertion tool as an R&D assistant in surgical robotics",
   },
   "engineering-project": {
     title: "Autonomous Terrain Rover",
