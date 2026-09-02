@@ -2,7 +2,7 @@ import type { Translations } from "../index";
 
 export const projects: Translations["projects"] = {
   heading: "Projets",
-  subtitle: "Projets sélectionnés en ingénierie et recherche",
+  subtitle: "Projets en ingénierie et recherche",
   contextLabel: "Contexte (Le Pourquoi)",
   solutionLabel: "Solution (Le Quoi)",
   implementationLabel: "Réalisation (Le Comment)",
@@ -36,13 +36,13 @@ export const projects: Translations["projects"] = {
 
 export const projectsContent: Translations["projectsContent"] = {
   "solar-boat-control-logic": {
-    title: "Swiss Solar Boat - Championne du monde au MEBC 2026",
-    tagline: "Logique de contrôle globale sécuritaire pour un bateau à foils propulsé à l'hydrogène",
+    title: "Swiss Solar Boat - Champion du monde au MEBC 2026",
+    tagline: "Logique de contrôle globale pour un bateau à foils propulsé à l'hydrogène",
     descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
-        why: "Le nouveau bateau à foils à hydrogène de la SSB, le Lobst'air, avait besoin d'une logique de contrôle globale unique pour unifier tous ses sous-systèmes en un système sécuritaire prêt pour les essais sur l'eau et pour remporter le Monaco Energy Boat Challenge 2026.",
-        what: "Une machine à états finis hiérarchique et sécuritaire qui pilote chaque sous-système du Lobst'air, exécutée en temps réel sur l'ordinateur de bord du bateau.",
+        why: "Le nouveau bateau à foils à hydrogène du SSB, le Lobst'air, avait besoin d'une logique de contrôle globale pour unifier tous ses sous-systèmes pour les essais sur l'eau et pour remporter le Monaco Energy Boat Challenge 2026.",
+        what: "Une machine à états finis hiérarchique et basé sur la sécurité qui pilote chaque sous-système du Lobst'air, exécutée en temps réel sur l'ordinateur de bord du bateau.",
         how: "Architecture modulaire MATLAB Simulink/Stateflow, compilée en C++ et déployée sur un ordinateur cible Speedgoat.",
       },
       role: "Ingénieur Architecture Logicielle Globale et Coordination",
@@ -52,11 +52,11 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "cochlear-implant-insertion-mechanism": {
     title: "Mécanisme d'insertion pour implant cochléaire",
-    tagline: "Mécanisme d'insertion à mesure de force pour la chirurgie d'implant cochléaire",
+    tagline: "Mécanisme d'insertion d'implant cochléaire",
     descriptor: "Biomédical & Instrumentation de Précision · Professionnel",
     detail: {
       description: {
-        why: "L'insertion d'un implant cochléaire se fait au toucher, sans mesure objective de la force appliquée à la fragile scala tympani. Le prototype du laboratoire pour étudier ce phénomène avait besoin d'une refonte plus simple et plus fiable.",
+        why: "L'insertion d'un implant cochléaire se fait à la main, sans mesure objective de la force appliquée à la fragile scala tympani. Le laboratoire avait besion d'une version plus simple et fiable de son prototype.",
         what: "Un mécanisme d'insertion instrumenté et redessiné pour les électrodes d'implant cochléaire, imprimé en SLA et guidé par lames flexibles.",
         how: "Itération de prototypes imprimés en SLA de la table de mesure de force à lames parallèles, caractérisation du capteur de charge, développement d'un firmware ESP32 pour une insertion pilotée par pédale, puis validation sur des modèles de cochlée et de crâne imprimés en 3D.",
       },
@@ -76,8 +76,8 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Systèmes Embarqués & Électronique · Personnel",
     detail: {
       description: {
-        why: "Un moteur brushless du commerce nécessite un driver, un encodeur et un firmware de contrôle séparés avant même de pouvoir tourner. Motion Focus embarque toute cette électronique directement sur le moteur.",
-        what: "Un PCB quatre couches qui se monte sur un moteur BLDC et le transforme en actionneur autonome et pilotable. Contrôle en boucle fermée du couple, de la vitesse et de la position à 24V via USB-C, Bluetooth ou WiFi grâce à un ESP32 embarqué.",
+        why: "Un moteur brushless du commerce nécessite un driver, un encodeur et un firmware de contrôle séparés avant même de pouvoir fonctionner. Motion Focus embarque toute cette électronique directement sur le moteur.",
+        what: "Un PCB quatre couches qui se monte sur un moteur BLDC et le transforme en actionneur intelligent. Contrôle en boucle fermée du couple, de la vitesse et de la position à 24V via USB-C, Bluetooth ou WiFi grâce à un ESP32 embarqué.",
         how: "Trois révisions successives du PCB et un firmware FOC repris de SimpleFOC jusqu'à une version 3 stable, puis exploration du potentiel startup du projet dans le cours Technology Ventures I de l'EPFL, avant d'entamer sa transition vers l'open source.",
       },
       methodology: "Itération du PCB sur trois révisions KiCad, validées à chaque étape sur banc avec le firmware FOC ; la viabilité startup a été testée séparément via des entretiens utilisateurs à l'EPFL et une analyse du marché de niche.",
@@ -103,7 +103,7 @@ export const projectsContent: Translations["projectsContent"] = {
       description: {
         why: "Griller des saucisses sur un feu de bois devenait répétitif. Nous voulions faire fondre une raclette directement sur les braises.",
         what: "Une petite poêle à raclette montée sur un manche à visser sur un bâton, vendue comme micro-entreprise étudiante autoproduite.",
-        how: "Fabrication artisanale de chaque poêle et de son mécanisme de serrage en tôle soudée au TIG, dans un garage transformé en atelier, puis vente de plus de 50 exemplaires via un site web et une boutique Instagram autoproduits.",
+        how: "Fabrication artisanale de chaque poêle et de son mécanisme de serrage en tôle soudée au TIG, puis vente de plus de 50 exemplaires via un site web et une boutique Instagram autoproduits.",
       },
       role: "Co-Fondateur",
       duration: "2022 – 2024",
@@ -117,9 +117,9 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Systèmes Embarqués & Électronique · Académique",
     detail: {
       description: {
-        why: "Les étudiants doivent mettre en pratique la théorie qu'ils apprennent. CanSat était notre occasion d'apprendre l'électronique embarquée et la gestion de projet de manière pratique.",
-        what: "Construction d'El Tonio, un satellite de la taille d'une canette qui devait survivre à un lancement en fusée jusqu'à environ 500 m et rapporter des mesures environnementales, sur toute une année académique.",
-        how: "Conception d'un PCB sur-mesure construit autour d'un Raspberry Pi Zero, développement d'une station au sol pour la transmission de données en temps réel, découpe et couture du parachute Rogallo en interne, validation par des tests de largage au drone, puis deux lancements en fusée.",
+        why: "CanSat était notre occasion d'apprendre l'électronique embarquée et la gestion de projet de manière pratique.",
+        what: "El Tonio, un satellite de la taille d'une canette qui devait survivre à un lancement en fusée jusqu'à environ 500 m et rapporter des mesures environnementales, sur toute une année académique.",
+        how: "Conception d'un PCB sur-mesure, développement d'une station au sol pour la transmission de données en temps réel, conception du parachute Rogallo, validation par largage au drone, puis deux lancements en fusée.",
       },
       challenges: [
         "Faire tenir des capteurs environnementaux redondants, une IMU, un GPS, une caméra, une télémétrie LoRa et la gestion de batterie sur un seul PCB, dans un CanSat de 70 mm de diamètre pour 300 à 350 g.",
@@ -159,7 +159,7 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
-        why: "La FIRST LEGO League associe un tournoi de robot-game à un projet d'innovation parallèle pour enseigner aux adolescents la démarche d'ingénierie.",
+        why: "La FIRST LEGO League associe un tournoi de robot à un projet d'innovation parallèle pour enseigner aux adolescents la démarche d'ingénierie.",
         what: "Un robot LEGO Mindstorms EV3 autonome ayant accompli une série de missions chronométrées.",
         how: "Construction et itération du robot EV3 avec des mécanismes interchangeables pour chaque mission, et programmation de routines autonomes pour naviguer et les exécuter dans le temps imparti.",
       },
@@ -195,7 +195,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/le-duplo/02-open-case.jpeg", alt: "Boîtier Duplo ouvert montrant le PCB, le haut-parleur et la batterie LiPo à l'intérieur", caption: "L'intérieur assemblé : PCB, haut-parleur et batterie LiPo logés dans le boîtier en forme de Duplo", section: "how" },
         { src: "/images/projects/le-duplo/03-pcb-back.jpeg", alt: "Dos du PCB, sérigraphié « Le Duplo by TK », à côté du boîtier imprimé en 3D", caption: "Le tout premier PCB sur-mesure de Tim, sérigraphié à son propre nom", section: "why" },
       ],
-      role: "Bricoleur",
+      role: "Maker",
       duration: "Printemps 2021",
       scope: "Projet personnel · Printemps 2021",
     },
@@ -206,7 +206,7 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
-        why: "Les exercices précédents du cours avaient enseigné les bases du MPC — ce projet en était le prolongement, avec l'atterrissage vertical d'un prototype de fusée à poussée vectorielle.",
+        why: "SpaceX a transformé le rêve de l’atterrissage vertical en réalité. Ce cours nous a permis de comprendre comment ça fonctionne.",
         what: "Un ensemble complet de contrôleurs MPC (nominal, sans décalage statique, tube robuste et non linéaire) pilotant un modèle de fusée à 12 états jusqu'à un atterrissage vertical stationnaire en simulation.",
         how: "Linéarisation et découplage de la dynamique de la fusée en quatre sous-systèmes, conception de contrôleurs LQR-MPC contraints pour le suivi, puis ajout d'un observateur de perturbation, d'un tube-MPC robuste et d'un MPC non linéaire pour comparaison.",
       },
@@ -217,11 +217,11 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "dynabal-nanoforce-sensor": {
     title: "DYNABAL - Dynamomètre équilibré",
-    tagline: "Un capteur de force en guidage flexible conçu pour résoudre des forces sous la dizaine de nanonewtons.",
+    tagline: "Un capteur de force en guidage flexible conçu pour mesurer des forces sous la dizaine de nanonewtons.",
     descriptor: "Biomédical & Instrumentation de Précision · Académique",
     detail: {
       description: {
-        why: "Le cours de Conception de Mécanismes II de l'EPFL demandait à des équipes de construire un capteur de force miniaturisé, tout en guidages flexibles, capable de résoudre 500 nN sans être perturbé par l'accélération.",
+        why: "Le cours de Conception de Mécanismes II de l'EPFL demande de construire un capteur de force miniaturisé, tout en guidages flexibles, capable de résoudre 500 nN sans être perturbé par l'accélération.",
         what: "Un capteur de force compliant dont le corps d'épreuve en guidage flexible est préchargé par une table à cinq lames parallèles pour ramener sa rigidité vers zéro, mesuré par voie capacitive, et équilibré contre la gravité et l'accélération.",
         how: "Modélisation analytique de la rigidité et de l'énergie du corps d'épreuve à travers des pivots à lames croisées et deux étages pilotés par vis.",
       },
@@ -240,11 +240,11 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "thymio-autonomous-navigation": {
     title: "Navigation Autonome pour un Robot Thymio",
-    tagline: "Un planificateur guidé par caméra, un filtre de Kalman et un évitement d'obstacles réactif pour un robot Thymio.",
+    tagline: "Planificateur guidé par caméra, Filtre de Kalman et un évitement d'obstacles réactif.",
     descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
-        why: "Le cours Basics of Mobile Robotics de l'EPFL demandait à des équipes de développer un système de navigation autonome complet pour le robot Thymio.",
+        why: "Le cours Basics of Mobile Robotics de l'EPFL demande de développer un système de navigation autonome complet pour le robot Thymio.",
         what: "Un système de navigation autonome permettant à un robot Thymio de rejoindre n'importe quel objectif sur une arène balisée, combinant un planificateur par graphe de visibilité, un filtre de Kalman étendu, et un évitement d'obstacles réactif.",
         how: "Développé en Python avec localisation ArUco, un planificateur Dijkstra, et un filtre de Kalman étendu à 5 états fusionnant pose caméra et odométrie, avec réglage du bruit à partir de mesures empiriques.",
       },
@@ -259,7 +259,7 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Conception de Mécanismes & Fabrication · Académique",
     detail: {
       description: {
-        why: "Le cours de Construction Mécanique II de l'EPFL demandait à des équipes de concevoir un épluche-carotte entièrement manuel prêt pour la production.",
+        why: "Le cours de Construction Mécanique II de l'EPFL demandait de concevoir un épluche-carotte entièrement manuel prêt pour la production.",
         what: "Un épluche-carotte à manivelle où un chariot de lames monté sur rail épluche la carotte au retour, tandis qu'une roue partiellement dentée fait tourner la carotte à l'aller.",
         how: "Comparaison de quatre concepts de mécanisme (anneau rotatif, croix de Malte, pendule, et le bielle-manivelle retenu) via une matrice pondérée, puis modélisation de la cinématique et réalisation des dessins techniques 2D/3D complets pour l'usinage.",
       },
@@ -284,7 +284,7 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Systèmes Embarqués & Électronique · Académique",
     detail: {
       description: {
-        why: "Je voulais une serrure de porte pilotée en wifi pour ma chambre, et j'avais besoin d'un travail de maturité gymnasiale.",
+        why: "Je voulais une serrure de porte pilotée en wifi pour ma chambre, et j'avais besoin d'un thème de travail de maturité.",
         what: "Une serrure de porte connectée en wifi : un moteur à fort couple et un boîtier imprimé en 3D se fixent sur le verrou existant, contrôlés depuis une application smartphone.",
         how: "Mesure du couple réellement nécessaire au verrou, entraînement d'un moteur CC à engrenage via un pont H, écriture du firmware ESP8266, puis conception et impression 3D du boîtier clipsable, le tout sur neuf mois.",
       },
@@ -296,7 +296,7 @@ export const projectsContent: Translations["projectsContent"] = {
       images: [
         { src: "/images/projects/timit-connected-door-lock/01-electronics-assembly.jpg", alt: "Boîtier imprimé en 3D ouvert montrant le moteur CC, le driver DRV8871 et les fins de course câblés à l'intérieur", caption: "L'électronique de la serrure, câblée à l'intérieur du boîtier imprimé", section: "how" },
       ],
-      role: "Bricoleur et Étudiant",
+      role: "Maker et Étudiant",
       duration: "2020 – 2021",
       keyResults: ["Système serrure connectée fonctionnel, de l'application au verrou, livré dans un budget de prototypage auto-imposé d'environ 100 CHF (objectif de 50 CHF pour l'unité finale)"],
       scope: "Projet personnel (Travail de Maturité) · Gymnase de Morges · 2020–2021",

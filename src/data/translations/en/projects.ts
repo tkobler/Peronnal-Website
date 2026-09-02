@@ -2,7 +2,7 @@ import type { Translations } from "../index";
 
 export const projects: Translations["projects"] = {
   heading: "Projects",
-  subtitle: "Selected engineering and academic projects",
+  subtitle: "Engineering and academic projects",
   contextLabel: "Context (The Why)",
   solutionLabel: "Solution (The What)",
   implementationLabel: "Implementation (The How)",
@@ -206,7 +206,7 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
-        why: "The course's earlier exercises taught the basics of MPC — this project extended that into landing a thrust-vectored rocket prototype vertically.",
+        why: "SpaceX turned the dream of vertical rocket landings into reality. This course allowed us to understand how it works.",
         what: "A complete set of MPC controllers (nominal, offset-free, robust tube, and nonlinear) that fly a 12-state rocket model to a stationary vertical landing in simulation.",
         how: "Linearized and decoupled the rocket dynamics into four subsystems, designed constrained LQR-MPC controllers for tracking, then added a disturbance observer, a robust tube-MPC, and a nonlinear MPC for comparison.",
       },
