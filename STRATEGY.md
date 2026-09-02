@@ -1,39 +1,44 @@
-# Home "Work Experience" card → ARTORG — Strategy
+# Home page card pass — Strategy
+
+Covers both home-page card changes that landed on `add_first_projects`: the ARTORG update to the "Work Experience" card (PR #6) and the card reorder + new "Get in Touch" card (PR #7).
 
 ## Goal
-Feature the ARTORG cochlear-implant work as the content behind the home page's existing "Work Experience" card, replacing its generic placeholder image and descriptor.
+Replace the remaining template placeholders on the home page with real content: feature the ARTORG cochlear-implant work behind the "Work Experience" card, promote "Beyond Engineering" into the third slot, and close the page with a "Get in Touch" card pointing at the existing `/contact` page.
 
 ## Visitor value
-A recruiter or professor skimming the home page currently sees a placeholder image and a generic descriptor ("From internships to hands-on production and research roles") on the Work Experience card. Swapping in the ARTORG project image and a specific one-line descriptor gives them a concrete, credible hook before they click through to the full Experience page.
+A recruiter or professor skimming the home page previously hit two placeholder cards ("REPLACE THIS IMAGE") and a card for a project that doesn't exist ("Autonomous Terrain Rover" → `/projects#terrain-rover`). Each of those is a dead end. The pass gives the Work Experience card a concrete hook, removes the dead-end card, and ends the scroll on a call to action instead of a second lifestyle card.
 
 ## Scope
 ### In scope
-- `src/data/homeCards.ts`: replace the `job-experience` card's placeholder image with the existing hero image already used by the ARTORG-related project (`cochlear-implant-insertion-mechanism`).
-- `src/data/translations/en/homeCards.ts` and `fr/homeCards.ts`: update the `job-experience` descriptor to describe the ARTORG cochlear-implant insertion tool, in both languages.
+- `src/data/homeCards.ts`:
+  - `job-experience` — placeholder image → the existing ARTORG project hero (`cochlear-implant-insertion-mechanism/hero.jpeg`); descriptor rewritten to the cochlear-implant work.
+  - `engineering-project` (Autonomous Terrain Rover) — removed entirely.
+  - `hobby` (Beyond Engineering) — moved to slot 3 (`number: "03"`).
+  - `get-in-touch` — new card in slot 4 (`number: "04"`), linking to `/contact`.
+- `src/data/translations/{en,fr}/homeCards.ts`: matching descriptor rewrite, `engineering-project` entry dropped, `get-in-touch` entry added.
 
 ### Out of scope
-- Adding a new experience entry (ARTORG already exists in `src/data/experience.ts`).
-- Adding a new image asset — reusing the existing project hero image per the user's instruction.
-- Changing the card title ("Work Experience" / "Expérience professionnelle" stays as-is per the user's instruction).
-- Changing the card's link target (`/experience`) or layout.
+- The `academic-research` card (already real content).
+- The `/contact` and `/hobby` pages themselves.
+- A hero image for the Get in Touch and Beyond Engineering cards — none exists yet, so they keep the placeholder image convention.
 
 ### Non-goals
-- Restructuring the home page card ordering or the `HomeCard` schema.
+- Building a real "Autonomous Terrain Rover" project — the card was removed as a placeholder, not deferred.
+- Restyling the card/section components.
 
 ## Approach
-Pure data edit, no component or schema changes. `HomeCard.image` for `job-experience` moves from `/images/placeholders/wide.svg` to `/images/projects/cochlear-implant-insertion-mechanism/hero.jpeg` (the hero image already shipped for that project, per user instruction to "use the same hero image"). Descriptor copy is rewritten in EN and FR to reference the cochlear implant insertion tool, echoing the existing wording in `experience.ts`'s ARTORG entry for consistency.
+Pure data edits. `HomePage.tsx` renders `getHomeCards()` in array order and overlays `t.homeCards[card.id]`, so reordering the array and swapping ids covers both the ordering and the linking. No component, schema, or dependency changes. Images reuse assets already in `public/images/`.
 
 ## Risks
-Low. No component logic changes, no new dependencies. Only risk is i18n key drift, mitigated by editing EN/FR together and running `validate:i18n`.
+Low. Only real risk was i18n key drift, mitigated by editing EN/FR together and running `validate:i18n`.
 
 ## Tradeoffs
-None significant — this is a straight content substitution using an asset that already exists in the repo.
+Two of the four cards still use the placeholder image (`hobby`, `get-in-touch`) because no real asset exists for them yet. Accepted rather than blocking the rest of the pass on sourcing images.
 
 ## Test plan
-- `npm run validate:i18n`
-- `npm run lint`
-- `npm run test:unit`
-- Manual check in `npm run dev` on the home page (EN + FR) to confirm the card renders correctly.
+- `npm run lint`, `npm run test:unit`, `npm run validate:i18n`
+- `npm run test:e2e:tier1` (linking changed — new `/contact` target)
+- Manual check in `npm run dev`, EN + FR
 
 ## Panel input (from Phase 1)
-Phase 1 pm/tech-lead panel skipped: this is a pure content edit (image path + one descriptor string, reusing existing assets and existing experience data) with no scope or architecture decision, analogous to the documented skill-driven content exception in `docs/workflow.md`.
+Phase 1 pm/tech-lead panel skipped on both branches: pure content/data edits reusing existing assets and existing pages, with no scope or architecture decision — same rationale as the documented skill-driven content exception in `docs/workflow.md`.

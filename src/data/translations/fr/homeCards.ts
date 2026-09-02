@@ -9,13 +9,13 @@ export const homeCards: Translations["homeCards"] = {
     title: "Expérience professionnelle",
     descriptor: "Conception et optimisation d'un outil d'insertion d'implant cochléaire en tant qu'assistant R&D en robotique chirurgicale",
   },
-  "engineering-project": {
-    title: "Rover tout-terrain autonome",
-    descriptor: "Direction d'une équipe de 3 personnes pour développer une navigation par vision sur terrain accidenté",
-  },
   hobby: {
     title: "Au-delà de l'ingénierie",
     descriptor: "Un portfolio peut contenir plus que des projets — cette page montre comment",
+  },
+  "get-in-touch": {
+    title: "Me contacter",
+    descriptor: "Un projet, un poste ou simplement une question ? Discutons-en",
   },
 };
 
