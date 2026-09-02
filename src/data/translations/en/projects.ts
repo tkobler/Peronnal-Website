@@ -35,14 +35,14 @@ export const projects: Translations["projects"] = {
 
 export const projectsContent: Translations["projectsContent"] = {
   "solar-boat-control-logic": {
-    title: "Global Control Logic for a Foiling Hydrogen Boat",
-    tagline: "Safety-first FSM architecture for a hydrogen-powered foiling boat",
+    title: "Swiss Solar Boat - Software Logic",
+    tagline: "Safety-first Global Control Logic for a hydrogen-powered foiling boat",
     descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
-        why: "Individual subsystems (HV, hydrogen, cooling, dashboard, foil control) had each been developed and validated in isolation across prior semesters, but the boat had no unifying control layer to bring them into one safety-first system ready for on-water testing.",
-        what: "A hierarchical, safety-first finite state machine that governs every subsystem of the Lobst'air, a three-passenger hydrogen-powered foiling boat, from a single real-time control architecture running on the boat's onboard computer.",
-        how: "Built a modular MATLAB Simulink/Stateflow architecture — Safety first approach and per-subsystem CAN-connected blocks — compiled to C++ and deployed on a Speedgoat target, developed through three Agile-inspired phases: architecture, integration, then on-water validation.",
+        why: "SSB's new hydrogen-powered foiling boat, the Lobst'air, needed one global control logic to unify all its subsystems into a safety-first system ready for on-water testing.",
+        what: "A hierarchical, safety-first finite state machine that governs every subsystem of the Lobst'air, running in real time on the boat's onboard computer.",
+        how: "Built a modular MATLAB Simulink/Stateflow architecture, compiled to C++ and deployed on a Speedgoat target computer.",
       },
       role: "Overall Software Architecture Engineer and Coordinator",
       duration: "Spring 2026",
@@ -51,13 +51,13 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "cochlear-implant-insertion-mechanism": {
     title: "Cochlear Implant Insertion Mechanism",
-    tagline: "A force-sensing insertion mechanism and fluid-sealed training platform for cochlear implant surgery",
+    tagline: "Force-sensing insertion mechanism for cochlear implant surgery",
     descriptor: "Biomedical & Precision Instrumentation · Professional",
     detail: {
       description: {
         why: "Cochlear implant insertion is done by feel, with no objective measurement of the force applied to the fragile scala tympani — the lab's prototype for studying this needed a simpler, more reliable redesign.",
-        what: "A redesigned, force-instrumented insertion mechanism for cochlear implant electrodes, paired with an in-vitro training platform that seals a 3D-printed scala tympani model to simulate real inner-ear fluid flow.",
-        how: "Iterated the force-sensing table through SLA-printed prototypes, characterized the load cell's linearity and drift, wrote ESP32 firmware for foot-pedal-controlled insertion with real-time logging, and validated on 3D-printed cochlea and skull models.",
+        what: "A redesigned, force-instrumented insertion mechanism for cochlear implant electrodes, SLA 3D-printed and flexure-guided.",
+        how: "Iterated SLA-printed prototypes of the force-sensing parallel-blade table, characterized the load cell, then wrote ESP32 firmware for foot-pedal-controlled insertion and validated it on 3D-printed cochlea and skull models.",
       },
       role: "R&D Engineer",
       duration: "Spring 2025",
@@ -71,13 +71,13 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "motion-focus": {
     title: "Motion Focus",
-    tagline: "A drop-in PCB that gives any brushless motor onboard torque, position, and velocity control over USB-C, Bluetooth, or WiFi",
+    tagline: "Plug-and-play actuator for rapid prototyping",
     descriptor: "Embedded Systems & Electronics · Personal",
     detail: {
       description: {
-        why: "Off-the-shelf brushless motors need a separate driver, encoder, and firmware wired up before they can even spin — friction that keeps BLDC motors out of everyday DIY and rapid-prototyping projects. Motion Focus, built with Alec Horth from day one, puts all of that electronics directly on the motor.",
-        what: "A four-layer PCB that mounts on a BLDC motor and turns it into a self-contained, commandable actuator — closed-loop torque, velocity, and position control at 24V over USB-C, Bluetooth, or WiFi via an onboard ESP32.",
-        how: "Iterated through three PCB revisions (ESP32, DRV8313 driver, AS5048A encoder, dual current sensing) and a FOC firmware adapted from SimpleFOC to reach a stable V3, then explored its startup potential in EPFL's Technology Ventures I course — market research and go-to-market with a team that grew from two to five — before starting its transition to open source.",
+        why: "Off-the-shelf brushless motors need a separate driver, encoder, and firmware wired up before they can even spin. Motion Focus puts all of that electronics directly on the motor.",
+        what: "A four-layer PCB that mounts on a BLDC motor and turns it into a self-contained, commandable actuator. Closed-loop torque, velocity, and position control at 24V over USB-C, Bluetooth, or WiFi via an onboard ESP32.",
+        how: "Iterated through three PCB revisions and a FOC firmware adapted from SimpleFOC to reach a stable V3, then explored its startup potential in EPFL's Technology Ventures I course before starting its transition to open source.",
       },
       methodology: "Iterated the PCB across three KiCad revisions, validating each against the FOC firmware on the bench; startup viability was tested separately through EPFL user interviews and a beachhead-market analysis.",
       challenges: [
@@ -96,12 +96,12 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "la-raclonette": {
     title: "La Raclonette",
-    tagline: "A screw-on pan that turns a campfire into a raclette station.",
+    tagline: "Turning a campfire into a raclette station.",
     descriptor: "Mechanism Design & Fabrication · Personal",
     detail: {
       description: {
-        why: "Grilling sausages over a wood fire got repetitive — Tim and Léonard wanted to melt real raclette straight over the embers instead.",
-        what: "A small non-stick raclette pan on a screw-in handle that clips onto a stick, sold as a self-produced student micro-business with a companion recipe booklet.",
+        why: "Grilling sausages over a wood fire got repetitive — we wanted to melt real raclette straight over the embers instead.",
+        what: "A small raclette pan on a screw-in handle that clips onto a stick, sold as a self-produced student micro-business.",
         how: "Hand-built each pan and clamp from TIG-welded sheet steel in a home garage, then sold more than 50 units through a self-built website and Instagram shop.",
       },
       role: "Co-Founder",
@@ -116,9 +116,9 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Embedded Systems & Electronics · Academic",
     detail: {
       description: {
-        why: "EPFL Spacecraft Team's CanSat programme tasks student teams with building a soda-can-sized satellite that survives a rocket launch to ~500 m and returns usable science — El Tonio was built over a full academic year by a team of four (with Noé Syfrig, Alec Horth, and Alessandro Schlatter).",
-        what: "A CanSat carrying redundant environmental sensors, an IMU, GPS, and a camera inside a butterfly-opening 3D-printed shell, recovered under a hand-built Rogallo parachute designed to glide it in a controlled circle and stretch its time aloft.",
-        how: "Went from a preliminary design review through a custom PCB (dual BME688/BME280 sensors, BNO055 IMU, LoRa 868 MHz telemetry to a ground station) built around a Raspberry Pi Zero, cut and sewed the Rogallo parachute in-house, validated it with ground throws and drone drop tests, then flew it on two rocket launches — the second surviving a full descent with a 90-second-plus controlled circular glide from ~500 m.",
+        why: "Students need to put theory into practice — CanSat was our chance to learn embedded electronics and project management hands-on.",
+        what: "Building El Tonio, a soda-can-sized satellite that had to survive a rocket launch to ~500 m and return usable science, over a full academic year.",
+        how: "Went from a preliminary design review through a custom PCB (dual BME688/BME280 sensors, BNO055 IMU, LoRa telemetry to a ground station) built around a Raspberry Pi Zero, cut and sewed the Rogallo parachute in-house, validated it with ground throws and drone drop tests, then flew it on two rocket launches.",
       },
       challenges: [
         "Fitting redundant environmental sensors, an IMU, GPS, a camera, LoRa telemetry, and battery management onto a single PCB within a 70 mm-diameter, 300–350 g CanSat.",

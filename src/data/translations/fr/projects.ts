@@ -35,14 +35,14 @@ export const projects: Translations["projects"] = {
 
 export const projectsContent: Translations["projectsContent"] = {
   "solar-boat-control-logic": {
-    title: "Logique de contrôle globale pour un bateau à hydrogène à foils",
-    tagline: "Architecture FSM sécuritaire et temps réel pour un bateau à foils propulsé à l'hydrogène",
+    title: "Swiss Solar Boat - Logique logicielle",
+    tagline: "Logique de contrôle globale sécuritaire pour un bateau à foils propulsé à l'hydrogène",
     descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
-        why: "Chaque sous-système (HV, hydrogène, refroidissement, tableau de bord, contrôle des foils) avait été développé et validé isolément au fil des semestres précédents, mais le bateau ne disposait d'aucune couche de contrôle unifiée pour les réunir dans un système sécuritaire prêt pour les essais sur l'eau.",
-        what: "Une machine à états finis hiérarchique et sécuritaire qui pilote chaque sous-système du Lobst'air, un bateau à foils à hydrogène de trois passagers, depuis une architecture de contrôle temps réel unique exécutée sur l'ordinateur de bord.",
-        how: "Architecture modulaire MATLAB Simulink/Stateflow — approche axée sur la sécurité et blocs par sous-système reliés par CAN — compilée en C++ et déployée sur une cible Speedgoat, développée en trois phases inspirées d'Agile : architecture, intégration, puis validation sur l'eau.",
+        why: "Le nouveau bateau à foils à hydrogène de la SSB, le Lobst'air, avait besoin d'une logique de contrôle globale unique pour unifier tous ses sous-systèmes en un système sécuritaire prêt pour les essais sur l'eau.",
+        what: "Une machine à états finis hiérarchique et sécuritaire qui pilote chaque sous-système du Lobst'air, exécutée en temps réel sur l'ordinateur de bord du bateau.",
+        how: "Architecture modulaire MATLAB Simulink/Stateflow, compilée en C++ et déployée sur un ordinateur cible Speedgoat.",
       },
       role: "Ingénieur Architecture Logicielle Globale et Coordination",
       duration: "Printemps 2026",
@@ -51,13 +51,13 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "cochlear-implant-insertion-mechanism": {
     title: "Mécanisme d'insertion pour implant cochléaire",
-    tagline: "Un mécanisme d'insertion à mesure de force et une plateforme d'entraînement étanche pour la chirurgie d'implant cochléaire",
+    tagline: "Mécanisme d'insertion à mesure de force pour la chirurgie d'implant cochléaire",
     descriptor: "Biomédical & Instrumentation de Précision · Professionnel",
     detail: {
       description: {
         why: "L'insertion d'un implant cochléaire se fait au toucher, sans mesure objective de la force appliquée à la fragile scala tympani — le prototype du laboratoire pour étudier ce phénomène avait besoin d'une refonte plus simple et plus fiable.",
-        what: "Un mécanisme d'insertion instrumenté et redessiné pour les électrodes d'implant cochléaire, associé à une plateforme d'entraînement in vitro qui étanchéifie un modèle imprimé en 3D de la scala tympani pour simuler l'écoulement réel des fluides de l'oreille interne.",
-        how: "Itération de la table de mesure de force à travers des prototypes imprimés en SLA, caractérisation de la linéarité et de la dérive du capteur de charge, développement d'un firmware ESP32 pour une insertion pilotée par pédale avec enregistrement en temps réel, puis validation sur des modèles de cochlée et de crâne imprimés en 3D.",
+        what: "Un mécanisme d'insertion instrumenté et redessiné pour les électrodes d'implant cochléaire, imprimé en SLA et guidé par lames flexibles.",
+        how: "Itération de prototypes imprimés en SLA de la table de mesure de force à lames parallèles, caractérisation du capteur de charge, développement d'un firmware ESP32 pour une insertion pilotée par pédale, puis validation sur des modèles de cochlée et de crâne imprimés en 3D.",
       },
       role: "Ingénieur R&D",
       duration: "Printemps 2025",
@@ -71,13 +71,13 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "motion-focus": {
     title: "Motion Focus",
-    tagline: "Un PCB embarqué qui donne à tout moteur brushless un contrôle de couple, position et vitesse via USB-C, Bluetooth ou WiFi",
+    tagline: "Actionneur prêt à l'emploi pour le prototypage rapide",
     descriptor: "Systèmes Embarqués & Électronique · Personnel",
     detail: {
       description: {
-        why: "Un moteur brushless du commerce nécessite un driver, un encodeur et un firmware de contrôle séparés avant même de pouvoir tourner — un frein qui écarte les moteurs BLDC des projets DIY et du prototypage rapide. Motion Focus, développé avec Alec Horth depuis le début, embarque toute cette électronique directement sur le moteur.",
-        what: "Un PCB quatre couches qui se monte sur un moteur BLDC et le transforme en actionneur autonome et pilotable : contrôle en boucle fermée du couple, de la vitesse et de la position à 24V via USB-C, Bluetooth ou WiFi grâce à un ESP32 embarqué.",
-        how: "Trois révisions successives du PCB (ESP32, driver DRV8313, encodeur AS5048A, double mesure de courant) et un firmware FOC repris de SimpleFOC jusqu'à une version 3 stable, puis exploration du potentiel startup du projet dans le cours Technology Ventures I de l'EPFL — étude de marché et plan de lancement, avec une équipe passée de deux à cinq personnes — avant d'entamer sa transition vers l'open source.",
+        why: "Un moteur brushless du commerce nécessite un driver, un encodeur et un firmware de contrôle séparés avant même de pouvoir tourner. Motion Focus embarque toute cette électronique directement sur le moteur.",
+        what: "Un PCB quatre couches qui se monte sur un moteur BLDC et le transforme en actionneur autonome et pilotable. Contrôle en boucle fermée du couple, de la vitesse et de la position à 24V via USB-C, Bluetooth ou WiFi grâce à un ESP32 embarqué.",
+        how: "Trois révisions successives du PCB et un firmware FOC repris de SimpleFOC jusqu'à une version 3 stable, puis exploration du potentiel startup du projet dans le cours Technology Ventures I de l'EPFL, avant d'entamer sa transition vers l'open source.",
       },
       methodology: "Itération du PCB sur trois révisions KiCad, validées à chaque étape sur banc avec le firmware FOC ; la viabilité startup a été testée séparément via des entretiens utilisateurs à l'EPFL et une analyse du marché de niche.",
       challenges: [
@@ -96,12 +96,12 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "la-raclonette": {
     title: "La Raclonette",
-    tagline: "Une poêle vissable qui transforme un feu de camp en station à raclette.",
+    tagline: "Transformer un feu de camp en station à raclette.",
     descriptor: "Conception de Mécanismes & Fabrication · Personnel",
     detail: {
       description: {
-        why: "Griller des saucisses sur un feu de bois devenait répétitif — Tim et Léonard ont voulu faire fondre une vraie raclette directement sur les braises.",
-        what: "Une petite poêle à raclette antiadhésive montée sur un manche à visser sur un bâton, vendue comme micro-entreprise étudiante autoproduite, avec un livret de recettes compagnon.",
+        why: "Griller des saucisses sur un feu de bois devenait répétitif — nous voulions faire fondre une vraie raclette directement sur les braises.",
+        what: "Une petite poêle à raclette montée sur un manche à visser sur un bâton, vendue comme micro-entreprise étudiante autoproduite.",
         how: "Fabrication artisanale de chaque poêle et de son mécanisme de serrage en tôle soudée au TIG, dans un garage transformé en atelier, puis vente de plus de 50 exemplaires via un site web et une boutique Instagram autoproduits.",
       },
       role: "Co-Fondateur",
@@ -116,9 +116,9 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Systèmes Embarqués & Électronique · Académique",
     detail: {
       description: {
-        why: "Le programme CanSat de l'EPFL Spacecraft Team demande à des équipes étudiantes de construire un mini-satellite de la taille d'une canette capable de survivre au lancement par fusée jusqu'à environ 500 m et d'en rapporter des données exploitables — El Tonio a été construit sur toute une année académique par une équipe de quatre (avec Noé Syfrig, Alec Horth et Alessandro Schlatter).",
-        what: "Un CanSat embarquant des capteurs environnementaux redondants, une centrale inertielle, un GPS et une caméra dans une coque imprimée en 3D à ouverture « papillon », récupéré sous un parachute Rogallo fait maison conçu pour le faire planer en cercle et prolonger son temps de vol.",
-        how: "De la revue de conception préliminaire à un PCB sur-mesure (double capteurs BME688/BME280, IMU BNO055, télémétrie LoRa 868 MHz vers une station au sol) construit autour d'un Raspberry Pi Zero, découpe et couture du parachute Rogallo en interne, validation par des lâchers au sol puis des tests de largage au drone, puis deux lancements en fusée — le second concluant par un vol plané circulaire contrôlé de plus de 90 secondes.",
+        why: "Les étudiants doivent mettre en pratique la théorie qu'ils apprennent — CanSat était notre occasion d'apprendre l'électronique embarquée et la gestion de projet de manière pratique.",
+        what: "Construction d'El Tonio, un satellite de la taille d'une canette qui devait survivre à un lancement en fusée jusqu'à environ 500 m et rapporter des données exploitables, sur toute une année académique.",
+        how: "De la revue de conception préliminaire à un PCB sur-mesure (double capteurs BME688/BME280, IMU BNO055, télémétrie LoRa vers une station au sol) construit autour d'un Raspberry Pi Zero, découpe et couture du parachute Rogallo en interne, validation par des lâchers au sol puis des tests de largage au drone, puis deux lancements en fusée.",
       },
       challenges: [
         "Faire tenir des capteurs environnementaux redondants, une IMU, un GPS, une caméra, une télémétrie LoRa et la gestion de batterie sur un seul PCB, dans un CanSat de 70 mm de diamètre pour 300 à 350 g.",
