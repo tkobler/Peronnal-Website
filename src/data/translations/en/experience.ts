@@ -5,30 +5,88 @@ export const experience: Translations["experience"] = {
 };
 
 export const experienceData: Translations["experienceData"] = {
-  "example-company": {
-    company: "Example Manufacturing Co.",
-    location: "Lausanne, Switzerland",
+  "swiss-solar-boat": {
+    company: "Swiss Solar Boat",
+    location: "Bussigny, Switzerland",
     roles: [
       {
-        title: "Engineering Intern",
-        period: "Summer 2025",
+        title: "Low Voltage Engineer",
+        period: "Sept. 2025 – Present",
         description: [
-          "Worked on a production-line process improvement, cutting a recurring bottleneck identified during the first two weeks on site.",
-          "Built a small internal dashboard to track quality metrics that were previously logged by hand.",
+          "Swiss Solar Boat builds a three-seat foiling boat powered by solar panels and a hydrogen fuel cell.",
+          "Work on the low-voltage team, responsible for the sensors, actuators, control unit, and cabling.",
         ],
       },
     ],
   },
-  "epfl-ta": {
-    company: "EPFL",
-    location: "Lausanne, Switzerland",
+  artorg: {
+    company: "ARTORG Center for Biomedical Engineering Research",
+    location: "Bern, Switzerland",
     roles: [
       {
-        title: "Teaching Assistant",
-        period: "2024 – 2025",
+        title: "R&D Assistant – Surgical Robotics",
+        period: "March – May 2025",
         description: [
-          "Ran weekly lab sessions for undergraduate students, reviewing their work and answering questions on the course material.",
-          "Helped students debug their own projects — a good way to see the same concepts land from a different angle.",
+          "Developed and optimized a cochlear implant insertion tool at the Hearing Research Lab (Insel Gruppe / University of Bern), combining mechanical design, electronics, and high-precision SLA 3D printing.",
+          "Ran laboratory experiments and iterative testing cycles to refine the tool's performance in a clinical research setting.",
+        ],
+      },
+    ],
+  },
+  sterilux: {
+    company: "SteriLux",
+    location: "Renens, Vaud, Switzerland",
+    roles: [
+      {
+        title: "Printed Circuit Board Design Engineer",
+        period: "Sept. 2024",
+        description: [
+          "Reviewed the motherboard of the SteriLux Steribas sterilization unit.",
+          "Integrated a new pressure sensor and optimized the circuit layout.",
+        ],
+      },
+      {
+        title: "Team Manager, Production Agent",
+        period: "Jan. 2023 – June 2024",
+        description: [
+          "Managed production of the SteriLux sterilization machine for veterinary surgical tools, implementing the process with a team.",
+          "Updated machine work instructions to keep pace with production changes.",
+        ],
+      },
+      {
+        title: "R&D Intern",
+        period: "Summer 2022",
+        description: [
+          "Worked on the Steribase ozone measurement system used to sterilize veterinary surgical tools.",
+          "Got a first look at corporate R&D and improved my Python skills along the way.",
+        ],
+      },
+    ],
+  },
+  "epfl-spacecraft-team": {
+    company: "EPFL Spacecraft Team",
+    location: "Renens, Vaud, Switzerland",
+    roles: [
+      {
+        title: "Project Manager",
+        period: "Sept. 2022 – Jan. 2024",
+        description: [
+          'Assembled the "Twocan" on-board computer for the CHESS mission satellite.',
+          "Led a team of 4 through the CanSat programme, designing, testing, and launching a can-sized satellite to roughly 600 m that measured temperature, humidity, air quality, pressure, and acceleration during a descent braked by an in-house Rogallo parachute.",
+        ],
+      },
+    ],
+  },
+  rentimmo: {
+    company: "Rentimmo Group",
+    location: "Switzerland",
+    roles: [
+      {
+        title: "Project Manager",
+        period: "July 2019 – Dec. 2021",
+        description: [
+          "Designed and laid out commercial and industrial premises, and implemented logistics systems and processes.",
+          "Maintained inventories across multiple sites and managed a team.",
         ],
       },
     ],
