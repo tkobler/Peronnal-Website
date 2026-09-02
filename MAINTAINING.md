@@ -39,6 +39,41 @@ npm run validate:i18n
 
 ---
 
+## Adding a new activity
+
+### If you use Claude Code
+
+Run the `/add-activity` skill and point it at a folder or file with the material (a job description, an internship report, a volunteering write-up, notes — whatever you've got):
+
+```
+/add-activity ~/Desktop/epfl-ta-notes/
+```
+
+Claude reads the material, drafts the full bilingual entry (organization, location, role, period, description bullets), asks you for anything it can't infer (category, role type, whether to split into multiple roles), shows you the complete draft to review or edit, and — only once you confirm — writes it into the site's experience data, validates everything, and opens a PR for you to merge.
+
+Full behavior is documented in [.claude/skills/add-activity/SKILL.md](.claude/skills/add-activity/SKILL.md). It's add-only for now — editing an existing activity is still a manual edit (see below).
+
+### Manual method (no Claude Code, or editing an existing activity)
+
+An activity lives in three files that must be edited together:
+
+1. **[src/data/experience.ts](src/data/experience.ts)** — add a new object to the `experiences` array. Needs a unique `id` (kebab-case). `category` must be one of `"engineering"`, `"music"`, or `"service"`; each role's `type` must be one of `"Full-time"`, `"Part-time"`, `"Freelance"`, `"Internship"`, `"Academic"`, or `"Volunteering"`.
+2. **[src/data/translations/en/experience.ts](src/data/translations/en/experience.ts)** — add a matching entry to `experienceData` keyed by the same `id`.
+3. **[src/data/translations/fr/experience.ts](src/data/translations/fr/experience.ts)** — add the French version of the same entry.
+
+`ExperienceTimeline.tsx` falls back to the English text baked into `experience.ts` if a locale's entry is missing, so a forgotten French entry fails silently on the French site rather than breaking the build. Always add both in the same change.
+
+If you have a logo for the organization, drop it in `public/images/experience/<id>/logo.<ext>` and reference it from `logo`. No logo yet? Leave it as `/images/placeholders/logo.svg` and add the real one later.
+
+Then verify:
+```bash
+npm run lint
+npm run test:unit
+npm run validate:i18n
+```
+
+---
+
 ## Editing existing content
 
 Everything user-facing lives in [src/data/translations/{en,fr}/](src/data/translations/) as plain TypeScript objects — no CMS, no database. Find the section you want (`hero.ts`, `about.ts`, `experience.ts`, `contact.ts`, `projects.ts`, etc.) and edit the string directly in both locales.
@@ -111,6 +146,7 @@ Every push to `main` (including a merged PR) triggers [.github/workflows/deploy.
 | I want to... | Do this |
 |---|---|
 | Add a new project | `/add-project <folder>` (Claude Code), or edit the 3 files under [Adding a new project](#adding-a-new-project) |
+| Add a new activity | `/add-activity <folder>` (Claude Code), or edit the 3 files under [Adding a new activity](#adding-a-new-activity) |
 | Fix a typo or reword a sentence | Edit the relevant `translations/{en,fr}/*.ts` file, or use `/admin` locally |
 | Add/replace an image | Drop it in `public/images/...`, compress with `scripts/compress-images.js` |
 | Update my CV | Edit [cv/variants/](cv/variants/), then `npm run cv:build` |
