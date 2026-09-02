@@ -8,10 +8,10 @@ import { describe, it, expect } from "vitest";
 import { getAllProjects, getFeaturedProjects, getProjectById, type ProjectDomain } from "@/data/projects";
 
 const VALID_DOMAINS: ProjectDomain[] = [
-  "Microelectronics & Photonics",
-  "Product Engineering & IoT",
-  "Robotics & AI",
-  "Industrial Design & Mechanical",
+  "Embedded Systems & Electronics",
+  "Robotics & Autonomous Control",
+  "Biomedical & Precision Instrumentation",
+  "Mechanism Design & Fabrication",
 ];
 
 describe("Projects Data Integrity", () => {

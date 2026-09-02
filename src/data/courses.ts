@@ -63,10 +63,10 @@ export const highlightCourses: HighlightCourse[] = [
     projectId: "signal-relay",
   },
   {
-    code: "MICRO-201", name: "Mechanism Design II", professor: "Prof. Y. Bellouard",
+    code: "MICRO-201", name: "Mechanism Design II", professor: "Prof. S. Henein",
     courseUrl: "https://edu.epfl.ch/coursebook/en/mechanism-design-ii-MICRO-201",
-    professorLinks: [{ name: "Yves Bellouard", url: "https://people.epfl.ch/yves.bellouard" }],
-    projectId: "modular-toolkit",
+    professorLinks: [{ name: "Simon Henein", url: "https://people.epfl.ch/simon.henein" }],
+    projectId: "dynabal-nanoforce-sensor",
   },
 ];
 
@@ -78,16 +78,16 @@ export const curriculum: AcademicYear[] = [
       {
         label: "Block 1",
         courses: [
-          { code: "MICRO-201", name: "Mechanism Design II", grade: 5.5, credits: 6, session: "07.2023", domain: "Industrial Design & Mechanical", projectId: "modular-toolkit" },
-          { code: "EE-202", name: "Electronics I", grade: 4.75, credits: 4, session: "02.2023", domain: "Microelectronics & Photonics" },
-          { code: "MICRO-210", name: "Microcontrollers", grade: 5.25, credits: 3, session: "07.2023", domain: "Product Engineering & IoT" },
+          { code: "MICRO-201", name: "Mechanism Design II", grade: 5.5, credits: 6, session: "07.2023", domain: "Biomedical & Precision Instrumentation", projectId: "dynabal-nanoforce-sensor" },
+          { code: "EE-202", name: "Electronics I", grade: 4.75, credits: 4, session: "02.2023", domain: "Embedded Systems & Electronics" },
+          { code: "MICRO-210", name: "Microcontrollers", grade: 5.25, credits: 3, session: "07.2023", domain: "Embedded Systems & Electronics" },
         ],
       },
       {
         label: "Block 2",
         courses: [
-          { code: "MICRO-315", name: "Embedded Systems & Robotics", grade: 4.5, credits: 6, session: "07.2024", domain: "Robotics & AI", projectId: "signal-relay" },
-          { code: "MICRO-373", name: "Advanced Microfabrication Practicals", grade: 5.5, credits: 3, session: "07.2024", domain: "Microelectronics & Photonics", projectId: "ring-resonator" },
+          { code: "MICRO-315", name: "Embedded Systems & Robotics", grade: 4.5, credits: 6, session: "07.2024", domain: "Robotics & Autonomous Control", projectId: "signal-relay" },
+          { code: "MICRO-373", name: "Advanced Microfabrication Practicals", grade: 5.5, credits: 3, session: "07.2024", domain: "Embedded Systems & Electronics", projectId: "ring-resonator" },
         ],
       },
     ],
@@ -99,8 +99,11 @@ export const curriculum: AcademicYear[] = [
       {
         label: "Options",
         courses: [
-          { code: "MICRO-502", name: "Aerial Robotics", grade: 5, credits: 5, session: "07.2025", domain: "Robotics & AI", projectId: "terrain-rover" },
-          { code: "MICRO-455", name: "Machine Learning I", grade: 4.5, credits: 4, session: "02.2025", domain: "Robotics & AI" },
+          { code: "MICRO-502", name: "Aerial Robotics", grade: 5, credits: 5, session: "07.2025", domain: "Robotics & Autonomous Control", projectId: "terrain-rover" },
+          { code: "MICRO-455", name: "Machine Learning I", grade: 4.5, credits: 4, session: "02.2025", domain: "Robotics & Autonomous Control" },
+          { code: "MGT-434", name: "Technology Ventures I", credits: 3, session: "02.2026", domain: "Embedded Systems & Electronics", projectId: "motion-focus" },
+          { code: "ME-425", name: "Model Predictive Control", grade: 5.25, credits: 6, session: "02.2026", domain: "Robotics & Autonomous Control", projectId: "mpc-rocket-landing-controller" },
+          { code: "MICRO-452", name: "Basics of Mobile Robotics", credits: 4, session: "02.2026", domain: "Robotics & Autonomous Control", projectId: "thymio-autonomous-navigation" },
         ],
       },
     ],
