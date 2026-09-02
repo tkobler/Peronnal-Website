@@ -112,6 +112,7 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
   const publication = tc?.detail.publication ?? project.detail.publication;
   const images = tc?.detail.images ?? project.detail.images;
   const link = project.detail.link;
+  const sourceLink = project.detail.sourceLink;
 
   const sectionImage = (section: string) => images?.find(img => img.section === section);
 
@@ -342,21 +343,37 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
                       ))}
                     </div>
                   </div>
-                  {link && (
-                    <div>
-                      <a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-1.5 font-medium underline underline-offset-4 transition-colors duration-200 ${
-                          isDark
-                            ? "text-white/80 decoration-white/30 hover:text-white hover:decoration-white"
-                            : "text-black/70 decoration-black/25 hover:text-black hover:decoration-black"
-                        }`}
-                        style={{ fontSize: "var(--text-base)" }}
-                      >
-                        {t.projects.learnMoreLabel}
-                      </a>
+                  {(link || sourceLink) && (
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                      {link && (
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-1.5 font-medium underline underline-offset-4 transition-colors duration-200 ${
+                            isDark
+                              ? "text-white/80 decoration-white/30 hover:text-white hover:decoration-white"
+                              : "text-black/70 decoration-black/25 hover:text-black hover:decoration-black"
+                          }`}
+                          style={{ fontSize: "var(--text-base)" }}
+                        >
+                          {t.projects.learnMoreLabel}
+                        </a>
+                      )}
+                      {sourceLink && (
+                        <a
+                          href={sourceLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider underline underline-offset-4 transition-colors duration-200 ${
+                            isDark
+                              ? "text-white/40 decoration-white/20 hover:text-white/70 hover:decoration-white/50"
+                              : "text-black/40 decoration-black/15 hover:text-black/70 hover:decoration-black/40"
+                          }`}
+                        >
+                          {t.projects.sourceLabel}
+                        </a>
+                      )}
                     </div>
                   )}
                 </div>

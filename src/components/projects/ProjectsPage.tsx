@@ -45,7 +45,7 @@ export default function ProjectsPage() {
     <main className="relative">
       {/* 1. RESTORED CENTERED HEADER */}
       <section
-        className="section-light relative grid h-[40vh] place-items-center overflow-hidden"
+        className="section-light relative grid min-h-[40vh] place-items-center"
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="light"
       >
@@ -168,15 +168,29 @@ export default function ProjectsPage() {
                     ))}
                   </div>
 
-                  {project.detail.link && (
-                    <a
-                      href={project.detail.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-fit text-sm font-medium underline underline-offset-4 opacity-80 transition-opacity duration-200 hover:opacity-100"
-                    >
-                      {t.projects.learnMoreLabel}
-                    </a>
+                  {(project.detail.link || project.detail.sourceLink) && (
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                      {project.detail.link && (
+                        <a
+                          href={project.detail.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-fit text-sm font-medium underline underline-offset-4 opacity-80 transition-opacity duration-200 hover:opacity-100"
+                        >
+                          {t.projects.learnMoreLabel}
+                        </a>
+                      )}
+                      {project.detail.sourceLink && (
+                        <a
+                          href={project.detail.sourceLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-fit text-xs font-mono uppercase tracking-wider underline underline-offset-4 opacity-40 transition-opacity duration-200 hover:opacity-70"
+                        >
+                          {t.projects.sourceLabel}
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
 

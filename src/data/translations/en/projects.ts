@@ -24,6 +24,7 @@ export const projects: Translations["projects"] = {
   challengesLabel: "Challenges & Decisions",
   publicationLabel: "Publication",
   learnMoreLabel: "Learn more →",
+  sourceLabel: "Source",
   filterAll: "All",
   domains: {
     "Embedded Systems & Electronics": { name: "Embedded Systems & Electronics", desc: "Custom PCBs, Firmware & Connected Hardware" },
@@ -35,12 +36,12 @@ export const projects: Translations["projects"] = {
 
 export const projectsContent: Translations["projectsContent"] = {
   "solar-boat-control-logic": {
-    title: "Swiss Solar Boat - Software Logic",
+    title: "Swiss Solar Boat - World Champion at MEBC 2026",
     tagline: "Safety-first Global Control Logic for a hydrogen-powered foiling boat",
     descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
-        why: "SSB's new hydrogen-powered foiling boat, the Lobst'air, needed one global control logic to unify all its subsystems into a safety-first system ready for on-water testing.",
+        why: "SSB's new hydrogen-powered foiling boat, the Lobst'air, needed one global control logic to unify all its subsystems into a safety-first system ready for on-water testing and for winning the 2026 Monaco Energy Boat Challenge.",
         what: "A hierarchical, safety-first finite state machine that governs every subsystem of the Lobst'air, running in real time on the boat's onboard computer.",
         how: "Built a modular MATLAB Simulink/Stateflow architecture, compiled to C++ and deployed on a Speedgoat target computer.",
       },
@@ -55,7 +56,7 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Biomedical & Precision Instrumentation · Professional",
     detail: {
       description: {
-        why: "Cochlear implant insertion is done by feel, with no objective measurement of the force applied to the fragile scala tympani — the lab's prototype for studying this needed a simpler, more reliable redesign.",
+        why: "Cochlear implant insertion is done by feel, with no objective measurement of the force applied to the fragile scala tympani. The lab's prototype for studying this needed a simpler, more reliable redesign.",
         what: "A redesigned, force-instrumented insertion mechanism for cochlear implant electrodes, SLA 3D-printed and flexure-guided.",
         how: "Iterated SLA-printed prototypes of the force-sensing parallel-blade table, characterized the load cell, then wrote ESP32 firmware for foot-pedal-controlled insertion and validated it on 3D-printed cochlea and skull models.",
       },
@@ -89,7 +90,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/motion-focus/02-two-units-side.jpeg", alt: "Two Motion Focus units side by side", caption: "Two assembled Motion Focus actuators", section: "what" },
         { src: "/images/projects/motion-focus/03-two-units-wired.jpeg", alt: "Two Motion Focus V3 boards wired together for testing", caption: "V3 boards under bench test, wired for synchronized control", section: "how" },
       ],
-      role: "Product Engineer",
+      role: "Product Manager & Engineer",
       duration: "2024 – 2026",
       scope: "Personal project (with Alec Horth) → startup exploration, EPFL Technology Ventures I (MGT-434) · 2024–2026",
     },
@@ -100,7 +101,7 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Mechanism Design & Fabrication · Personal",
     detail: {
       description: {
-        why: "Grilling sausages over a wood fire got repetitive — we wanted to melt real raclette straight over the embers instead.",
+        why: "Grilling sausages over a wood fire got repetitive. We wanted to melt raclette straight over the embers instead.",
         what: "A small raclette pan on a screw-in handle that clips onto a stick, sold as a self-produced student micro-business.",
         how: "Hand-built each pan and clamp from TIG-welded sheet steel in a home garage, then sold more than 50 units through a self-built website and Instagram shop.",
       },
@@ -116,9 +117,9 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Embedded Systems & Electronics · Academic",
     detail: {
       description: {
-        why: "Students need to put theory into practice — CanSat was our chance to learn embedded electronics and project management hands-on.",
-        what: "Building El Tonio, a soda-can-sized satellite that had to survive a rocket launch to ~500 m and return usable science, over a full academic year.",
-        how: "Went from a preliminary design review through a custom PCB (dual BME688/BME280 sensors, BNO055 IMU, LoRa telemetry to a ground station) built around a Raspberry Pi Zero, cut and sewed the Rogallo parachute in-house, validated it with ground throws and drone drop tests, then flew it on two rocket launches.",
+        why: "Students need to put theory into practice. CanSat was our chance to learn embedded electronics and project management hands-on.",
+        what: "Building El Tonio, a soda-can-sized satellite that had to survive a rocket launch to ~500 m and return environmental measures, over a full academic year.",
+        how: "Made a custom PCB built around a Raspberry Pi Zero, engineered a ground station for real-time data transmission, cut and sewed the Rogallo parachute in-house, validated it with drone drop tests, then flew it on two rocket launches.",
       },
       challenges: [
         "Fitting redundant environmental sensors, an IMU, GPS, a camera, LoRa telemetry, and battery management onto a single PCB within a 70 mm-diameter, 300–350 g CanSat.",
@@ -134,18 +135,18 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Team project (4 members, with Noé Syfrig, Alec Horth, Alessandro Schlatter) · EPFL Spacecraft Team CanSat programme · 2022–2023",
     },
   },
-  "toucan-pcb-assembly-epfl-spacecraft-team": {
-    title: "Toucan PCB Assembly - EPFL Spacecraft Team",
-    tagline: "A hand-assembled onboard flight computer, built in a three-day precision integration marathon and sent to space.",
+  "twocan-pcb-assembly-epfl-spacecraft-team": {
+    title: "Twocan PCB Assembly - EPFL Spacecraft Team",
+    tagline: "Three-day precision integration marathon to send a flight computer to space.",
     descriptor: "Embedded Systems & Electronics · Academic",
     detail: {
       description: {
-        why: "Toucan is EPFL Spacecraft Team's onboard flight computer, and getting a hand-populated board from bare PCB to space-ready demanded a level of soldering precision the team couldn't outsource — so three members, including Tim, committed three full days of dedicated bench time to assemble it themselves.",
-        what: "A fully hand- and machine-assembled Toucan flight computer PCB — EPFL Spacecraft Team's onboard computer — populated with every chip and passive component and verified functional, the exact board later flown to space.",
-        how: "Ran the complete SMT assembly process by hand over three continuous days — solder-paste application, pick-and-place component placement, laser-guided fine positioning, and reflow oven soldering — with three teammates rotating in shifts to keep concentration and precision high throughout.",
+        why: "EPFL Spacecraft Team had just designed a new onboard flight computer, and it needed to be assembled.",
+        what: "A hand-assembled Twocan flight computer PCB, verified functional and later flown to space.",
+        how: "Ran the complete SMT assembly process by hand over three continuous days with three teammates rotating in shifts to keep concentration and precision high throughout.",
       },
       images: [
-        { src: "/images/projects/toucan-pcb-assembly-epfl-spacecraft-team/01-pcb-fixture.jpg", alt: "Toucan onboard computer PCB mounted in a test fixture during integration", caption: "The assembled Toucan flight computer board", section: "what" },
+        { src: "/images/projects/twocan-pcb-assembly-epfl-spacecraft-team/01-pcb-fixture.jpg", alt: "Twocan onboard computer PCB mounted in a test fixture during integration", caption: "The assembled Twocan flight computer board", section: "what" },
       ],
       role: "PCB Assembly Technician",
       duration: "Spring 2024",
@@ -154,13 +155,13 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "first-lego-league": {
     title: "FIRST LEGO League",
-    tagline: "An autonomous Lego Mindstorms robot and a self-regulating habitat design, built with a 10-person team for FIRST LEGO League Switzerland.",
+    tagline: "LEGO Mindstorms student competition",
     descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
-        why: "FIRST LEGO League pairs a robot-game tournament with a parallel innovation project — our team of ten set out to build a Lego Mindstorms robot that could reliably execute a full mission board, while also tackling that year's sustainability theme with a self-regulating habitat design.",
-        what: "An autonomous LEGO Mindstorms EV3 robot that completed a series of timed missions (knocking down targets, pushing objects, and more) on a roughly 2m×3m competition field, alongside a designed and presented concept for a habitat that automatically regulates its own indoor temperature.",
-        how: "Built and iterated the EV3 robot with swappable mechanical attachments for each mission, programmed autonomous routines to navigate and execute them within the round's time limit, and in parallel researched and pitched the sustainability project to a jury — the season culminated in 1st place at the Lausanne regional and 7th place at the Swiss national final.",
+        why: "FIRST LEGO League pairs a robot-game tournament with a parallel innovation project to teach teens the engineering process.",
+        what: "An autonomous LEGO Mindstorms EV3 robot that completed a series of timed missions.",
+        how: "Built and iterated the EV3 robot with swappable mechanical attachments for each mission and programmed autonomous routines to navigate and execute them within the round's time limit.",
       },
       challenges: [
         "Designing a robot that could reliably complete multiple timed missions (object drops, flag pushes) on a ~2m×3m field within the round's time limit, using swappable attachments rather than one all-purpose tool.",
@@ -185,29 +186,29 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Embedded Systems & Electronics · Personal",
     detail: {
       description: {
-        why: "Paragliding pilots need to hear whether they're climbing or sinking without looking at a screen mid-flight — Tim built his own variometer to fly with, starting from a colleague's firmware and designing the physical hardware himself.",
-        what: "A pocket-sized paragliding variometer packaged in a 3D-printed case shaped like an oversized Duplo brick, sensing climb or sink rate through a barometric pressure sensor and accelerometer and reporting it as a distinct beep tone through eight LEDs and a speaker.",
-        how: "Designed his first custom PCB around an MS5611 barometric pressure sensor, an accelerometer, and an Arduino Nano, adapted a colleague's variometer firmware to drive the audio and LED feedback, then 3D-printed and hand-wired the Duplo-shaped enclosure with a LiPo battery and speaker.",
+        why: "Paragliding pilots need to hear whether they're climbing or sinking without looking at a screen mid-flight.",
+        what: "A pocket-sized paragliding variometer packaged in a 3D-printed case shaped like an oversized Duplo brick, sensing climb or sink rate through a barometric pressure sensor.",
+        how: "Designed a custom PCB with a pressure sensor, an accelerometer, and an Arduino Nano and adapted a friend's variometer firmware to the new hardware.",
       },
       images: [
         { src: "/images/projects/le-duplo/01-pcb-board.jpeg", alt: "Custom PCB next to the 3D-printed Duplo-shaped enclosure", caption: "The Duplo variometer's PCB, built around an MS5611 pressure sensor, buzzer, and status LEDs", section: "how" },
         { src: "/images/projects/le-duplo/02-open-case.jpeg", alt: "Open Duplo-shaped enclosure showing the PCB, speaker, and LiPo battery fitted inside", caption: "The assembled internals: PCB, speaker, and LiPo battery packed into the Duplo-shaped case", section: "how" },
         { src: "/images/projects/le-duplo/03-pcb-back.jpeg", alt: "Back of the PCB, silkscreened 'Le Duplo by TK' next to the 3D-printed enclosure", caption: "Tim's first custom PCB design, silkscreened with its own name", section: "why" },
       ],
-      role: "Hardware & PCB Design Engineer",
+      role: "Maker",
       duration: "Spring 2021",
       scope: "Personal project · Spring 2021",
     },
   },
   "mpc-rocket-landing-controller": {
     title: "MPC Rocket Landing Controller",
-    tagline: "Model Predictive Control that lands a thrust-vectored rocket prototype vertically, SpaceX-style.",
+    tagline: "Model Predictive Control that lands a thrust-vectored rocket vertically.",
     descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
-        why: "The course's earlier exercises taught how to identify and implement an MPC controller — this project was the direct continuation, tasking three-person teams with designing the full MPC stack needed to land a small thrust-vectored rocket prototype (propellers standing in for a combustion engine) the way SpaceX lands the Falcon booster.",
-        what: "A complete set of MPC controllers — nominal, offset-free, robust tube, and nonlinear — that fly a 12-state rocket model from an initial descent down to a stationary vertical landing on a simulated \"chopsticks\" platform, built and validated for the EPFL ME-425 Model Predictive Control course with Noé Syfrig and Marwane Mroueh.",
-        how: "Linearized and decoupled the nonlinear rocket dynamics into four independent subsystems (x, y, z, roll), designed constrained LQR-terminal MPC controllers for stabilization and velocity/position tracking, added a disturbance observer for offset-free tracking as fuel burns off mass, then built a robust tube-MPC controller for the final landing approach and a CasADi-based nonlinear MPC to compare against it — all verified in closed-loop simulation on the nonlinear model.",
+        why: "The course's earlier exercises taught the basics of MPC — this project extended that into landing a thrust-vectored rocket prototype vertically.",
+        what: "A complete set of MPC controllers (nominal, offset-free, robust tube, and nonlinear) that fly a 12-state rocket model to a stationary vertical landing in simulation.",
+        how: "Linearized and decoupled the rocket dynamics into four subsystems, designed constrained LQR-MPC controllers for tracking, then added a disturbance observer, a robust tube-MPC, and a nonlinear MPC for comparison.",
       },
       role: "Student",
       duration: "Fall 2025",
@@ -216,13 +217,13 @@ export const projectsContent: Translations["projectsContent"] = {
   },
   "dynabal-nanoforce-sensor": {
     title: "DYNABAL - Balanced Dynamometer",
-    tagline: "A flexure-guided force sensor built to resolve sub-10-nanonewton forces through a balanced, stiffness-compensated compliant mechanism.",
+    tagline: "A flexure-guided force sensor built to resolve sub-10-nanonewton forces.",
     descriptor: "Biomedical & Precision Instrumentation · Academic",
     detail: {
       description: {
-        why: "EPFL's Mechanism Design II course tasked five-person teams with building a miniaturized, flexure-only force sensor able to resolve forces down to 500 nN while staying insensitive to acceleration — Tim and four teammates built DYNABAL to clear that bar with room to spare.",
-        what: "A compliant force sensor whose flexure-guided proof body is preloaded by a five-blade parallel-spring stage to tune its own stiffness toward zero, read out capacitively, and mechanically balanced — statically, in force, and in moment — against gravity and acceleration.",
-        how: "Modeled the proof body's stiffness and energy analytically across crossed-blade pivots and two lead-screw-driven stages (stiffness tuning, zero adjustment), then verified static/force/moment balance by hand-sizing four counterweight masses.",
+        why: "EPFL's Mechanism Design II course tasked teams with building a miniaturized, flexure-only force sensor able to resolve forces down to 500 nN while staying insensitive to acceleration.",
+        what: "A compliant force sensor whose flexure-guided proof body is preloaded by a five-blade parallel-spring stage to tune its stiffness toward zero, read out capacitively, and balanced against gravity and acceleration.",
+        how: "Modeled the proof body's stiffness and energy analytically across crossed-blade pivots and two lead-screw-driven stages.",
       },
       images: [
         { src: "/images/projects/dynabal-nanoforce-sensor/01-kinematic-architecture.png", alt: "Labeled kinematic diagram of the DYNABAL mechanism, showing masses M1–M4, the probe P, and the zero-adjustment actuator Z", caption: "Kinematic architecture: four balanced masses (M1–M4) keep the mechanism insensitive to gravity and acceleration", section: "how" },
@@ -243,24 +244,24 @@ export const projectsContent: Translations["projectsContent"] = {
     descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
-        why: "For EPFL's Basics of Mobile Robotics, a team of four (with Jules Villaret, Amir Lahlou, and Ana Schwabedal) built a complete autonomous navigation stack for the Thymio robot, taught by Prof. Francesco Mondada in fall 2025.",
-        what: "An autonomous navigation system letting a Thymio robot reach any goal on a marked arena, combining a camera-based visibility-graph planner, an Extended Kalman Filter for pose estimation, and reactive local obstacle avoidance.",
-        how: "Built in Python with OpenCV/ArUco localization, a Dijkstra visibility-graph planner, and a 5-state EKF fusing camera pose with wheel odometry — Tim's part was the filtering module, tuning the EKF's noise from calibration runs and handling fallback to odometry when the camera lost the robot.",
+        why: "EPFL's Basics of Mobile Robotics course tasked teams with building a complete autonomous navigation stack for the Thymio robot.",
+        what: "An autonomous navigation system letting a Thymio robot reach any goal on a marked arena, combining a visibility-graph planner, an Extended Kalman Filter, and reactive obstacle avoidance.",
+        how: "Built in Python with ArUco localization, a Dijkstra planner, and a 5-state EKF fusing camera pose with wheel odometry, tuning its noise from calibration runs.",
       },
-      role: "Filtering & State Estimation Engineer",
+      role: "Student",
       duration: "Fall 2025",
       scope: "Team project (4 members, with Jules Villaret, Amir Lahlou, Ana Schwabedal) · MICRO-452 Basics of Mobile Robotics, EPFL · Fall 2025",
     },
   },
   "l-epluche-carotte": {
     title: "L'Épluche-Carotte",
-    tagline: "A hand-cranked mechanism that peels a carrot's full length in one motion, engineered from a blank cahier des charges.",
+    tagline: "A hand-cranked mechanism that peels a carrot's full length in one motion.",
     descriptor: "Mechanism Design & Fabrication · Academic",
     detail: {
       description: {
-        why: "EPFL's Construction Mécanique II project (Microtechnique BA2) tasked four-person teams with designing, from a fixed cahier des charges, a fully hand-powered carrot peeler ready for production — Tim's first mechanical construction project at EPFL, built with Vincent Bouzereau, Rim El Qabli, and Ranjeet Sapkota.",
-        what: "A hand-cranked carrot peeler where a rail-mounted blade carriage strips the carrot on the return stroke of a crank-rocker mechanism, while a partial gear indexes the carrot's rotation on the forward stroke so five crank turns cover its full length and circumference.",
-        how: "Scored four mechanism concepts (ring-drive, pen-click/Geneva, pendulum, and the chosen crank-rocker \"locomotive\") against a weighted criteria matrix, then modeled the kinematics, power/efficiency and gear-mesh calculations, and produced full 2D/3D technical drawings with ISO 2768-mk tolerancing for 3-axis-machined stainless steel, aluminum, and glass-fiber-nylon parts.",
+        why: "EPFL's Construction Mécanique II course tasked teams with designing a fully hand-powered carrot peeler ready for production.",
+        what: "A hand-cranked carrot peeler where a rail-mounted blade carriage strips the carrot on the return stroke, while a partial gear indexes its rotation on the forward stroke.",
+        how: "Scored four mechanism concepts (ring-drive, Geneva, pendulum, and the chosen crank-rocker) against a weighted matrix, then modeled the kinematics and produced full 2D/3D technical drawings for machining.",
       },
       challenges: [
         "Separating the carrot's rotation from the blade's translation to avoid a helical peeling motion, after early concepts (a rotating ring, a pen-click/Geneva mechanism) proved too bulky or unsafe.",
@@ -278,14 +279,14 @@ export const projectsContent: Translations["projectsContent"] = {
     },
   },
   "timit-connected-door-lock": {
-    title: "TimiT Connected Door Lock",
+    title: "TimiT - Connected Door Lock",
     tagline: "A WiFi-controlled door lock, built from scratch as a Swiss high-school engineering thesis.",
     descriptor: "Embedded Systems & Electronics · Academic",
     detail: {
       description: {
-        why: "The door to Tim's bedroom had no key, and any fix had to leave the glass door itself untouched — his Travail de Maturité (Swiss high-school thesis project) set out to lock and unlock it wirelessly instead, his first real engineering project.",
-        what: "A WiFi-connected door lock: a high-torque DC motor and 3D-printed housing clamp onto the existing latch, driven by an ESP8266 microcontroller and controlled from a smartphone app, with limit switches reporting whether the door is locked or open.",
-        how: "Measured the latch's real torque need, drove a geared DC motor through a DRV8871 H-bridge with a voltage-spike filter, wrote the ESP8266 firmware (WiFi, motor control, Blynk app, limit-switch logic) in the Arduino IDE, and designed and 3D-printed the clamp-on housing in Fusion 360 over nine months.",
+        why: "I wanted a WiFi-controlled door lock for my bedroom and needed a high-school engineering thesis.",
+        what: "A WiFi-connected door lock: a high-torque DC motor and 3D-printed housing clamp onto the existing latch, controlled from a smartphone app.",
+        how: "Measured the latch's real torque need, drove a geared DC motor through H-bridge, wrote the ESP8266 firmware, and designed and 3D-printed the clamp-on housing over nine months.",
       },
       challenges: [
         "The first H-bridge chip (SN754410) could only supply 1 A and sagged the motor's 5 V supply to 3 V under load — swapped to a DRV8871 driver rated to 3.6 A to get full torque.",
@@ -295,7 +296,7 @@ export const projectsContent: Translations["projectsContent"] = {
       images: [
         { src: "/images/projects/timit-connected-door-lock/01-electronics-assembly.jpg", alt: "Open 3D-printed housing showing the DC gear motor, DRV8871 driver, and limit switches wired inside", caption: "The lock's electronics, wired inside the printed housing", section: "how" },
       ],
-      role: "Solo Design & Firmware Engineer",
+      role: "Maker and Student",
       duration: "2020 – 2021",
       keyResults: ["Delivered a working WiFi-to-latch lock system within a self-imposed ~100 CHF prototyping budget (50 CHF target for the finished unit)"],
       scope: "Personal project (Travail de Maturité) · Gymnase de Morges · 2020–2021",
