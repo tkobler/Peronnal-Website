@@ -9,13 +9,13 @@ export const homeCards: Translations["homeCards"] = {
     title: "Work Experience",
     descriptor: "Developed and optimized a cochlear implant insertion tool as an R&D assistant in surgical robotics",
   },
-  "engineering-project": {
-    title: "Autonomous Terrain Rover",
-    descriptor: "Led a team of 3 to build vision-based navigation for uneven ground",
-  },
   hobby: {
     title: "Beyond Engineering",
     descriptor: "A portfolio can hold more than projects — this page shows how",
+  },
+  "get-in-touch": {
+    title: "Get in Touch",
+    descriptor: "Have a project, a role, or just a question? Let's talk",
   },
 };
 
