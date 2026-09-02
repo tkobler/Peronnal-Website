@@ -7,14 +7,29 @@ export const experience: Translations["experience"] = {
 export const experienceData: Translations["experienceData"] = {
   "swiss-solar-boat": {
     company: "Swiss Solar Boat",
-    location: "Bussigny, Suisse",
+    location: "Lausanne, Suisse",
     roles: [
       {
-        title: "Ingénieur Basse Tension",
-        period: "Sept. 2025 – Aujourd'hui",
+        title: "Lead Ingénieur Logiciel, Basse Tension",
+        period: "Sept. 2026 – Aujourd'hui",
         description: [
-          "Swiss Solar Boat développe un bateau à foils trois places, alimenté par panneaux solaires et pile à combustible hydrogène.",
-          "Membre de l'équipe basse tension, en charge des capteurs, actionneurs, unité de contrôle et câblage.",
+          "Dirige l'équipe logicielle basse tension pour la prochaine saison de compétition.",
+        ],
+      },
+      {
+        title: "Copilote, Énergie & Sécurité",
+        period: "Mai – juil. 2026",
+        description: [
+          "Copiloté les systèmes d'énergie et de sécurité en temps réel lors des tests sur l'eau et de la compétition Monaco Energy Boat Challenge.",
+          "Contribué à la première place de Swiss Solar Boat au Monaco Energy Boat Challenge 2026.",
+        ],
+      },
+      {
+        title: "Ingénieur Systèmes Électriques Basse Tension",
+        period: "Sept. 2025 – mai 2026",
+        description: [
+          "Construit et testé l'électronique basse tension sur banc, puis intégrée à bord avec un nouveau câblage CAN.",
+          "Écrit la logique de contrôle coordonnant tous les capteurs et sous-systèmes.",
         ],
       },
     ],
@@ -35,7 +50,7 @@ export const experienceData: Translations["experienceData"] = {
   },
   sterilux: {
     company: "SteriLux",
-    location: "Renens, Vaud, Suisse",
+    location: "Renens, Suisse",
     roles: [
       {
         title: "Ingénieur Conception de Circuits Imprimés",
@@ -65,21 +80,27 @@ export const experienceData: Translations["experienceData"] = {
   },
   "epfl-spacecraft-team": {
     company: "EPFL Spacecraft Team",
-    location: "Renens, Vaud, Suisse",
+    location: "Renens, Suisse",
     roles: [
       {
-        title: "Chef de Projet",
-        period: "Sept. 2022 – janv. 2024",
+        title: "Technicien d'Assemblage PCB",
+        period: "Janv. 2024",
         description: [
           'Assemblé l\'ordinateur de bord "Twocan" pour le satellite de la mission CHESS.',
-          "Dirigé une équipe de 4 personnes dans le cadre du programme CanSat, en concevant, testant et lançant un satellite de la taille d'une canette à environ 600 m, mesurant température, humidité, qualité de l'air, pression et accélérations durant une descente freinée par un parachute Rogallo conçu en interne.",
+        ],
+      },
+      {
+        title: "Ingénieur Conception PCB",
+        period: "Sept. 2022 – déc. 2023",
+        description: [
+          "Participé, au sein d'une équipe de 4 personnes, au programme CanSat, en concevant, testant et lançant un satellite de la taille d'une canette à environ 500 m, mesurant température, humidité, qualité de l'air, pression et accélérations durant une descente freinée par un parachute Rogallo conçu en interne.",
         ],
       },
     ],
   },
   rentimmo: {
     company: "Rentimmo Group",
-    location: "Suisse",
+    location: "Vaud, Suisse",
     roles: [
       {
         title: "Chef de Projet",

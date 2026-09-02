@@ -7,14 +7,29 @@ export const experience: Translations["experience"] = {
 export const experienceData: Translations["experienceData"] = {
   "swiss-solar-boat": {
     company: "Swiss Solar Boat",
-    location: "Bussigny, Switzerland",
+    location: "Lausanne, Switzerland",
     roles: [
       {
-        title: "Low Voltage Engineer",
-        period: "Sept. 2025 – Present",
+        title: "Lead Software Engineer, Low Voltage",
+        period: "Sept. 2026 – Present",
         description: [
-          "Swiss Solar Boat builds a three-seat foiling boat powered by solar panels and a hydrogen fuel cell.",
-          "Work on the low-voltage team, responsible for the sensors, actuators, control unit, and cabling.",
+          "Leads the low-voltage software team for the next competition season.",
+        ],
+      },
+      {
+        title: "Co-Pilot, Energy & Safety Systems",
+        period: "May – July 2026",
+        description: [
+          "Co-piloted energy and safety systems in real time during on-water tests and the Monaco Energy Boat Challenge.",
+          "Helped Swiss Solar Boat win first place at the 2026 Monaco Energy Boat Challenge.",
+        ],
+      },
+      {
+        title: "Low Voltage Engineer",
+        period: "Sept. 2025 – May 2026",
+        description: [
+          "Built and tested the boat's low-voltage electronics on a bench, then integrated it on board with new CAN wiring.",
+          "Wrote the control logic coordinating all sensors and subsystems.",
         ],
       },
     ],
@@ -35,7 +50,7 @@ export const experienceData: Translations["experienceData"] = {
   },
   sterilux: {
     company: "SteriLux",
-    location: "Renens, Vaud, Switzerland",
+    location: "Renens, Switzerland",
     roles: [
       {
         title: "Printed Circuit Board Design Engineer",
@@ -65,21 +80,27 @@ export const experienceData: Translations["experienceData"] = {
   },
   "epfl-spacecraft-team": {
     company: "EPFL Spacecraft Team",
-    location: "Renens, Vaud, Switzerland",
+    location: "Renens, Switzerland",
     roles: [
       {
-        title: "Project Manager",
-        period: "Sept. 2022 – Jan. 2024",
+        title: "PCB Assembly Technician",
+        period: "Jan. 2024",
         description: [
           'Assembled the "Twocan" on-board computer for the CHESS mission satellite.',
-          "Led a team of 4 through the CanSat programme, designing, testing, and launching a can-sized satellite to roughly 600 m that measured temperature, humidity, air quality, pressure, and acceleration during a descent braked by an in-house Rogallo parachute.",
+        ],
+      },
+      {
+        title: "PCB & Parachute Design Engineer",
+        period: "Sept. 2022 – Dec. 2023",
+        description: [
+          "Participated in a team of 4 to the CanSat programme, designing, testing, and launching a can-sized satellite to roughly 500 m that measured temperature, humidity, air quality, pressure, and acceleration during a descent braked by an in-house Rogallo parachute.",
         ],
       },
     ],
   },
   rentimmo: {
     company: "Rentimmo Group",
-    location: "Switzerland",
+    location: "Vaud, Switzerland",
     roles: [
       {
         title: "Project Manager",

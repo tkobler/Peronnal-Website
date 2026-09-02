@@ -20,17 +20,34 @@ export const experiences: ExperienceNode[] = [
   {
     id: "swiss-solar-boat",
     company: "Swiss Solar Boat",
-    location: "Bussigny, Switzerland",
+    location: "Lausanne, Switzerland",
     category: "engineering",
-    logo: "/images/placeholders/logo.svg",
+    logo: "/images/logos/swiss-solar-boat.png",
     roles: [
       {
-        title: "Low Voltage Engineer",
-        period: "Sept. 2025 – Present",
+        title: "Lead Software Engineer, Low Voltage",
+        period: "Sept. 2026 – Present",
         type: "Part-time",
         description: [
-          "Swiss Solar Boat builds a three-seat foiling boat powered by solar panels and a hydrogen fuel cell.",
-          "Work on the low-voltage team, responsible for the sensors, actuators, control unit, and cabling.",
+          "Leads the low-voltage software team for the next competition season.",
+        ],
+      },
+      {
+        title: "Co-Pilot, Energy & Safety Systems",
+        period: "May – July 2026",
+        type: "Part-time",
+        description: [
+          "Co-piloted energy and safety systems in real time during on-water tests and the Monaco Energy Boat Challenge.",
+          "Helped Swiss Solar Boat win first place at the 2026 Monaco Energy Boat Challenge.",
+        ],
+      },
+      {
+        title: "Low Voltage Engineer",
+        period: "Sept. 2025 – May 2026",
+        type: "Part-time",
+        description: [
+          "Built and tested the boat's low-voltage electronics on a bench, then integrated it on board with new CAN wiring.",
+          "Wrote the control logic coordinating all sensors and subsystems.",
         ],
       },
     ],
@@ -40,7 +57,7 @@ export const experiences: ExperienceNode[] = [
     company: "ARTORG Center for Biomedical Engineering Research",
     location: "Bern, Switzerland",
     category: "engineering",
-    logo: "/images/placeholders/logo.svg",
+    logo: "/images/logos/artorg.png",
     roles: [
       {
         title: "R&D Assistant – Surgical Robotics",
@@ -56,9 +73,9 @@ export const experiences: ExperienceNode[] = [
   {
     id: "sterilux",
     company: "SteriLux",
-    location: "Renens, Vaud, Switzerland",
+    location: "Renens, Switzerland",
     category: "engineering",
-    logo: "/images/placeholders/logo.svg",
+    logo: "/images/logos/sterilux.png",
     roles: [
       {
         title: "Printed Circuit Board Design Engineer",
@@ -92,17 +109,24 @@ export const experiences: ExperienceNode[] = [
   {
     id: "epfl-spacecraft-team",
     company: "EPFL Spacecraft Team",
-    location: "Renens, Vaud, Switzerland",
+    location: "Renens, Switzerland",
     category: "engineering",
-    logo: "/images/placeholders/logo.svg",
+    logo: "/images/logos/epfl-spacecraft-team.png",
     roles: [
       {
-        title: "Project Manager",
-        period: "Sept. 2022 – Jan. 2024",
-        type: "Part-time",
+        title: "PCB Assembly Technician",
+        period: "Jan. 2024",
+        type: "Internship",
         description: [
           'Assembled the "Twocan" on-board computer for the CHESS mission satellite.',
-          "Led a team of 4 through the CanSat programme, designing, testing, and launching a can-sized satellite to roughly 600 m that measured temperature, humidity, air quality, pressure, and acceleration during a descent braked by an in-house Rogallo parachute.",
+        ],
+      },
+      {
+        title: "PCB & Parachute Design Engineer",
+        period: "Sept. 2022 – Dec. 2023",
+        type: "Part-time",
+        description: [
+          "Participated in a team of 4 to the CanSat programme, designing, testing, and launching a can-sized satellite to roughly 500 m that measured temperature, humidity, air quality, pressure, and acceleration during a descent braked by an in-house Rogallo parachute.",
         ],
       },
     ],
@@ -110,9 +134,9 @@ export const experiences: ExperienceNode[] = [
   {
     id: "rentimmo",
     company: "Rentimmo Group",
-    location: "Switzerland",
+    location: "Vaud, Switzerland",
     category: "service",
-    logo: "/images/placeholders/logo.svg",
+    logo: "/images/logos/rentimmo.png",
     roles: [
       {
         title: "Project Manager",
