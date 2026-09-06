@@ -36,16 +36,21 @@ npm run test:score             # unit + e2e + visual + scorecard aggregation (sl
 npm run validate:i18n          # Checks EN/FR translation key parity
 ```
 
-## CV pipeline
+## CV
+The site serves `public/cv/cv-en.pdf` and `public/cv/cv-fr.pdf` directly.
+No command needed — replace the files, commit them.
+
+The Typst pipeline is parked (it no longer publishes into `public/`):
 ```bash
-npm run cv:build               # Compiles cv/variants/*.typ, copies PDFs to public/
+npm run cv:build               # Compiles cv/variants/*.typ into cv/output/
                                # Requires `typst` CLI installed locally
 bash cv/build.sh               # Same thing, directly
+cp cv/output/generic-en.pdf public/cv/cv-en.pdf   # Publish by hand, then commit
 ```
 
 ## Git housekeeping
 ```bash
-git ls-files public/cv-en.pdf  # Confirm a gitignored artifact isn't tracked
+git ls-files public/cv/        # Confirm your CV PDF IS tracked (it must be)
 git check-ignore -v <path>     # See which .gitignore rule matches a path
 git rm -r --cached <path>      # Untrack a file without deleting it from disk
 ```

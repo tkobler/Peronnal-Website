@@ -11,7 +11,7 @@ Work through the sections in order. Every section has a clear "done when" criter
 - **Node 20 or newer** — CI pins to 20, don't use 16 or 18
 - **npm** — this repo uses `package-lock.json`. Do not switch to pnpm/yarn without converting the lockfile
 - **git**
-- **Optional — `typst` CLI**: only required if you want to use the built-in [CV pipeline](#6-cv-pipeline-optional) to compile PDFs from Typst sources. Install with `brew install typst` on macOS, or see [typst.app](https://typst.app) for other platforms.
+- **Optional — `typst` CLI**: only required if you want to use the parked [Typst CV pipeline](#6-cv-download) to compile PDFs from Typst sources. Publishing a CV does not need it — you just drop your PDF in `public/cv/`. Install with `brew install typst` on macOS, or see [typst.app](https://typst.app) for other platforms.
 
 Check:
 ```bash
@@ -189,26 +189,31 @@ See [.claude/docs/testing-strategy.md](.claude/docs/testing-strategy.md) for the
 
 ---
 
-## 6. CV pipeline (optional)
+## 6. CV download
 
-The repo ships with a Typst-based CV pipeline in [cv/](cv/) that compiles PDFs and drops them into [public/](public/). If you don't want it, skip this section entirely and delete `cv/` plus the `npm run cv:build` script from [package.json](package.json).
+The Get in Touch page always shows a "Curriculum Vitae" card with two download buttons. They serve two files straight out of [public/cv/](public/cv/):
 
-If you want to use it:
+| File | Button |
+|---|---|
+| `public/cv/cv-en.pdf` | "Download English" |
+| `public/cv/cv-fr.pdf` | "Français" |
+
+To publish your own CV, replace those two PDFs with yours, keep the filenames, and **commit them**. No build step, and `typst` is not needed. Files under `public/cv/` are tracked by git on purpose: the GitHub Pages deploy builds from the repository, so an uncommitted PDF would 404 on the live site.
+
+If you'd rather use different filenames, or only offer one language, edit the two `<a>` links in [src/app/contact/ContactClient.tsx](src/app/contact/ContactClient.tsx) — the `href` sets which file is served, the `download` attribute sets the filename the visitor saves.
+
+### The Typst pipeline (optional, parked)
+
+The repo also ships a Typst CV source tree in [cv/](cv/) that compiles PDFs from structured data. It is no longer wired into the site: `npm run cv:build` compiles variants into `cv/output/`, but the step that copied them into `public/` is commented out in [cv/build.sh](cv/build.sh). If you don't want it at all, delete `cv/` plus the `npm run cv:build` script from [package.json](package.json).
+
+To use it:
 
 1. **Install typst**: `brew install typst` (macOS) or see [typst.app](https://typst.app).
 2. **Replace content** in [cv/data/](cv/data/): education, experience, skills — all structured Typst modules. Preserve the module structure; replace the values.
 3. **Review template** in [cv/template/](cv/template/): the layout functions. Tweak typography and margins here, not inline in variants.
 4. **Edit variants** in [cv/variants/](cv/variants/): `generic-en.typ` and `generic-fr.typ` are the main CVs. These are the files that get compiled.
-5. **Build**:
-   ```bash
-   npm run cv:build
-   ```
-   This runs [cv/build.sh](cv/build.sh), compiles all variants, and copies the PDFs to `public/cv-en.pdf` and `public/cv-fr.pdf`.
-6. **Important**: `public/cv-*.pdf` and `cv/output/` are **gitignored**. CI does NOT run `npm run cv:build` — you must either:
-   - (a) rebuild PDFs locally before each push, OR
-   - (b) remove them from `.gitignore` and commit them as tracked artifacts.
-
-Option (b) is simpler if you update your CV rarely.
+5. **Build**: `npm run cv:build` — output lands in `cv/output/` (gitignored).
+6. **Publish**: copy `cv/output/generic-{en,fr}.pdf` over `public/cv/cv-{en,fr}.pdf` and commit, or uncomment the "Publishing to the site" block in [cv/build.sh](cv/build.sh) to have the build do the copy for you. CI never runs `npm run cv:build`, so the committed PDF is always what goes live.
 
 ---
 

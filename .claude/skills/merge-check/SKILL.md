@@ -36,7 +36,7 @@ Run the pre-PR checklist for this repo against the current state of pending chan
 
 5. **Do NOT run these automatically** without asking:
    - `npm run test:visual:update` (regenerates baselines — destructive)
-   - `npm run cv:build` (requires `typst`, writes to `public/`)
+   - `npm run cv:build` (requires `typst`, writes to `cv/output/` only — publishing to `public/cv/` is manual)
    - `npm run test:score` (very slow — runs everything)
 
 6. **Report in this structure:**

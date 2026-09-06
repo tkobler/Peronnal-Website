@@ -20,7 +20,7 @@ This repo contains **two decoupled systems** that share a directory but almost n
                     (gitignored, built locally)
 ```
 
-The site **consumes** the PDFs via `<a href="/cv-en.pdf">` links. It does not know they come from Typst. The Typst pipeline knows nothing about Next.js. The only contract is the filename in [public/](../../public/).
+The site **consumes** two PDFs via `<a href="/cv/cv-en.pdf">` links in [ContactClient.tsx](../../src/app/contact/ContactClient.tsx), served from [public/cv/](../../public/cv/) and tracked by git (unlike the old `public/cv-*.pdf` artifacts). It does not know or care whether those PDFs came from Typst. The Typst pipeline is parked: its publish-to-`public/` step is commented out in [cv/build.sh](../../cv/build.sh).
 
 ## Site architecture
 
@@ -102,7 +102,7 @@ cv/
 ├── variants/
 │   ├── generic-en.typ ← main EN CV source
 │   └── generic-fr.typ ← main FR CV source
-├── build.sh           ← compiles variants → output/, copies to public/
+├── build.sh           ← compiles variants → output/ (publish step parked)
 ├── output/            ← built PDFs (gitignored)
 ├── archive/           ← historical variants + cover letters (gitignored)
 └── .venv/             ← python venv for optional pdf2docx conversion (gitignored)
@@ -111,14 +111,10 @@ cv/
 `npm run cv:build` is just a wrapper around `bash cv/build.sh`. The script:
 1. Runs `typst compile` on each file in `variants/`
 2. Writes PDFs to `cv/output/`
-3. Copies `generic-en.pdf` → `public/cv-en.pdf` and `generic-fr.pdf` → `public/cv-fr.pdf`
+3. ~~Copies `generic-en.pdf` → `public/cv-en.pdf` and `generic-fr.pdf` → `public/cv-fr.pdf`~~ — parked; copy over `public/cv/cv-{en,fr}.pdf` by hand and commit, or uncomment the block in `cv/build.sh`
 4. (Optionally, if uncommented) converts PDFs to DOCX via Python
 
-Because `public/cv-*.pdf` is gitignored, the site's CV download links only work if:
-- (a) someone ran `npm run cv:build` locally before `npm run build`, OR
-- (b) the PDFs are manually placed in `public/` before building.
-
-**This is a known friction point.** If CI ever starts building CVs, it will need `typst` installed in the runner.
+The site's CV download no longer depends on any of this. It links directly at PDFs committed under [public/cv/](../../public/cv/) — so downloads work in CI without `typst` in the runner. Using Typst again just means copying `cv/output/*.pdf` over `public/cv/cv-{en,fr}.pdf` and committing.
 
 ## Testing topology
 

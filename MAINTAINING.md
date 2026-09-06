@@ -102,11 +102,9 @@ It catches a key present in one locale but missing in the other. It will **not**
 
 ## Updating your CV
 
-The CV is a separate Typst pipeline in [cv/](cv/), not wired into the main build. After changing your experience, education, or skills:
-```bash
-npm run cv:build
-```
-This compiles [cv/variants/](cv/variants/) and drops fresh PDFs at `public/cv-en.pdf` and `public/cv-fr.pdf`. These are gitignored build artifacts — CI does not regenerate them, so rebuild locally before pushing if you want the updated PDFs live. See [SETUP.md §6](./SETUP.md#6-cv-pipeline-optional) for the full pipeline and [.claude/docs/](./.claude/docs/) for the `typst-eng` agent if you use Claude Code.
+The Get in Touch page serves [public/cv/cv-en.pdf](public/cv/) and [public/cv/cv-fr.pdf](public/cv/) directly. To update your CV, replace those two files with your own PDFs, keep the filenames, and **commit them** — `public/cv/` is tracked by git because GitHub Pages builds from the repo. Nothing to build, `typst` not required.
+
+The Typst pipeline in [cv/](cv/) still exists but is parked: `npm run cv:build` compiles [cv/variants/](cv/variants/) into `cv/output/`, and the step that used to copy PDFs into `public/` is commented out in [cv/build.sh](cv/build.sh). If you use it, copy the output over `public/cv/cv-{en,fr}.pdf` and commit — or uncomment that block to re-automate the copy. See [SETUP.md §6](./SETUP.md#6-cv-download) for both paths and [.claude/docs/](./.claude/docs/) for the `typst-eng` agent if you use Claude Code.
 
 ---
 
@@ -149,6 +147,6 @@ Every push to `main` (including a merged PR) triggers [.github/workflows/deploy.
 | Add a new activity | `/add-activity <folder>` (Claude Code), or edit the 3 files under [Adding a new activity](#adding-a-new-activity) |
 | Fix a typo or reword a sentence | Edit the relevant `translations/{en,fr}/*.ts` file, or use `/admin` locally |
 | Add/replace an image | Drop it in `public/images/...`, compress with `scripts/compress-images.js` |
-| Update my CV | Edit [cv/variants/](cv/variants/), then `npm run cv:build` |
+| Update my CV | Replace `cv-en.pdf` / `cv-fr.pdf` in [public/cv/](public/cv/) and commit them |
 | Check EN/FR are still in sync | `npm run validate:i18n` |
 | Ship a change | `npm run lint && npm run test:unit && npm run validate:i18n`, then push/PR to `main` |

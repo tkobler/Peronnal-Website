@@ -45,7 +45,7 @@ npm run lint             # ESLint
 npm run test:unit        # Vitest
 npm run test:e2e:tier1   # Fast e2e smoke (navigation + language + project cards)
 npm run validate:i18n    # EN/FR key parity
-npm run cv:build         # Typst CV pipeline (requires typst CLI)
+npm run cv:build         # Typst CV pipeline, parked (requires typst CLI)
 ```
 
 Full command reference: [.claude/docs/commands.md](./.claude/docs/commands.md).
