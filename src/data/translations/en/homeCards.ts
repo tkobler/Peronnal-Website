@@ -13,10 +13,6 @@ export const homeCards: Translations["homeCards"] = {
     title: "Beyond Engineering",
     descriptor: "A portfolio can hold more than projects — this page shows how",
   },
-  "get-in-touch": {
-    title: "Get in Touch",
-    descriptor: "Have a project, a role, or just a question? Let's talk",
-  },
 };
 
 export const explore: Translations["explore"] = "Explore";

@@ -45,16 +45,6 @@ const homeCards: HomeCard[] = [
     image: "/images/placeholders/wide.svg",
     layout: "boxed",
   },
-  {
-    id: "get-in-touch",
-    number: "04",
-    title: "Get in Touch",
-    tagline: "",
-    descriptor: "Have a project, a role, or just a question? Let's talk",
-    linkTo: "/contact",
-    image: "/images/placeholders/wide.svg",
-    layout: "full-screen",
-  },
 ];
 
 export function getHomeCards(): HomeCard[] {

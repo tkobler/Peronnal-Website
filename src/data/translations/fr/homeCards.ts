@@ -13,10 +13,6 @@ export const homeCards: Translations["homeCards"] = {
     title: "Au-delà de l'ingénierie",
     descriptor: "Un portfolio peut contenir plus que des projets — cette page montre comment",
   },
-  "get-in-touch": {
-    title: "Me contacter",
-    descriptor: "Un projet, un poste ou simplement une question ? Discutons-en",
-  },
 };
 
 export const explore: Translations["explore"] = "Explorer";

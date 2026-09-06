@@ -84,6 +84,35 @@ Everything user-facing lives in [src/data/translations/{en,fr}/](src/data/transl
 
 ---
 
+## The floating "Get in touch" button
+
+The home page carries a small pill pinned to its bottom-right corner — an envelope, the words "GET IN TOUCH" (or "ME CONTACTER" in French), and a green availability dot. It stays put while the page scrolls and links to `/contact`. It lives in [src/components/home/ContactFab.tsx](src/components/home/ContactFab.tsx) and is rendered only by the home page, not site-wide.
+
+Three constants at the top of that file are all you normally need:
+
+```ts
+const SHAPE: FabShape = "pill";   // "pill" | "circle" | "squircle"
+const ICON: FabIcon = "mail";     // "mail" | "paperPlane" | "chat" | "arrow"
+const STATUS_DOT = true;          // the small green "available" dot
+```
+
+`"pill"` is the wide shape that carries the written label; `"circle"` and `"squircle"` are icon-only and noticeably easier for a visitor to miss — the words are what make the button findable. The label is the existing `nav.getInTouch` translation, so it follows EN/FR on its own and needs no new strings.
+
+A paper-plane glyph is already drawn and waiting — switch `ICON` to `"paperPlane"` and that's the whole change. To add a glyph of your own, drop a 24×24 outline SVG path into the `ICONS` map in the same file and add its name to the `FabIcon` union.
+
+Size, colour and distance from the corner are CSS variables in [src/app/globals.css](src/app/globals.css) under the `CONTACT FAB` heading:
+
+```css
+--fab-size: 3.25rem;   /* height of the pill */
+--fab-icon: 1.2rem;    /* glyph size */
+--fab-inset: 1.75rem;  /* gap from the right and bottom edges */
+--fab-gap: 0.65rem;    /* space between glyph, label and dot */
+```
+
+The button is white with a dark label and inverts to dark on hover, which keeps it readable over both the light and dark bands of the home page without any scroll-driven theme switching. A narrow-phone media query in the same block trims the padding and type size so the longer French label still clears the screen edge.
+
+---
+
 ## Images
 
 Replace or add files under [public/images/](public/images/) (see [SETUP.md §2.3](./SETUP.md#23-images) for the full folder layout). The site serves images unoptimized (`images.unoptimized: true`), so compress before committing — [scripts/compress-images.js](scripts/compress-images.js) can do this for you.
@@ -146,6 +175,7 @@ Every push to `main` (including a merged PR) triggers [.github/workflows/deploy.
 | Add a new project | `/add-project <folder>` (Claude Code), or edit the 3 files under [Adding a new project](#adding-a-new-project) |
 | Add a new activity | `/add-activity <folder>` (Claude Code), or edit the 3 files under [Adding a new activity](#adding-a-new-activity) |
 | Fix a typo or reword a sentence | Edit the relevant `translations/{en,fr}/*.ts` file, or use `/admin` locally |
+| Change the floating contact button | Edit `SHAPE` / `ICON` in [ContactFab.tsx](src/components/home/ContactFab.tsx) |
 | Add/replace an image | Drop it in `public/images/...`, compress with `scripts/compress-images.js` |
 | Update my CV | Replace `cv-en.pdf` / `cv-fr.pdf` in [public/cv/](public/cv/) and commit them |
 | Check EN/FR are still in sync | `npm run validate:i18n` |

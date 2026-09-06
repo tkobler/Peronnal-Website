@@ -45,6 +45,7 @@
   --z-content: 10;
   --z-hero-content: 20;
   --z-locale: 40;
+  --z-fab: 900;
   --z-nav: 1000;
   --z-menu-backdrop: 1010;
   --z-menu-panel: 1020;
@@ -407,6 +408,154 @@ a, button, [role="button"], input, select, textarea {
 
 .nav-locale-sep {
   opacity: 0.4;
+}
+
+/* ============================================
+   CONTACT FAB (fixed bottom-right, home page only)
+   Rendered by src/components/home/ContactFab.tsx — the shape and the icon
+   are chosen there; the sizing, colour and position live here.
+   ============================================ */
+.contact-fab {
+  /* ─ The numbers worth tweaking ─ */
+  --fab-size: 3.25rem;     /* height (and diameter, for the round shapes) */
+  --fab-icon: 1.2rem;      /* glyph size inside it                        */
+  --fab-inset: 1.75rem;    /* gap from the right and bottom edges         */
+  --fab-gap: 0.65rem;      /* space between glyph, label and status dot   */
+
+  position: fixed;
+  right: max(var(--fab-inset), env(safe-area-inset-right, 0px));
+  bottom: max(var(--fab-inset), calc(env(safe-area-inset-bottom, 0px) + 0.5rem));
+  z-index: var(--z-fab);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fab-gap);
+  height: var(--fab-size);
+  width: var(--fab-size);
+  text-decoration: none;
+
+  /* White on both light and dark sections, so it needs no scroll-driven
+     theme switching — it stays readable over every band of the home page. */
+  background: #FFFFFF;
+  color: var(--light-text);
+  border: 1px solid rgba(10, 31, 46, 0.08);
+  box-shadow: 0 2px 6px rgba(10, 31, 46, 0.10), 0 8px 24px rgba(10, 31, 46, 0.14);
+
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s ease,
+              color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+/* ─ Shapes: picked via the SHAPE constant in ContactFab.tsx ─
+   "pill" is the wide one that carries the written label; the other two are
+   icon-only, so they collapse back to a square footprint. */
+.contact-fab[data-shape="pill"] {
+  width: auto;
+  border-radius: 999px;
+  padding-inline: 1.15rem;
+}
+.contact-fab[data-shape="circle"]   { border-radius: 999px; }
+.contact-fab[data-shape="squircle"] { border-radius: 0.9rem; }
+
+.contact-fab svg {
+  height: var(--fab-icon);
+  width: var(--fab-icon);
+  flex: none;
+}
+
+/* The written label — same mono/uppercase treatment as the site's other
+   call-to-action buttons ("EXPLORE", the nav menu's contact button). */
+.contact-fab-label {
+  font-family: var(--font-tag);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+  padding-top: 0.05em; /* optical centring against the uppercase mono */
+}
+
+/* Availability dot, borrowed from the nav menu's contact button. */
+.contact-fab-dot {
+  flex: none;
+  height: 0.4rem;
+  width: 0.4rem;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  animation: contact-fab-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes contact-fab-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+
+/* Icon-only shapes have nothing to sit beside the glyph. */
+.contact-fab[data-shape="circle"] .contact-fab-dot,
+.contact-fab[data-shape="squircle"] .contact-fab-dot {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+}
+
+.contact-fab:hover {
+  background: var(--dark-bg);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(10, 31, 46, 0.16), 0 12px 32px rgba(10, 31, 46, 0.20);
+}
+
+.contact-fab:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.contact-fab:focus-visible {
+  outline: 2px solid var(--dark-bg);
+  outline-offset: 3px;
+}
+
+/* Touch targets stay at the 44px minimum even if --fab-size is dialled down. */
+@media (pointer: coarse) {
+  .contact-fab {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Narrow phones: trim the pill so a long label ("ME CONTACTER") still clears
+   the edge of the screen comfortably. */
+@media (max-width: 420px) {
+  .contact-fab {
+    --fab-size: 3rem;
+    --fab-inset: 1.25rem;
+    --fab-gap: 0.5rem;
+  }
+
+  .contact-fab[data-shape="pill"] {
+    padding-inline: 1rem;
+  }
+
+  .contact-fab-label {
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-fab,
+  .contact-fab:hover,
+  .contact-fab:active {
+    transform: none;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .contact-fab-dot {
+    animation: none;
+  }
 }
 
 /* ============================================
