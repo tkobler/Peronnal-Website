@@ -23,7 +23,6 @@ export const projects: Translations["projects"] = {
   methodologyLabel: "Méthodologie",
   challengesLabel: "Défis & Décisions",
   publicationLabel: "Publication",
-  documentsLabel: "Documents",
   learnMoreLabel: "En savoir plus →",
   sourceLabel: "Source",
   filterAll: "Tout",

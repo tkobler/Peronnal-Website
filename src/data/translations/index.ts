@@ -100,7 +100,6 @@ export interface Translations {
     methodologyLabel: string;
     challengesLabel: string;
     publicationLabel: string;
-    documentsLabel: string;
     learnMoreLabel: string;
     sourceLabel: string;
     filterAll: string;
