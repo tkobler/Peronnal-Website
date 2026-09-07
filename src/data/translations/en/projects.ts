@@ -23,6 +23,7 @@ export const projects: Translations["projects"] = {
   methodologyLabel: "Methodology",
   challengesLabel: "Challenges & Decisions",
   publicationLabel: "Publication",
+  documentsLabel: "Documents",
   learnMoreLabel: "Learn more →",
   sourceLabel: "Source",
   filterAll: "All",
@@ -45,6 +46,9 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "A hierarchical, safety-first finite state machine that governs every subsystem of the Lobst'air, running in real time on the boat's onboard computer.",
         how: "Built a modular MATLAB Simulink/Stateflow architecture, compiled to C++ and deployed on a Speedgoat target computer.",
       },
+      documents: [
+        { href: "/documents/solar-boat-control-logic/semester-project-report.pdf", label: "Semester project report", filename: "Kobler_Global_Control_Logic_Report.pdf", lang: "en" },
+      ],
       role: "Overall Software Architecture Engineer and Coordinator",
       duration: "Spring 2026",
       scope: "Semester project · Swiss Solar Boat · Spring 2026",
@@ -90,6 +94,9 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/motion-focus/02-two-units-side.jpeg", alt: "Two Motion Focus units side by side", caption: "Two assembled Motion Focus actuators", section: "what" },
         { src: "/images/projects/motion-focus/03-two-units-wired.jpeg", alt: "Two Motion Focus V3 boards wired together for testing", caption: "V3 boards under bench test, wired for synchronized control", section: "how" },
       ],
+      documents: [
+        { href: "/documents/motion-focus/pitch-deck.pdf", label: "Pitch deck", filename: "Motion_Focus_Pitch_Deck.pdf", lang: "en" },
+      ],
       role: "Product Manager & Engineer",
       duration: "2024 – 2026",
       scope: "Personal project (with Alec Horth) → startup exploration, EPFL Technology Ventures I (MGT-434) · 2024–2026",
@@ -105,6 +112,9 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "A small raclette pan on a screw-in handle that clips onto a stick, sold as a self-produced student micro-business.",
         how: "Hand-built each pan and clamp from TIG-welded sheet steel in a home garage, then sold more than 50 units through a self-built website and Instagram shop.",
       },
+      documents: [
+        { href: "/documents/la-raclonette/guide-du-bon-racleur.pdf", label: "Le Guide du bon râcleur", filename: "La_Raclonette_Guide.pdf", lang: "fr" },
+      ],
       role: "Co-Founder",
       duration: "2022 – 2024",
       keyResults: ["Sold more than 50 units through a self-run e-commerce site and Instagram shop"],
@@ -124,6 +134,9 @@ export const projectsContent: Translations["projectsContent"] = {
       challenges: [
         "Fitting redundant environmental sensors, an IMU, GPS, a camera, LoRa telemetry, and battery management onto a single PCB within a 70 mm-diameter, 300–350 g CanSat.",
         "Designing and hand-sewing a Rogallo parachute that opened reliably and flew the CanSat in a controlled circle to maximize time aloft, validated first through ground throws and then drone drop tests before trusting it to a live rocket launch.",
+      ],
+      documents: [
+        { href: "/documents/cansat-epfl-spacecraft-team/preliminary-design-review.pdf", label: "Preliminary Design Review", filename: "CanSat_El_Tonio_PDR.pdf", lang: "en" },
       ],
       role: "PCB & Parachute Design Engineer",
       duration: "2022 – 2023",
@@ -210,6 +223,9 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "A complete set of MPC controllers (nominal, offset-free, robust tube, and nonlinear) that fly a 12-state rocket model to a stationary vertical landing in simulation.",
         how: "Linearized and decoupled the rocket dynamics into four subsystems, designed constrained LQR-MPC controllers for tracking, then added a disturbance observer, a robust tube-MPC, and a nonlinear MPC for comparison.",
       },
+      documents: [
+        { href: "/documents/mpc-rocket-landing-controller/project-report.pdf", label: "Project report", filename: "Kobler_MPC_Rocket_Landing_Report.pdf", lang: "en" },
+      ],
       role: "Student",
       duration: "Fall 2025",
       scope: "Team project (3 members, with Noé Syfrig and Marwane Mroueh) · EPFL ME-425 Model Predictive Control · Fall 2025",
@@ -228,6 +244,9 @@ export const projectsContent: Translations["projectsContent"] = {
       images: [
         { src: "/images/projects/dynabal-nanoforce-sensor/01-kinematic-architecture.png", alt: "Labeled kinematic diagram of the DYNABAL mechanism, showing masses M1–M4, the probe P, and the zero-adjustment actuator Z", caption: "Kinematic architecture: four balanced masses (M1–M4) keep the mechanism insensitive to gravity and acceleration", section: "how" },
         { src: "/images/projects/dynabal-nanoforce-sensor/02-construction-drawing.png", alt: "Detailed construction drawing of the DYNABAL sensor sub-assembly with numbered part callouts", caption: "Construction drawing of the preload and anti-rotation sub-assembly", section: "how" },
+      ],
+      documents: [
+        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Design report", filename: "DYNABAL_Design_Report.pdf", lang: "fr" },
       ],
       role: "Student",
       duration: "Spring 2023",
@@ -267,6 +286,9 @@ export const projectsContent: Translations["projectsContent"] = {
         "Separating the carrot's rotation from the blade's translation to avoid a helical peeling motion, after early concepts (a rotating ring, a pen-click/Geneva mechanism) proved too bulky or unsafe.",
         "Housing the partial-gear indexing drive out of reach of the user while keeping the whole mechanism foldable and compact enough for a kitchen counter.",
       ],
+      documents: [
+        { href: "/documents/l-epluche-carotte/rapport-de-projet.pdf", label: "Project report", filename: "Epluche_Carotte_Rapport.pdf", lang: "fr" },
+      ],
       role: "Student",
       duration: "Spring 2022",
       keyResults: [
@@ -295,6 +317,9 @@ export const projectsContent: Translations["projectsContent"] = {
       ],
       images: [
         { src: "/images/projects/timit-connected-door-lock/01-electronics-assembly.jpg", alt: "Open 3D-printed housing showing the DC gear motor, DRV8871 driver, and limit switches wired inside", caption: "The lock's electronics, wired inside the printed housing", section: "how" },
+      ],
+      documents: [
+        { href: "/documents/timit-connected-door-lock/travail-de-maturite.pdf", label: "Matura thesis", filename: "Kobler_TIMIT_Travail_de_Maturite.pdf", lang: "fr" },
       ],
       role: "Maker and Student",
       duration: "2020 – 2021",

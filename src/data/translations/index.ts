@@ -21,6 +21,17 @@ export interface ProjectImage {
   section?: "why" | "what" | "how" | "methodology" | "challenges" | "results";
 }
 
+export interface ProjectDocument {
+  /** Path under public/, e.g. "/documents/motion-focus/pitch-deck.pdf". */
+  href: string;
+  /** Link text, e.g. "Semester project report". */
+  label: string;
+  /** Name the browser saves the file under. Defaults to the name in `href`. */
+  filename?: string;
+  /** Language the document itself is written in, shown as a tag when set. */
+  lang?: Locale;
+}
+
 export interface ProjectContentTranslation {
   title: string;
   tagline: string;
@@ -31,6 +42,7 @@ export interface ProjectContentTranslation {
     challenges?: string[];
     publication?: string;
     images?: ProjectImage[];
+    documents?: ProjectDocument[];
     role: string;
     duration: string;
     keyResults?: string[];
@@ -88,6 +100,7 @@ export interface Translations {
     methodologyLabel: string;
     challengesLabel: string;
     publicationLabel: string;
+    documentsLabel: string;
     learnMoreLabel: string;
     sourceLabel: string;
     filterAll: string;

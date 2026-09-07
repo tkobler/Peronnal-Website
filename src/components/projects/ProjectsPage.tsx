@@ -95,6 +95,7 @@ export default function ProjectsPage() {
         const theme = i % 2 === 0 ? "dark" : "light";
         const isFlipping = flippingId === project.id;
         const tc = t.projectsContent[project.id];
+        const documents = tc?.detail.documents ?? project.detail.documents;
 
         return (
           <section
@@ -167,6 +168,31 @@ export default function ProjectsPage() {
                       </span>
                     ))}
                   </div>
+
+                  {documents && documents.length > 0 && (
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-[11px] uppercase tracking-widest font-bold opacity-40">{t.projects.documentsLabel}</h3>
+                      {documents.map((doc) => (
+                        <a
+                          key={doc.href}
+                          href={doc.href}
+                          download={doc.filename}
+                          className="inline-flex w-fit items-center gap-2 text-sm font-medium underline underline-offset-4 opacity-80 transition-opacity duration-200 hover:opacity-100"
+                        >
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" className="shrink-0 opacity-60">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                          </svg>
+                          {doc.label}
+                          <span className="sr-only"> (PDF)</span>
+                          {doc.lang && (
+                            <span aria-hidden="true" className="font-mono text-[0.6rem] uppercase tracking-wider opacity-50">{doc.lang}</span>
+                          )}
+                        </a>
+                      ))}
+                    </div>
+                  )}
 
                   {(project.detail.link || project.detail.sourceLink) && (
                     <div className="flex flex-wrap items-center gap-x-5 gap-y-2">

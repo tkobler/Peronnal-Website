@@ -111,6 +111,7 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
   const challenges = tc?.detail.challenges ?? project.detail.challenges;
   const publication = tc?.detail.publication ?? project.detail.publication;
   const images = tc?.detail.images ?? project.detail.images;
+  const documents = tc?.detail.documents ?? project.detail.documents;
   const link = project.detail.link;
   const sourceLink = project.detail.sourceLink;
 
@@ -343,6 +344,38 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
                       ))}
                     </div>
                   </div>
+                  {documents && documents.length > 0 && (
+                    <div>
+                      <h3 className="tag-text mb-2 uppercase tracking-widest opacity-50">{t.projects.documentsLabel}</h3>
+                      <ul className="space-y-2">
+                        {documents.map((doc) => (
+                          <li key={doc.href}>
+                            <a
+                              href={doc.href}
+                              download={doc.filename}
+                              className={`inline-flex items-center gap-2 font-medium underline underline-offset-4 transition-colors duration-200 ${
+                                isDark
+                                  ? "text-white/80 decoration-white/30 hover:text-white hover:decoration-white"
+                                  : "text-black/70 decoration-black/25 hover:text-black hover:decoration-black"
+                              }`}
+                              style={{ fontSize: "var(--text-base)" }}
+                            >
+                              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" className="flex-shrink-0 opacity-60">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                              </svg>
+                              {doc.label}
+                              <span className="sr-only"> (PDF)</span>
+                              {doc.lang && (
+                                <span aria-hidden="true" className="font-mono text-[0.6rem] uppercase tracking-wider opacity-50">{doc.lang}</span>
+                              )}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   {(link || sourceLink) && (
                     <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                       {link && (
