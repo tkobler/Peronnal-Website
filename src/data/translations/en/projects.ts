@@ -5,7 +5,7 @@ export const projects: Translations["projects"] = {
   subtitle: "Engineering and academic projects",
   contextLabel: "Context (The Why)",
   solutionLabel: "Solution (The What)",
-  implementationLabel: "Implementation (The How)",
+  implementationLabel: "My Implementation (The How)",
   roleLabel: "Role",
   durationLabel: "Duration",
   technologiesLabel: "Technologies",
@@ -48,7 +48,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/solar-boat-control-logic/semester-project-report.pdf", label: "Semester project report", filename: "Kobler_Global_Control_Logic_Report.pdf" },
       ],
-      role: "Overall Software Architecture Engineer and Coordinator",
+      role: "Software Architecture & Integration Lead",
       duration: "Spring 2026",
       scope: "Semester project · Swiss Solar Boat · Spring 2026",
     },
@@ -63,7 +63,7 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "A redesigned, force-instrumented insertion mechanism for cochlear implant electrodes, SLA 3D-printed and flexure-guided.",
         how: "Iterated SLA-printed prototypes of the force-sensing parallel-blade table, characterized the load cell, then wrote ESP32 firmware for foot-pedal-controlled insertion and validated it on 3D-printed cochlea and skull models.",
       },
-      role: "R&D Engineer",
+      role: "R&D Engineer, Medical Devices",
       duration: "Spring 2025",
       keyResults: [
         "Characterized the custom load-cell force sensor to a correction factor of ~1.04 with a measured ~4 mN/°C thermal drift, both correctable in firmware",
@@ -96,7 +96,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/motion-focus/pitch-deck.pdf", label: "Pitch deck", filename: "Motion_Focus_Pitch_Deck.pdf" },
       ],
-      role: "Product Manager & Engineer",
+      role: "Co-Founder & Lead Engineer",
       duration: "2024 – 2026",
       scope: "Personal project (with Alec Horth) → startup exploration, EPFL Technology Ventures I (MGT-434) · 2024–2026",
     },
@@ -111,10 +111,7 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "A small raclette pan on a screw-in handle that clips onto a stick, sold as a self-produced student micro-business.",
         how: "Hand-built each pan and clamp from TIG-welded sheet steel in a home garage, then sold more than 50 units through a self-built website and Instagram shop.",
       },
-      documents: [
-        { href: "/documents/la-raclonette/guide-du-bon-racleur.pdf", label: "Le Guide du bon râcleur", filename: "La_Raclonette_Guide.pdf" },
-      ],
-      role: "Co-Founder",
+      role: "Co-Founder — Design, Fabrication & Sales",
       duration: "2022 – 2024",
       keyResults: ["Sold more than 50 units through a self-run e-commerce site and Instagram shop"],
       scope: "Personal project (with Léonard) · student micro-business · 2022–2024",
@@ -137,7 +134,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/cansat-epfl-spacecraft-team/preliminary-design-review.pdf", label: "Preliminary Design Review", filename: "CanSat_El_Tonio_PDR.pdf" },
       ],
-      role: "PCB & Parachute Design Engineer",
+      role: "Avionics & Recovery Engineer",
       duration: "2022 – 2023",
       keyResults: [
         "Flew two rocket-launched test campaigns; the second CanSat completed a stable, 90+ second controlled circular glide under the self-built Rogallo parachute after deployment at ~500 m.",
@@ -160,7 +157,7 @@ export const projectsContent: Translations["projectsContent"] = {
       images: [
         { src: "/images/projects/twocan-pcb-assembly-epfl-spacecraft-team/01-pcb-fixture.jpg", alt: "Twocan onboard computer PCB mounted in a test fixture during integration", caption: "The assembled Twocan flight computer board", section: "what" },
       ],
-      role: "PCB Assembly Technician",
+      role: "Flight Hardware Assembly Technician",
       duration: "Spring 2024",
       scope: "Team project (3 members) · EPFL Spacecraft Team · Spring 2024",
     },
@@ -183,7 +180,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/first-lego-league/01-robot-build.jpg", alt: "LEGO Mindstorms EV3 robot with swappable gripper and lift attachments next to a mission model", caption: "The team's EV3 robot mid-build, with attachments for scoring individual missions", section: "how" },
         { src: "/images/projects/first-lego-league/02-trophies.jpg", alt: "Three FIRST LEGO League regional trophies: Best Robot, Champion FLL, and Robot Game Winner, season 2019/2020", caption: "Best Robot, Regional Champion, and Robot Game Winner — Lausanne regional, 2019/2020", section: "what" },
       ],
-      role: "Team Member",
+      role: "Robot Design & Programming",
       duration: "2019 – 2020",
       keyResults: [
         "Won 1st place at the FLL regional competition (Lausanne, Switzerland), earning Best Robot, Regional Champion, and Robot Game Winner awards",
@@ -207,7 +204,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/le-duplo/02-open-case.jpeg", alt: "Open Duplo-shaped enclosure showing the PCB, speaker, and LiPo battery fitted inside", caption: "The assembled internals: PCB, speaker, and LiPo battery packed into the Duplo-shaped case", section: "how" },
         { src: "/images/projects/le-duplo/03-pcb-back.jpeg", alt: "Back of the PCB, silkscreened 'Le Duplo by TK' next to the 3D-printed enclosure", caption: "Tim's first custom PCB design, silkscreened with its own name", section: "why" },
       ],
-      role: "Maker",
+      role: "Hardware Designer (Personal Project)",
       duration: "Spring 2021",
       scope: "Personal project · Spring 2021",
     },
@@ -225,7 +222,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/mpc-rocket-landing-controller/project-report.pdf", label: "Project report", filename: "Kobler_MPC_Rocket_Landing_Report.pdf" },
       ],
-      role: "Student",
+      role: "MPC Controller Design (Course Project)",
       duration: "Fall 2025",
       scope: "Team project (3 members, with Noé Syfrig and Marwane Mroueh) · EPFL ME-425 Model Predictive Control · Fall 2025",
     },
@@ -245,9 +242,9 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/dynabal-nanoforce-sensor/02-construction-drawing.png", alt: "Detailed construction drawing of the DYNABAL sensor sub-assembly with numbered part callouts", caption: "Construction drawing of the preload and anti-rotation sub-assembly", section: "how" },
       ],
       documents: [
-        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Design report", filename: "DYNABAL_Design_Report.pdf" },
+        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Project report", filename: "DYNABAL_Design_Report.pdf" },
       ],
-      role: "Student",
+      role: "Flexure Design & Analysis (Course Project)",
       duration: "Spring 2023",
       keyResults: [
         "Reached a computed force resolution of 9.45 nN (50× finer than the 500 nN brief) with a max force of 2.58 N and a 272×10⁶ virtual dynamic range.",
@@ -266,7 +263,7 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "An autonomous navigation system letting a Thymio robot reach any goal on a marked arena, combining a visibility-graph planner, an Extended Kalman Filter, and reactive obstacle avoidance.",
         how: "Built in Python with ArUco localization, a Dijkstra planner, and a 5-state EKF fusing camera pose with wheel odometry, tuning its noise from calibration runs.",
       },
-      role: "Student",
+      role: "Robotics Team Lead (Course Project)",
       duration: "Fall 2025",
       scope: "Team project (4 members, with Jules Villaret, Amir Lahlou, Ana Schwabedal) · MICRO-452 Basics of Mobile Robotics, EPFL · Fall 2025",
     },
@@ -288,7 +285,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/l-epluche-carotte/rapport-de-projet.pdf", label: "Project report", filename: "Epluche_Carotte_Rapport.pdf" },
       ],
-      role: "Student",
+      role: "Design Team Lead (Course Project)",
       duration: "Spring 2022",
       keyResults: [
         "Reached 95.5% mechanical efficiency on the translation phase and 92% on the rotation phase, both above the 90% target",
@@ -320,7 +317,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/timit-connected-door-lock/travail-de-maturite.pdf", label: "Matura thesis", filename: "Kobler_TIMIT_Travail_de_Maturite.pdf" },
       ],
-      role: "Maker and Student",
+      role: "Mechatronics Developer",
       duration: "2020 – 2021",
       keyResults: ["Delivered a working WiFi-to-latch lock system within a self-imposed ~100 CHF prototyping budget (50 CHF target for the finished unit)"],
       scope: "Personal project (Travail de Maturité) · Gymnase de Morges · 2020–2021",

@@ -5,7 +5,7 @@ export const projects: Translations["projects"] = {
   subtitle: "Projets en ingénierie et recherche",
   contextLabel: "Contexte (Le Pourquoi)",
   solutionLabel: "Solution (Le Quoi)",
-  implementationLabel: "Réalisation (Le Comment)",
+  implementationLabel: "Mon Implémentation (Le Comment)",
   roleLabel: "Rôle",
   durationLabel: "Durée",
   technologiesLabel: "Technologies",
@@ -48,7 +48,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/solar-boat-control-logic/semester-project-report.pdf", label: "Rapport de projet de semestre", filename: "Kobler_Global_Control_Logic_Report.pdf" },
       ],
-      role: "Ingénieur Architecture Logicielle Globale et Coordination",
+      role: "Responsable Architecture Logicielle & Intégration",
       duration: "Printemps 2026",
       scope: "Projet de semestre · Swiss Solar Boat · Printemps 2026",
     },
@@ -63,7 +63,7 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "Un mécanisme d'insertion instrumenté et redessiné pour les électrodes d'implant cochléaire, imprimé en SLA et guidé par lames flexibles.",
         how: "Itération de prototypes imprimés en SLA de la table de mesure de force à lames parallèles, caractérisation du capteur de charge, développement d'un firmware ESP32 pour une insertion pilotée par pédale, puis validation sur des modèles de cochlée et de crâne imprimés en 3D.",
       },
-      role: "Ingénieur R&D",
+      role: "Ingénieur R&D, Dispositifs Médicaux",
       duration: "Printemps 2025",
       keyResults: [
         "Caractérisation du capteur de force sur-mesure à un facteur de correction d'environ 1.04, avec une dérive thermique mesurée d'environ 4 mN/°C, toutes deux corrigeables dans le firmware",
@@ -96,7 +96,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/motion-focus/pitch-deck.pdf", label: "Pitch deck", filename: "Motion_Focus_Pitch_Deck.pdf" },
       ],
-      role: "Chef de Produit & Ingénieur",
+      role: "Co-Fondateur & Ingénieur Principal",
       duration: "2024 – 2026",
       scope: "Projet personnel (avec Alec Horth) → exploration startup, cours EPFL Technology Ventures I (MGT-434) · 2024–2026",
     },
@@ -111,10 +111,7 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "Une petite poêle à raclette montée sur un manche à visser sur un bâton, vendue comme micro-entreprise étudiante autoproduite.",
         how: "Fabrication artisanale de chaque poêle et de son mécanisme de serrage en tôle soudée au TIG, puis vente de plus de 50 exemplaires via un site web et une boutique Instagram autoproduits.",
       },
-      documents: [
-        { href: "/documents/la-raclonette/guide-du-bon-racleur.pdf", label: "Le Guide du bon râcleur", filename: "La_Raclonette_Guide.pdf" },
-      ],
-      role: "Co-Fondateur",
+      role: "Co-Fondateur — Conception, Fabrication & Vente",
       duration: "2022 – 2024",
       keyResults: ["Plus de 50 exemplaires vendus via un site e-commerce et une boutique Instagram autoproduits"],
       scope: "Projet personnel (avec Léonard) · micro-entreprise étudiante · 2022–2024",
@@ -137,7 +134,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/cansat-epfl-spacecraft-team/preliminary-design-review.pdf", label: "Revue de conception préliminaire", filename: "CanSat_El_Tonio_PDR.pdf" },
       ],
-      role: "Ingénieur PCB & Conception du parachute",
+      role: "Ingénieur Avionique & Récupération",
       duration: "2022 – 2023",
       keyResults: [
         "Deux campagnes de lancement en fusée ; le second CanSat a réalisé un vol plané circulaire contrôlé de plus de 90 secondes sous le parachute Rogallo fait maison après largage à environ 500 m.",
@@ -160,7 +157,7 @@ export const projectsContent: Translations["projectsContent"] = {
       images: [
         { src: "/images/projects/twocan-pcb-assembly-epfl-spacecraft-team/01-pcb-fixture.jpg", alt: "Carte de l'ordinateur de bord Twocan montée dans un support de test pendant l'intégration", caption: "La carte de l'ordinateur de bord Twocan assemblée", section: "what" },
       ],
-      role: "Technicien d'assemblage PCB",
+      role: "Technicien d'assemblage matériel de vol",
       duration: "Printemps 2024",
       scope: "Projet d'équipe (3 membres) · EPFL Spacecraft Team · Printemps 2024",
     },
@@ -183,7 +180,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/first-lego-league/01-robot-build.jpg", alt: "Robot LEGO Mindstorms EV3 avec pince et bras releveur interchangeables, à côté d'un modèle de mission", caption: "Le robot EV3 de l'équipe en cours de construction, avec ses accessoires pour accomplir chaque mission", section: "how" },
         { src: "/images/projects/first-lego-league/02-trophies.jpg", alt: "Trois trophées régionaux FIRST LEGO League : Meilleur Robot, Champion FLL et Vainqueur Robot-Game, saison 2019/2020", caption: "Meilleur Robot, Champion régional et Vainqueur Robot-Game — régional de Lausanne, 2019/2020", section: "what" },
       ],
-      role: "Membre de l'équipe",
+      role: "Conception & Programmation du robot",
       duration: "2019 – 2020",
       keyResults: [
         "Remporté la 1ère place au concours régional FLL (Lausanne, Suisse), avec les prix Meilleur Robot, Champion FLL et Vainqueur Robot-Game",
@@ -207,7 +204,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/le-duplo/02-open-case.jpeg", alt: "Boîtier Duplo ouvert montrant le PCB, le haut-parleur et la batterie LiPo à l'intérieur", caption: "L'intérieur assemblé : PCB, haut-parleur et batterie LiPo logés dans le boîtier en forme de Duplo", section: "how" },
         { src: "/images/projects/le-duplo/03-pcb-back.jpeg", alt: "Dos du PCB, sérigraphié « Le Duplo by TK », à côté du boîtier imprimé en 3D", caption: "Le tout premier PCB sur-mesure de Tim, sérigraphié à son propre nom", section: "why" },
       ],
-      role: "Maker",
+      role: "Concepteur Hardware (Projet personnel)",
       duration: "Printemps 2021",
       scope: "Projet personnel · Printemps 2021",
     },
@@ -225,7 +222,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/mpc-rocket-landing-controller/project-report.pdf", label: "Rapport de projet", filename: "Kobler_MPC_Rocket_Landing_Report.pdf" },
       ],
-      role: "Étudiant",
+      role: "Conception de Contrôleurs MPC (Projet de cours)",
       duration: "Automne 2025",
       scope: "Projet d'équipe (3 membres, avec Noé Syfrig et Marwane Mroueh) · Cours EPFL ME-425 Model Predictive Control · Automne 2025",
     },
@@ -245,9 +242,9 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/dynabal-nanoforce-sensor/02-construction-drawing.png", alt: "Dessin de construction détaillé du sous-ensemble du capteur DYNABAL avec repères de pièces numérotés", caption: "Dessin de construction du sous-ensemble de précharge et anti-rotation", section: "how" },
       ],
       documents: [
-        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Rapport de conception", filename: "DYNABAL_Design_Report.pdf" },
+        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Rapport de Projet", filename: "DYNABAL_Design_Report.pdf" },
       ],
-      role: "Étudiant",
+      role: "Conception & Analyse de Guidages Flexibles (Projet de cours)",
       duration: "Printemps 2023",
       keyResults: [
         "Résolution de force calculée de 9.45 nN (50 fois plus fine que l'objectif de 500 nN), avec une force max de 2.58 N et une gamme dynamique virtuelle de 272×10⁶.",
@@ -266,7 +263,7 @@ export const projectsContent: Translations["projectsContent"] = {
         what: "Un système de navigation autonome permettant à un robot Thymio de rejoindre n'importe quel objectif sur une arène balisée, combinant un planificateur par graphe de visibilité, un filtre de Kalman étendu, et un évitement d'obstacles réactif.",
         how: "Développé en Python avec localisation ArUco, un planificateur Dijkstra, et un filtre de Kalman étendu à 5 états fusionnant pose caméra et odométrie, avec réglage du bruit à partir de mesures empiriques.",
       },
-      role: "Étudiant",
+      role: "Chef d'Équipe Robotique (Projet de cours)",
       duration: "Automne 2025",
       scope: "Projet d'équipe (4 membres, avec Jules Villaret, Amir Lahlou, Ana Schwabedal) · MICRO-452 Basics of Mobile Robotics, EPFL · Automne 2025",
     },
@@ -288,7 +285,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/l-epluche-carotte/rapport-de-projet.pdf", label: "Rapport de projet", filename: "Epluche_Carotte_Rapport.pdf" },
       ],
-      role: "Étudiant",
+      role: "Chef d'Équipe Conception (Projet de cours)",
       duration: "Printemps 2022",
       keyResults: [
         "Rendement mécanique de 95,5% en phase de translation et 92% en phase de rotation, tous deux au-dessus de l'objectif de 90%",
@@ -320,7 +317,7 @@ export const projectsContent: Translations["projectsContent"] = {
       documents: [
         { href: "/documents/timit-connected-door-lock/travail-de-maturite.pdf", label: "Travail de maturité", filename: "Kobler_TIMIT_Travail_de_Maturite.pdf" },
       ],
-      role: "Maker et Étudiant",
+      role: "Développeur Mécatronique",
       duration: "2020 – 2021",
       keyResults: ["Système serrure connectée fonctionnel, de l'application au verrou, livré dans un budget de prototypage auto-imposé d'environ 100 CHF (objectif de 50 CHF pour l'unité finale)"],
       scope: "Projet personnel (Travail de Maturité) · Gymnase de Morges · 2020–2021",

@@ -323,12 +323,14 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
                 {/* Metadata */}
                 <div className={`space-y-6 rounded-xl border ${subtleBorder} ${subtleBg}`} style={{ padding: "clamp(1.25rem, 3vh, 2rem)" }}>
                   <div>
-                    <h3 className="tag-text mb-1.5 uppercase tracking-widest opacity-50">{t.projects.roleLabel}</h3>
-                    <p className="font-medium" style={{ fontSize: "var(--text-base)" }}>{tc?.detail.role ?? project.detail.role}</p>
-                  </div>
-                  <div>
-                    <h3 className="tag-text mb-1.5 uppercase tracking-widest opacity-50">{t.projects.durationLabel}</h3>
-                    <p className="font-medium" style={{ fontSize: "var(--text-base)" }}>{tc?.detail.duration ?? project.detail.duration}</p>
+                    <div className="tag-text mb-1.5 flex items-baseline justify-between gap-4 uppercase tracking-widest opacity-50">
+                      <h3>{t.projects.roleLabel}</h3>
+                      <p className="shrink-0">
+                        <span className="sr-only">{t.projects.durationLabel}: </span>
+                        {tc?.detail.duration ?? project.detail.duration}
+                      </p>
+                    </div>
+                    <p className="font-semibold leading-snug" style={{ fontSize: "var(--text-xl)" }}>{tc?.detail.role ?? project.detail.role}</p>
                   </div>
                   <div>
                     <h3 className="tag-text mb-2 uppercase tracking-widest opacity-50">{t.projects.technologiesLabel}</h3>

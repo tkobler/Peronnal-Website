@@ -147,15 +147,15 @@ export default function ProjectsPage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-8 border-t border-current/10 pt-6">
-                    <div>
-                      <h3 className="text-[11px] uppercase tracking-widest opacity-40 mb-1 font-bold">{t.projects.roleLabel}</h3>
-                      <p className="text-sm font-medium">{tc?.detail.role ?? project.detail.role}</p>
+                  <div className="border-t border-current/10 pt-6">
+                    <div className="flex items-baseline justify-between gap-4 text-[11px] uppercase tracking-widest opacity-40 font-bold">
+                      <h3>{t.projects.roleLabel}</h3>
+                      <p className="shrink-0">
+                        <span className="sr-only">{t.projects.durationLabel}: </span>
+                        {tc?.detail.duration ?? project.detail.duration}
+                      </p>
                     </div>
-                    <div>
-                      <h3 className="text-[11px] uppercase tracking-widest opacity-40 mb-1 font-bold">{t.projects.durationLabel}</h3>
-                      <p className="text-sm font-medium">{tc?.detail.duration ?? project.detail.duration}</p>
-                    </div>
+                    <p className="mt-1.5 text-[clamp(1.1rem,1.8vw,1.5rem)] font-semibold leading-snug">{tc?.detail.role ?? project.detail.role}</p>
                   </div>
 
                   <div className="flex flex-wrap gap-2">
