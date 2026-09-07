@@ -60,7 +60,7 @@ const projects: Project[] = [
         how: "Built a modular MATLAB Simulink/Stateflow architecture, compiled to C++ and deployed on a Speedgoat target computer.",
       },
       documents: [
-        { href: "/documents/solar-boat-control-logic/semester-project-report.pdf", label: "Semester project report", filename: "Kobler_Global_Control_Logic_Report.pdf", lang: "en" },
+        { href: "/documents/solar-boat-control-logic/semester-project-report.pdf", label: "Semester project report", filename: "Kobler_Global_Control_Logic_Report.pdf" },
       ],
       role: "Overall Software Architecture Engineer and Coordinator",
       duration: "Spring 2026",
@@ -124,7 +124,7 @@ const projects: Project[] = [
         { src: "/images/projects/motion-focus/03-two-units-wired.jpeg", alt: "Two Motion Focus V3 boards wired together for testing", caption: "V3 boards under bench test, wired for synchronized control", section: "how" },
       ],
       documents: [
-        { href: "/documents/motion-focus/pitch-deck.pdf", label: "Pitch deck", filename: "Motion_Focus_Pitch_Deck.pdf", lang: "en" },
+        { href: "/documents/motion-focus/pitch-deck.pdf", label: "Pitch deck", filename: "Motion_Focus_Pitch_Deck.pdf" },
       ],
       role: "Product Manager & Engineer",
       duration: "2024 – 2026",
@@ -150,7 +150,7 @@ const projects: Project[] = [
         how: "Linearized and decoupled the rocket dynamics into four subsystems, designed constrained LQR-MPC controllers for tracking, then added a disturbance observer, a robust tube-MPC, and a nonlinear MPC for comparison.",
       },
       documents: [
-        { href: "/documents/mpc-rocket-landing-controller/project-report.pdf", label: "Project report", filename: "Kobler_MPC_Rocket_Landing_Report.pdf", lang: "en" },
+        { href: "/documents/mpc-rocket-landing-controller/project-report.pdf", label: "Project report", filename: "Kobler_MPC_Rocket_Landing_Report.pdf" },
       ],
       role: "Student",
       duration: "Fall 2025",
@@ -178,7 +178,7 @@ const projects: Project[] = [
         "Designing and hand-sewing a Rogallo parachute that opened reliably and flew the CanSat in a controlled circle to maximize time aloft, validated first through ground throws and then drone drop tests before trusting it to a live rocket launch.",
       ],
       documents: [
-        { href: "/documents/cansat-epfl-spacecraft-team/preliminary-design-review.pdf", label: "Preliminary Design Review", filename: "CanSat_El_Tonio_PDR.pdf", lang: "en" },
+        { href: "/documents/cansat-epfl-spacecraft-team/preliminary-design-review.pdf", label: "Preliminary Design Review", filename: "CanSat_El_Tonio_PDR.pdf" },
       ],
       role: "PCB & Parachute Design Engineer",
       duration: "2022 – 2023",
@@ -233,7 +233,7 @@ const projects: Project[] = [
         how: "Hand-built each pan and clamp from TIG-welded sheet steel in a home garage, then sold more than 50 units through a self-built website and Instagram shop.",
       },
       documents: [
-        { href: "/documents/la-raclonette/guide-du-bon-racleur.pdf", label: "Le Guide du bon râcleur", filename: "La_Raclonette_Guide.pdf", lang: "fr" },
+        { href: "/documents/la-raclonette/guide-du-bon-racleur.pdf", label: "Le Guide du bon râcleur", filename: "La_Raclonette_Guide.pdf" },
       ],
       role: "Co-Founder",
       duration: "2022 – 2024",
@@ -286,7 +286,7 @@ const projects: Project[] = [
         { src: "/images/projects/dynabal-nanoforce-sensor/02-construction-drawing.png", alt: "Detailed construction drawing of the DYNABAL sensor sub-assembly with numbered part callouts", caption: "Construction drawing of the preload and anti-rotation sub-assembly", section: "how" },
       ],
       documents: [
-        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Design report", filename: "DYNABAL_Design_Report.pdf", lang: "fr" },
+        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Design report", filename: "DYNABAL_Design_Report.pdf" },
       ],
       role: "Student",
       duration: "Spring 2023",
@@ -319,7 +319,7 @@ const projects: Project[] = [
         "Housing the partial-gear indexing drive out of reach of the user while keeping the whole mechanism foldable and compact enough for a kitchen counter.",
       ],
       documents: [
-        { href: "/documents/l-epluche-carotte/rapport-de-projet.pdf", label: "Project report", filename: "Epluche_Carotte_Rapport.pdf", lang: "fr" },
+        { href: "/documents/l-epluche-carotte/rapport-de-projet.pdf", label: "Project report", filename: "Epluche_Carotte_Rapport.pdf" },
       ],
       role: "Student",
       duration: "Spring 2022",
@@ -383,7 +383,7 @@ const projects: Project[] = [
         { src: "/images/projects/timit-connected-door-lock/01-electronics-assembly.jpg", alt: "Open 3D-printed housing showing the DC gear motor, DRV8871 driver, and limit switches wired inside", caption: "The lock's electronics, wired inside the printed housing", section: "how" },
       ],
       documents: [
-        { href: "/documents/timit-connected-door-lock/travail-de-maturite.pdf", label: "Matura thesis", filename: "Kobler_TIMIT_Travail_de_Maturite.pdf", lang: "fr" },
+        { href: "/documents/timit-connected-door-lock/travail-de-maturite.pdf", label: "Matura thesis", filename: "Kobler_TIMIT_Travail_de_Maturite.pdf" },
       ],
       role: "Maker and Student",
       duration: "2020 – 2021",

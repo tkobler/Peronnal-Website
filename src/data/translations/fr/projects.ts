@@ -46,7 +46,7 @@ export const projectsContent: Translations["projectsContent"] = {
         how: "Architecture modulaire MATLAB Simulink/Stateflow, compilée en C++ et déployée sur un ordinateur cible Speedgoat.",
       },
       documents: [
-        { href: "/documents/solar-boat-control-logic/semester-project-report.pdf", label: "Rapport de projet de semestre", filename: "Kobler_Global_Control_Logic_Report.pdf", lang: "en" },
+        { href: "/documents/solar-boat-control-logic/semester-project-report.pdf", label: "Rapport de projet de semestre", filename: "Kobler_Global_Control_Logic_Report.pdf" },
       ],
       role: "Ingénieur Architecture Logicielle Globale et Coordination",
       duration: "Printemps 2026",
@@ -94,7 +94,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/motion-focus/03-two-units-wired.jpeg", alt: "Deux PCB Motion Focus V3 câblés ensemble pour les tests", caption: "PCB V3 en test sur banc, câblés pour un contrôle synchronisé", section: "how" },
       ],
       documents: [
-        { href: "/documents/motion-focus/pitch-deck.pdf", label: "Pitch deck", filename: "Motion_Focus_Pitch_Deck.pdf", lang: "en" },
+        { href: "/documents/motion-focus/pitch-deck.pdf", label: "Pitch deck", filename: "Motion_Focus_Pitch_Deck.pdf" },
       ],
       role: "Chef de Produit & Ingénieur",
       duration: "2024 – 2026",
@@ -112,7 +112,7 @@ export const projectsContent: Translations["projectsContent"] = {
         how: "Fabrication artisanale de chaque poêle et de son mécanisme de serrage en tôle soudée au TIG, puis vente de plus de 50 exemplaires via un site web et une boutique Instagram autoproduits.",
       },
       documents: [
-        { href: "/documents/la-raclonette/guide-du-bon-racleur.pdf", label: "Le Guide du bon râcleur", filename: "La_Raclonette_Guide.pdf", lang: "fr" },
+        { href: "/documents/la-raclonette/guide-du-bon-racleur.pdf", label: "Le Guide du bon râcleur", filename: "La_Raclonette_Guide.pdf" },
       ],
       role: "Co-Fondateur",
       duration: "2022 – 2024",
@@ -135,7 +135,7 @@ export const projectsContent: Translations["projectsContent"] = {
         "Concevoir et coudre un parachute Rogallo s'ouvrant de manière fiable et faisant planer le CanSat en cercle pour maximiser son temps de vol, validé d'abord par des lâchers au sol puis des tests de largage au drone avant de lui faire confiance lors d'un vrai lancement en fusée.",
       ],
       documents: [
-        { href: "/documents/cansat-epfl-spacecraft-team/preliminary-design-review.pdf", label: "Revue de conception préliminaire", filename: "CanSat_El_Tonio_PDR.pdf", lang: "en" },
+        { href: "/documents/cansat-epfl-spacecraft-team/preliminary-design-review.pdf", label: "Revue de conception préliminaire", filename: "CanSat_El_Tonio_PDR.pdf" },
       ],
       role: "Ingénieur PCB & Conception du parachute",
       duration: "2022 – 2023",
@@ -223,7 +223,7 @@ export const projectsContent: Translations["projectsContent"] = {
         how: "Linéarisation et découplage de la dynamique de la fusée en quatre sous-systèmes, conception de contrôleurs LQR-MPC contraints pour le suivi, puis ajout d'un observateur de perturbation, d'un tube-MPC robuste et d'un MPC non linéaire pour comparaison.",
       },
       documents: [
-        { href: "/documents/mpc-rocket-landing-controller/project-report.pdf", label: "Rapport de projet", filename: "Kobler_MPC_Rocket_Landing_Report.pdf", lang: "en" },
+        { href: "/documents/mpc-rocket-landing-controller/project-report.pdf", label: "Rapport de projet", filename: "Kobler_MPC_Rocket_Landing_Report.pdf" },
       ],
       role: "Étudiant",
       duration: "Automne 2025",
@@ -245,7 +245,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/dynabal-nanoforce-sensor/02-construction-drawing.png", alt: "Dessin de construction détaillé du sous-ensemble du capteur DYNABAL avec repères de pièces numérotés", caption: "Dessin de construction du sous-ensemble de précharge et anti-rotation", section: "how" },
       ],
       documents: [
-        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Rapport de conception", filename: "DYNABAL_Design_Report.pdf", lang: "fr" },
+        { href: "/documents/dynabal-nanoforce-sensor/design-report.pdf", label: "Rapport de conception", filename: "DYNABAL_Design_Report.pdf" },
       ],
       role: "Étudiant",
       duration: "Printemps 2023",
@@ -286,7 +286,7 @@ export const projectsContent: Translations["projectsContent"] = {
         "Loger l'entraînement à roue partiellement dentée hors d'atteinte de l'utilisateur, tout en gardant un mécanisme pliable et assez compact pour un plan de travail de cuisine.",
       ],
       documents: [
-        { href: "/documents/l-epluche-carotte/rapport-de-projet.pdf", label: "Rapport de projet", filename: "Epluche_Carotte_Rapport.pdf", lang: "fr" },
+        { href: "/documents/l-epluche-carotte/rapport-de-projet.pdf", label: "Rapport de projet", filename: "Epluche_Carotte_Rapport.pdf" },
       ],
       role: "Étudiant",
       duration: "Printemps 2022",
@@ -318,7 +318,7 @@ export const projectsContent: Translations["projectsContent"] = {
         { src: "/images/projects/timit-connected-door-lock/01-electronics-assembly.jpg", alt: "Boîtier imprimé en 3D ouvert montrant le moteur CC, le driver DRV8871 et les fins de course câblés à l'intérieur", caption: "L'électronique de la serrure, câblée à l'intérieur du boîtier imprimé", section: "how" },
       ],
       documents: [
-        { href: "/documents/timit-connected-door-lock/travail-de-maturite.pdf", label: "Travail de maturité", filename: "Kobler_TIMIT_Travail_de_Maturite.pdf", lang: "fr" },
+        { href: "/documents/timit-connected-door-lock/travail-de-maturite.pdf", label: "Travail de maturité", filename: "Kobler_TIMIT_Travail_de_Maturite.pdf" },
       ],
       role: "Maker et Étudiant",
       duration: "2020 – 2021",

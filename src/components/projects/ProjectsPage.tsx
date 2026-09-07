@@ -195,9 +195,6 @@ export default function ProjectsPage() {
                           </svg>
                           {doc.label}
                           <span className="sr-only"> (PDF)</span>
-                          {doc.lang && (
-                            <span aria-hidden="true" className="font-mono text-[0.6rem] uppercase tracking-wider opacity-50">{doc.lang}</span>
-                          )}
                         </a>
                       ))}
                       {project.detail.sourceLink && (

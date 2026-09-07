@@ -28,8 +28,6 @@ export interface ProjectDocument {
   label: string;
   /** Name the browser saves the file under. Defaults to the name in `href`. */
   filename?: string;
-  /** Language the document itself is written in, shown as a tag when set. */
-  lang?: Locale;
 }
 
 export interface ProjectContentTranslation {
