@@ -53,11 +53,13 @@
 
   /* Category colors */
   --color-cat-engineering: #2563eb;
-  --color-cat-service: #10b981;
+  --color-cat-service: #166534;
   --color-cat-music: #8b5cf6;
   --color-cat-management: #f59e0b;
   --color-cat-entrepreneurship: #ec4899;
   --color-cat-academic: #6366f1;
+  --color-cat-education: #000000;
+  --color-cat-volunteering: #800020;
 
   /* Transition timing scale
      Convention: use Tailwind duration utilities that match these values:

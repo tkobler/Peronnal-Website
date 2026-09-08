@@ -98,6 +98,35 @@ export const experienceData: Translations["experienceData"] = {
       },
     ],
   },
+  epfl: {
+    company: "EPFL",
+    location: "Lausanne, Switzerland",
+    roles: [
+      {
+        title: "Bachelor of Science, Microengineering",
+        period: "Sept. 2021 – July 2024",
+        description: [
+          "Graduated with a 4.8/6 overall average.",
+          "Curriculum spanning scientific foundations, mechanics and electronics, programming and modelling, hands-on interdisciplinary projects, and the design and fabrication of miniaturised systems.",
+        ],
+      },
+    ],
+  },
+  CAS_la_dole: {
+    company: "Club Alpin Suisse Section La Dôle",
+    location: "Nyon, Switzerland",
+    roles: [
+      {
+        title: "OJ and Instructor",
+        period: "2020 – Present",
+        description: [
+          "Organized and led outdoor activities for teenagers in mountaineering, climbing and skiing.",
+          "Jeunesse et Sport (JS) Alpinisme certified instructor.",
+          "Member of the section's youth division.",
+        ],
+      },
+    ],
+  },
   rentimmo: {
     company: "Rentimmo Group",
     location: "Vaud, Switzerland",
@@ -108,6 +137,47 @@ export const experienceData: Translations["experienceData"] = {
         description: [
           "Designed and laid out commercial and industrial premises, and implemented logistics systems and processes.",
           "Maintained inventories across multiple sites and managed a team.",
+        ],
+      },
+    ],
+  },
+  "first-lego-league-team": {
+    company: "FIRST LEGO League",
+    location: "Lausanne, Switzerland",
+    roles: [
+      {
+        title: "Team Member",
+        period: "2019 – 2020",
+        description: [
+          "Built and programmed an autonomous LEGO Mindstorms EV3 robot within a team of 10, designing a swappable attachment for each timed mission.",
+          "Won the Lausanne regional competition — Best Robot, Regional Champion, and Robot Game Winner — and placed 7th at the Swiss national finals.",
+        ],
+      },
+    ],
+  },
+  "gymnase-de-morges": {
+    company: "Gymnase de Morges",
+    location: "Morges, Switzerland",
+    roles: [
+      {
+        title: "Maturité, Physics & Applied Mathematics",
+        period: "Sept. 2018 – July 2021",
+        description: [
+          "Swiss Maturité specialising in physics and applied mathematics, with a 5.3/6 overall average in the final year.",
+          "Travail de maturité in home automation: an ESP32-based automated lock, graded 6/6.",
+        ],
+      },
+    ],
+  },
+  Scouts: {
+    company: "Brigade de Sauvabelin",
+    location: "Lausanne, Switzerland",
+    roles: [
+      {
+        title: "Scout - Neuvaz, Orzival",
+        period: "2015 – 2017",
+        description: [
+          "Scout in the Neuvaz Troop then at Orzival after the successful completion of my Première Classe training.",
         ],
       },
     ],

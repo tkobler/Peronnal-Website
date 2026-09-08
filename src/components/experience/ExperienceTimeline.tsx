@@ -34,8 +34,9 @@ export default function ExperienceTimeline() {
   const getCategoryColor = (cat: ExperienceCategory): string => {
     const map: Record<ExperienceCategory, string> = {
       service: "var(--color-cat-service)",
-      music: "var(--color-cat-music)",
       engineering: "var(--color-cat-engineering)",
+      education: "var(--color-cat-education)",
+      volunteering: "var(--color-cat-volunteering)",
     };
     return map[cat] ?? "var(--color-cat-engineering)";
   };
