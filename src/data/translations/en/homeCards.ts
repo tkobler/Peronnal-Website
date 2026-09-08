@@ -11,7 +11,7 @@ export const homeCards: Translations["homeCards"] = {
   },
   hobby: {
     title: "Beyond Engineering",
-    descriptor: "A portfolio can hold more than projects — this page shows how",
+    descriptor: "Where curiosity takes me off the clock",
   },
 };
 

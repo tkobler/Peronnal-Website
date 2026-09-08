@@ -40,11 +40,11 @@ const homeCards: HomeCard[] = [
     number: "03",
     title: "Beyond Engineering",
     tagline: "",
-    descriptor: "A portfolio can hold more than projects — this page shows how",
+    descriptor: "Where curiosity takes me off the clock",
     // Points at /about while the Hobby page is parked (src/app/_hobby).
     // Original target: "/hobby"
     linkTo: "/about",
-    image: "/images/placeholders/wide.svg",
+    image: "/images/hobby/lalana.jpg",
     layout: "boxed",
   },
 ];
