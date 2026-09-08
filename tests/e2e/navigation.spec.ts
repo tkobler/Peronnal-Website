@@ -84,7 +84,7 @@ test.describe("Hamburger Menu", () => {
     // Check menu links exist
     const links = menuPanel.locator("ul a");
     const count = await links.count();
-    expect(count).toBe(4); // Projects, Experience, Hobby, About
+    expect(count).toBe(3); // Projects, Experience, About (Hobby parked)
   });
 
   test("menu closes when clicking close button", async ({ page }) => {

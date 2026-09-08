@@ -11,7 +11,10 @@ export default function Navigation() {
   const MENU_ITEMS = [
     { label: t.nav.projects, href: "/projects" },
     { label: t.nav.experience, href: "/experience" },
-    { label: t.nav.hobby, href: "/hobby" },
+    // Hobby page is parked (route lives in src/app/_hobby, excluded from
+    // routing by the underscore). Restore this line and rename the folder
+    // back to src/app/hobby to bring it back.
+    // { label: t.nav.hobby, href: "/hobby" },
     { label: t.nav.about, href: "/about" },
   ];
   const [menuOpen, setMenuOpen] = useState(false);
@@ -307,10 +310,10 @@ export default function Navigation() {
               closeMenu();
               router.push("/contact");
             }}
-            className="group relative flex items-center gap-3 rounded-full bg-black/5 px-8 py-3 text-xs font-bold uppercase tracking-widest text-black/70 transition-all hover:bg-black hover:text-white hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-4 focus-visible:rounded-sm"
+            className="group relative flex items-center gap-3 rounded-full bg-black px-8 py-3 text-xs font-bold uppercase tracking-widest text-white shadow-lg transition-transform duration-300 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-4 focus-visible:rounded-sm"
           >
             <span>{t.nav.getInTouch}</span>
-            <span className="h-1.5 w-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] group-hover:bg-green-400" />
+            <span className="h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
           </button>
 
           <span className="font-mono text-[9px] uppercase tracking-widest text-black/30">

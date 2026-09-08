@@ -24,7 +24,7 @@ export const ROUTES = [
   "/",
   "/projects",
   "/experience",
-  "/hobby",
+  // "/hobby", — page parked (src/app/_hobby); restore alongside the route
   "/contact",
   "/about",
 ] as const;

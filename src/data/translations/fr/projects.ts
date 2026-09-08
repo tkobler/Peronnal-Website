@@ -110,7 +110,7 @@ export const projectsContent: Translations["projectsContent"] = {
         why: "Griller des saucisses sur un feu de bois devenait répétitif. Nous voulions faire fondre une raclette directement sur les braises.",
         what: "Une petite poêle à raclette montée sur un manche à visser sur un bâton, vendue comme micro-entreprise étudiante autoproduite.",
         how: "Fabrication artisanale de chaque poêle et de son mécanisme de serrage en tôle soudée au TIG, puis vente de plus de 50 exemplaires via un site web et une boutique Instagram autoproduits.",
-      },
+      },  
       role: "Co-Fondateur — Conception, Fabrication & Vente",
       duration: "2022 – 2024",
       keyResults: ["Plus de 50 exemplaires vendus via un site e-commerce et une boutique Instagram autoproduits"],

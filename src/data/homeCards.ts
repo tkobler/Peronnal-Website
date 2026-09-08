@@ -41,7 +41,9 @@ const homeCards: HomeCard[] = [
     title: "Beyond Engineering",
     tagline: "",
     descriptor: "A portfolio can hold more than projects — this page shows how",
-    linkTo: "/hobby",
+    // Points at /about while the Hobby page is parked (src/app/_hobby).
+    // Original target: "/hobby"
+    linkTo: "/about",
     image: "/images/placeholders/wide.svg",
     layout: "boxed",
   },
