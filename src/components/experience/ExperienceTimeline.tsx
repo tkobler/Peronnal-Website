@@ -4,6 +4,7 @@ import Image from "next/image";
 import { experiences, ExperienceCategory } from "@/data/experience";
 import { useLanguage } from "@/context/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useHashScroll } from "@/hooks/useHashScroll";
 import { generateTrailPath } from "@/lib/trailPath";
 
 // A fixed seed for a stable, deterministic trail shape (no hydration
@@ -14,12 +15,13 @@ const TRAIL_VIEWBOX_WIDTH = 40;
 const TRAIL_VIEWBOX_HEIGHT = 1200;
 const TRAIL_PATH = generateTrailPath(TRAIL_SEED, TRAIL_VIEWBOX_WIDTH, TRAIL_VIEWBOX_HEIGHT);
 
-function RevealEntry({ children, index }: { children: React.ReactNode; index: number }) {
+function RevealEntry({ id, children, index }: { id: string; children: React.ReactNode; index: number }) {
   const { ref, isVisible } = useScrollReveal(0.15);
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      id={id}
+      className={`scroll-mt-28 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {children}
@@ -29,6 +31,8 @@ function RevealEntry({ children, index }: { children: React.ReactNode; index: nu
 
 export default function ExperienceTimeline() {
   const { t } = useLanguage();
+
+  useHashScroll();
 
   // Helper to get color based on category — uses design tokens from globals.css
   const getCategoryColor = (cat: ExperienceCategory): string => {
@@ -70,7 +74,7 @@ export default function ExperienceTimeline() {
           const expTr = t.experienceData[exp.id];
 
           return (
-            <RevealEntry key={exp.id} index={index}>
+            <RevealEntry key={exp.id} id={exp.id} index={index}>
             <div
               className={`group/entry relative flex flex-col md:flex-row ${
                 isEven ? "md:flex-row-reverse" : ""

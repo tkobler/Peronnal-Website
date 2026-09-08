@@ -3,10 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { bachelorGpa, bachelorCredits, masterGpa, masterCreditsObtained, masterCreditsTotal, highlightCourses } from "@/data/courses";
+import { useHashScroll } from "@/hooks/useHashScroll";
+import { highlightCourses } from "@/data/courses";
 
 export default function About() {
   const { t } = useLanguage();
+
+  useHashScroll();
 
   return (
     <main className="relative">
@@ -89,20 +92,6 @@ export default function About() {
             <p className="mt-1 font-mono text-sm uppercase tracking-wider opacity-50">{t.about.section}</p>
           </div>
 
-          {/* GPA cards */}
-          <div className="mb-10 grid grid-cols-2 gap-4">
-            <div className="rounded-lg border border-white/10 bg-white/5 p-4 sm:p-5">
-              <p className="font-mono text-xs uppercase tracking-widest opacity-50">{t.about.bachelorLabel}</p>
-              <p className="mt-2 text-2xl font-bold sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>{bachelorGpa}<span className="text-base opacity-50">/6</span></p>
-              <p className="mt-1 font-mono text-xs opacity-50">{t.about.gpaLabel} · {bachelorCredits} {t.about.creditsLabel} · {t.about.passed}</p>
-            </div>
-            <div className="rounded-lg border border-white/10 bg-white/5 p-4 sm:p-5">
-              <p className="font-mono text-xs uppercase tracking-widest opacity-50">{t.about.masterLabel}</p>
-              <p className="mt-2 text-2xl font-bold sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>{masterGpa}<span className="text-base opacity-50">/6</span></p>
-              <p className="mt-1 font-mono text-xs opacity-50">{t.about.gpaLabel} · {masterCreditsObtained}/{masterCreditsTotal} {t.about.creditsLabel} · {t.about.inProgress}</p>
-            </div>
-          </div>
-
           {/* Highlighted courses */}
           <h3 className="tag-text mb-4 uppercase tracking-widest opacity-50">{t.about.highlightsTitle}</h3>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -120,18 +109,20 @@ export default function About() {
                   ) : course.name}
                 </p>
                 <p className="mt-1 text-xs italic opacity-50">
-                  {course.professorLinks.map((prof, i) => (
-                    <span key={prof.url}>
-                      {i > 0 && " & "}
-                      <a href={prof.url} target="_blank" rel="noopener noreferrer" className="underline decoration-white/15 underline-offset-2 transition-colors hover:text-blue-400 hover:decoration-blue-400">
-                        {prof.name}
-                      </a>
-                    </span>
-                  ))}
+                  {course.professorLinks.length > 0
+                    ? course.professorLinks.map((prof, i) => (
+                        <span key={prof.url}>
+                          {i > 0 && " · "}
+                          <a href={prof.url} target="_blank" rel="noopener noreferrer" className="underline decoration-white/15 underline-offset-2 transition-colors hover:text-blue-400 hover:decoration-blue-400">
+                            {prof.name}
+                          </a>
+                        </span>
+                      ))
+                    : t.about.variousProfessors}
                 </p>
                 {course.projectId && (
                   <Link
-                    href={`/projects/${course.projectId}`}
+                    href={`/projects#${course.projectId}`}
                     className="mt-2 inline-block rounded border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider text-white/50 transition-colors hover:bg-white/10 hover:text-white/85"
                   >
                     {t.about.viewProject} →
@@ -145,6 +136,7 @@ export default function About() {
 
       {/* 4. MUSIC */}
       <section
+        id="beyond"
         className="section-light relative py-20 lg:py-28"
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="light"

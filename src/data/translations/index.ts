@@ -139,14 +139,8 @@ export interface Translations {
     educationTitle: string;
     degree: string;
     section: string;
-    bachelorLabel: string;
-    masterLabel: string;
-    gpaLabel: string;
-    creditsLabel: string;
-    creditsProgress: string;
-    passed: string;
-    inProgress: string;
     highlightsTitle: string;
+    variousProfessors: string;
     viewProject: string;
     musicTitle: string;
     musicBio: string;

@@ -31,7 +31,7 @@ const homeCards: HomeCard[] = [
     title: "Work Experience",
     tagline: "",
     descriptor: "Developed and optimized a cochlear implant insertion tool as an R&D assistant in surgical robotics",
-    linkTo: "/experience",
+    linkTo: "/experience#artorg",
     image: "/images/projects/cochlear-implant-insertion-mechanism/hero.jpeg",
     layout: "full-screen",
   },
@@ -41,9 +41,9 @@ const homeCards: HomeCard[] = [
     title: "Beyond Engineering",
     tagline: "",
     descriptor: "Where curiosity takes me off the clock",
-    // Points at /about while the Hobby page is parked (src/app/_hobby).
-    // Original target: "/hobby"
-    linkTo: "/about",
+    // Points at the "Beyond the Classroom" section of /about while the Hobby
+    // page is parked (src/app/_hobby). Original target: "/hobby"
+    linkTo: "/about#beyond",
     image: "/images/hobby/lalana.jpg",
     layout: "boxed",
   },

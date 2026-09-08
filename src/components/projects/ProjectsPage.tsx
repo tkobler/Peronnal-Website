@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useState } from "react";
 import { handleImageError } from "@/lib/imageHandlers";
 import { getFeaturedProjects, type ProjectDomain } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
+import { useHashScroll } from "@/hooks/useHashScroll";
 
 const DOMAIN_KEYS: ProjectDomain[] = [
   "Embedded Systems & Electronics",
@@ -16,7 +17,6 @@ const DOMAIN_KEYS: ProjectDomain[] = [
 export default function ProjectsPage() {
   const { t } = useLanguage();
   const allProjects = getFeaturedProjects();
-  const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
   // flippingId is read-only now that project detail pages are disabled —
   // the "flip into detail" animation has no trigger, so the setter is gone.
   const [flippingId] = useState<string | null>(null);
@@ -26,20 +26,7 @@ export default function ProjectsPage() {
     ? allProjects.filter((p) => p.domain === activeDomain)
     : allProjects;
 
-  useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (hash) {
-      const timer = setTimeout(() => {
-        const el = sectionRefs.current.get(hash);
-        if (el) el.scrollIntoView({ behavior: "auto", block: "start" });
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const setSectionRef = useCallback((id: string, el: HTMLElement | null) => {
-    if (el) sectionRefs.current.set(id, el);
-  }, []);
+  useHashScroll();
 
   return (
     <main className="relative">
@@ -100,7 +87,6 @@ export default function ProjectsPage() {
         return (
           <section
             key={project.id}
-            ref={(el) => setSectionRef(project.id, el)}
             id={project.id}
             className={`${theme === "dark" ? "section-dark" : "section-light"} relative min-h-screen py-16 lg:py-0 lg:h-screen flex items-center lg:overflow-hidden ${isFlipping ? "project-transition-container project-leaving" : "project-transition-container"}`}
             data-section-theme={theme}
