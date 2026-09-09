@@ -16,8 +16,8 @@ export const about: Translations["about"] = {
   viewProject: "View project",
   beyondTitle: "Beyond Engineering",
   beyondBio: [
-    "Climbing, alpinism, cycling, paragliding — if it happens in the mountains, I'm in. What I go looking for up there is the quiet.",
-    "J+S alpinism instructor with the Swiss Alpine Club since 2020. Judgement, endurance, teamwork — the same things I bring back down to engineering.",
+    "Climbing, alpinism, paragliding — if it happens in the mountains, I'm in. What I go looking for up there is the flow and peace of mind. It helps me come back down with a clear head.",
+    "The mountain teaches you judgement, resilience and teamwork. I try to bring these qualities into engineering.",
   ],
   beyondActivities: ["Climbing", "Alpinism", "Ski touring", "Cycling", "Paragliding"],
 };
