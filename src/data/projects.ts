@@ -39,9 +39,10 @@ export interface Project {
   };
 }
 
-// This file ships with four example projects, one per domain, so the layout
-// and canvas features have something to render. Replace them with your own —
-// see SETUP.md §2.1. Nothing else in the codebase depends on these specific ids.
+// The 13 projects below are ordered as they appear on /projects. Each `id` is
+// the anchor used by /projects#<id> deep links (see useHashScroll) and by the
+// optional `projectId` on course entries in courses.ts — renaming one breaks
+// both. See SETUP.md §2.1.
 
 const projects: Project[] = [
   {

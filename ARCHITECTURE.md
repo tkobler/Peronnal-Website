@@ -154,17 +154,7 @@ Non-obvious behaviors worth knowing about when editing each component.
 
 | Component | Key behavior |
 |---|---|
-| **FullPortfolioPage** | Domain/list view toggle with fade transition. Scroll-to-project on back navigation. URL state encodes the current view. |
 | **ProjectDetailPage** | Project detail with hero image (priority loading), zoom-in entrance, back button with state preservation. **Note:** `/projects/[id]` routes are currently disabled by the client-side redirect in [ProjectDetailClient.tsx](./src/app/projects/[id]/ProjectDetailClient.tsx). The page component still exists for when it's re-enabled. |
-| **DomainView** | 2×2 grid of domain category cards. Grayscale images that colorize on hover. |
-
-### Flight (cockpit-themed page)
-
-| Component | Key behavior |
-|---|---|
-| **AvionicsDashboard** | Interactive VOR instrument — compass rose chases mouse via angular lerp, CDI needle deflects, TO/FROM flag toggles. |
-| **RadarMap** | Radar sweep via CSS `conic-gradient` rotation. Phosphor glow on airport pins via cubic intensity curve as the sweep passes. |
-| **FlightMap** | Static map with airport pins. Hover/touch reveals a detail card with the flight description. |
 
 ### Experience
 
