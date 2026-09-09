@@ -49,12 +49,12 @@ export default function HeroSection() {
 
         {/* --- Profile Picture --- */}
         <div className="hero-fade-1 mb-8">
-          <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-xl md:h-40 md:w-40">
+          <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-xl md:h-48 md:w-48">
             <Image
-              src="/images/placeholders/square.svg"
-              alt="Your profile photo"
-              width={160}
-              height={160}
+              src="/images/portrait.jpg"
+              alt="Tim Kobler"
+              width={192}
+              height={192}
               priority
               className="h-full w-full object-cover"
             />

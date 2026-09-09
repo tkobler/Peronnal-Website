@@ -39,6 +39,41 @@ npm run validate:i18n
 
 ---
 
+## Adding a new activity
+
+### If you use Claude Code
+
+Run the `/add-activity` skill and point it at a folder or file with the material (a job description, an internship report, a volunteering write-up, notes — whatever you've got):
+
+```
+/add-activity ~/Desktop/epfl-ta-notes/
+```
+
+Claude reads the material, drafts the full bilingual entry (organization, location, role, period, description bullets), asks you for anything it can't infer (category, role type, whether to split into multiple roles), shows you the complete draft to review or edit, and — only once you confirm — writes it into the site's experience data, validates everything, and opens a PR for you to merge.
+
+Full behavior is documented in [.claude/skills/add-activity/SKILL.md](.claude/skills/add-activity/SKILL.md). It's add-only for now — editing an existing activity is still a manual edit (see below).
+
+### Manual method (no Claude Code, or editing an existing activity)
+
+An activity lives in three files that must be edited together:
+
+1. **[src/data/experience.ts](src/data/experience.ts)** — add a new object to the `experiences` array. Needs a unique `id` (kebab-case). `category` must be one of `"engineering"`, `"music"`, or `"service"`; each role's `type` must be one of `"Full-time"`, `"Part-time"`, `"Freelance"`, `"Internship"`, `"Academic"`, or `"Volunteering"`.
+2. **[src/data/translations/en/experience.ts](src/data/translations/en/experience.ts)** — add a matching entry to `experienceData` keyed by the same `id`.
+3. **[src/data/translations/fr/experience.ts](src/data/translations/fr/experience.ts)** — add the French version of the same entry.
+
+`ExperienceTimeline.tsx` falls back to the English text baked into `experience.ts` if a locale's entry is missing, so a forgotten French entry fails silently on the French site rather than breaking the build. Always add both in the same change.
+
+If you have a logo for the organization, drop it in `public/images/experience/<id>/logo.<ext>` and reference it from `logo`. No logo yet? Leave it as `/images/placeholders/logo.svg` and add the real one later.
+
+Then verify:
+```bash
+npm run lint
+npm run test:unit
+npm run validate:i18n
+```
+
+---
+
 ## Editing existing content
 
 Everything user-facing lives in [src/data/translations/{en,fr}/](src/data/translations/) as plain TypeScript objects — no CMS, no database. Find the section you want (`hero.ts`, `about.ts`, `experience.ts`, `contact.ts`, `projects.ts`, etc.) and edit the string directly in both locales.
@@ -46,6 +81,35 @@ Everything user-facing lives in [src/data/translations/{en,fr}/](src/data/transl
 **Quick edits from a browser**: the `/admin` route (if you kept it — see [SETUP.md §7](./SETUP.md#7-admin-panel-optional)) is a localhost-only editor for retexting existing strings side-by-side in EN/FR, and commits straight to `main` via the GitHub API. It's handy for a typo or a sentence rewrite. It can't add new structured content like a project — for that, use the methods above. It only activates on `localhost`/`127.0.0.1`; it does nothing on your deployed site.
 
 **Everything else**: edit the `.ts` files directly in your editor. Simple, versioned, no special tooling required.
+
+---
+
+## The floating "Get in touch" button
+
+The home page carries a small pill pinned to its bottom-right corner — an envelope, the words "GET IN TOUCH" (or "ME CONTACTER" in French), and a green availability dot. It stays put while the page scrolls and links to `/contact`. It lives in [src/components/home/ContactFab.tsx](src/components/home/ContactFab.tsx) and is rendered only by the home page, not site-wide.
+
+Three constants at the top of that file are all you normally need:
+
+```ts
+const SHAPE: FabShape = "pill";   // "pill" | "circle" | "squircle"
+const ICON: FabIcon = "mail";     // "mail" | "paperPlane" | "chat" | "arrow"
+const STATUS_DOT = true;          // the small green "available" dot
+```
+
+`"pill"` is the wide shape that carries the written label; `"circle"` and `"squircle"` are icon-only and noticeably easier for a visitor to miss — the words are what make the button findable. The label is the existing `nav.getInTouch` translation, so it follows EN/FR on its own and needs no new strings.
+
+A paper-plane glyph is already drawn and waiting — switch `ICON` to `"paperPlane"` and that's the whole change. To add a glyph of your own, drop a 24×24 outline SVG path into the `ICONS` map in the same file and add its name to the `FabIcon` union.
+
+Size, colour and distance from the corner are CSS variables in [src/app/globals.css](src/app/globals.css) under the `CONTACT FAB` heading:
+
+```css
+--fab-size: 3.25rem;   /* height of the pill */
+--fab-icon: 1.2rem;    /* glyph size */
+--fab-inset: 1.75rem;  /* gap from the right and bottom edges */
+--fab-gap: 0.65rem;    /* space between glyph, label and dot */
+```
+
+The button is white with a dark label and inverts to dark on hover, which keeps it readable over both the light and dark bands of the home page without any scroll-driven theme switching. A narrow-phone media query in the same block trims the padding and type size so the longer French label still clears the screen edge.
 
 ---
 
@@ -67,11 +131,9 @@ It catches a key present in one locale but missing in the other. It will **not**
 
 ## Updating your CV
 
-The CV is a separate Typst pipeline in [cv/](cv/), not wired into the main build. After changing your experience, education, or skills:
-```bash
-npm run cv:build
-```
-This compiles [cv/variants/](cv/variants/) and drops fresh PDFs at `public/cv-en.pdf` and `public/cv-fr.pdf`. These are gitignored build artifacts — CI does not regenerate them, so rebuild locally before pushing if you want the updated PDFs live. See [SETUP.md §6](./SETUP.md#6-cv-pipeline-optional) for the full pipeline and [.claude/docs/](./.claude/docs/) for the `typst-eng` agent if you use Claude Code.
+The Get in Touch page serves [public/cv/cv-en.pdf](public/cv/) and [public/cv/cv-fr.pdf](public/cv/) directly. To update your CV, replace those two files with your own PDFs, keep the filenames, and **commit them** — `public/cv/` is tracked by git because GitHub Pages builds from the repo. Nothing to build, `typst` not required.
+
+The Typst pipeline in [cv/](cv/) still exists but is parked: `npm run cv:build` compiles [cv/variants/](cv/variants/) into `cv/output/`, and the step that used to copy PDFs into `public/` is commented out in [cv/build.sh](cv/build.sh). If you use it, copy the output over `public/cv/cv-{en,fr}.pdf` and commit — or uncomment that block to re-automate the copy. See [SETUP.md §6](./SETUP.md#6-cv-download) for both paths and [.claude/docs/](./.claude/docs/) for the `typst-eng` agent if you use Claude Code.
 
 ---
 
@@ -111,8 +173,10 @@ Every push to `main` (including a merged PR) triggers [.github/workflows/deploy.
 | I want to... | Do this |
 |---|---|
 | Add a new project | `/add-project <folder>` (Claude Code), or edit the 3 files under [Adding a new project](#adding-a-new-project) |
+| Add a new activity | `/add-activity <folder>` (Claude Code), or edit the 3 files under [Adding a new activity](#adding-a-new-activity) |
 | Fix a typo or reword a sentence | Edit the relevant `translations/{en,fr}/*.ts` file, or use `/admin` locally |
+| Change the floating contact button | Edit `SHAPE` / `ICON` in [ContactFab.tsx](src/components/home/ContactFab.tsx) |
 | Add/replace an image | Drop it in `public/images/...`, compress with `scripts/compress-images.js` |
-| Update my CV | Edit [cv/variants/](cv/variants/), then `npm run cv:build` |
+| Update my CV | Replace `cv-en.pdf` / `cv-fr.pdf` in [public/cv/](public/cv/) and commit them |
 | Check EN/FR are still in sync | `npm run validate:i18n` |
 | Ship a change | `npm run lint && npm run test:unit && npm run validate:i18n`, then push/PR to `main` |

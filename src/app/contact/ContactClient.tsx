@@ -141,10 +141,11 @@ export default function ContactPage() {
                         </svg>
                     </div>
                 </div>
+                {/* PDFs live in public/cv/ — drop your own files there to replace them. */}
                 <div className="mt-8 flex gap-4">
                   {/* English Resume */}
                   <a
-                    href="/cv-en.pdf"
+                    href="/cv/cv-en.pdf"
                     download="Tim_Kobler_CV_EN.pdf"
                     aria-label="Download CV in English (PDF)"
                     className="inline-block rounded-full bg-white px-6 py-2 text-sm font-bold text-black transition-transform hover:scale-105 active:scale-95"
@@ -154,7 +155,7 @@ export default function ContactPage() {
 
                   {/* French Resume */}
                   <a
-                    href="/cv-fr.pdf"
+                    href="/cv/cv-fr.pdf"
                     download="Tim_Kobler_CV_FR.pdf"
                     aria-label="Télécharger le CV en français (PDF)"
                     className="inline-block rounded-full border border-white/30 px-6 py-2 text-sm font-bold text-white transition-transform hover:bg-white/10 hover:scale-105 active:scale-95"

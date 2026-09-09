@@ -2,7 +2,7 @@ import type { Translations } from "../index";
 
 export const contact: Translations["contact"] = {
   heading: "Let's Connect",
-  subtitle: "Robotics Master's student at EPFL. Always happy to connect.",
+  subtitle: "I’d always be delighted to have a chat!",
   basedIn: "Lausanne, Switzerland",
   cvTitle: "Curriculum Vitae",
   cvSubtitle: "Download my full engineering profile (PDF).",

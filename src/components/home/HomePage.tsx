@@ -4,6 +4,7 @@ import { useCallback, useMemo } from "react";
 import { useViewTransitionRouter } from "@/hooks/useViewTransitionRouter";
 import HeroSection from "./HeroSection";
 import ProjectSection from "./ProjectSection";
+import ContactFab from "./ContactFab";
 import { getHomeCards } from "@/data/homeCards";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -61,6 +62,10 @@ export default function HomePage() {
           />
         ))}
       </main>
+
+      {/* Floating "Get in touch" button — fixed to the bottom-right corner,
+          hovering above the page as it scrolls. */}
+      <ContactFab />
     </>
   );
 }

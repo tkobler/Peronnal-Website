@@ -1,6 +1,6 @@
 # Personnal-Website — Claude context
 
-Personal portfolio template (EPFL Engineering example content). Next.js 16 static export, bilingual EN/FR, deployed to GitHub Pages. Also hosts a standalone Typst CV pipeline in [cv/](../cv/) that produces [public/cv-en.pdf](../public/cv-en.pdf) and [public/cv-fr.pdf](../public/cv-fr.pdf) as build artifacts.
+Personal portfolio template (EPFL Engineering example content). Next.js 16 static export, bilingual EN/FR, deployed to GitHub Pages. Also hosts a standalone Typst CV pipeline in [cv/](../cv/), currently parked — it compiles into `cv/output/` and no longer publishes into `public/`.
 
 ## Stack snapshot
 - **Framework**: Next.js 16.1 (App Router, `output: "export"`, `images.unoptimized: true`)
@@ -27,14 +27,14 @@ npm run lint             # ESLint flat config
 npm run test:unit        # Vitest
 npm run test:e2e:tier1   # fast e2e: navigation + language + project-cards
 npm run validate:i18n    # EN/FR key parity check
-npm run cv:build         # regenerate CV PDFs (requires typst)
+npm run cv:build         # compile Typst CV into cv/output/ (parked; requires typst)
 ```
 
 ## For template users
 This branch is the blank template — every conversation here is about someone setting up their own portfolio from it. The source of truth is **[SETUP.md](../SETUP.md)** at repo root. Read it before giving advice about customization, deployment, or which files to edit first.
 
 ## Things that will trip you up
-1. **CV PDFs are build artifacts, not in git.** `public/cv-{en,fr}.pdf` and `cv/output/` are gitignored. CI does not build them. They must be rebuilt locally via `npm run cv:build`. Do not "fix" this by removing from gitignore — see [docs/project-map.md](docs/project-map.md).
+1. **CV downloads are hand-dropped PDFs, and they ARE tracked by git.** The Get in Touch page links straight at `/cv/cv-en.pdf` and `/cv/cv-fr.pdf`, served from [public/cv/](../public/cv/). Replacing a CV means replacing the file and committing it — CI builds from the repo. `cv/output/` stays gitignored, and the Typst pipeline no longer copies into `public/` (that block is commented out in [cv/build.sh](../cv/build.sh)).
 2. **`/docs/` is gitignored.** Any `docs/STYLE_GUIDE.md` at the repo root exists only on the author's machine. Don't link to it from tracked files. (The `.claude/docs/` folder is different and IS tracked.)
 3. **Static export means no server code.** No API routes, no runtime fetching, no middleware, no `next/image` optimization. All data is imported statically from [src/data/](../src/data/).
 4. **Schematic-driven canvas.** Visual changes to project cards often require editing BOTH the data entry in [projects.ts](../src/data/projects.ts) AND the canvas renderer in [DotPattern.tsx](../src/components/layout/DotPattern.tsx). Don't change one without checking the other.

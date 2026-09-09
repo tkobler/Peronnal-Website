@@ -26,7 +26,6 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
       "Bash(curl -s -o /dev/null http://localhost:3000/projects)",
       "Bash(curl -s -o /dev/null http://localhost:3000/experience)",
-      "Bash(curl -s -o /dev/null http://localhost:3000/hobby)",
       "Bash(curl -s -o /dev/null http://localhost:3000/contact)",
       "Bash(curl -s -o /dev/null http://localhost:3000/about)",
       "Bash(lsof -i :3000 -sTCP:LISTEN)",

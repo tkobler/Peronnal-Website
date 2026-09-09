@@ -1,22 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useState } from "react";
 import { handleImageError } from "@/lib/imageHandlers";
 import { getFeaturedProjects, type ProjectDomain } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
+import { useHashScroll } from "@/hooks/useHashScroll";
 
 const DOMAIN_KEYS: ProjectDomain[] = [
-  "Microelectronics & Photonics",
-  "Product Engineering & IoT",
-  "Robotics & AI",
-  "Industrial Design & Mechanical",
+  "Embedded Systems & Electronics",
+  "Robotics & Autonomous Control",
+  "Biomedical & Precision Instrumentation",
+  "Mechanism Design & Fabrication",
 ];
 
 export default function ProjectsPage() {
   const { t } = useLanguage();
   const allProjects = getFeaturedProjects();
-  const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
   // flippingId is read-only now that project detail pages are disabled —
   // the "flip into detail" animation has no trigger, so the setter is gone.
   const [flippingId] = useState<string | null>(null);
@@ -26,26 +26,13 @@ export default function ProjectsPage() {
     ? allProjects.filter((p) => p.domain === activeDomain)
     : allProjects;
 
-  useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (hash) {
-      const timer = setTimeout(() => {
-        const el = sectionRefs.current.get(hash);
-        if (el) el.scrollIntoView({ behavior: "auto", block: "start" });
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const setSectionRef = useCallback((id: string, el: HTMLElement | null) => {
-    if (el) sectionRefs.current.set(id, el);
-  }, []);
+  useHashScroll();
 
   return (
     <main className="relative">
       {/* 1. RESTORED CENTERED HEADER */}
       <section
-        className="section-light relative grid h-[40vh] place-items-center overflow-hidden"
+        className="section-light relative grid min-h-[40vh] place-items-center"
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="light"
       >
@@ -95,11 +82,11 @@ export default function ProjectsPage() {
         const theme = i % 2 === 0 ? "dark" : "light";
         const isFlipping = flippingId === project.id;
         const tc = t.projectsContent[project.id];
+        const documents = tc?.detail.documents ?? project.detail.documents;
 
         return (
           <section
             key={project.id}
-            ref={(el) => setSectionRef(project.id, el)}
             id={project.id}
             className={`${theme === "dark" ? "section-dark" : "section-light"} relative min-h-screen py-16 lg:py-0 lg:h-screen flex items-center lg:overflow-hidden ${isFlipping ? "project-transition-container project-leaving" : "project-transition-container"}`}
             data-section-theme={theme}
@@ -146,15 +133,15 @@ export default function ProjectsPage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-8 border-t border-current/10 pt-6">
-                    <div>
-                      <h3 className="text-[11px] uppercase tracking-widest opacity-40 mb-1 font-bold">{t.projects.roleLabel}</h3>
-                      <p className="text-sm font-medium">{tc?.detail.role ?? project.detail.role}</p>
+                  <div className="border-t border-current/10 pt-6">
+                    <div className="flex items-baseline justify-between gap-4 text-[11px] uppercase tracking-widest opacity-40 font-bold">
+                      <h3>{t.projects.roleLabel}</h3>
+                      <p className="shrink-0">
+                        <span className="sr-only">{t.projects.durationLabel}: </span>
+                        {tc?.detail.duration ?? project.detail.duration}
+                      </p>
                     </div>
-                    <div>
-                      <h3 className="text-[11px] uppercase tracking-widest opacity-40 mb-1 font-bold">{t.projects.durationLabel}</h3>
-                      <p className="text-sm font-medium">{tc?.detail.duration ?? project.detail.duration}</p>
-                    </div>
+                    <p className="mt-1.5 text-[clamp(1.1rem,1.8vw,1.5rem)] font-semibold leading-snug">{tc?.detail.role ?? project.detail.role}</p>
                   </div>
 
                   <div className="flex flex-wrap gap-2">
@@ -167,6 +154,47 @@ export default function ProjectsPage() {
                       </span>
                     ))}
                   </div>
+
+                  {(project.detail.link || project.detail.sourceLink || documents?.length) && (
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                      {project.detail.link && (
+                        <a
+                          href={project.detail.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-fit text-sm font-medium underline underline-offset-4 opacity-80 transition-opacity duration-200 hover:opacity-100"
+                        >
+                          {t.projects.learnMoreLabel}
+                        </a>
+                      )}
+                      {documents?.map((doc) => (
+                        <a
+                          key={doc.href}
+                          href={doc.href}
+                          download={doc.filename}
+                          className="inline-flex w-fit items-center gap-1.5 text-sm font-medium underline underline-offset-4 opacity-80 transition-opacity duration-200 hover:opacity-100"
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" className="shrink-0 opacity-60">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                          </svg>
+                          {doc.label}
+                          <span className="sr-only"> (PDF)</span>
+                        </a>
+                      ))}
+                      {project.detail.sourceLink && (
+                        <a
+                          href={project.detail.sourceLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-fit text-xs font-mono uppercase tracking-wider underline underline-offset-4 opacity-40 transition-opacity duration-200 hover:opacity-70"
+                        >
+                          {t.projects.sourceLabel}
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
 
               </div>

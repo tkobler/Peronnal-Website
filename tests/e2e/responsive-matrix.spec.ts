@@ -130,6 +130,34 @@ for (const device of DEVICES) {
       });
     }
 
+    // Regression test for bug/projects-filter-pill-overflow: the /projects
+    // hero used a fixed h-[40vh] + overflow-hidden. Domain filter pills wrap
+    // onto extra rows when labels are long (French translations) or the
+    // viewport is narrow (mobile), and any row past the fixed 40vh got
+    // silently clipped by overflow-hidden instead of the hero growing to
+    // fit — pills disappeared behind the next section's background.
+    test("/projects — filter pills are not clipped by the hero section (FR locale)", async ({ page }) => {
+      await page.addInitScript(() => localStorage.setItem("locale", "fr"));
+      await page.goto("/projects", { waitUntil: "domcontentloaded" });
+      await page.waitForFunction(() => document.querySelector("h1")?.textContent?.includes("Projets"));
+
+      const hero = page.locator("main > section").first();
+      const heroBox = await hero.boundingBox();
+      expect(heroBox).not.toBeNull();
+
+      const pills = page.locator('[role="group"][aria-label="Filter projects by domain"] button');
+      const count = await pills.count();
+      expect(count).toBeGreaterThan(0);
+
+      for (let i = 0; i < count; i++) {
+        const box = await pills.nth(i).boundingBox();
+        expect(box).not.toBeNull();
+        if (box && heroBox) {
+          expect(box.y + box.height).toBeLessThanOrEqual(heroBox.y + heroBox.height + 1);
+        }
+      }
+    });
+
     test("locale toggle is accessible", async ({ page }) => {
       await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.waitForSelector(".nav-locale-toggle", { state: "visible" });

@@ -43,7 +43,12 @@ for (const route of ROUTES) {
         const images = document.querySelectorAll("img");
         const missing: string[] = [];
         for (const img of images) {
-          if (!img.alt && !img.getAttribute("role")?.includes("presentation")) {
+          // alt="" is the correct WCAG marking for a decorative image, so test
+          // for the attribute being absent — not for it being falsy.
+          if (
+            !img.hasAttribute("alt") &&
+            !img.getAttribute("role")?.includes("presentation")
+          ) {
             missing.push(img.src);
           }
         }

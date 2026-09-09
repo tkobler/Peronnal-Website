@@ -21,6 +21,15 @@ export interface ProjectImage {
   section?: "why" | "what" | "how" | "methodology" | "challenges" | "results";
 }
 
+export interface ProjectDocument {
+  /** Path under public/, e.g. "/documents/motion-focus/pitch-deck.pdf". */
+  href: string;
+  /** Link text, e.g. "Semester project report". */
+  label: string;
+  /** Name the browser saves the file under. Defaults to the name in `href`. */
+  filename?: string;
+}
+
 export interface ProjectContentTranslation {
   title: string;
   tagline: string;
@@ -31,6 +40,7 @@ export interface ProjectContentTranslation {
     challenges?: string[];
     publication?: string;
     images?: ProjectImage[];
+    documents?: ProjectDocument[];
     role: string;
     duration: string;
     keyResults?: string[];
@@ -59,7 +69,6 @@ export interface Translations {
   };
   hero: {
     greeting: string;
-    phrases: string[];
     contact: string;
     tagline: string;
   };
@@ -88,6 +97,8 @@ export interface Translations {
     methodologyLabel: string;
     challengesLabel: string;
     publicationLabel: string;
+    learnMoreLabel: string;
+    sourceLabel: string;
     filterAll: string;
     domains: Record<string, { name: string; desc: string }>;
   };
@@ -127,18 +138,12 @@ export interface Translations {
     educationTitle: string;
     degree: string;
     section: string;
-    bachelorLabel: string;
-    masterLabel: string;
-    gpaLabel: string;
-    creditsLabel: string;
-    creditsProgress: string;
-    passed: string;
-    inProgress: string;
     highlightsTitle: string;
+    variousProfessors: string;
     viewProject: string;
-    musicTitle: string;
-    musicBio: string;
-    musicHighlights: string[];
+    beyondTitle: string;
+    beyondBio: string[];
+    beyondActivities: string[];
   };
   placeholder: {
     comingSoon: string;

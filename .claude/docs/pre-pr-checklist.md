@@ -33,7 +33,7 @@ These can be run by the `/merge-check` skill and produce a pass/fail. Claude sho
 - [ ] Any baseline updates are intentional (not drift)
 
 ### If the CV pipeline changed
-- [ ] `npm run cv:build` succeeds locally (requires `typst`)
+- [ ] `npm run cv:build` succeeds locally (requires `typst`; output stays in `cv/output/` — publishing to `public/cv/` is manual)
 - [ ] Output PDFs are readable (manual spot-check)
 
 ### If dependencies changed (package.json / package-lock.json)

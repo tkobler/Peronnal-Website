@@ -29,7 +29,9 @@ test.describe("Home Page Project Sections", () => {
   });
 
   test("project sections alternate dark/light themes", async ({ page }) => {
-    const themes = await page.locator("[data-section-theme]").evaluateAll(
+    // Scoped to <main>: the site footer is global chrome with its own fixed
+    // dark theme, so it takes part in no page's alternation rhythm.
+    const themes = await page.locator("main [data-section-theme]").evaluateAll(
       (els) => els.map((el) => el.getAttribute("data-section-theme"))
     );
 
