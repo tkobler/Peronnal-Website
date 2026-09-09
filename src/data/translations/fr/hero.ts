@@ -7,5 +7,5 @@ export const hero: Translations["hero"] = {
     "EPFL Robotique · Étudiant en Master.",
   ],
   contact: "Contactez-moi",
-  tagline: "Une courte phrase personnelle à propos de vous — ce que vous faites, et pourquoi. Restez précis et évitez les superlatifs.",
+  tagline: "Nous gravissons les montagnes non pas pour être vus, mais pour voir le monde.",
 };
