@@ -142,9 +142,9 @@ export interface Translations {
     highlightsTitle: string;
     variousProfessors: string;
     viewProject: string;
-    musicTitle: string;
-    musicBio: string;
-    musicHighlights: string[];
+    beyondTitle: string;
+    beyondBio: string[];
+    beyondActivities: string[];
   };
   placeholder: {
     comingSoon: string;

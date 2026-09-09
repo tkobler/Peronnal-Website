@@ -134,42 +134,72 @@ export default function About() {
         </div>
       </section>
 
-      {/* 4. MUSIC */}
+      {/* 4. BEYOND ENGINEERING — full-bleed Weisshorn backdrop */}
       <section
         id="beyond"
-        className="section-light relative py-20 lg:py-28"
-        style={{ padding: "var(--space-xl) var(--container-padding)" }}
-        data-section-theme="light"
+        className="section-dark relative flex min-h-screen w-full flex-col overflow-hidden"
+        data-section-theme="dark"
       >
-        <div className="relative z-10 mx-auto max-w-5xl">
-          <h2
-            className="text-[length:var(--text-3xl)] font-bold tracking-tight"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            {t.about.musicTitle}
-          </h2>
+        <Image
+          src="/images/hobby/weisshorn.jpg"
+          alt="The Weisshorn's snow ridge under a deep blue sky"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
 
-          <p
-            className="mt-6 max-w-2xl text-[length:var(--text-base)] leading-relaxed opacity-85"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            {t.about.musicBio}
-          </p>
+        {/* Scrim: deepens the sky behind the white type and grounds the
+            bottom of the frame, without flattening the summit itself. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-black/60"
+        />
 
-          <div className="mt-10 space-y-6">
-            {t.about.musicHighlights.map((highlight, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 border-l-2 border-black/10 pl-5"
-              >
-                <p className="text-[length:var(--text-base)] leading-relaxed opacity-85">
-                  {highlight}
+        <div
+          className="relative z-10 flex min-h-screen flex-col justify-between gap-16 py-16 lg:py-20"
+          style={{ paddingLeft: "var(--container-padding)", paddingRight: "var(--container-padding)" }}
+        >
+          {/* Upper left — the title, sitting in the blue */}
+          <div>
+            {/* max-w in em, not px: it keeps the break at roughly one word per
+                line whatever the clamped font size, in both EN and FR. */}
+            <h2
+              className="max-w-[6em] text-[clamp(2.75rem,7vw,5.5rem)] font-bold leading-[0.92] tracking-tight text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {t.about.beyondTitle}
+            </h2>
+          </div>
+
+          {/* Lower left — the prose gets its own frosted panel, because the
+              snow underneath is far too bright to carry white text on its own. */}
+          <div className="max-w-2xl rounded-2xl border border-white/15 bg-black/40 p-6 backdrop-blur-md sm:p-8">
+            <div className="space-y-5">
+              {t.about.beyondBio.map((paragraph, i) => (
+                <p
+                  key={i}
+                  className="text-[length:var(--text-base)] leading-relaxed text-white/90"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {paragraph}
                 </p>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <ul className="mt-8 flex flex-wrap gap-2">
+              {t.about.beyondActivities.map((activity) => (
+                <li
+                  key={activity}
+                  className="rounded-full border border-white/25 bg-white/10 px-4 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/85"
+                >
+                  {activity}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
+
     </main>
   );
 }

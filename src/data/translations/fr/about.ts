@@ -4,9 +4,9 @@ export const about: Translations["about"] = {
   heading: "À propos",
   bioTitle: "Qui je suis",
   bio: [
-    "Je suis étudiant en Master d'Ingénierie à l'EPFL. Ce paragraphe est un exemple — remplacez-le par deux ou trois phrases sur votre parcours, ce que vous avez construit, et ce sur quoi vous travaillez actuellement.",
-    "Ce deuxième paragraphe est destiné à vos centres d'intérêt ou expériences en dehors des cours — un projet, un rôle, une compétence acquise. Restez précis : les chiffres et détails concrets sont plus convaincants que les adjectifs.",
-    "Un troisième paragraphe fonctionne bien pour ce que vous recherchez ensuite — un sujet de projet de Master, un stage, une direction de recherche.",
+    "Étudiant en Master de Robotique à l'EPFL, après le Bachelor en Microtechnique ici aussi. L'essentiel de ce que je sais vraiment vient des projets plutôt que des amphis : l'électronique basse tension du bateau à hydrogène de Swiss Solar Boat et la logique de contrôle qui fait dialoguer ses sous-systèmes, un outil d'insertion d'implant cochléaire au Centre ARTORG à Berne, des cartes pour un CanSat et pour l'ordinateur de bord du satellite CHESS.",
+    "Quand un projet me prend, j'y vais à fond : faire les choses à moitié, ce n'est pas trop mon truc. Sur le bateau, ça a voulu dire tout donner, et on est revenus premiers du Monaco Energy Boat Challenge 2026. Ce que j'aime, c'est trouver l'angle que personne n'a essayé et le construire pour de vrai, si possible quelque chose qui finisse par servir à quelqu'un.",
+    "Seul sur un problème, je peux tenir des heures, mais je préfère largement le faire avec d'autres. Mener une équipe me va bien quand l'ambiance reste bonne et que ça avance quand même, plutôt une cordée qu'un organigramme. Aucune patience pour ce qui tourne en rond. En ce moment, c'est un projet de master ou un stage que je cherche.",
   ],
   educationTitle: "Éducation",
   degree: "École Polytechnique Fédérale de Lausanne (EPFL)",
@@ -14,11 +14,10 @@ export const about: Translations["about"] = {
   highlightsTitle: "Cours sélectionnés",
   variousProfessors: "Professeurs divers",
   viewProject: "Voir le projet",
-  musicTitle: "En dehors des cours",
-  musicBio: "Cette section est un exemple pour un loisir, un instrument, un sport, ou tout autre élément que vous souhaitez mettre en avant en dehors des cours et projets.",
-  musicHighlights: [
-    "Point marquant un",
-    "Point marquant deux",
-    "Point marquant trois",
+  beyondTitle: "Au-delà de l'ingénierie",
+  beyondBio: [
+    "Grimpe, alpinisme, vélo, parapente — si ça se passe en montagne, j'en suis. Ce que je vais y chercher, c'est le calme.",
+    "Moniteur J+S alpinisme au Club Alpin Suisse depuis 2020. Jugement, endurance, travail d'équipe — exactement ce que je redescends vers l'ingénierie.",
   ],
+  beyondActivities: ["Escalade", "Alpinisme", "Ski de randonnée", "Vélo", "Parapente"],
 };
