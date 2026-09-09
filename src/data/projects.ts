@@ -143,7 +143,7 @@ const projects: Project[] = [
     domain: "Robotics & Autonomous Control",
     featured: true,
     course: "ME-425",
-    heroImage: "/images/projects/mpc-rocket-landing-controller/hero.png",
+    heroImage: "/images/projects/mpc-rocket-landing-controller/hero.jpg",
     detail: {
       description: {
         why: "SpaceX turned the dream of vertical rocket landings into reality. This course allowed us to understand how it works.",
@@ -250,7 +250,7 @@ const projects: Project[] = [
     domain: "Robotics & Autonomous Control",
     featured: true,
     course: "MICRO-452",
-    heroImage: "/images/projects/thymio-autonomous-navigation/hero.png",
+    heroImage: "/images/projects/thymio-autonomous-navigation/hero.jpg",
     detail: {
       description: {
         why: "EPFL's Basics of Mobile Robotics course tasked teams with building a complete autonomous navigation stack for the Thymio robot.",
@@ -272,7 +272,7 @@ const projects: Project[] = [
     domain: "Biomedical & Precision Instrumentation",
     featured: true,
     course: "MICRO-201",
-    heroImage: "/images/projects/dynabal-nanoforce-sensor/hero.png",
+    heroImage: "/images/projects/dynabal-nanoforce-sensor/hero.jpg",
     detail: {
       description: {
         why: "EPFL's Mechanism Design II course tasked teams with building a miniaturized, flexure-only force sensor able to resolve forces down to 500 nN while staying insensitive to acceleration.",
@@ -305,7 +305,7 @@ const projects: Project[] = [
     domain: "Mechanism Design & Fabrication",
     featured: true,
     course: "ME-102",
-    heroImage: "/images/projects/l-epluche-carotte/hero.png",
+    heroImage: "/images/projects/l-epluche-carotte/hero.jpg",
     detail: {
       description: {
         why: "EPFL's Construction Mécanique II course tasked teams with designing a fully hand-powered carrot peeler ready for production.",

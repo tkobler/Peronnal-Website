@@ -44,9 +44,13 @@
   --z-glass: 1;
   --z-content: 10;
   --z-hero-content: 20;
-  --z-locale: 40;
   --z-fab: 900;
   --z-nav: 1000;
+  /* Above --z-nav on purpose. The nav pill is centred with a 260px min-width,
+     so on phone-width viewports its right edge reaches under this toggle. At
+     --z-locale: 40 the pill won every hit test there and taps on FR landed on
+     the nav instead — French was unreachable below ~430px. */
+  --z-locale: 1005;
   --z-menu-backdrop: 1010;
   --z-menu-panel: 1020;
   --z-skip-link: 9999;
