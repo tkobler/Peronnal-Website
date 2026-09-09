@@ -54,13 +54,14 @@ describe("Translation Integrity", () => {
     }
   });
 
-  it("hero phrases are non-empty arrays", () => {
+  // The hero once carried a `phrases` array that no component ever read; it was
+  // dropped along with its type. These three are the keys HeroSection and
+  // HomePage actually render.
+  it("hero strings are present in both locales", () => {
     for (const locale of LOCALES) {
       const t = getTranslations(locale);
-      expect(Array.isArray(t.hero.phrases)).toBe(true);
-      expect(t.hero.phrases.length).toBeGreaterThan(0);
-      for (const phrase of t.hero.phrases) {
-        expect(phrase).toBeTruthy();
+      for (const key of ["greeting", "contact", "tagline"] as const) {
+        expect(t.hero[key], `hero.${key} is empty in ${locale}`).toBeTruthy();
       }
     }
   });

@@ -69,7 +69,6 @@ export interface Translations {
   };
   hero: {
     greeting: string;
-    phrases: string[];
     contact: string;
     tagline: string;
   };
