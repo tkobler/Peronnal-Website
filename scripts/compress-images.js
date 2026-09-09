@@ -4,8 +4,8 @@ const fs = require("fs");
 const path = require("path");
 
 const IMG_DIR = path.join(__dirname, "..", "public", "images");
-const MAX_WIDTH = 1920;
-const JPEG_QUALITY = 80;
+const MAX_WIDTH = 2400;
+const JPEG_QUALITY = 85;
 const MIN_SIZE = 100 * 1024; // 100 KB threshold to attempt compression
 
 async function isOpaquePng(buf) {

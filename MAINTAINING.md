@@ -115,7 +115,38 @@ The button is white with a dark label and inverts to dark on hover, which keeps 
 
 ## Images
 
-Replace or add files under [public/images/](public/images/) (see [SETUP.md §2.3](./SETUP.md#23-images) for the full folder layout). The site serves images unoptimized (`images.unoptimized: true`), so compress before committing — [scripts/compress-images.js](scripts/compress-images.js) can do this for you.
+Replace or add files under [public/images/](public/images/) (see [SETUP.md §2.3](./SETUP.md#23-images) for the full folder layout). The site serves images unoptimized (`images.unoptimized: true`), so **every byte you commit is a byte the visitor downloads, at full original dimensions** — compress before committing. [scripts/compress-images.js](scripts/compress-images.js) does this for you.
+
+What the pass does, and why:
+
+- **Caps dimensions rather than crushing quality.** The layout maxes out at 1600px, so anything wider is waste. Heroes are capped at 2400px, detail shots at 1800px. Downscaling sharpens; it does not blur.
+- **JPEG at quality 85** (`mozjpeg`, progressive) is visually indistinguishable from the original for photos and CAD renders.
+- **Photographic PNGs are converted to JPEG.** PNG costs roughly ten times as much for photographic content. The script checks for *real* transparency first by decoding the alpha channel — the `hasAlpha` flag alone lies, several fully opaque files had it set.
+- **Line art and logos stay PNG.** JPEG rings around CAD strokes and diagram lines, and logos need their alpha. No palette quantisation on logos — it bands gradients.
+
+If you convert a `hero.png` to `hero.jpg`, update its `heroImage` path in [src/data/projects.ts](src/data/projects.ts).
+
+---
+
+## Project documents (PDFs)
+
+A project can carry downloadable PDFs — reports, design reviews, pitch decks. Adding one is two steps:
+
+1. Drop the file in `public/documents/<project-id>/`.
+2. Add an entry to the project's `detail.documents` array in [src/data/projects.ts](src/data/projects.ts). Labels can be overridden per locale in `translations/{en,fr}/projects.ts`, the same way `images` and `keyResults` work.
+
+**Compress on the way in.** Ghostscript with `-dPDFSETTINGS=/ebook` took the original eight PDFs from 54 MB to 17 MB with the text untouched — only embedded screenshots are downsampled to 150 dpi:
+
+```bash
+gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH \
+   -sOutputFile=public/documents/<project-id>/report.pdf source.pdf
+```
+
+These PDFs **are tracked by git**, like `public/cv/` — static export means there is no other way to serve them.
+
+Two conventions worth keeping: include only work authored by you or your team (not course briefs or assignment statements), and keep to one primary document per project. Deliberately excluded so far: the ARTORG civil-service report, which may be lab-confidential.
+
+**Where the block renders:** `/projects/[id]` is currently a stub that redirects to `/projects`, so the card content is rendered inline by `ProjectsPage.tsx` — that is where the documents block lives. It is mirrored into `ProjectDetailPage.tsx` so the two stay in sync for whenever detail pages come back. Change one, change the other.
 
 ---
 
