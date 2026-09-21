@@ -40,22 +40,21 @@ export default function HeroSection() {
 
   return (
     <section
-      className="bg-transparent relative grid min-h-screen place-items-center overflow-hidden"
+      className="section-light relative grid min-h-screen place-items-center overflow-hidden"
       style={{ padding: "var(--space-lg) var(--container-padding)" }}
       aria-label="Hero introduction"
       data-section-theme="light"
-      data-project-id="hero"
     >
       <div className="relative flex max-w-[var(--container-max)] flex-col items-center text-center" style={{ zIndex: "var(--z-hero-content)" }}>
 
         {/* --- Profile Picture --- */}
         <div className="hero-fade-1 mb-8">
-          <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-xl md:h-40 md:w-40">
+          <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-xl md:h-48 md:w-48">
             <Image
               src="/images/placeholders/square.svg"
               alt="Your profile photo"
-              width={160}
-              height={160}
+              width={192}
+              height={192}
               priority
               className="h-full w-full object-cover"
             />
@@ -80,16 +79,6 @@ export default function HeroSection() {
         <div className="hero-fade-3 mt-8 sm:mt-14 flex justify-center">
           <button
             onClick={() => router.push('/contact')}
-            onMouseEnter={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              window.dispatchEvent(new CustomEvent("dot-pattern-burst", {
-                detail: {
-                  x: rect.left + rect.width / 2,
-                  y: rect.top + rect.height / 2,
-                  count: 4,
-                },
-              }));
-            }}
             className="group relative overflow-hidden rounded-full border border-black/5 bg-white/40 px-10 py-4 text-xs uppercase tracking-[0.2em] font-bold text-black backdrop-blur-md transition-all duration-300 hover:bg-white/60 hover:shadow-lg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2"
           >
             <span className="relative z-10">{t.hero.contact}</span>

@@ -111,6 +111,9 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
   const challenges = tc?.detail.challenges ?? project.detail.challenges;
   const publication = tc?.detail.publication ?? project.detail.publication;
   const images = tc?.detail.images ?? project.detail.images;
+  const documents = tc?.detail.documents ?? project.detail.documents;
+  const link = project.detail.link;
+  const sourceLink = project.detail.sourceLink;
 
   const sectionImage = (section: string) => images?.find(img => img.section === section);
 
@@ -320,12 +323,14 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
                 {/* Metadata */}
                 <div className={`space-y-6 rounded-xl border ${subtleBorder} ${subtleBg}`} style={{ padding: "clamp(1.25rem, 3vh, 2rem)" }}>
                   <div>
-                    <h3 className="tag-text mb-1.5 uppercase tracking-widest opacity-50">{t.projects.roleLabel}</h3>
-                    <p className="font-medium" style={{ fontSize: "var(--text-base)" }}>{tc?.detail.role ?? project.detail.role}</p>
-                  </div>
-                  <div>
-                    <h3 className="tag-text mb-1.5 uppercase tracking-widest opacity-50">{t.projects.durationLabel}</h3>
-                    <p className="font-medium" style={{ fontSize: "var(--text-base)" }}>{tc?.detail.duration ?? project.detail.duration}</p>
+                    <div className="tag-text mb-1.5 flex items-baseline justify-between gap-4 uppercase tracking-widest opacity-50">
+                      <h3>{t.projects.roleLabel}</h3>
+                      <p className="shrink-0">
+                        <span className="sr-only">{t.projects.durationLabel}: </span>
+                        {tc?.detail.duration ?? project.detail.duration}
+                      </p>
+                    </div>
+                    <p className="font-semibold leading-snug" style={{ fontSize: "var(--text-xl)" }}>{tc?.detail.role ?? project.detail.role}</p>
                   </div>
                   <div>
                     <h3 className="tag-text mb-2 uppercase tracking-widest opacity-50">{t.projects.technologiesLabel}</h3>
@@ -341,6 +346,60 @@ export default function ProjectDetailPage({ project, theme: themeProp = "dark" }
                       ))}
                     </div>
                   </div>
+                  {(link || sourceLink || documents?.length) && (
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                      {link && (
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-1.5 font-medium underline underline-offset-4 transition-colors duration-200 ${
+                            isDark
+                              ? "text-white/80 decoration-white/30 hover:text-white hover:decoration-white"
+                              : "text-black/70 decoration-black/25 hover:text-black hover:decoration-black"
+                          }`}
+                          style={{ fontSize: "var(--text-base)" }}
+                        >
+                          {t.projects.learnMoreLabel}
+                        </a>
+                      )}
+                      {documents?.map((doc) => (
+                        <a
+                          key={doc.href}
+                          href={doc.href}
+                          download={doc.filename}
+                          className={`inline-flex items-center gap-1.5 font-medium underline underline-offset-4 transition-colors duration-200 ${
+                            isDark
+                              ? "text-white/80 decoration-white/30 hover:text-white hover:decoration-white"
+                              : "text-black/70 decoration-black/25 hover:text-black hover:decoration-black"
+                          }`}
+                          style={{ fontSize: "var(--text-base)" }}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" className="flex-shrink-0 opacity-60">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                          </svg>
+                          {doc.label}
+                          <span className="sr-only"> (PDF)</span>
+                        </a>
+                      ))}
+                      {sourceLink && (
+                        <a
+                          href={sourceLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider underline underline-offset-4 transition-colors duration-200 ${
+                            isDark
+                              ? "text-white/40 decoration-white/20 hover:text-white/70 hover:decoration-white/50"
+                              : "text-black/40 decoration-black/15 hover:text-black/70 hover:decoration-black/40"
+                          }`}
+                        >
+                          {t.projects.sourceLabel}
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
 

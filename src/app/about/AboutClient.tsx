@@ -3,10 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useHashScroll } from "@/hooks/useHashScroll";
 import { bachelorGpa, bachelorCredits, masterGpa, masterCreditsObtained, masterCreditsTotal, highlightCourses } from "@/data/courses";
 
 export default function About() {
   const { t } = useLanguage();
+
+  useHashScroll();
 
   return (
     <main className="relative">
@@ -16,7 +19,7 @@ export default function About() {
         data-section-theme="dark"
       >
         <h1
-          className="text-[length:var(--text-hero)] font-bold leading-[0.9] tracking-tight"
+          className="relative z-10 text-[length:var(--text-hero)] font-bold leading-[0.9] tracking-tight"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {t.about.heading}
@@ -29,7 +32,7 @@ export default function About() {
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="light"
       >
-        <div className="mx-auto max-w-5xl">
+        <div className="relative z-10 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-12 lg:gap-16 items-start">
             {/* Profile photo */}
             <div className="flex justify-center lg:justify-start">
@@ -75,7 +78,7 @@ export default function About() {
         style={{ padding: "var(--space-xl) var(--container-padding)" }}
         data-section-theme="dark"
       >
-        <div className="mx-auto max-w-5xl">
+        <div className="relative z-10 mx-auto max-w-5xl">
           <h2
             className="text-[length:var(--text-3xl)] font-bold tracking-tight"
             style={{ fontFamily: "var(--font-display)" }}
@@ -123,7 +126,7 @@ export default function About() {
                   {course.professorLinks.length > 0
                     ? course.professorLinks.map((prof, i) => (
                         <span key={prof.url}>
-                          {i > 0 && " & "}
+                          {i > 0 && " · "}
                           <a href={prof.url} target="_blank" rel="noopener noreferrer" className="underline decoration-white/15 underline-offset-2 transition-colors hover:text-blue-400 hover:decoration-blue-400">
                             {prof.name}
                           </a>
@@ -133,7 +136,7 @@ export default function About() {
                 </p>
                 {course.projectId && (
                   <Link
-                    href={`/projects/${course.projectId}`}
+                    href={`/projects#${course.projectId}`}
                     className="mt-2 inline-block rounded border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider text-white/50 transition-colors hover:bg-white/10 hover:text-white/85"
                   >
                     {t.about.viewProject} →
