@@ -19,6 +19,7 @@ export const about: Translations["about"] = {
   passed: "Réussi",
   inProgress: "En cours",
   highlightsTitle: "Cours sélectionnés",
+  variousProfessors: "Plusieurs professeurs",
   viewProject: "Voir le projet",
   musicTitle: "En dehors des cours",
   musicBio: "Cette section est un exemple pour un loisir, un instrument, un sport, ou tout autre élément que vous souhaitez mettre en avant en dehors des cours et projets.",

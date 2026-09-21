@@ -31,9 +31,9 @@ Run a structured audit of pending changes in this repo against its documented ru
    **Project-specific invariants**
    - Static-export violations (server code, runtime fetching, middleware)
    - i18n: hardcoded user-facing strings, EN/FR key parity
-   - CV pipeline: accidental tracking of `public/cv-*.pdf`, `cv/output/`, `cv/archive/`
+   - CV pipeline: `public/cv/cv-{en,fr}.pdf` SHOULD be tracked (that's how the site serves them); flag accidental tracking of the legacy `public/cv-*.pdf`, `cv/output/`, or `cv/archive/` instead
    - Build artifacts committed: `out/`, `.next/`, `tests/visual/baselines/`, `test-results/`
-   - Canvas/Schematic: data change without renderer update (or vice versa)
+   - Deep-link anchors: a project/experience `id` renamed without checking `homeCards.ts`, `courses.ts`'s `projectId`, and hardcoded `/projects#<id>`-style links
    - New dependencies added without justification
 
    **Frontend hygiene**
@@ -79,4 +79,4 @@ Run a structured audit of pending changes in this repo against its documented ru
 
 - Only audit **pending changes** (vs. main or unstaged), never the whole repo.
 - Don't audit generated files (`out/`, `.next/`, `public/cv-*.pdf`, `tests/visual/baselines/`, `package-lock.json`).
-- If the user specifies a scope ("audit just the flight page changes"), honor it.
+- If the user specifies a scope ("audit just the hobby page changes"), honor it.

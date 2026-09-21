@@ -23,12 +23,14 @@ export const projects: Translations["projects"] = {
   methodologyLabel: "Méthodologie",
   challengesLabel: "Défis & Décisions",
   publicationLabel: "Publication",
+  learnMoreLabel: "En savoir plus →",
+  sourceLabel: "Source",
   filterAll: "Tout",
   domains: {
-    "Microelectronics & Photonics": { name: "Microélectronique & Photonique", desc: "Conception CI, Photonique Silicium & Systèmes RF" },
-    "Product Engineering & IoT": { name: "Ingénierie Produit & IoT", desc: "Systèmes Embarqués & Objets Connectés" },
-    "Robotics & AI": { name: "Robotique & IA", desc: "Agents Autonomes & Contrôle Neuronal" },
-    "Industrial Design & Mechanical": { name: "Design Industriel & Mécanique", desc: "Mécanismes de Précision & Design Produit" },
+    "Embedded Systems & Electronics": { name: "Systèmes Embarqués & Électronique", desc: "PCB sur-mesure, Firmware & Matériel Connecté" },
+    "Robotics & Autonomous Control": { name: "Robotique & Contrôle Autonome", desc: "Architectures de Contrôle, Navigation & Autonomie" },
+    "Biomedical & Precision Instrumentation": { name: "Biomédical & Instrumentation de Précision", desc: "Capteurs de Force & Mesure par Flexion" },
+    "Mechanism Design & Fabrication": { name: "Conception de Mécanismes & Fabrication", desc: "Conception de Mécanismes, CAO & Fabrication" },
   },
 };
 
@@ -36,13 +38,16 @@ export const projectsContent: Translations["projectsContent"] = {
   "signal-relay": {
     title: "Relais de signal maillé basse consommation",
     tagline: "Relais alimenté par batterie pour réseaux de capteurs de terrain",
-    descriptor: "Ingénierie Produit & IoT · Académique",
+    descriptor: "Systèmes Embarqués & Électronique · Académique",
     detail: {
       description: {
         why: "Les déploiements de capteurs de terrain sont souvent hors de portée Wi-Fi et cellulaire, et tirer une alimentation secteur jusqu'à chaque nœud n'est pas réaliste.",
         what: "Un nœud relais alimenté par batterie qui retransmet les relevés de capteurs sur un maillage basse consommation, étendant la portée du réseau sans source d'alimentation fixe.",
         how: "Conçu autour d'un microcontrôleur basse consommation avec une pile radio à cycle de service, en veille entre les fenêtres de transmission pour prolonger l'autonomie sur un déploiement de plusieurs mois.",
       },
+      documents: [
+        { href: "/documents/signal-relay/project-report.pdf", label: "Rapport de projet" },
+      ],
       role: "Ingénieur Systèmes Embarqués",
       duration: "Printemps 2025",
       keyResults: [
@@ -53,30 +58,30 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Projet de cours · MICRO-315 · Printemps 2025",
     },
   },
-  "ring-resonator": {
-    title: "Résonateur en anneau intégré",
-    tagline: "Conception et caractérisation d'un filtre en photonique silicium",
-    descriptor: "Microélectronique & Photonique · Académique",
+  "micro-force-sensor": {
+    title: "Capteur de micro-force à flexion",
+    tagline: "Capteur souple pour la mesure de forces sub-newton",
+    descriptor: "Biomédical & Instrumentation de Précision · Académique",
     detail: {
       description: {
-        why: "Les résonateurs en anneau sont un élément de base du filtrage optique sur puce, et la fabrication pratique est le meilleur moyen de comprendre où la théorie et la réalité de la salle blanche divergent.",
-        what: "Conception et fabrication d'un résonateur en anneau silicium-sur-isolant, puis caractérisation de sa réponse spectrale par rapport à l'objectif de conception.",
-        how: "Exécution du cycle complet de salle blanche — lithographie, gravure et métrologie — puis extraction du facteur de qualité du résonateur à partir des spectres de transmission mesurés.",
+        why: "Mesurer des forces inférieures au newton avec un capteur de force standard, c'est se heurter à son bruit de fond et à sa sensibilité aux axes croisés — un capteur à flexion sur-mesure sacrifie la plage de mesure générale au profit de la précision là où elle compte vraiment.",
+        what: "Un capteur souple à flexion qui convertit de petites forces appliquées en une déflexion mesurable, lue optiquement pour une résolution sub-millinewton.",
+        how: "Conception de la géométrie de flexion en CAO pour équilibrer rigidité et plage de mesure, usinage en une seule pièce pour éviter toute compliance d'assemblage, puis étalonnage de la lecture optique par rapport à un capteur de force de référence.",
       },
-      role: "Ingénieur Fabrication",
-      duration: "Printemps 2025",
+      role: "Ingénieur Instrumentation",
+      duration: "Automne 2024",
       keyResults: [
-        "Résonateur en anneau fabriqué avec un facteur de qualité mesuré conforme à la simulation",
-        "Processus de salle blanche complet : lithographie, gravure, dépôt métallique",
-        "Métrologie SEM et banc optique pour la caractérisation spectrale",
+        "Résolution sub-millinewton sur toute la plage de mesure du capteur",
+        "Conception monobloc éliminant toute compliance d'assemblage",
+        "Étalonné par rapport à un capteur de force de référence à 2% près de la pleine échelle",
       ],
-      scope: "Projet de laboratoire · MICRO-373 · Printemps 2025",
+      scope: "Projet de cours · Automne 2024",
     },
   },
   "terrain-rover": {
     title: "Rover tout-terrain autonome",
     tagline: "Navigation par vision sur terrain accidenté",
-    descriptor: "Robotique & IA · Académique",
+    descriptor: "Robotique & Contrôle Autonome · Académique",
     detail: {
       description: {
         why: "La plupart des plateformes de robotique étudiantes supposent un terrain plat et prévisible — ce projet explore ce qui se passe quand cette hypothèse ne tient plus.",
@@ -96,7 +101,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "modular-toolkit": {
     title: "Système d'outils à main modulaire",
     tagline: "Têtes d'outils interchangeables, imprimées en 3D",
-    descriptor: "Design Industriel & Mécanique · Académique",
+    descriptor: "Conception de Mécanismes & Fabrication · Académique",
     detail: {
       description: {
         why: "Un outil à usage unique implique d'acheter et de stocker un manche séparé pour chaque tâche — une interface partagée et interchangeable supprime cette redondance.",

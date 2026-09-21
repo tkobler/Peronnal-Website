@@ -33,8 +33,8 @@ export function useSaveAndDeploy() {
       return;
     }
 
-    const owner = process.env.NEXT_PUBLIC_GITHUB_OWNER || "ccka";
-    const repo = process.env.NEXT_PUBLIC_GITHUB_REPO || "personnal-website";
+    const owner = process.env.NEXT_PUBLIC_GITHUB_OWNER || "your-username";
+    const repo = process.env.NEXT_PUBLIC_GITHUB_REPO || "your-repo-name";
 
     setState({
       saving: true,

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # ─── CV Build Script ───
-# Compiles all Typst CV variants to PDF and copies generic versions to public/
+# Compiles all Typst CV variants to PDF into cv/output/.
+# Publishing to the website is parked — see the "Publishing to the site" section below.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -56,16 +57,26 @@ if [ ${#COVER_LETTERS[@]} -gt 0 ]; then
   echo ""
 fi
 
-# Copy generic CVs to public/ for website download
-if [ -f "$OUTPUT_DIR/generic-en.pdf" ]; then
-  cp "$OUTPUT_DIR/generic-en.pdf" "$PUBLIC_DIR/cv-en.pdf"
-  echo "Copied generic-en.pdf → public/cv-en.pdf"
-fi
+# ─── Publishing to the site (PARKED) ───
+# The site no longer reads Typst output automatically. The Get in Touch page
+# serves public/cv/cv-en.pdf and public/cv/cv-fr.pdf directly, so a CV can be
+# dropped in by hand without Typst installed.
+#
+# To wire this pipeline back into the site, uncomment the block below. Note that
+# public/cv/*.pdf is tracked by git — commit the regenerated PDFs, or the live
+# site keeps the old ones.
+#
+# if [ -f "$OUTPUT_DIR/generic-en.pdf" ]; then
+#   cp "$OUTPUT_DIR/generic-en.pdf" "$PUBLIC_DIR/cv/cv-en.pdf"
+#   echo "Copied generic-en.pdf → public/cv/cv-en.pdf"
+# fi
+#
+# if [ -f "$OUTPUT_DIR/generic-fr.pdf" ]; then
+#   cp "$OUTPUT_DIR/generic-fr.pdf" "$PUBLIC_DIR/cv/cv-fr.pdf"
+#   echo "Copied generic-fr.pdf → public/cv/cv-fr.pdf"
+# fi
 
-if [ -f "$OUTPUT_DIR/generic-fr.pdf" ]; then
-  cp "$OUTPUT_DIR/generic-fr.pdf" "$PUBLIC_DIR/cv-fr.pdf"
-  echo "Copied generic-fr.pdf → public/cv-fr.pdf"
-fi
+echo "PDFs are in cv/output/. Publishing to public/cv/ is parked — see public/cv/README.md."
 
 # # ─── DOCX generation (optional, requires pdf2docx) ───
 # DOCX_FAILED=0

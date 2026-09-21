@@ -18,7 +18,7 @@ Run the pre-PR checklist for this repo against the current state of pending chan
      - `src/data/translations/` → i18n section
      - `src/app/`, `src/components/layout/Navigation.tsx` → routing section
      - CSS, Tailwind classes in JSX, `globals.css` → layout/responsive section
-     - `DotPattern.tsx`, `Schematic`, canvas → canvas section
+     - `GlobalTopoBackground.tsx`, `contours.ts`, `trailPath.ts` → canvas section
      - `components/ui/`, ARIA, buttons, forms → accessibility section
      - `globals.css` tokens, visual components → design token section
      - `src/data/*.ts` (non-translation) → data section

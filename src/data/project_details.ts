@@ -19,10 +19,10 @@ export const projectTechnicalDetails: ProjectTechnicalDetail[] = [
     ],
   },
   {
-    id: "ring-resonator",
+    id: "micro-force-sensor",
     metrics: [
-      { label: "Process", value: "SOI, full cleanroom cycle" },
-      { label: "Characterization", value: "SEM + optical bench" },
+      { label: "Resolution", value: "Sub-millinewton" },
+      { label: "Calibration", value: "Within 2% of full scale" },
     ],
   },
   {

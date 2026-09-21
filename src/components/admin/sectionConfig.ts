@@ -14,7 +14,7 @@ export const SECTIONS: SectionDef[] = [
     keys: ["projects", "projectsContent", "projectDetailsContent"],
   },
   { id: "experience", label: "Experience", keys: ["experience", "experienceData"] },
-  { id: "flight", label: "Flight", keys: ["flight", "flightLog"] },
+  { id: "hobby", label: "Hobby", keys: ["hobby"] },
   { id: "contact", label: "Contact", keys: ["contact"] },
   { id: "about", label: "About", keys: ["about"] },
   { id: "footer", label: "Footer", keys: ["footer"] },

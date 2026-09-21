@@ -2,16 +2,12 @@ import type { Translations } from "../index";
 
 export const homeCards: Translations["homeCards"] = {
   "academic-research": {
-    title: "Integrated Ring Resonator",
-    descriptor: "Designed and fabricated a silicon photonics filter, then characterized it against the design target",
+    title: "Flexure-Based Micro-Force Sensor",
+    descriptor: "Designed and calibrated a compliant sensor for sub-newton force measurement",
   },
   "job-experience": {
     title: "Work Experience",
     descriptor: "From internships to hands-on production and research roles",
-  },
-  "engineering-project": {
-    title: "Autonomous Terrain Rover",
-    descriptor: "Led a team of 3 to build vision-based navigation for uneven ground",
   },
   hobby: {
     title: "Beyond Engineering",

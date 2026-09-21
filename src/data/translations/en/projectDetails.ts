@@ -11,10 +11,10 @@ export const projectDetailsContent: Translations["projectDetailsContent"] = {
       "Enclosure sealing for outdoor exposure without blocking the antenna.",
     ],
   },
-  "ring-resonator": {
+  "micro-force-sensor": {
     metrics: [
-      { label: "Process", value: "SOI, full cleanroom cycle" },
-      { label: "Characterization", value: "SEM + optical bench" },
+      { label: "Resolution", value: "Sub-millinewton" },
+      { label: "Calibration", value: "Within 2% of full scale" },
     ],
   },
   "terrain-rover": {

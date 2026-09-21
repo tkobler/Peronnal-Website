@@ -49,25 +49,24 @@ export default function ProjectSection({ card, theme, onSelect }: ProjectSection
       aria-label={`Featured: ${card.title}`}
       data-section-theme={theme}
     >
-      {/* 1. FULL-BLEED BACKGROUND IMAGE + COLOR OVERLAY */}
+      {/* 1. FRAMED BACKGROUND IMAGE — most of the section, not edge-to-edge, so
+             the fixed contour pattern still shows through the margin around it */}
       {card.image && (
-        <>
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={card.image}
-              alt=""
-              fill
-              sizes="100vw"
-              className="object-cover opacity-0 transition-opacity duration-700"
-              onLoad={handleImageLoad}
-            />
-          </div>
-          <div className={`absolute inset-0 z-[1] ${
+        <div className="absolute inset-x-[5%] inset-y-[7%] z-0 overflow-hidden rounded-2xl shadow-2xl">
+          <Image
+            src={card.image}
+            alt=""
+            fill
+            sizes="90vw"
+            className="object-cover opacity-0 transition-opacity duration-700"
+            onLoad={handleImageLoad}
+          />
+          <div className={`absolute inset-0 ${
             theme === "dark"
-              ? "bg-gradient-to-b from-[var(--dark-bg)]/80 via-[var(--dark-bg)]/50 to-[var(--dark-bg)]/95"
-              : "bg-gradient-to-b from-[var(--light-bg)]/80 via-[var(--light-bg)]/50 to-[var(--light-bg)]/95"
+              ? "bg-gradient-to-b from-[var(--dark-bg)]/10 via-[var(--dark-bg)]/20 to-[var(--dark-bg)]/70"
+              : "bg-gradient-to-b from-[var(--light-bg)]/10 via-[var(--light-bg)]/20 to-[var(--light-bg)]/60"
           }`} />
-        </>
+        </div>
       )}
 
       {/* 2. CONTENT LAYER — scroll-reveal */}

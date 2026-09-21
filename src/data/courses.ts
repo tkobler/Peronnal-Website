@@ -34,7 +34,6 @@ export interface ProfessorLink {
 export interface HighlightCourse {
   code: string;
   name: string;
-  professor: string;
   courseUrl?: string;
   professorLinks: ProfessorLink[];
   projectId?: string;
@@ -42,28 +41,29 @@ export interface HighlightCourse {
 
 // Real EPFL course codes/names, paired with the four example projects above.
 // Swap the projectId links (or the courses themselves) once you've replaced
-// projects.ts with your own work.
+// projects.ts with your own work. `professorLinks` can be an empty array for
+// a course taught by several people rather than one named professor — the
+// course card falls back to the `variousProfessors` translation string.
 export const highlightCourses: HighlightCourse[] = [
   {
-    code: "MICRO-502", name: "Aerial Robotics", professor: "Prof. D. Floreano",
+    code: "MICRO-502", name: "Aerial Robotics",
     courseUrl: "https://edu.epfl.ch/coursebook/en/aerial-robotics-MICRO-502",
     professorLinks: [{ name: "Dario Floreano", url: "https://people.epfl.ch/dario.floreano" }],
     projectId: "terrain-rover",
   },
   {
-    code: "MICRO-373", name: "Advanced Microfabrication Practicals", professor: "Prof. I.-C. Benea-Chelmus",
+    code: "MICRO-373", name: "Advanced Microfabrication Practicals",
     courseUrl: "https://edu.epfl.ch/coursebook/en/advanced-microfabrication-practicals-MICRO-373",
-    professorLinks: [{ name: "Ileana-Cristina Benea-Chelmus", url: "https://people.epfl.ch/cristina.benea" }],
-    projectId: "ring-resonator",
+    professorLinks: [],
   },
   {
-    code: "MICRO-315", name: "Embedded Systems & Robotics", professor: "Prof. F. Mondada",
+    code: "MICRO-315", name: "Embedded Systems & Robotics",
     courseUrl: "https://edu.epfl.ch/coursebook/en/embedded-systems-and-robotics-MICRO-315",
     professorLinks: [{ name: "Francesco Mondada", url: "https://people.epfl.ch/francesco.mondada" }],
     projectId: "signal-relay",
   },
   {
-    code: "MICRO-201", name: "Mechanism Design II", professor: "Prof. Y. Bellouard",
+    code: "MICRO-201", name: "Mechanism Design II",
     courseUrl: "https://edu.epfl.ch/coursebook/en/mechanism-design-ii-MICRO-201",
     professorLinks: [{ name: "Yves Bellouard", url: "https://people.epfl.ch/yves.bellouard" }],
     projectId: "modular-toolkit",
@@ -78,16 +78,16 @@ export const curriculum: AcademicYear[] = [
       {
         label: "Block 1",
         courses: [
-          { code: "MICRO-201", name: "Mechanism Design II", grade: 5.5, credits: 6, session: "07.2023", domain: "Industrial Design & Mechanical", projectId: "modular-toolkit" },
-          { code: "EE-202", name: "Electronics I", grade: 4.75, credits: 4, session: "02.2023", domain: "Microelectronics & Photonics" },
-          { code: "MICRO-210", name: "Microcontrollers", grade: 5.25, credits: 3, session: "07.2023", domain: "Product Engineering & IoT" },
+          { code: "MICRO-201", name: "Mechanism Design II", grade: 5.5, credits: 6, session: "07.2023", domain: "Mechanism Design & Fabrication", projectId: "modular-toolkit" },
+          { code: "EE-202", name: "Electronics I", grade: 4.75, credits: 4, session: "02.2023", domain: "Embedded Systems & Electronics" },
+          { code: "MICRO-210", name: "Microcontrollers", grade: 5.25, credits: 3, session: "07.2023", domain: "Embedded Systems & Electronics" },
         ],
       },
       {
         label: "Block 2",
         courses: [
-          { code: "MICRO-315", name: "Embedded Systems & Robotics", grade: 4.5, credits: 6, session: "07.2024", domain: "Robotics & AI", projectId: "signal-relay" },
-          { code: "MICRO-373", name: "Advanced Microfabrication Practicals", grade: 5.5, credits: 3, session: "07.2024", domain: "Microelectronics & Photonics", projectId: "ring-resonator" },
+          { code: "MICRO-315", name: "Embedded Systems & Robotics", grade: 4.5, credits: 6, session: "07.2024", domain: "Robotics & Autonomous Control", projectId: "signal-relay" },
+          { code: "MICRO-373", name: "Advanced Microfabrication Practicals", grade: 5.5, credits: 3, session: "07.2024", domain: "Biomedical & Precision Instrumentation" },
         ],
       },
     ],
@@ -99,8 +99,8 @@ export const curriculum: AcademicYear[] = [
       {
         label: "Options",
         courses: [
-          { code: "MICRO-502", name: "Aerial Robotics", grade: 5, credits: 5, session: "07.2025", domain: "Robotics & AI", projectId: "terrain-rover" },
-          { code: "MICRO-455", name: "Machine Learning I", grade: 4.5, credits: 4, session: "02.2025", domain: "Robotics & AI" },
+          { code: "MICRO-502", name: "Aerial Robotics", grade: 5, credits: 5, session: "07.2025", domain: "Robotics & Autonomous Control", projectId: "terrain-rover" },
+          { code: "MICRO-455", name: "Machine Learning I", grade: 4.5, credits: 4, session: "02.2025", domain: "Robotics & Autonomous Control" },
         ],
       },
     ],

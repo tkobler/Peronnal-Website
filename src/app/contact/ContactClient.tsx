@@ -62,11 +62,11 @@ export default function ContactPage() {
 
   return (
     <main
-      className="min-h-screen bg-gray-50 pt-24 pb-20"
+      className="section-light relative min-h-screen pt-24 pb-20"
       data-section-theme="light"
     >
       {/* HEADER */}
-      <section className="mx-auto max-w-4xl px-6 text-center">
+      <section className="relative z-10 mx-auto max-w-4xl px-6 text-center">
         <h1 className="font-display font-bold tracking-tight text-gray-900" style={{ fontSize: "clamp(2.25rem, 6vw, 3.5rem)" }}>
           {t.contact.heading}
         </h1>
@@ -77,7 +77,7 @@ export default function ContactPage() {
       </section>
 
       {/* CONTACT GRID */}
-      <section className="mx-auto mt-16 max-w-4xl px-6">
+      <section className="relative z-10 mx-auto mt-16 max-w-4xl px-6">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {contacts.map((c) => (
             <a
@@ -125,7 +125,7 @@ export default function ContactPage() {
       </section>
 
       {/* RESUME & MAP AREA */}
-      <section className="mx-auto mt-12 max-w-4xl px-6">
+      <section className="relative z-10 mx-auto mt-12 max-w-4xl px-6">
         <div className="flex flex-col gap-6 md:flex-row">
 
             {/* Resume Download Card */}
@@ -141,10 +141,11 @@ export default function ContactPage() {
                         </svg>
                     </div>
                 </div>
+                {/* PDFs live in public/cv/ — drop your own files there to replace them. */}
                 <div className="mt-8 flex gap-4">
                   {/* English Resume */}
                   <a
-                    href="/cv-en.pdf"
+                    href="/cv/cv-en.pdf"
                     download="Your_Name_CV_EN.pdf"
                     aria-label="Download CV in English (PDF)"
                     className="inline-block rounded-full bg-white px-6 py-2 text-sm font-bold text-black transition-transform hover:scale-105 active:scale-95"
@@ -154,7 +155,7 @@ export default function ContactPage() {
 
                   {/* French Resume */}
                   <a
-                    href="/cv-fr.pdf"
+                    href="/cv/cv-fr.pdf"
                     download="Your_Name_CV_FR.pdf"
                     aria-label="Télécharger le CV en français (PDF)"
                     className="inline-block rounded-full border border-white/30 px-6 py-2 text-sm font-bold text-white transition-transform hover:bg-white/10 hover:scale-105 active:scale-95"

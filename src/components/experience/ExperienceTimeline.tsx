@@ -4,13 +4,24 @@ import Image from "next/image";
 import { experiences, ExperienceCategory } from "@/data/experience";
 import { useLanguage } from "@/context/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useHashScroll } from "@/hooks/useHashScroll";
+import { generateTrailPath } from "@/lib/trailPath";
 
-function RevealEntry({ children, index }: { children: React.ReactNode; index: number }) {
+// A fixed seed for a stable, deterministic trail shape (no hydration
+// mismatch). The viewBox height is nominal — the SVG stretches to fill
+// however tall the timeline actually is via preserveAspectRatio="none".
+const TRAIL_SEED = 7;
+const TRAIL_VIEWBOX_WIDTH = 40;
+const TRAIL_VIEWBOX_HEIGHT = 1200;
+const TRAIL_PATH = generateTrailPath(TRAIL_SEED, TRAIL_VIEWBOX_WIDTH, TRAIL_VIEWBOX_HEIGHT);
+
+function RevealEntry({ id, children, index }: { id: string; children: React.ReactNode; index: number }) {
   const { ref, isVisible } = useScrollReveal(0.15);
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      id={id}
+      className={`scroll-mt-28 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {children}
@@ -21,12 +32,15 @@ function RevealEntry({ children, index }: { children: React.ReactNode; index: nu
 export default function ExperienceTimeline() {
   const { t } = useLanguage();
 
+  useHashScroll();
+
   // Helper to get color based on category — uses design tokens from globals.css
   const getCategoryColor = (cat: ExperienceCategory): string => {
     const map: Record<ExperienceCategory, string> = {
       service: "var(--color-cat-service)",
-      music: "var(--color-cat-music)",
       engineering: "var(--color-cat-engineering)",
+      education: "var(--color-cat-education)",
+      volunteering: "var(--color-cat-volunteering)",
     };
     return map[cat] ?? "var(--color-cat-engineering)";
   };
@@ -34,11 +48,24 @@ export default function ExperienceTimeline() {
   return (
     <div className="relative mx-auto max-w-5xl px-4 py-24 sm:px-6">
 
-      {/* Central Axis Line */}
-      <div
-        className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 sm:left-6 md:left-1/2"
+      {/* Central Axis — a gently meandering dashed trail, like a hiking path
+          traced on a topo map, rather than a ruler-straight line */}
+      <svg
+        className="absolute left-4 top-0 h-full w-10 -translate-x-1/2 sm:left-6 md:left-1/2"
+        viewBox={`0 0 ${TRAIL_VIEWBOX_WIDTH} ${TRAIL_VIEWBOX_HEIGHT}`}
+        preserveAspectRatio="none"
         aria-hidden="true"
-      />
+      >
+        <path
+          d={TRAIL_PATH}
+          fill="none"
+          stroke="#94a3b8"
+          strokeWidth="2"
+          strokeDasharray="7 6"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
 
       <div className="space-y-20">
         {experiences.map((exp, index) => {
@@ -47,7 +74,7 @@ export default function ExperienceTimeline() {
           const expTr = t.experienceData[exp.id];
 
           return (
-            <RevealEntry key={exp.id} index={index}>
+            <RevealEntry key={exp.id} id={exp.id} index={index}>
             <div
               className={`group/entry relative flex flex-col md:flex-row ${
                 isEven ? "md:flex-row-reverse" : ""
@@ -63,14 +90,6 @@ export default function ExperienceTimeline() {
 
               {/* --- CONTENT CARD --- */}
               <div className={`flex-1 pl-8 sm:pl-16 md:w-1/2 ${isEven ? "md:pl-0 md:pr-16" : "md:pl-16"}`}>
-
-                {/* Decoration: connector line */}
-                <div
-                    className={`absolute top-2 hidden h-px w-16 bg-gray-300 md:block ${
-                        isEven ? "right-1/2 mr-0" : "left-1/2 ml-0"
-                    }`}
-                />
-
                 <div className="group relative">
                     {/* Company Header */}
                     <div className="mb-4">

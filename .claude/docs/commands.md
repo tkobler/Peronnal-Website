@@ -21,7 +21,7 @@ npm run test:e2e:ui            # Playwright UI mode (debugging)
 # Tiers (by explicit file, not grep — see testing-strategy.md for why)
 npm run test:e2e:tier1         # navigation + language-toggle + project-cards (fast smoke)
 npm run test:e2e:tier2         # responsive-matrix across 8 device profiles (slow, ~768 tests)
-npm run test:e2e:tier3         # canvas-performance (perf-sensitive)
+npm run test:e2e:tier3         # canvas-performance (perf-sensitive; currently a known gap, see testing-strategy.md)
 npm run test:e2e:tier4         # accessibility (axe-core, ARIA, contrast)
 
 npm run test:visual            # Visual regression (separate Playwright config)
@@ -36,16 +36,22 @@ npm run test:score             # unit + e2e + visual + scorecard aggregation (sl
 npm run validate:i18n          # Checks EN/FR translation key parity
 ```
 
-## CV pipeline
+## CV
+The site serves `public/cv/cv-en.pdf` and `public/cv/cv-fr.pdf` directly.
+No command needed — replace the files, commit them.
+
+The Typst pipeline is parked (it no longer publishes into `public/`):
 ```bash
-npm run cv:build               # Compiles cv/variants/*.typ, copies PDFs to public/
+npm run cv:build               # Compiles cv/variants/*.typ into cv/output/
                                # Requires `typst` CLI installed locally
 bash cv/build.sh               # Same thing, directly
+cp cv/output/generic-en.pdf public/cv/cv-en.pdf   # Publish by hand, then commit
 ```
 
 ## Git housekeeping
 ```bash
-git ls-files public/cv-en.pdf  # Confirm a gitignored artifact isn't tracked
+git ls-files public/cv-en.pdf  # Should be empty -- the legacy top-level path stays gitignored
+git ls-files public/cv/cv-en.pdf  # Should NOT be empty -- this one is tracked on purpose
 git check-ignore -v <path>     # See which .gitignore rule matches a path
 git rm -r --cached <path>      # Untrack a file without deleting it from disk
 ```
@@ -57,7 +63,7 @@ git rm -r --cached <path>      # Untrack a file without deleting it from disk
 | Data / projects | `test:unit` + `validate:i18n` | `test:e2e:tier1` |
 | Routing / navigation | `test:e2e:tier1` | tier1 |
 | Layout / responsive | `test:e2e:tier1` | `test:e2e:tier2` (slow) |
-| Canvas / Schematic | `test:e2e:tier3` | tier1 + tier3 |
+| GlobalTopoBackground / contours.ts | `test:e2e:tier3` | tier1 + tier3 (known gap, see testing-strategy.md) |
 | Accessibility | `test:e2e:tier4` | tier4 |
 | Design tokens | `test:visual` | `test:visual` |
 | Any before PR | see [pre-pr-checklist.md](pre-pr-checklist.md) | |

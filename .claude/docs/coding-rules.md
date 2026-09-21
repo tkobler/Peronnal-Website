@@ -7,7 +7,7 @@ Language, structure, and testing rules that apply to all code in this repo. Fron
 - **Strict mode is on.** No `any`, no `@ts-ignore`, no `// @ts-expect-error` without an inline reason.
 - **Prefer `type` over `interface`** for props and data shapes unless you need declaration merging.
 - **Derive types where possible.** `typeof projects[number]`, `ReturnType<…>`, `Parameters<…>` beat redeclaring.
-- **Discriminated unions** for polymorphic data (e.g. `Schematic` has `mode: 'paths' | 'pads' | …` — narrow on `mode`, don't cast).
+- **Discriminated unions** for polymorphic data — give each variant a literal `kind`/`type`/`mode` field and narrow on it, don't cast.
 - **No enums.** Use string literal unions.
 - **Readonly where it helps.** Data tables in [src/data/](../../src/data/) can be `as const` — keeps types narrow and prevents accidental mutation.
 
@@ -21,15 +21,17 @@ import { projects } from '@/data/projects';
 type Project = typeof projects[number];
 ```
 
-**Example** — narrowing a discriminated union:
+**Example** — narrowing a discriminated union (illustrative — no real type in this codebase currently needs one, but this is the pattern to reach for if you add one):
 ```ts
+type Notice =
+  | { kind: 'banner'; message: string }
+  | { kind: 'toast'; message: string; durationMs: number };
+
 // ✅ narrow on the discriminant, don't cast
-function render(schematic: Schematic) {
-  switch (schematic.mode) {
-    case 'paths':   return renderPaths(schematic.paths);   // type-safe access
-    case 'pads':    return renderPads(schematic.pads);
-    case 'regions': return renderRegions(schematic.regions);
-    case 'bitmap':  return renderBitmap(schematic.bitmap);
+function render(notice: Notice) {
+  switch (notice.kind) {
+    case 'banner': return renderBanner(notice.message);              // type-safe access
+    case 'toast':  return renderToast(notice.message, notice.durationMs);
   }
 }
 ```
