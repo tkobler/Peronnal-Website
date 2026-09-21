@@ -11,7 +11,7 @@ Work through the sections in order. Every section has a clear "done when" criter
 - **Node 20 or newer** — CI pins to 20, don't use 16 or 18
 - **npm** — this repo uses `package-lock.json`. Do not switch to pnpm/yarn without converting the lockfile
 - **git**
-- **Optional — `typst` CLI**: only required if you want to use the built-in [CV pipeline](#6-cv-pipeline-optional) to compile PDFs from Typst sources. Install with `brew install typst` on macOS, or see [typst.app](https://typst.app) for other platforms.
+- **Optional — `typst` CLI**: only required if you want to use the parked [Typst CV pipeline](#6-cv-download) to compile PDFs from Typst sources. Publishing a CV does not need it — you just drop your PDF in `public/cv/`. Install with `brew install typst` on macOS, or see [typst.app](https://typst.app) for other platforms.
 
 Check:
 ```bash
@@ -55,21 +55,19 @@ This is the bulk of the work. Everything in [src/data/](src/data/) is hardcoded 
 ### 2.1 Project data
 
 Edit **[src/data/projects.ts](src/data/projects.ts)** — this is the source of truth for the portfolio. Each project has:
-- `id` (stable, used in URLs and translation keys)
-- `title`, `domain`, `number`, images
-- A `schematic` field describing the canvas animation for that project (see [.claude/docs/glossary.md](.claude/docs/glossary.md) under "Schematic")
+- `id` (stable, used in the URL slug and as the `/projects#<id>` deep-link anchor — used by `homeCards.ts` and `courses.ts`'s `projectId`, so renaming one breaks both)
+- `title`, `domain` (one of the four `ProjectDomain` values also used in `courses.ts` — rename all of them together if you change the taxonomy), `number`, images
+- Optional `detail.link` (an external project URL), `detail.sourceLink` (e.g. a GitHub repo), and `detail.documents` (PDFs dropped in `public/documents/<id>/`) — each renders independently on the project card when present
 
 You can:
 - Replace projects one-for-one with your own
 - Reduce the count (smaller portfolio is fine)
-- Remove the `schematic` field entirely if you don't want canvas animations — see [src/components/layout/DotPattern.tsx](src/components/layout/DotPattern.tsx) for what breaks if you do
 
 Also edit:
 - **[src/data/project_details.ts](src/data/project_details.ts)** — extended descriptions per project
-- **[src/data/homeCards.ts](src/data/homeCards.ts)** — the 5 cards on the home page
-- **[src/data/experience.ts](src/data/experience.ts)** — work experience timeline
+- **[src/data/homeCards.ts](src/data/homeCards.ts)** — the cards on the home page
+- **[src/data/experience.ts](src/data/experience.ts)** — work experience timeline. `category` is one of `"engineering" | "service" | "education" | "volunteering"` — drives the timeline's color coding
 - **[src/data/courses.ts](src/data/courses.ts)** — EPFL coursework grid. **Delete or replace** if you're not a student, or not at EPFL.
-- **[src/data/flightLog.ts](src/data/flightLog.ts)** — flight log data. **Delete this file AND the [/flight route](src/app/flight/)** if you're not a pilot. See section 2.5.
 
 ### 2.2 Translations
 
@@ -85,13 +83,12 @@ Pick whichever you prefer. If in doubt, start with "Easier" and clean up later.
 
 ### 2.3 Images
 
-Replace images in [public/images/](public/images/):
-- **[profile/](public/images/profile/)** — your profile picture (referenced by [HeroSection.tsx](src/components/home/HeroSection.tsx))
-- **[projects/](public/images/projects/)** — project hero images (referenced by project `id` in `projects.ts`)
-- **[home/](public/images/home/)** — home card visuals
-- **[domains/](public/images/domains/)** — domain category images (used in the "by domain" view)
-- **[logos/](public/images/logos/)** — company logos for experience entries
-- **[flight/](public/images/flight/)** — flight log imagery. **Delete** if you removed the flight page.
+This template ships with no real photos — every image slot currently points at one of three hand-authored placeholder SVGs in **[public/images/placeholders/](public/images/placeholders/)** (`wide.svg`, `square.svg`, `logo.svg`), each labeled "REPLACE THIS IMAGE" so it's obvious what's still a placeholder. Replace them in place:
+- **`square.svg`** — profile picture (referenced by [HeroSection.tsx](src/components/home/HeroSection.tsx) and [AboutClient.tsx](src/app/about/AboutClient.tsx))
+- **`wide.svg`** — project hero images, home card visuals ([public/images/projects/](public/images/projects/), referenced by project `id` in `projects.ts`)
+- **`logo.svg`** — company logos for experience entries ([public/images/logos/](public/images/logos/))
+
+You don't have to keep using the shared placeholder files — point individual entries in `projects.ts`/`homeCards.ts`/`experience.ts` at your own image paths under `public/images/` as you replace content.
 
 Also replace **[src/app/favicon.ico](src/app/favicon.ico)** (Next.js 13+ keeps the favicon under `src/app/`, not `public/`) and any `apple-icon.*` / `icon.*` files in the same directory. The site is a static export with `images.unoptimized: true`, so all images are served as-is — compress before committing. There's a [scripts/compress-images.js](scripts/compress-images.js) helper if you want automated compression.
 
@@ -105,9 +102,9 @@ Also replace **[src/app/favicon.ico](src/app/favicon.ico)** (Next.js 13+ keeps t
 ### 2.5 Remove pages you don't need
 
 Each top-level route lives in [src/app/\<route>/](src/app/):
-- `flight/` — pilot dashboard. If you're not a pilot, delete the folder, delete `src/components/flight/`, delete `src/data/flightLog.ts`, remove references from `homeCards.ts` and navigation.
+- `hobby/` — deliberately minimal (heading, one paragraph, a few highlight cards). Its only job is to demonstrate that a portfolio can hold a non-project page — write your own content in, or delete the folder plus its nav entry and home card if you don't want a page like this at all.
 - `admin/` — content editor panel. Safe to keep idle (it only activates on localhost + env token), or delete the folder and `src/context/AdminContext.tsx` + `src/lib/admin/` if you don't want it.
-- `about/` — currently a placeholder. Either build it out or leave as-is.
+- `about/` — already built out (bio, education, coursework, a "beyond the classroom" section) with placeholder copy throughout — write your own content into the existing structure rather than starting from scratch.
 
 After deleting a page, run `npm run dev` and click through every nav link to catch broken references.
 
@@ -179,7 +176,7 @@ E2E tests are tiered (run the tier matching your change):
 ```bash
 npm run test:e2e:tier1   # navigation + language + project cards (fast)
 npm run test:e2e:tier2   # responsive matrix across 8 device profiles (slow)
-npm run test:e2e:tier3   # canvas performance (for DotPattern changes)
+npm run test:e2e:tier3   # canvas performance — currently a known gap, see testing-strategy.md
 npm run test:e2e:tier4   # accessibility (axe-core)
 ```
 
@@ -189,26 +186,31 @@ See [.claude/docs/testing-strategy.md](.claude/docs/testing-strategy.md) for the
 
 ---
 
-## 6. CV pipeline (optional)
+## 6. CV download
 
-The repo ships with a Typst-based CV pipeline in [cv/](cv/) that compiles PDFs and drops them into [public/](public/). If you don't want it, skip this section entirely and delete `cv/` plus the `npm run cv:build` script from [package.json](package.json).
+The Get in Touch page always shows a "Curriculum Vitae" card with two download buttons. They serve two files straight out of [public/cv/](public/cv/):
 
-If you want to use it:
+| File | Button |
+|---|---|
+| `public/cv/cv-en.pdf` | "Download English" |
+| `public/cv/cv-fr.pdf` | "Français" |
+
+To publish your own CV, replace those two PDFs with yours, keep the filenames, and **commit them**. No build step, and `typst` is not needed. Files under `public/cv/` are tracked by git on purpose: the GitHub Pages deploy builds from the repository, so an uncommitted PDF would 404 on the live site. See [public/cv/README.md](public/cv/README.md).
+
+If you'd rather use different filenames, or only offer one language, edit the two `<a>` links in [src/app/contact/ContactClient.tsx](src/app/contact/ContactClient.tsx) — the `href` sets which file is served, the `download` attribute sets the filename the visitor saves.
+
+### The Typst pipeline (optional, parked)
+
+The repo also ships a Typst CV source tree in [cv/](cv/) that compiles PDFs from structured data. It is no longer wired into the site: `npm run cv:build` compiles variants into `cv/output/`, but the step that copied them into `public/` is commented out in [cv/build.sh](cv/build.sh). If you don't want it at all, delete `cv/` plus the `npm run cv:build` script from [package.json](package.json).
+
+To use it:
 
 1. **Install typst**: `brew install typst` (macOS) or see [typst.app](https://typst.app).
 2. **Replace content** in [cv/data/](cv/data/): education, experience, skills — all structured Typst modules. Preserve the module structure; replace the values.
 3. **Review template** in [cv/template/](cv/template/): the layout functions. Tweak typography and margins here, not inline in variants.
 4. **Edit variants** in [cv/variants/](cv/variants/): `generic-en.typ` and `generic-fr.typ` are the main CVs. These are the files that get compiled.
-5. **Build**:
-   ```bash
-   npm run cv:build
-   ```
-   This runs [cv/build.sh](cv/build.sh), compiles all variants, and copies the PDFs to `public/cv-en.pdf` and `public/cv-fr.pdf`.
-6. **Important**: `public/cv-*.pdf` and `cv/output/` are **gitignored**. CI does NOT run `npm run cv:build` — you must either:
-   - (a) rebuild PDFs locally before each push, OR
-   - (b) remove them from `.gitignore` and commit them as tracked artifacts.
-
-Option (b) is simpler if you update your CV rarely.
+5. **Build**: `npm run cv:build` — output lands in `cv/output/` (gitignored).
+6. **Publish**: copy `cv/output/generic-{en,fr}.pdf` over `public/cv/cv-{en,fr}.pdf` and commit, or uncomment the "Publishing to the site" block in [cv/build.sh](cv/build.sh) to have the build do the copy for you. CI never runs `npm run cv:build`, so the committed PDF is always what goes live.
 
 ---
 
@@ -246,7 +248,7 @@ This repo ships with a `.claude/` folder containing:
 - `CLAUDE.md` — project context for [Claude Code](https://claude.com/claude-code)
 - `docs/` — frontend guidelines, coding rules, testing strategy, workflow, etc.
 - `agents/` — 20 subagent definitions
-- `skills/` — three Claude Code skills (`/audit`, `/merge-check`, `/cv-pipeline`)
+- `skills/` — five Claude Code skills (`/audit`, `/merge-check`, `/cv-pipeline`, `/add-project`, `/add-activity`)
 - `hooks/block-main-commit.sh` — a safety hook that blocks Claude from committing to main
 - `settings.json` — Claude Code permissions and hook registration
 
@@ -264,11 +266,10 @@ Nothing else in the repo depends on it — no runtime code, no build step, no te
 
 These are load-bearing mechanisms that will break the site if changed carelessly:
 
-- **The `<script>` block in [src/app/layout.tsx](src/app/layout.tsx)** that sets `window.__LOCALE__` before hydration. Removing it causes a flash of wrong language on first load.
+- **The `<script>` block in [src/app/layout.tsx](src/app/layout.tsx)** that sets `window.__LOCALE__` before hydration. `LanguageContext` depends on it being set before its post-mount locale check runs — removing it means visitors never get detected into French at all.
 - **The `output: "export"` and `images.unoptimized: true` in [next.config.ts](next.config.ts)**. This is a static export — changing these enables features (SSR, image optimization) that GitHub Pages can't serve.
-- **The Schematic type and DotPattern renderer**. If you keep the canvas background, the `schematic` field on projects and the renderer in [src/components/layout/DotPattern.tsx](src/components/layout/DotPattern.tsx) are tightly coupled. Update both together or neither.
 - **The CI test gate in [deploy.yml](.github/workflows/deploy.yml)**. Removing `npm run lint`, `npm run test:unit`, or `npm run validate:i18n` from the `test` job means you can ship broken code to production.
-- **`public/` gitignores for CV PDFs**. If you remove them from `.gitignore` without a plan, you'll commit build artifacts that will drift from source.
+- **`public/cv/` being tracked by git, unlike everything else under `public/cv-*`**. This is intentional — see [section 6](#6-cv-download) — don't gitignore it.
 
 ---
 
@@ -276,18 +277,18 @@ These are load-bearing mechanisms that will break the site if changed carelessly
 
 After setup, these are the docs worth knowing about:
 
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** — implementation deep-dive: component internals, CSS catalog, DotPattern canvas system, how-to guides
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** — implementation deep-dive: component internals, CSS catalog, GlobalTopoBackground system, how-to guides
 - **[.claude/docs/project-map.md](.claude/docs/project-map.md)** — architecture overview specifically written for AI assistants, but useful for humans too
 - **[.claude/docs/testing-strategy.md](.claude/docs/testing-strategy.md)** — tier system, CI coverage, known gaps
 - **[.claude/docs/commands.md](.claude/docs/commands.md)** — canonical npm scripts
-- **[.claude/docs/glossary.md](.claude/docs/glossary.md)** — non-obvious terms (Schematic, tier 1–4, etc.)
+- **[.claude/docs/glossary.md](.claude/docs/glossary.md)** — non-obvious terms (GlobalTopoBackground, tier 1–4, etc.)
 
 ---
 
 ## Troubleshooting
 
 - **`npm run build` fails with an image error**: `images.unoptimized: true` is set, but if you have a stray `next/image` call without `unoptimized`, it can fail. Use `<img>` or pass the prop.
-- **Hydration mismatch warning** about locale: the inline script in `layout.tsx` runs before React hydrates. If you changed the script without updating `LanguageContext` initial state, you'll see a mismatch. Keep them in sync.
+- **Hydration mismatch warning** about locale: `LanguageContext` always starts at `"en"` on first render (matching the server) and detects the real locale post-mount via `useEffect` — this is deliberate, and a brief English-then-locale flash on first load is expected, not a bug. If you see an actual React "Hydration failed" error rather than just a visible flash, check that nothing else reads `window.__LOCALE__` (or `locale` from context) during a component's first render.
 - **`npm run test:e2e:tier1` says "server not running"**: Playwright starts its own dev server. If another dev server is on port 3000, kill it first.
 - **CI fails on `validate:i18n`**: you added a key to `en/` but not `fr/` (or vice versa). Run `npm run validate:i18n` locally to see which key.
 - **CI fails on `lint` after your first commit**: you introduced a `react-hooks/set-state-in-effect` or similar. Read the error carefully — the React 19 hooks rules are stricter than React 18.
@@ -298,6 +299,8 @@ After setup, these are the docs worth knowing about:
 ## Ready to build
 
 Once you've finished sections 0–5, you have a working, deployable, personalized template. Sections 6–8 are optional and can be addressed whenever.
+
+For the ongoing work after this — adding a project, editing copy, refreshing your CV, deploying a change — see **[MAINTAINING.md](./MAINTAINING.md)**.
 
 The [.claude/docs/workflow.md](.claude/docs/workflow.md) file describes a branch-based development flow (`dev/`, `bug/`, `audit/`, `doc/`, `claude/`) that's opinionated but worth reading before you start real feature work — even if you don't use Claude Code, the conventions are sensible.
 
