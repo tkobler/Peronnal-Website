@@ -24,7 +24,7 @@
 | [`ui-designer`](../agents/ui-designer.md) | Visual hierarchy, type, color, spacing. Call after UX is settled. |
 | [`scrum-master`](../agents/scrum-master.md) | Break fuzzy work into tasks, identify blockers. **Invoke sparingly.** |
 | [`eng-manager`](../agents/eng-manager.md) | Step-back conversations, sustainability, scope/energy balance. **Invoke sparingly.** |
-| [`data-scientist`](../agents/data-scientist.md) | Flight log stats, course data aggregation. **Reserve role.** |
+| [`data-scientist`](../agents/data-scientist.md) | Course/project data aggregation. **Reserve role.** |
 
 ## Career & writing (6)
 
