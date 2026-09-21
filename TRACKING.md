@@ -1,7 +1,7 @@
 # Sync template with main — Tracking
 
 ## Current status
-Steps 1–5b done: full schema migration, home cards, assets, new modules, DotPattern→GlobalTopoBackground swap, and ContactFab are all in. Each checkpoint verified with tsc --noEmit and (for 5a/5b) a full build. Starting step 6 (genericize remaining hardcoded strings).
+Steps 1–6 done, plus the pure-generic e2e/doc/skill files ported and a real hydration bugfix (ported the test in one commit, realized the underlying fix wasn't ported, added it in the next). tier1 e2e run: 14 failures investigated, all traced to pre-existing flakiness or a fix now applied — see decisions log. Starting step 8 (documentation rewrite).
 Last updated: 2026-09-21
 
 ## Tasks
@@ -19,9 +19,12 @@ Last updated: 2026-09-21
 - [x] Step 4 — New standalone modules: contours.ts, trailPath.ts, GlobalTopoBackground.tsx, useHashScroll.ts (ported from main, scrubbed one stray "Tim" code comment)
 - [x] Step 5a — Delete DotPattern.tsx + Schematic type, rewire ClientShell.tsx to GlobalTopoBackground — verified tsc clean + full build
 - [x] Step 5b — Add ContactFab.tsx, wire into ClientShell.tsx, port globals.css (.contact-fab, z-index fixes, translucent sections, category colors) — verified tsc clean + full build, globals.css now diffs clean against main
-- [ ] Step 6 — Genericize hardcoded strings: layout.tsx, Footer.tsx, Navigation.tsx, ContactClient.tsx (identity fields), robots.txt, sitemap.xml
+- [x] Step 6 — Genericize hardcoded strings: layout.tsx and Footer.tsx needed no changes (already correct), Navigation.tsx button restyle ported, ContactClient.tsx z-10/section-light treatment ported, sitemap.xml project id fixed
+- [x] Ported generic e2e fixes (accessibility.spec.ts, project-cards.spec.ts, language-toggle.spec.ts, responsive-matrix.spec.ts) and new generic docs/skills (MAINTAINING.md, add-project/add-activity skills, .vscode/settings.json)
+- [x] Fixed a real LanguageProvider hydration-mismatch bug (ported the regression test before realizing the underlying fix wasn't ported — corrected in the next commit)
+- [x] Ran test:e2e:tier1, investigated all 14 failures — see decisions log
 - [ ] Step 8 — Documentation rewrite (~15 files)
-- [ ] Verification: lint, test:unit, validate:i18n, build, test:e2e:tier1
+- [ ] Final verification: lint, test:unit, validate:i18n, build (re-run after doc changes)
 - [ ] Manual click-through of every page
 - [ ] /merge-check before opening PR
 
@@ -41,6 +44,14 @@ Confirmed with user: mirror main's 3-card layout, dropping the redundant project
 
 ### 2026-09-21 — Spread new project fields across separate examples
 pm review: don't bundle `documents`/`link`/`sourceLink` onto one placeholder project — each needs its own example so a template user sees every field actually rendered.
+
+### 2026-09-21 — tier1 e2e: 14 failures, none are regressions from this branch
+Ran `npm run test:e2e:tier1` after step 6: 14 failed / 242 passed. Broke it down into two groups:
+
+1. **6 failures on `language-toggle.spec.ts`'s new hydration-mismatch test** (chromium/firefox/webkit/iphone-se/ipad/ipad-landscape) — real bug. The test was ported in the previous commit but the fix it was regression-testing (`LanguageContext.tsx`'s `useState` initializer reading `window`/`localStorage` synchronously during hydration, diverging from the always-English static-export server HTML) was not. Ported the fix from main in the next commit; re-ran the test on chromium — 9/9 pass including the previously-failing one.
+2. **7 failures, all on `navigation.spec.ts` at the `ultrawide` viewport** (pill scroll-hide, 3 hamburger-menu interactions, menu navigation, Get in Touch button, route transition) — investigated by stashing all of this branch's changes and running the identical suite against unmodified `template`. Ran it **twice** on the clean baseline: both runs failed the exact same 7 tests (not a shifting subset — a first stashed run that only showed 5 failures turned out to be noise, not signal). This confirms the failures are 100% pre-existing on `template` itself, unrelated to any change made on this branch. Matches the failure signature (`<element> subtree intercepts pointer events` during a hamburger-menu dialog transition) that the branch's own prior TRACKING.md history already documented as a known CSS-transition-timing race, non-deterministic across runs but present on unmodified `main`/`template` alike.
+
+No action taken on the navigation.spec.ts failures — flagged here so a future run isn't mistaken for a regression.
 
 ## Blockers
 None currently.
