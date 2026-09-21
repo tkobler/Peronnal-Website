@@ -1,20 +1,26 @@
 # Sync template with main — Tracking
 
 ## Current status
-Branch created, STRATEGY.md written. Starting sequencing step 1 (schema migration).
+Step 1 (projects/courses/translations schema) done, including the taxonomy migration and the ring-resonator → micro-force-sensor content swap. Step 2 (tests) done. `experience.ts` schema change still pending. Starting step 3 (assets).
 Last updated: 2026-09-21
 
 ## Tasks
 - [x] Create STRATEGY.md and TRACKING.md
-- [ ] Step 1 — Schema: translations/index.ts, projects.ts, experience.ts, courses.ts, EN/FR translation files
-- [ ] Step 2 — Update tests/unit/projects-data.test.ts and translations.test.ts for new schema
+- [x] Step 1a — Schema: translations/index.ts (ProjectDocument, documents/learnMoreLabel/sourceLabel, drop hero.phrases, add variousProfessors)
+- [x] Step 1b — projects.ts: new taxonomy, drop Schematic, add link/sourceLink/documents, replace ring-resonator with micro-force-sensor (Biomedical & Precision Instrumentation)
+- [x] Step 1c — courses.ts: drop professor field, migrate domain values, professorLinks:[] example on MICRO-373
+- [x] Step 1d — EN/FR translation files (projects, homeCards, about, hero, projectDetails) + project_details.ts
+- [x] Step 1e — AboutClient.tsx variousProfessors fallback (small, self-contained, not the full about-restructure we're skipping)
+- [ ] Step 1f — experience.ts: ExperienceCategory enum (add education/volunteering, drop music) + EN/FR
+- [x] Step 2 — Update tests/unit/projects-data.test.ts (VALID_DOMAINS) and translations.test.ts (drop hero.phrases test)
+- [x] Home cards: drop to 3 (HomePage.tsx, ProjectSection.tsx ported from main, homeCards.ts + translations updated)
+- [x] Cleanup — deleted dead DomainView.tsx/FullPortfolioPage.tsx, fixed ProjectsPage.tsx DOMAIN_KEYS
 - [ ] Step 3 — Assets: public/cv/ restructure, placeholder documents PDF
 - [ ] Step 4 — New standalone modules: contours.ts, trailPath.ts, GlobalTopoBackground.tsx, useHashScroll.ts
 - [ ] Step 5a — Delete DotPattern.tsx + Schematic type, rewire ClientShell.tsx
 - [ ] Step 5b — Add ContactFab.tsx, wire into ClientShell.tsx
 - [ ] Step 6 — Genericize hardcoded strings: layout.tsx, Footer.tsx, Navigation.tsx, ContactClient.tsx, robots.txt, sitemap.xml
 - [ ] Step 8 — Documentation rewrite (~15 files)
-- [ ] Home cards: drop to 3 (HomePage.tsx, ProjectSection.tsx, homeCards.ts)
 - [ ] Verification: lint, test:unit, validate:i18n, build, test:e2e:tier1
 - [ ] Manual click-through of every page
 - [ ] /merge-check before opening PR

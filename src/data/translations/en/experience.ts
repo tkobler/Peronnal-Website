@@ -33,4 +33,32 @@ export const experienceData: Translations["experienceData"] = {
       },
     ],
   },
+  "example-nonprofit": {
+    company: "Example Community Workshop",
+    location: "Lausanne, Switzerland",
+    roles: [
+      {
+        title: "Volunteer Repair Technician",
+        period: "2024 – Present",
+        description: [
+          "Diagnosed and repaired household electronics at a monthly community repair event, replacing this with your own service work.",
+          "Kept a simple log of common failure modes to help other volunteers triage faster.",
+        ],
+      },
+    ],
+  },
+  "example-student-association": {
+    company: "Example Student Association",
+    location: "Lausanne, Switzerland",
+    roles: [
+      {
+        title: "Event Coordinator",
+        period: "2023 – 2024",
+        description: [
+          "Organized a recurring student event, coordinating logistics and a small volunteer team — swap this for your own extracurricular involvement.",
+          "Managed a modest budget and reported outcomes back to the association's board.",
+        ],
+      },
+    ],
+  },
 };
