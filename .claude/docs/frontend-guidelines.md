@@ -12,7 +12,7 @@ Rules specific to this repo's React / Next.js / Tailwind v4 setup. These are con
 
 ## Components
 
-- **Organize by feature, not by type.** New UI for the flight page goes in [src/components/flight/](../../src/components/flight/), not in a generic `ui/` bucket. `ui/` is reserved for true primitives.
+- **Organize by feature, not by type.** New UI for the experience page goes in [src/components/experience/](../../src/components/experience/), not in a generic `ui/` bucket. `ui/` is reserved for true primitives. A page simple enough to need no reusable pieces (e.g. `/hobby`) can stay inline in its own `src/app/<route>/` client component instead of getting an empty `components/` folder.
 - **No component libraries.** No shadcn, no Radix, no Headless UI, no Mantine. If you need a primitive (dialog, popover, tabs), build it in `components/ui/` or ask first.
 - **Props: explicit types, no `any`.** Define a `Props` type at the top of the file. If a prop is optional, mark it optional — don't default to `undefined` through destructuring alone.
 - **One component per file**, filename matches the component name in PascalCase.
@@ -29,7 +29,7 @@ Rules specific to this repo's React / Next.js / Tailwind v4 setup. These are con
 
 ## Animations & canvas
 
-- The `DotPattern` canvas is the hero visual. It reads project `Schematic` data. When you add/edit a project, check that its schematic actually renders — run `npm run test:e2e:tier3` (canvas-performance) as a smoke test.
+- `GlobalTopoBackground` is the fixed hero visual — a single static image generated once at module load, not per-project data. There's nothing to "check renders" per project the way the old `DotPattern`/`Schematic` system required; if you touch `contours.ts`/`trailPath.ts`, verify visually (the generation is deterministic/seeded, so a broken change usually means a broken field, not flaky output).
 - Respect `prefers-reduced-motion`. If you add a new animation, gate it (`@media (prefers-reduced-motion: reduce)` or the equivalent in JS).
 - **View Transitions API**: used via [PageTransition](../../src/components/layout/PageTransition.tsx) and [useViewTransitionRouter](../../src/hooks/useViewTransitionRouter.ts). Don't reimplement — use the existing hook.
 
@@ -77,7 +77,7 @@ With matching entries added to both `src/data/translations/en/nav.ts` and `src/d
 
 - This site is tiny. Don't optimize preemptively.
 - But: don't import huge libraries for small utilities. Before adding a dep, check if a 10-line function in [src/lib/](../../src/lib/) would do.
-- Canvas work happens in `requestAnimationFrame` loops — if you touch `DotPattern`, watch for `tier3` performance regressions.
+- `GlobalTopoBackground` and `ContactFab` are the only always-mounted fixed-position elements outside `PageTransition` — there's no per-frame animation loop to worry about there any more (the old `DotPattern` canvas ran one; its removal is why).
 
 ## Note on test tiers
 

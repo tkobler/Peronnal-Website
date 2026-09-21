@@ -22,8 +22,8 @@ These can be run by the `/merge-check` skill and produce a pass/fail. Claude sho
 - [ ] `npm run test:e2e:tier1` (smoke)
 - [ ] `npm run test:e2e:tier2` (responsive matrix) — slow, ~768 tests
 
-### If `DotPattern`, `Schematic`, or canvas code changed
-- [ ] `npm run test:e2e:tier3`
+### If `GlobalTopoBackground`, `contours.ts`/`trailPath.ts`, or canvas-era code changed
+- [ ] `npm run test:e2e:tier3` — note this is currently a known gap (see [testing-strategy.md](testing-strategy.md)), still run it but don't treat a pass as meaningful coverage
 
 ### If accessibility-adjacent code changed (buttons, focus, ARIA)
 - [ ] `npm run test:e2e:tier4`
@@ -50,10 +50,10 @@ These require a person to read and decide. `/merge-check` will list them but can
 - [ ] Breaking changes to data shapes, routes, or env vars are called out explicitly
 - [ ] Both EN and FR translations were updated in the same change (if any text changed)
 - [ ] No existing project/card/experience IDs were renumbered
-- [ ] If CV links are affected, PDFs have been rebuilt and are ready for the next build
+- [ ] If CV links are affected, the replacement PDFs are committed under `public/cv/` (no build step needed — see [SETUP.md §6](../../SETUP.md#6-cv-download))
 - [ ] Any new dependency is justified in the description (lean-stack exception)
 - [ ] No secrets, tokens, or `.env*` content leaked into the diff
-- [ ] Canvas/data coupling: if `Schematic` data changed, the `DotPattern` renderer was checked
+- [ ] Deep-link anchors: if a project/experience `id` was renamed, `homeCards.ts`, `courses.ts`'s `projectId`, and any `/projects#<id>`-style links were checked
 - [ ] If this branch claims to fix a bug, there is a regression test for it
 
 ## Verdict

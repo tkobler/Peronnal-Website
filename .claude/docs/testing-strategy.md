@@ -7,7 +7,6 @@ The truthful, grounded version of how tests work in this repo. Use this before r
 ### Unit tests — Vitest, jsdom
 Location: [tests/unit/](../../tests/unit/)
 Specs:
-- `flight-stats.test.ts` — flight log aggregation math
 - `projects-data.test.ts` — integrity of project data in [src/data/projects.ts](../../src/data/projects.ts)
 - `translations.test.ts` — EN/FR translation integrity
 - `setup.ts` — jest-dom import, not a spec
@@ -22,7 +21,7 @@ Config: [playwright.config.ts](../../playwright.config.ts)
 |---|---|---|---|
 | **tier1** | `navigation.spec.ts`, `language-toggle.spec.ts`, `project-cards.spec.ts` | Fast smoke: nav pill, hamburger, routing, i18n toggle, home project sections, portfolio page | fast (~240 tests × projects) |
 | **tier2** | `responsive-matrix.spec.ts` | Every tier1-ish check repeated across 8 device profiles (iPhone SE, iPhone 14, iPad portrait/landscape, desktop, ultrawide…) | slow (~768 tests) |
-| **tier3** | `canvas-performance.spec.ts` | DotPattern canvas render cost, frame cadence, page transition timing, scroll parallax | slow-ish (~48 tests but perf-sensitive) |
+| **tier3** | `canvas-performance.spec.ts` | Page transition timing, scroll parallax — **and a known gap**: still checks for a `<canvas>` element from the deleted `DotPattern` system, so those specific tests now no-op via `test.skip()` rather than testing anything real | slow-ish (~48 tests but perf-sensitive) |
 | **tier4** | `accessibility.spec.ts` | axe-core checks, keyboard navigation, ARIA attributes, color contrast | moderate (~152 tests) |
 
 **Every spec file is assigned to exactly one tier. There is no overlap. There are no orphaned specs.**
@@ -47,7 +46,7 @@ If `test` fails, `build` does not run and nothing deploys. This means **lint err
 
 What CI does **NOT** run (and why):
 - **Playwright e2e / visual / any tier** — requires a headless browser setup and browser binaries; runtime cost outweighs value on a personal site. Run locally before merging.
-- **CV build (`typst` compile)** — requires the `typst` CLI installed in the runner. CV PDFs are still built locally.
+- **CV build (`typst` compile)** — the pipeline is parked and doesn't need to run in CI at all; the site links directly at PDFs committed under `public/cv/`.
 
 ## When to run what
 
@@ -57,7 +56,7 @@ What CI does **NOT** run (and why):
 | New project / data shape | `test:unit` + `validate:i18n` | `test:e2e:tier1` |
 | Routing / nav / links | `test:e2e:tier1` | tier1 |
 | Layout / responsive CSS | `test:e2e:tier1` | `test:e2e:tier2` (slow) |
-| Canvas / DotPattern / Schematic | `test:e2e:tier3` | tier1 + tier3 |
+| GlobalTopoBackground / contours.ts / trailPath.ts | `test:e2e:tier3` | tier1 + tier3 (remember tier3's canvas checks are a known no-op, see above) |
 | A11y-adjacent | `test:e2e:tier4` | tier4 |
 | Design tokens / globals.css | `test:visual` | `test:visual` |
 | Big release | `test:score` (full suite + scorecard) | same |
@@ -75,7 +74,7 @@ What CI does **NOT** run (and why):
 
 - **No CI-side Playwright run.** Local-only e2e is a real gap. If a bug ships that slips past local checks, CI won't catch it. Trade-off: wiring Playwright into GitHub Actions adds ~3 minutes + browser cache management + flakiness risk on a personal site. Revisit if the site grows.
 - **No CI-side visual regression.** Same reasoning.
-- **No CI-side CV build.** Requires `typst` in the runner. PDFs must be built locally and placed in `public/cv-{en,fr}.pdf` before the build job uploads `out/`.
+- **No CI-side CV build.** Requires `typst` in the runner — but this no longer blocks anything: the site reads committed PDFs from `public/cv/` directly (see [SETUP.md §6](../../SETUP.md#6-cv-download)), so CI never needs `typst` at all. The Typst pipeline itself, if you use it, still only runs locally.
 - **The `test:score` script is only useful if you manually consult it.** No automation reads the scorecard.
 
 ## What NOT to do
