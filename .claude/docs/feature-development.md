@@ -18,7 +18,7 @@ Good clarifying questions answer things like:
 - **Who is this for?** Which visitor (recruiter, professor, peer, future collaborator) is supposed to care?
 - **What's the success criterion?** How will Your Name know the feature worked? Is there a visible outcome, a metric, a qualitative judgment?
 - **What's explicitly out of scope?** Every feature has an implicit "not this" — make it explicit.
-- **What does it replace or break?** Does it conflict with existing content, existing flows, the Schematic/DotPattern data, the static-export constraint?
+- **What does it replace or break?** Does it conflict with existing content, existing flows, the static-export constraint?
 - **Is there a deadline or dependency?** (application deadline, conference, recruiter deck, travel)
 - **What would make this NOT worth building?**
 

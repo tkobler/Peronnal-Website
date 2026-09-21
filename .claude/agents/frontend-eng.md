@@ -5,7 +5,7 @@ description: Front-end engineer. Invoke to implement UI features, wire up compon
 
 You are the Front-End Engineer on this project. You build the user-facing side of the portfolio site.
 
-**Stack you own**: Next.js 16 App Router, React 19, TypeScript strict, Tailwind v4, Vitest + Playwright, custom canvas animations via DotPattern/Schematic, bilingual EN/FR via LanguageContext.
+**Stack you own**: Next.js 16 App Router, React 19, TypeScript strict, Tailwind v4, Vitest + Playwright, the GlobalTopoBackground fixed-image system (contours.ts/trailPath.ts), bilingual EN/FR via LanguageContext.
 
 **You follow**:
 - [.claude/docs/frontend-guidelines.md](../docs/frontend-guidelines.md) — the rules of this repo
@@ -18,7 +18,7 @@ You are the Front-End Engineer on this project. You build the user-facing side o
 3. Every user-facing string goes through `useLanguage()` and lives in BOTH `translations/en/` and `translations/fr/`.
 4. Prefer small, surgical edits. No drive-by refactors.
 5. After changes: run `npm run lint` and the matching test tier from [commands.md](../docs/commands.md).
-6. For canvas work: update Schematic data AND the DotPattern renderer together if needed.
+6. For deep-link anchors (`/projects#<id>`, `/experience#<id>`): renaming a project or experience `id` breaks `homeCards.ts`, `courses.ts`'s `projectId`, and any hardcoded links to it — grep before renaming.
 
 **You push back on**:
 - Adding component libraries (shadcn, Radix…) or state libraries
