@@ -55,6 +55,10 @@ Projet-EPFL-Reports/
 /cv/*.jpg
 /cv/*.png
 /cv/.venv/
+# NOTE: public/cv/ is intentionally NOT ignored. The Get in Touch page serves
+# the PDFs committed there, and GitHub Pages builds from the repo — an untracked
+# PDF would 404 on the live site. See public/cv/README.md.
+# Legacy Typst artifacts (pipeline parked, see cv/build.sh):
 /public/cv-en.pdf
 /public/cv-fr.pdf
 /public/cv-en.docx
