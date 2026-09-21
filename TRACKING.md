@@ -1,7 +1,7 @@
 # Sync template with main — Tracking
 
 ## Current status
-Steps 1–6 done, plus the pure-generic e2e/doc/skill files ported and a real hydration bugfix (ported the test in one commit, realized the underlying fix wasn't ported, added it in the next). tier1 e2e run: 14 failures investigated, all traced to pre-existing flakiness or a fix now applied — see decisions log. Starting step 8 (documentation rewrite).
+Steps 1–6 done. Ran a systematic diff sweep (every touched file compared against main) after the hydration-bug near-miss made clear that "port the parts I already know about" wasn't catching everything — found and fixed several more real, generic bugs (missing documents/link/sourceLink UI, a broken `/projects/${id}` link, a filter-pill-clipping hero height bug, dead DotPattern-era event code, an unwired trailPath.ts). Every touched file now diffs clean against main except the deliberate hobby/about/personal-content divergences. Starting step 8 (documentation rewrite).
 Last updated: 2026-09-21
 
 ## Tasks
@@ -23,6 +23,7 @@ Last updated: 2026-09-21
 - [x] Ported generic e2e fixes (accessibility.spec.ts, project-cards.spec.ts, language-toggle.spec.ts, responsive-matrix.spec.ts) and new generic docs/skills (MAINTAINING.md, add-project/add-activity skills, .vscode/settings.json)
 - [x] Fixed a real LanguageProvider hydration-mismatch bug (ported the regression test before realizing the underlying fix wasn't ported — corrected in the next commit)
 - [x] Ran test:e2e:tier1, investigated all 14 failures — see decisions log
+- [x] Diff sweep — compared every touched component/page against main, found and fixed 6 more real issues (see decisions log); all touched files now diff clean against main except deliberate divergences
 - [ ] Step 8 — Documentation rewrite (~15 files)
 - [ ] Final verification: lint, test:unit, validate:i18n, build (re-run after doc changes)
 - [ ] Manual click-through of every page
@@ -52,6 +53,18 @@ Ran `npm run test:e2e:tier1` after step 6: 14 failed / 242 passed. Broke it down
 2. **7 failures, all on `navigation.spec.ts` at the `ultrawide` viewport** (pill scroll-hide, 3 hamburger-menu interactions, menu navigation, Get in Touch button, route transition) — investigated by stashing all of this branch's changes and running the identical suite against unmodified `template`. Ran it **twice** on the clean baseline: both runs failed the exact same 7 tests (not a shifting subset — a first stashed run that only showed 5 failures turned out to be noise, not signal). This confirms the failures are 100% pre-existing on `template` itself, unrelated to any change made on this branch. Matches the failure signature (`<element> subtree intercepts pointer events` during a hamburger-menu dialog transition) that the branch's own prior TRACKING.md history already documented as a known CSS-transition-timing race, non-deterministic across runs but present on unmodified `main`/`template` alike.
 
 No action taken on the navigation.spec.ts failures — flagged here so a future run isn't mistaken for a regression.
+
+### 2026-09-21 — Diff sweep caught 6 real issues the "port what I know about" approach missed
+After the hydration-mismatch near-miss (ported a regression test without realizing its underlying fix was a separate, unported hunk), ran `diff <(git show main:<path>) <path>` against every file this branch had touched, rather than trusting memory of what each diff contained. Found:
+
+1. **`ProjectsPage.tsx`/`ProjectDetailPage.tsx` had no UI for the new `documents`/`link`/`sourceLink` project fields.** The data schema was migrated in step 1, but nobody ever wired up the rendering — the fields were silently inert. Fixed by porting the JSX from both components.
+2. **A real, pre-existing-on-main bug fix bundled into that same `ProjectsPage.tsx` diff**: the `/projects` hero used a fixed `h-[40vh]` + `overflow-hidden`, which clipped the domain filter pills onto a second row on narrow viewports or long (French) labels — exactly what the newly-ported FR filter-pill-clipping regression test checks for. Fixed alongside the fields.
+3. **`AboutClient.tsx`'s course "View project" links pointed at `/projects/${id}`**, a route that immediately redirects back to bare `/projects` (see `ProjectDetailClient.tsx`) — so the link silently lost the deep link. Fixed to `/projects#${id}`.
+4. **`HeroSection.tsx` still dispatched a `dot-pattern-burst` CustomEvent** on button hover and carried a `data-project-id="hero"` attribute — both dead code from the deleted DotPattern system, now removed.
+5. **`lib/trailPath.ts` was ported in step 4 but never actually imported anywhere.** Wired it into `ExperienceTimeline.tsx` as the meandering central-axis trail, along with `useHashScroll` for `/experience#<id>` deep links.
+6. **`ProjectsPage.tsx` had its own hand-rolled hash-scroll `useEffect`/`useRef` duplicate of `useHashScroll`** — refactored to use the shared hook.
+
+Lesson applied going forward: for every file touched via hand-editing (not a straight `git checkout main --`), do the `diff`-against-main check immediately rather than assuming the edit was complete.
 
 ## Blockers
 None currently.
