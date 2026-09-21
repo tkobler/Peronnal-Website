@@ -1,7 +1,7 @@
 # Sync template with main — Tracking
 
 ## Current status
-Step 1 (projects/courses/translations schema) done, including the taxonomy migration and the ring-resonator → micro-force-sensor content swap. Step 2 (tests) done. `experience.ts` schema change still pending. Starting step 3 (assets).
+Steps 1–5b done: full schema migration, home cards, assets, new modules, DotPattern→GlobalTopoBackground swap, and ContactFab are all in. Each checkpoint verified with tsc --noEmit and (for 5a/5b) a full build. Starting step 6 (genericize remaining hardcoded strings).
 Last updated: 2026-09-21
 
 ## Tasks
@@ -11,15 +11,15 @@ Last updated: 2026-09-21
 - [x] Step 1c — courses.ts: drop professor field, migrate domain values, professorLinks:[] example on MICRO-373
 - [x] Step 1d — EN/FR translation files (projects, homeCards, about, hero, projectDetails) + project_details.ts
 - [x] Step 1e — AboutClient.tsx variousProfessors fallback (small, self-contained, not the full about-restructure we're skipping)
-- [ ] Step 1f — experience.ts: ExperienceCategory enum (add education/volunteering, drop music) + EN/FR
+- [x] Step 1f — experience.ts: ExperienceCategory enum (add education/volunteering, drop music) + EN/FR, 2 new example entries, ExperienceTimeline.tsx color map + globals.css category tokens
 - [x] Step 2 — Update tests/unit/projects-data.test.ts (VALID_DOMAINS) and translations.test.ts (drop hero.phrases test)
 - [x] Home cards: drop to 3 (HomePage.tsx, ProjectSection.tsx ported from main, homeCards.ts + translations updated)
 - [x] Cleanup — deleted dead DomainView.tsx/FullPortfolioPage.tsx, fixed ProjectsPage.tsx DOMAIN_KEYS
-- [ ] Step 3 — Assets: public/cv/ restructure, placeholder documents PDF
-- [ ] Step 4 — New standalone modules: contours.ts, trailPath.ts, GlobalTopoBackground.tsx, useHashScroll.ts
-- [ ] Step 5a — Delete DotPattern.tsx + Schematic type, rewire ClientShell.tsx
-- [ ] Step 5b — Add ContactFab.tsx, wire into ClientShell.tsx
-- [ ] Step 6 — Genericize hardcoded strings: layout.tsx, Footer.tsx, Navigation.tsx, ContactClient.tsx, robots.txt, sitemap.xml
+- [x] Step 3 — Assets: public/cv/ restructure (+ README), placeholder documents PDF (public/documents/signal-relay/), ContactClient.tsx href fixes
+- [x] Step 4 — New standalone modules: contours.ts, trailPath.ts, GlobalTopoBackground.tsx, useHashScroll.ts (ported from main, scrubbed one stray "Tim" code comment)
+- [x] Step 5a — Delete DotPattern.tsx + Schematic type, rewire ClientShell.tsx to GlobalTopoBackground — verified tsc clean + full build
+- [x] Step 5b — Add ContactFab.tsx, wire into ClientShell.tsx, port globals.css (.contact-fab, z-index fixes, translucent sections, category colors) — verified tsc clean + full build, globals.css now diffs clean against main
+- [ ] Step 6 — Genericize hardcoded strings: layout.tsx, Footer.tsx, Navigation.tsx, ContactClient.tsx (identity fields), robots.txt, sitemap.xml
 - [ ] Step 8 — Documentation rewrite (~15 files)
 - [ ] Verification: lint, test:unit, validate:i18n, build, test:e2e:tier1
 - [ ] Manual click-through of every page
