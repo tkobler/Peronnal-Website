@@ -1,12 +1,18 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { useViewTransitionRouter } from "@/hooks/useViewTransitionRouter";
 import { useLanguage } from "@/context/LanguageContext";
 
 /* ============================================================================
    CONTACT FAB — the floating "Get in touch" button pinned to the bottom-right
-   corner of the home page.
+   corner of every content page.
+
+   Mounted once in ClientShell, beside Navigation and OUTSIDE PageTransition —
+   a `position: fixed` element must not sit inside a transformed parent, or it
+   anchors to that parent instead of the viewport. HIDDEN_ON below lists the
+   routes that opt out.
 
    ┌─ WANT TO CHANGE HOW IT LOOKS? Three knobs, right below this comment ────┐
    │                                                                         │
@@ -36,6 +42,17 @@ const ICON: FabIcon = "mail";
 
 /** The green dot borrowed from the nav menu's contact button — "I'm reachable". */
 const STATUS_DOT = true;
+
+/* Routes that opt out of the button.
+
+   /contact — it would link to the page you are already on, and that page has
+              its own pulsing green "available" dot; two of them fight.
+   /admin   — the translation editor is a working tool, not a page for visitors.
+
+   Project detail routes are deliberately absent: /projects/[id] is a redirect
+   stub that renders nothing and bounces to /projects, so there is no page there
+   for the button to sit on. */
+const HIDDEN_ON = new Set(["/contact", "/admin"]);
 
 /* ── Glyphs ────────────────────────────────────────────────────────────────
    Every icon is a 24×24 outline drawn with `currentColor`, so it inherits the
@@ -68,6 +85,13 @@ const ICONS: Record<FabIcon, ReactNode> = {
 export default function ContactFab() {
   const router = useViewTransitionRouter();
   const { t } = useLanguage();
+  const pathname = usePathname();
+
+  // Trailing slash stripped defensively — the export has none today, but a
+  // future `trailingSlash: true` in next.config would otherwise slip the
+  // button back onto /contact/.
+  const route = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
+  if (HIDDEN_ON.has(route)) return null;
 
   // Real href so middle-click / "open in new tab" still work; the click handler
   // takes over for the in-app view transition. Same pattern as the nav menu.

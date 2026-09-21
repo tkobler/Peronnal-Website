@@ -3,6 +3,7 @@
 import Navigation from "./Navigation";
 import PageTransition from "./PageTransition";
 import GlobalTopoBackground from "./GlobalTopoBackground";
+import ContactFab from "./ContactFab";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { AdminProvider } from "@/context/AdminContext";
 
@@ -32,6 +33,12 @@ export default function ClientShell({ children }: { children: React.ReactNode })
 
         {/* Only page content is animated */}
         <PageTransition>{children}</PageTransition>
+
+        {/* Also fixed, so it lives out here for the same reason as Navigation.
+            Last in the DOM on purpose: keyboard users reach the page's own
+            content before the floating shortcut. It hides itself on the routes
+            listed in ContactFab's HIDDEN_ON. */}
+        <ContactFab />
       </LanguageProvider>
     </AdminProvider>
   );

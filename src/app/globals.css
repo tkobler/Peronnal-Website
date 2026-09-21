@@ -417,9 +417,10 @@ a, button, [role="button"], input, select, textarea {
 }
 
 /* ============================================
-   CONTACT FAB (fixed bottom-right, home page only)
-   Rendered by src/components/home/ContactFab.tsx — the shape and the icon
-   are chosen there; the sizing, colour and position live here.
+   CONTACT FAB (fixed bottom-right, every content page)
+   Rendered by src/components/layout/ContactFab.tsx — the shape, the icon and
+   the routes it opts out of are chosen there; sizing, colour and position
+   live here.
    ============================================ */
 .contact-fab {
   /* ─ The numbers worth tweaking ─ */
@@ -450,6 +451,7 @@ a, button, [role="button"], input, select, textarea {
 
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.25s ease,
+              border-color 0.25s ease,
               color 0.25s ease,
               box-shadow 0.25s ease;
 }
@@ -511,6 +513,10 @@ a, button, [role="button"], input, select, textarea {
 .contact-fab:hover {
   background: var(--dark-bg);
   color: #FFFFFF;
+  /* The resting border is near-black at 8% — invisible once the fill goes dark,
+     which left the pill dissolving into the site's dark sections on hover. Flip
+     it to a light hairline so the shape survives on any background. */
+  border-color: rgba(255, 255, 255, 0.18);
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(10, 31, 46, 0.16), 0 12px 32px rgba(10, 31, 46, 0.20);
 }
@@ -556,7 +562,7 @@ a, button, [role="button"], input, select, textarea {
   .contact-fab:hover,
   .contact-fab:active {
     transform: none;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   }
 
   .contact-fab-dot {

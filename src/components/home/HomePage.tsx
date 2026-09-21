@@ -4,7 +4,6 @@ import { useCallback, useMemo } from "react";
 import { useViewTransitionRouter } from "@/hooks/useViewTransitionRouter";
 import HeroSection from "./HeroSection";
 import ProjectSection from "./ProjectSection";
-import ContactFab from "./ContactFab";
 import { getHomeCards } from "@/data/homeCards";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -35,37 +34,31 @@ export default function HomePage() {
   );
 
   return (
-    <>
-      <main className="relative">
-        <HeroSection />
+    <main className="relative">
+      <HeroSection />
 
-        {/* Narrative bridge */}
-        <section
-          className="section-light relative flex items-center justify-center py-16 md:py-24"
-          data-section-theme="light"
-          style={{ paddingLeft: "var(--container-padding)", paddingRight: "var(--container-padding)" }}
+      {/* Narrative bridge */}
+      <section
+        className="section-light relative flex items-center justify-center py-16 md:py-24"
+        data-section-theme="light"
+        style={{ paddingLeft: "var(--container-padding)", paddingRight: "var(--container-padding)" }}
+      >
+        <p
+          className="relative z-10 max-w-2xl text-center text-[length:var(--text-lg)] leading-relaxed opacity-70"
+          style={{ fontFamily: "var(--font-body)" }}
         >
-          <p
-            className="relative z-10 max-w-2xl text-center text-[length:var(--text-lg)] leading-relaxed opacity-70"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            {t.hero.tagline}
-          </p>
-        </section>
+          {t.hero.tagline}
+        </p>
+      </section>
 
-        {cards.map((card, i) => (
-          <ProjectSection
-            key={card.id}
-            card={card}
-            theme={sectionThemes[i]}
-            onSelect={() => handleExplore(card.linkTo)}
-          />
-        ))}
-      </main>
-
-      {/* Floating "Get in touch" button — fixed to the bottom-right corner,
-          hovering above the page as it scrolls. */}
-      <ContactFab />
-    </>
+      {cards.map((card, i) => (
+        <ProjectSection
+          key={card.id}
+          card={card}
+          theme={sectionThemes[i]}
+          onSelect={() => handleExplore(card.linkTo)}
+        />
+      ))}
+    </main>
   );
 }
