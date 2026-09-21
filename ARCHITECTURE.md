@@ -20,7 +20,7 @@ This file covers the **implementation mechanics** — component internals, CSS c
 4. [i18n internals](#4-i18n-internals)
 5. [Component behavior reference](#5-component-behavior-reference)
 6. [CSS custom-property catalog](#6-css-custom-property-catalog)
-7. [DotPattern canvas system](#7-dotpattern-canvas-system)
+7. [GlobalTopoBackground system](#7-globaltopobackground-system)
 8. [UX scorecard](#8-ux-scorecard)
 9. [How-to guides](#9-how-to-guides)
 
@@ -35,24 +35,25 @@ This file covers the **implementation mechanics** — component internals, CSS c
     <script type="application/ld+json">  <!-- JSON-LD Person schema -->
   </head>
   <body className="[5 font variables] antialiased" suppressHydrationWarning>
-    <ClientShell>
+    <AdminProvider>
       <LanguageProvider>
         <a#skip-link>               <!-- accessibility skip link -->
-        <DotPattern />              <!-- OUTSIDE PageTransition (position:fixed canvas) -->
+        <GlobalTopoBackground />    <!-- OUTSIDE PageTransition (position:fixed image) -->
         <Navigation />              <!-- OUTSIDE PageTransition (fixed navbar) -->
         <PageTransition>            <!-- wraps only page content -->
           {children}                <!-- route page component -->
           <Footer />
         </PageTransition>
+        <ContactFab />              <!-- OUTSIDE PageTransition (position:fixed button) -->
       </LanguageProvider>
-    </ClientShell>
+    </AdminProvider>
   </body>
 </html>
 ```
 
-**Why DotPattern and Navigation are outside PageTransition:** both use `position: fixed`. CSS `transform` applied by `PageTransition` creates a new containing block, which would break fixed positioning on its descendants. Keeping them as siblings of `PageTransition` preserves viewport-anchored positioning during route changes.
+**Why GlobalTopoBackground, Navigation, and ContactFab are outside PageTransition:** all three use `position: fixed`. CSS `transform` applied by `PageTransition` creates a new containing block, which would break fixed positioning on its descendants. Keeping them as siblings of `PageTransition` preserves viewport-anchored positioning during route changes.
 
-**Route-change side effect:** on pathname change, `ClientShell` dispatches `CustomEvent("route-change")` after 100ms so `DotPattern` re-detects sections without a full canvas rebuild. The delay lets React commit the new route's DOM before DotPattern queries `[data-section-theme]` elements.
+There is no route-change side effect to speak of any more: `GlobalTopoBackground` is a single static image computed once at module load (see [section 7](#7-globaltopobackground-system)), so unlike the animated canvas it replaced, it has nothing to re-detect or rebuild when the route changes.
 
 ---
 
@@ -135,10 +136,11 @@ Non-obvious behaviors worth knowing about when editing each component.
 
 | Component | Key behavior |
 |---|---|
-| **ClientShell** | Wraps app in LanguageProvider. Dispatches `route-change` event after 100ms. Passes an airplane schematic to DotPattern on the home route. |
-| **Navigation** | Fixed pill navbar with hamburger→X morph, full-screen modal menu with a spring animation, scroll hide/show, section-theme detection with hysteresis (see section 7). |
+| **ClientShell** | Wraps app in AdminProvider + LanguageProvider. Renders GlobalTopoBackground, Navigation, and ContactFab as fixed-position siblings of PageTransition. |
+| **Navigation** | Fixed pill navbar with hamburger→X morph, full-screen modal menu with a spring animation, scroll hide/show, section-theme detection with hysteresis. |
 | **PageTransition** | Thin wrapper for View Transitions API fallback. Tracks `popstate` for scroll restoration. |
-| **DotPattern** | Two-layer canvas (dot grid + schematic reveal). See [section 7](#7-dotpattern-canvas-system). |
+| **GlobalTopoBackground** | Single fixed, static topographic contour image behind everything. See [section 7](#7-globaltopobackground-system). |
+| **ContactFab** | Floating "Get in touch" button, fixed bottom-right. Hides itself on `/contact` and `/admin`. Shape/icon/status-dot configured via constants at the top of the file. |
 | **Footer** | Static footer with social links, copyright, tech tag. |
 
 ### Home
@@ -147,30 +149,21 @@ Non-obvious behaviors worth knowing about when editing each component.
 |---|---|
 | **HomePage** | Orchestrates HeroSection + ProjectSection cards. Alternates dark/light themes for Navigation theme detection. |
 | **HeroSection** | Typewriter-animated greeting (~110ms/char, types once and stops). Resets when locale changes via the "adjusting state during render" pattern. |
-| **ProjectSection** | Full-bleed background image with dark/light gradient overlay. Card pushed to bottom on desktop. |
+| **ProjectSection** | Framed background image (inset 5%/7%, rounded corners) with dark/light gradient overlay — inset rather than full-bleed so GlobalTopoBackground shows through the margin. Card pushed to bottom on desktop. |
 | **ProjectCard** | Glass-morphism card (backdrop-blur-24px). Transitioned on transform + box-shadow. Focus-visible rings. |
 
 ### Projects
 
 | Component | Key behavior |
 |---|---|
-| **FullPortfolioPage** | Domain/list view toggle with fade transition. Scroll-to-project on back navigation. URL state encodes the current view. |
+| **ProjectsPage** | Single filtered list, not a domain drill-down — inline domain filter pills (`DOMAIN_KEYS`) above a scrollable list of featured projects. Deep-links via `#<project-id>` (see `useHashScroll`). |
 | **ProjectDetailPage** | Project detail with hero image (priority loading), zoom-in entrance, back button with state preservation. **Note:** `/projects/[id]` routes are currently disabled by the client-side redirect in [ProjectDetailClient.tsx](./src/app/projects/[id]/ProjectDetailClient.tsx). The page component still exists for when it's re-enabled. |
-| **DomainView** | 2×2 grid of domain category cards. Grayscale images that colorize on hover. |
-
-### Flight (cockpit-themed page)
-
-| Component | Key behavior |
-|---|---|
-| **AvionicsDashboard** | Interactive VOR instrument — compass rose chases mouse via angular lerp, CDI needle deflects, TO/FROM flag toggles. |
-| **RadarMap** | Radar sweep via CSS `conic-gradient` rotation. Phosphor glow on airport pins via cubic intensity curve as the sweep passes. |
-| **FlightMap** | Static map with airport pins. Hover/touch reveals a detail card with the flight description. |
 
 ### Experience
 
 | Component | Key behavior |
 |---|---|
-| **ExperienceTimeline** | Alternating left/right on desktop. Scroll-reveal with staggered delays via `useScrollReveal` (IntersectionObserver, one-shot). Color-coded category nodes. |
+| **ExperienceTimeline** | Alternating left/right on desktop. Scroll-reveal with staggered delays via `useScrollReveal` (IntersectionObserver, one-shot). Color-coded category nodes. Central axis is a meandering SVG trail from `lib/trailPath.ts`, not a straight line. Deep-links via `#<experience-id>` (see `useHashScroll`). |
 
 ---
 
@@ -182,7 +175,7 @@ All defined in [globals.css](./src/app/globals.css) on `:root`. **Use these inst
 
 - **Dark sections**: `--dark-bg: #0C2735`, `--dark-text: #FFFFFF`
 - **Light sections**: `--light-bg: #EDF1F5`, `--light-text: #0A1F2E`
-- **Category badges** (experience page): engineering (blue), service (green), music (purple), management (amber), entrepreneurship (pink), academic (indigo)
+- **Category badges** (experience page): engineering (blue), service (green), education (black), volunteering (burgundy) — `music`/`management`/`entrepreneurship`/`academic` tokens still exist in globals.css but aren't used by the current `ExperienceCategory` type
 
 ### Timing and easing
 
@@ -204,15 +197,16 @@ Do not invent `z-[9999]` values. Use a token:
 | Layer | Variable | Value |
 |---|---|---|
 | Glass surface | `--z-glass` | 1 |
-| Dot background | `--z-dot-bg` | 5 |
-| Content | `--z-content` | 10 |
+| Content | `--z-content` | 10 (unused — kept for future use) |
 | Hero content | `--z-hero-content` | 20 |
-| Dot foreground | `--z-dot-fg` | 30 |
-| Locale toggle | `--z-locale` | 40 |
+| Contact FAB | `--z-fab` | 900 |
 | Navigation | `--z-nav` | 1000 |
+| Locale toggle | `--z-locale` | 1005 |
 | Menu backdrop | `--z-menu-backdrop` | 1010 |
 | Menu panel | `--z-menu-panel` | 1020 |
 | Skip link | `--z-skip-link` | 9999 |
+
+**`--z-locale` sits above `--z-nav` on purpose.** The nav pill is centred with a 260px min-width, so on phone-width viewports its right edge reaches under the locale toggle. At a lower value the pill won every hit test there and taps on the FR button landed on the nav instead — French was unreachable below ~430px width. This was a real mobile bug, not a design choice to second-guess.
 
 ### Glass-morphism classes
 
@@ -222,8 +216,9 @@ Do not invent `z-[9999]` values. Use a token:
 
 ### Section theming
 
-- `.section-dark`: 3-stop gradient (#0A1F2E → #0D2B3A → #0E3340)
-- `.section-light`: 3-stop gradient (#F5F7FA → #E8EEF3 → #DBE5ED)
+- `.section-dark`: 3-stop gradient, navy tones, each stop at 85% opacity
+- `.section-light`: 3-stop gradient, pale tones, each stop at 85% opacity
+- Both are intentionally translucent (not fully opaque) so the fixed `GlobalTopoBackground` contour pattern shows through as sections scroll over it — see [section 7](#7-globaltopobackground-system)
 - The `data-section-theme` HTML attribute on each section drives `Navigation`'s theme-detection logic
 
 ### Hero animation stagger
@@ -241,54 +236,31 @@ Do not invent `z-[9999]` values. Use a token:
 
 ---
 
-## 7. DotPattern canvas system
+## 7. GlobalTopoBackground system
 
-**File:** [src/components/layout/DotPattern.tsx](./src/components/layout/DotPattern.tsx) (~870 lines — the largest single component in the repo).
+The site used to run an interactive, per-project animated canvas (`DotPattern.tsx`, ~870 lines — Schematic data on each project drove a dot-grid reveal animation keyed to cursor position and scroll). It's gone. In its place is a single static image, computed once and never touched again:
 
-### Two-layer architecture
+**File:** [src/components/layout/GlobalTopoBackground.tsx](./src/components/layout/GlobalTopoBackground.tsx) (37 lines).
 
-| Canvas | z-index | Purpose |
-|---|---|---|
-| Shape canvas (background) | 5 (behind content) | Schematic reveal animations |
-| Normal canvas (foreground) | 30 (above content) | Base dot grid + cursor glow |
+### How it's built
 
-### Grid
+1. **[src/lib/contours.ts](./src/lib/contours.ts)**'s `generateTopoContours(seed, width, height, options)` builds a smooth 2D height field — a sum of a handful of broad Gaussian "peaks" plus a little low-frequency turbulence — samples it on a grid (default 64×46), then traces iso-lines through it via marching squares. Because every line is a level set of one continuous field, lines can nest around a peak or merge at a saddle but never cross, exactly like a real elevation map. Every `indexEvery`-th level (default every 4th) is flagged `major` for a thicker/more opaque stroke, echoing the index-contour convention on real topo maps. Deterministic and seeded via `mulberry32()` — same seed always produces the same field, so there's no server/client hydration mismatch.
+2. `contoursToDataUri(lines, stroke)` serializes the traced lines into a `data:image/svg+xml` URI — a plain string, not a live DOM SVG, so it can be handed straight to a CSS `background-image`/`<img src>` with zero runtime cost.
+3. **`GlobalTopoBackground.tsx`** computes this once at module load (`PATTERN_SEED = 43`, a 100×100 viewBox, navy stroke `#0A1F2E`) and renders it as a single `<img>`, `position: fixed`, `object-cover`, 0.78 opacity, behind everything else in `ClientShell`.
 
-- `GRID_SPACING = 14px`, `DOT_RADIUS = 1px`
-- ~10,500 dots at 1920×1080
+### Why it never changes or re-renders
 
-### Section color blending
+The old canvas listened for scroll position, cursor position, route changes, and per-section theme to decide what to draw each frame. `GlobalTopoBackground` does none of that — it's one `<img>` with a data URI computed at import time. `.section-dark`/`.section-light` (see [section 6](#6-css-custom-property-catalog)) are translucent, not opaque, so the same fixed image shows through differently as different colored sections scroll over it — the illusion of variation comes from what's on top, not from the background itself changing.
 
-`getSectionBlend()` interpolates dot color between white (for dark sections) and dark blue (for light sections), with 120px transition zones at section boundaries. This is what gives the dots a smooth theme transition as you scroll, instead of a hard flip.
+An earlier version tried to flip the line color between light/dark stroke depending on which section was in view, which meant swapping between two pre-rendered images at runtime. That swap reproducibly failed to paint on any page whose first section starts dark (About, and the dark project sections on Projects), leaving the background blank there. Removing the swap removes the bug — this is deliberately a plain static image, identical on every route, with no per-render state. Don't reintroduce section-aware color swapping without solving that underlying paint-ordering issue first.
 
-### Cursor glow
+### Related: the meandering trail on /experience
 
-- 100px radius
-- Quadratic falloff (`f²`) for a soft edge
-- **Spatial culling**: bounding-box check skips `Math.hypot` for ~90% of dots per frame
+**[src/lib/trailPath.ts](./src/lib/trailPath.ts)**'s `generateTrailPath(seed, width, height, segments)` is a sibling generator — same `mulberry32` seeding, same smoothing helper — but produces a single gently meandering vertical path (a sum of a few low-frequency sine terms with random phase/frequency) instead of a contour field. `ExperienceTimeline.tsx` uses it as the timeline's central axis: a dashed SVG path standing in for a straight line, so the timeline reads as a hiking trail traced down a topo map rather than a ruler-straight line — the same "topographic" visual language as the background, applied to a second, unrelated component.
 
-### Schematic reveal state machine
+### Related: ContactFab
 
-```
-idle → revealing (wave expansion @ 350px/s)
-     → revealed
-     → fading (collapse @ 800px/s)
-     → idle
-```
-
-**Trigger**: cursor dwells 300ms within 25px of a schematic path. Scroll triggers a smooth fade (not an instant kill). Half-spacing infill dots are generated inside polygon/bitmap regions so the reveal looks dense.
-
-### Parallax
-
-`scrollY * 0.03` applied via `canvas.setTransform` each frame. No React state, no re-render.
-
-### Route change
-
-Listens for the `route-change` custom event → calls `updateSections()` + `scheduleRender()`. Lightweight — no canvas clear, no rebuild.
-
-### Mobile
-
-Hidden below 768px. No reveal logic, no cursor glow. The rAF loop auto-stops when there's nothing to render.
+**[src/components/layout/ContactFab.tsx](./src/components/layout/ContactFab.tsx)** is unrelated to the topo system but shares its fixed-positioning slot in `ClientShell` (see [section 1](#1-component-tree)) — a floating "Get in touch" button, bottom-right, on every route except `/contact` and `/admin` (`HIDDEN_ON`). Shape (`pill`/`circle`/`squircle`), icon, and whether it shows the green "available" status dot are all constants at the top of the file — read the block comment there before touching the styling in globals.css. Uses the real `nav.getInTouch` translation and a real `href="/contact"` with a client-side `onClick` override, the same pattern `Navigation.tsx` uses, so middle-click/open-in-new-tab still work.
 
 ---
 
@@ -306,6 +278,8 @@ The `npm run test:score` command runs every test suite and aggregates results vi
 
 **Minimum overall threshold**: 50. Below that, the scorecard flags the run as failing.
 
+**Tier 3 is currently a known gap.** `tests/e2e/canvas-performance.spec.ts` still tests for a `<canvas>` element — a leftover from the deleted `DotPattern` system (see [section 7](#7-globaltopobackground-system)). `GlobalTopoBackground` renders an `<img>`, not a canvas, so every test in this file now hits its own `count === 0` skip branch rather than testing anything real. It hasn't been rewritten for the new background system yet — inherited as-is, not something this sync fixed. See [.claude/docs/testing-strategy.md](./.claude/docs/testing-strategy.md).
+
 Note: the scorecard is a **reporting tool**, not a CI gate. CI currently runs `lint + test:unit + validate:i18n` before deploying. E2E, visual, and the scorecard are local-only. See [.claude/docs/testing-strategy.md](./.claude/docs/testing-strategy.md) for the full split between CI-enforced and local-only checks.
 
 ---
@@ -314,16 +288,17 @@ Note: the scorecard is a **reporting tool**, not a CI gate. CI currently runs `l
 
 ### Add a new project
 
-1. Add an entry to [src/data/projects.ts](./src/data/projects.ts) with a unique `id` (becomes the URL slug)
+1. Add an entry to [src/data/projects.ts](./src/data/projects.ts) with a unique `id` (becomes the URL slug and the `/projects#<id>` deep-link anchor)
 2. Add translations in [src/data/translations/en/projects.ts](./src/data/translations/en/projects.ts) AND [fr/projects.ts](./src/data/translations/fr/projects.ts) (key = project `id`)
 3. Place the hero image in `public/images/projects/`
 4. Optionally add to [src/data/homeCards.ts](./src/data/homeCards.ts) for a home-page feature
 5. Optionally link to a course in [src/data/courses.ts](./src/data/courses.ts) via `projectId`
-6. Run `npm run validate:i18n` and `npm run test:unit` before committing
+6. Optionally set `detail.link` (external project URL), `detail.sourceLink` (e.g. a GitHub repo), and/or `detail.documents` (PDFs dropped in `public/documents/<id>/`) — all three render on the project card when present, and each is independently optional
+7. Run `npm run validate:i18n` and `npm run test:unit` before committing
 
 ### Add a new experience entry
 
-1. Add an `ExperienceNode` to [src/data/experience.ts](./src/data/experience.ts) with a unique `id`
+1. Add an `ExperienceNode` to [src/data/experience.ts](./src/data/experience.ts) with a unique `id` (also becomes the `/experience#<id>` deep-link anchor) and a `category` — one of `"engineering" | "service" | "education" | "volunteering"`, which drives the timeline node color (see [section 6](#6-css-custom-property-catalog))
 2. Add translations in [en/experience.ts](./src/data/translations/en/experience.ts) AND [fr/experience.ts](./src/data/translations/fr/experience.ts) (key = experience `id`)
 3. Place the company logo in `public/images/logos/`
 
