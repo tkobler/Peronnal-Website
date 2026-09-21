@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 import { getTranslations, type Locale, type Translations } from "@/data/translations";
 
 interface LanguageContextValue {
@@ -23,13 +23,26 @@ function detectLocale(): Locale {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Initialize with detected locale directly. On the server this returns "en".
-  // On the client the inline <script> has already set window.__LOCALE__ before
-  // React hydrates, so this reads the correct locale synchronously.
-  // suppressHydrationWarning on <html> and <body> covers the attribute mismatch;
-  // the text content mismatch (e.g. "Home" vs "Accueil") is a one-time recoverable
-  // error in dev mode that doesn't occur in production static export.
-  const [locale, setLocaleState] = useState<Locale>(() => detectLocale());
+  // Must start as "en" unconditionally — that's what the static-export server
+  // HTML always is (no window at build time). Reading window/localStorage/
+  // navigator here in the initializer would run during the client's first
+  // (hydration) render and diverge from that server HTML, causing a real
+  // text-content hydration mismatch for any French-preferring visitor, not
+  // just a cosmetic one. The actual locale is detected post-mount below,
+  // via useEffect, so the first hydration pass always matches the server
+  // exactly, then swaps once via a normal state update.
+  const [locale, setLocaleState] = useState<Locale>("en");
+
+  useEffect(() => {
+    // Deferred via rAF to satisfy react-hooks/set-state-in-effect — setState
+    // must not run synchronously in the effect body (same pattern as
+    // Navigation.tsx's detectTheme).
+    const id = requestAnimationFrame(() => {
+      const detected = detectLocale();
+      if (detected !== "en") setLocaleState(detected);
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
