@@ -20,7 +20,7 @@ Config: [playwright.config.ts](../../playwright.config.ts)
 | Tier | Spec files | What it covers | Runtime |
 |---|---|---|---|
 | **tier1** | `navigation.spec.ts`, `language-toggle.spec.ts`, `project-cards.spec.ts` | Fast smoke: nav pill, hamburger, routing, i18n toggle, home project sections, portfolio page | fast (~240 tests × projects) |
-| **tier2** | `responsive-matrix.spec.ts` | Every tier1-ish check repeated across 8 device profiles (iPhone SE, iPhone 14, iPad portrait/landscape, desktop, ultrawide…) | slow (~768 tests) |
+| **tier2** | `responsive-matrix.spec.ts` | Every tier1-ish check repeated across 8 device profiles (iPhone SE, iPhone 14, iPad portrait/landscape, desktop, ultrawide…) — also has two `<canvas>`-existence checks left over from `DotPattern` that no-op gracefully (`count === 0` short-circuits to a pass) rather than testing anything real | slow (~768 tests) |
 | **tier3** | `canvas-performance.spec.ts` | Page transition timing, scroll parallax — **and a known gap**: still checks for a `<canvas>` element from the deleted `DotPattern` system, so those specific tests now no-op via `test.skip()` rather than testing anything real | slow-ish (~48 tests but perf-sensitive) |
 | **tier4** | `accessibility.spec.ts` | axe-core checks, keyboard navigation, ARIA attributes, color contrast | moderate (~152 tests) |
 
