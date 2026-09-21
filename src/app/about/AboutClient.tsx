@@ -120,14 +120,16 @@ export default function About() {
                   ) : course.name}
                 </p>
                 <p className="mt-1 text-xs italic opacity-50">
-                  {course.professorLinks.map((prof, i) => (
-                    <span key={prof.url}>
-                      {i > 0 && " & "}
-                      <a href={prof.url} target="_blank" rel="noopener noreferrer" className="underline decoration-white/15 underline-offset-2 transition-colors hover:text-blue-400 hover:decoration-blue-400">
-                        {prof.name}
-                      </a>
-                    </span>
-                  ))}
+                  {course.professorLinks.length > 0
+                    ? course.professorLinks.map((prof, i) => (
+                        <span key={prof.url}>
+                          {i > 0 && " & "}
+                          <a href={prof.url} target="_blank" rel="noopener noreferrer" className="underline decoration-white/15 underline-offset-2 transition-colors hover:text-blue-400 hover:decoration-blue-400">
+                            {prof.name}
+                          </a>
+                        </span>
+                      ))
+                    : t.about.variousProfessors}
                 </p>
                 {course.projectId && (
                   <Link

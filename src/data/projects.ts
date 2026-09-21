@@ -1,28 +1,10 @@
-export type ProjectDomain =
-  | "Microelectronics & Photonics"
-  | "Product Engineering & IoT"
-  | "Robotics & AI"
-  | "Industrial Design & Mechanical";
+import type { ProjectDocument } from "@/data/translations";
 
-export interface Schematic {
-  paths: [number, number, number, number][];
-  pads: [number, number][];
-  /** Animation mode: "reveal" = expanding wave reveal, "pulse" = traveling ECG-like signal pulse. */
-  mode?: "reveal" | "pulse";
-  /** Filled regions — arrays of [x, y] vertices (% of viewport) forming closed polygons. */
-  regions?: [number, number][][];
-  /** Image-based bitmap mask. Binary string of 0/1 chars, row-major.
-   *  Position and size in viewport %. Dark pixels = visible dots during reveal. */
-  bitmap?: {
-    data: string;       // "001110..." binary string, length = cols * rows
-    cols: number;       // bitmap width in cells
-    rows: number;       // bitmap height in cells
-    x: number;          // left edge in viewport %
-    y: number;          // top edge in viewport %
-    w: number;          // width in viewport %
-    h: number;          // height in viewport %
-  };
-}
+export type ProjectDomain =
+  | "Embedded Systems & Electronics"
+  | "Robotics & Autonomous Control"
+  | "Biomedical & Precision Instrumentation"
+  | "Mechanism Design & Fabrication";
 
 export interface Project {
   id: string;
@@ -44,17 +26,24 @@ export interface Project {
     challenges?: string[];
     publication?: string;
     images?: { src: string; alt: string; caption?: string; section?: string }[];
+    // Downloadable files. Drop the PDF in public/documents/<project id>/ and add
+    // an entry here; override the label per locale in translations/{en,fr}/projects.ts.
+    documents?: ProjectDocument[];
     role: string;
     duration: string;
     technologies: string[];
     keyResults?: string[];
     scope?: string;
+    link?: string;
+    sourceLink?: string;
   };
 }
 
 // This file ships with four example projects, one per domain, so the layout
-// and canvas features have something to render. Replace them with your own —
-// see SETUP.md §2.1. Nothing else in the codebase depends on these specific ids.
+// has something to render. Replace them with your own — see SETUP.md §2.1.
+// `link`, `sourceLink`, and `documents` are all optional — each example below
+// uses a different one of the three so you can see how each renders; nothing
+// else in the codebase depends on these specific ids.
 
 const projects: Project[] = [
   {
@@ -62,8 +51,8 @@ const projects: Project[] = [
     number: "01",
     title: "Low-Power Mesh Signal Relay",
     tagline: "Battery-powered relay for field sensor networks",
-    descriptor: "Product Engineering & IoT · Academic",
-    domain: "Product Engineering & IoT",
+    descriptor: "Embedded Systems & Electronics · Academic",
+    domain: "Embedded Systems & Electronics",
     featured: true,
     course: "MICRO-315",
     heroImage: "/images/placeholders/wide.svg",
@@ -73,6 +62,9 @@ const projects: Project[] = [
         what: "A battery-powered relay node that forwards sensor readings over a low-power mesh, extending network range without a fixed power source.",
         how: "Built around a low-power microcontroller with a duty-cycled radio stack, sleeping between transmission windows to stretch battery life across a multi-month deployment.",
       },
+      documents: [
+        { href: "/documents/signal-relay/project-report.pdf", label: "Project report", filename: "signal-relay-project-report.pdf" },
+      ],
       role: "Embedded Systems Engineer",
       duration: "Spring 2025",
       technologies: ["Embedded C", "Low-Power RF", "FreeRTOS", "PCB Design"],
@@ -85,30 +77,30 @@ const projects: Project[] = [
     },
   },
   {
-    id: "ring-resonator",
+    id: "micro-force-sensor",
     number: "02",
-    title: "Integrated Ring Resonator",
-    tagline: "Silicon photonics filter design and characterization",
-    descriptor: "Microelectronics & Photonics · Academic",
-    domain: "Microelectronics & Photonics",
+    title: "Flexure-Based Micro-Force Sensor",
+    tagline: "Compliant sensor for sub-newton force measurement",
+    descriptor: "Biomedical & Precision Instrumentation · Academic",
+    domain: "Biomedical & Precision Instrumentation",
     featured: true,
-    course: "MICRO-373",
     heroImage: "/images/placeholders/wide.svg",
     detail: {
       description: {
-        why: "Ring resonators are a building block for on-chip optical filtering, and hands-on fabrication is the best way to understand where theory and cleanroom reality diverge.",
-        what: "Designed and fabricated a silicon-on-insulator ring resonator, then characterized its spectral response against the design target.",
-        how: "Executed the full cleanroom cycle — lithography, etching, and metrology — and extracted the resonator's Q-factor from measured transmission spectra.",
+        why: "Measuring forces below a newton with an off-the-shelf load cell means fighting its noise floor and cross-axis sensitivity — a purpose-built flexure sensor trades general-purpose range for precision in the band that actually matters.",
+        what: "A compliant flexure-based sensor that converts small applied forces into a measurable deflection, read out optically for sub-millinewton resolution.",
+        how: "Designed the flexure geometry in CAD to balance stiffness against range, machined it from a single block to avoid assembly compliance, and calibrated the optical readout against a reference load cell.",
       },
-      role: "Fabrication Engineer",
-      duration: "Spring 2025",
-      technologies: ["Cleanroom Fabrication", "SEM", "Optical Characterization", "KLayout"],
+      role: "Instrumentation Engineer",
+      duration: "Fall 2024",
+      technologies: ["CAD", "Flexure Design", "Optical Sensing", "Calibration & Metrology"],
       keyResults: [
-        "Fabricated ring resonator with measured Q-factor matching simulation within design tolerance",
-        "Full cleanroom process: lithography, etching, metal deposition",
-        "SEM and optical bench metrology for spectral characterization",
+        "Sub-millinewton force resolution across the sensor's working range",
+        "Single-piece flexure design eliminates assembly-induced compliance",
+        "Calibrated against a reference load cell to within 2% of full scale",
       ],
-      scope: "Lab project · MICRO-373 · Spring 2025",
+      scope: "Course project · Fall 2024",
+      link: "https://example.com",
     },
   },
   {
@@ -116,8 +108,8 @@ const projects: Project[] = [
     number: "03",
     title: "Autonomous Terrain Rover",
     tagline: "Vision-based navigation on uneven ground",
-    descriptor: "Robotics & AI · Academic",
-    domain: "Robotics & AI",
+    descriptor: "Robotics & Autonomous Control · Academic",
+    domain: "Robotics & Autonomous Control",
     featured: true,
     course: "MICRO-502",
     heroImage: "/images/placeholders/wide.svg",
@@ -136,6 +128,7 @@ const projects: Project[] = [
         "Team of 3, iterated through 4 hardware revisions",
       ],
       scope: "Team of 3 · MICRO-502 · Spring 2025",
+      sourceLink: "https://github.com/your-username/terrain-rover",
     },
   },
   {
@@ -143,8 +136,8 @@ const projects: Project[] = [
     number: "04",
     title: "Modular Hand-Tool System",
     tagline: "Interchangeable, 3D-printed tool heads",
-    descriptor: "Industrial Design & Mechanical · Academic",
-    domain: "Industrial Design & Mechanical",
+    descriptor: "Mechanism Design & Fabrication · Academic",
+    domain: "Mechanism Design & Fabrication",
     featured: true,
     course: "MICRO-201",
     heroImage: "/images/placeholders/wide.svg",

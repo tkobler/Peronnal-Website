@@ -19,6 +19,7 @@ export const about: Translations["about"] = {
   passed: "Passed",
   inProgress: "In progress",
   highlightsTitle: "Selected Coursework",
+  variousProfessors: "Various professors",
   viewProject: "View project",
   musicTitle: "Beyond the Classroom",
   musicBio: "This section is a placeholder for a hobby, instrument, sport, or anything else you'd like to highlight outside of coursework and projects.",

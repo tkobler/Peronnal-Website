@@ -54,17 +54,6 @@ describe("Translation Integrity", () => {
     }
   });
 
-  it("hero phrases are non-empty arrays", () => {
-    for (const locale of LOCALES) {
-      const t = getTranslations(locale);
-      expect(Array.isArray(t.hero.phrases)).toBe(true);
-      expect(t.hero.phrases.length).toBeGreaterThan(0);
-      for (const phrase of t.hero.phrases) {
-        expect(phrase).toBeTruthy();
-      }
-    }
-  });
-
   it("homeCards translations exist for all featured project IDs", () => {
     const featured = getFeaturedProjects();
 

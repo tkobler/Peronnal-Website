@@ -11,10 +11,10 @@ export const projectDetailsContent: Translations["projectDetailsContent"] = {
       "Étanchéité du boîtier pour un usage extérieur sans bloquer l'antenne.",
     ],
   },
-  "ring-resonator": {
+  "micro-force-sensor": {
     metrics: [
-      { label: "Procédé", value: "SOI, cycle salle blanche complet" },
-      { label: "Caractérisation", value: "SEM + banc optique" },
+      { label: "Résolution", value: "Sub-millinewton" },
+      { label: "Étalonnage", value: "À 2% près de la pleine échelle" },
     ],
   },
   "terrain-rover": {

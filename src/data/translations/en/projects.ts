@@ -23,12 +23,14 @@ export const projects: Translations["projects"] = {
   methodologyLabel: "Methodology",
   challengesLabel: "Challenges & Decisions",
   publicationLabel: "Publication",
+  learnMoreLabel: "Learn more →",
+  sourceLabel: "Source",
   filterAll: "All",
   domains: {
-    "Microelectronics & Photonics": { name: "Microelectronics & Photonics", desc: "IC Design, Silicon Photonics & RF Systems" },
-    "Product Engineering & IoT": { name: "Product Engineering & IoT", desc: "Embedded Systems & Connected Devices" },
-    "Robotics & AI": { name: "Robotics & AI", desc: "Autonomous Agents & Neural Control" },
-    "Industrial Design & Mechanical": { name: "Industrial Design & Mechanical", desc: "Precision Mechanisms & Product Design" },
+    "Embedded Systems & Electronics": { name: "Embedded Systems & Electronics", desc: "Custom PCBs, Firmware & Connected Hardware" },
+    "Robotics & Autonomous Control": { name: "Robotics & Autonomous Control", desc: "Control Architectures, Navigation & Autonomy" },
+    "Biomedical & Precision Instrumentation": { name: "Biomedical & Precision Instrumentation", desc: "Force Sensing & Flexure-Based Measurement" },
+    "Mechanism Design & Fabrication": { name: "Mechanism Design & Fabrication", desc: "Mechanism Design, CAD & Hands-On Fabrication" },
   },
 };
 
@@ -36,13 +38,16 @@ export const projectsContent: Translations["projectsContent"] = {
   "signal-relay": {
     title: "Low-Power Mesh Signal Relay",
     tagline: "Battery-powered relay for field sensor networks",
-    descriptor: "Product Engineering & IoT · Academic",
+    descriptor: "Embedded Systems & Electronics · Academic",
     detail: {
       description: {
         why: "Field sensor deployments often sit outside Wi-Fi and cellular range, and running mains power to every node isn't practical.",
         what: "A battery-powered relay node that forwards sensor readings over a low-power mesh, extending network range without a fixed power source.",
         how: "Built around a low-power microcontroller with a duty-cycled radio stack, sleeping between transmission windows to stretch battery life across a multi-month deployment.",
       },
+      documents: [
+        { href: "/documents/signal-relay/project-report.pdf", label: "Project report" },
+      ],
       role: "Embedded Systems Engineer",
       duration: "Spring 2025",
       keyResults: [
@@ -53,30 +58,30 @@ export const projectsContent: Translations["projectsContent"] = {
       scope: "Course project · MICRO-315 · Spring 2025",
     },
   },
-  "ring-resonator": {
-    title: "Integrated Ring Resonator",
-    tagline: "Silicon photonics filter design and characterization",
-    descriptor: "Microelectronics & Photonics · Academic",
+  "micro-force-sensor": {
+    title: "Flexure-Based Micro-Force Sensor",
+    tagline: "Compliant sensor for sub-newton force measurement",
+    descriptor: "Biomedical & Precision Instrumentation · Academic",
     detail: {
       description: {
-        why: "Ring resonators are a building block for on-chip optical filtering, and hands-on fabrication is the best way to understand where theory and cleanroom reality diverge.",
-        what: "Designed and fabricated a silicon-on-insulator ring resonator, then characterized its spectral response against the design target.",
-        how: "Executed the full cleanroom cycle — lithography, etching, and metrology — and extracted the resonator's Q-factor from measured transmission spectra.",
+        why: "Measuring forces below a newton with an off-the-shelf load cell means fighting its noise floor and cross-axis sensitivity — a purpose-built flexure sensor trades general-purpose range for precision in the band that actually matters.",
+        what: "A compliant flexure-based sensor that converts small applied forces into a measurable deflection, read out optically for sub-millinewton resolution.",
+        how: "Designed the flexure geometry in CAD to balance stiffness against range, machined it from a single block to avoid assembly compliance, and calibrated the optical readout against a reference load cell.",
       },
-      role: "Fabrication Engineer",
-      duration: "Spring 2025",
+      role: "Instrumentation Engineer",
+      duration: "Fall 2024",
       keyResults: [
-        "Fabricated ring resonator with measured Q-factor matching simulation within design tolerance",
-        "Full cleanroom process: lithography, etching, metal deposition",
-        "SEM and optical bench metrology for spectral characterization",
+        "Sub-millinewton force resolution across the sensor's working range",
+        "Single-piece flexure design eliminates assembly-induced compliance",
+        "Calibrated against a reference load cell to within 2% of full scale",
       ],
-      scope: "Lab project · MICRO-373 · Spring 2025",
+      scope: "Course project · Fall 2024",
     },
   },
   "terrain-rover": {
     title: "Autonomous Terrain Rover",
     tagline: "Vision-based navigation on uneven ground",
-    descriptor: "Robotics & AI · Academic",
+    descriptor: "Robotics & Autonomous Control · Academic",
     detail: {
       description: {
         why: "Most student robotics platforms assume flat, predictable terrain — this project explored what breaks when that assumption doesn't hold.",
@@ -96,7 +101,7 @@ export const projectsContent: Translations["projectsContent"] = {
   "modular-toolkit": {
     title: "Modular Hand-Tool System",
     tagline: "Interchangeable, 3D-printed tool heads",
-    descriptor: "Industrial Design & Mechanical · Academic",
+    descriptor: "Mechanism Design & Fabrication · Academic",
     detail: {
       description: {
         why: "A single-purpose tool means buying and storing a separate handle for every task — a shared, swappable interface removes that redundancy.",
