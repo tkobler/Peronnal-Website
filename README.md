@@ -19,11 +19,12 @@ This repo has documentation at three layers — pick the one that matches what y
 
 ### Humans using this as a template
 - **[SETUP.md](./SETUP.md)** — step-by-step customization guide
+- **[MAINTAINING.md](./MAINTAINING.md)** — ongoing upkeep after setup: adding projects, editing content, images, CV, deployment
 
 ### Humans who want implementation details
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** — component internals, CSS catalog, DotPattern canvas, how-to guides
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** — component internals, CSS catalog, GlobalTopoBackground system, how-to guides
 - **[.claude/docs/project-map.md](./.claude/docs/project-map.md)** — architecture overview, directory layout, routing, data flow
-- **[.claude/docs/glossary.md](./.claude/docs/glossary.md)** — non-obvious terms (Schematic, tier 1–4, signal burst…)
+- **[.claude/docs/glossary.md](./.claude/docs/glossary.md)** — non-obvious terms (GlobalTopoBackground, tier 1–4…)
 
 ### Contributors working in the repo
 - **[.claude/docs/workflow.md](./.claude/docs/workflow.md)** — branch-based workflow (`dev/`, `bug/`, `audit/`, `doc/`, `claude/`)
@@ -44,7 +45,7 @@ npm run lint             # ESLint
 npm run test:unit        # Vitest
 npm run test:e2e:tier1   # Fast e2e smoke (navigation + language + project cards)
 npm run validate:i18n    # EN/FR key parity
-npm run cv:build         # Typst CV pipeline (requires typst CLI)
+npm run cv:build         # Typst CV pipeline, parked (requires typst CLI)
 ```
 
 Full command reference: [.claude/docs/commands.md](./.claude/docs/commands.md).
