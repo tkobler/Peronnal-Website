@@ -1,64 +1,40 @@
-# Blank template branch — Tracking
+# Sync template with main — Tracking
 
 ## Current status
-
-Complete and verified. Ready for commit.
-Last updated: 2026-08-29
+Branch created, STRATEGY.md written. Starting sequencing step 1 (schema migration).
+Last updated: 2026-09-21
 
 ## Tasks
-
-- [x] Create `template` branch from `main`
-- [x] Write STRATEGY.md
-- [x] Placeholder image SVGs (`wide`, `square`, `logo`) + delete all of Clément's real images
-- [x] `layout.tsx` metadata, structured data, OG/Twitter → generic placeholders
-- [x] Footer, Navigation, HeroSection, AboutClient → placeholder name + image
-- [x] Contact page → placeholder email/LinkedIn/GitHub (Email/LinkedIn/GitHub only, matching the simplification already made for Tim)
-- [x] `projects.ts` + `project_details.ts` → 4 example projects (one per domain)
-- [x] `homeCards.ts` → 4 cards (2 example projects, /experience, /hobby)
-- [x] `experience.ts` → 2 example entries
-- [x] `courses.ts` → trimmed curriculum, real EPFL course/professor refs, fictional grades
-- [x] Delete `/flight` route + `src/components/flight/*` + `flightLog.ts` (data + both translation files)
-- [x] Add `/hobby` route (page/layout/client) — deliberately minimal
-- [x] `translations/index.ts` — `nav.flight` → `nav.hobby`, `flight`/`flightLog` types → `hobby` type
-- [x] EN + FR translation content for hero, about, contact, homeCards, experience, projects, hobby, nav
-- [x] `public/CNAME`, `sitemap.xml`, `robots.txt` → `example.com`; delete `BingSiteAuth.xml`
-- [x] `cv/data/personal.typ` → placeholder fields
-- [x] `README.md`, `SETUP.md` → fix now-stale "Clément" references and the "replace X" instructions that no longer match the already-genericized state
-- [x] `.claude/` agent/doc files → "Your Name" placeholder, fixed a few sentences that asserted specific facts about Clément as if they were generic truths
-- [x] `.claude/settings.json` → removed leaked ProtonMail address + absolute machine path from Bash permissions
-- [x] Fix `Translations["contact"]` type — remove now-unused `whatsappValue`
-- [x] Found and fixed: orphaned `src/data/flightLog.ts` (missed on first pass, still referenced by a unit test) + `tests/unit/flight-stats.test.ts`
-- [x] Found and fixed: `tests/utils/devices.ts` `ROUTES` array still had `/flight`
-- [x] Found and fixed: `tests/e2e/navigation.spec.ts` stale comment
-- [x] `npm run lint` — clean
-- [x] `npm run build` — succeeds
-- [x] `npm run validate:i18n` — 138/138 match
-- [x] `npm run test:unit` — 17/17 pass
-- [x] `npm run test:e2e:tier1` — 232/248 passed on first run; diagnosed all 16 failures against a clean `main` baseline (see decisions log) — none are regressions from this branch's changes
-- [x] Full-repo grep sweep re-confirmed clean after final fixes
-- [ ] Commit
-- [ ] Push branch (no PR — this branch isn't merging to `main`)
+- [x] Create STRATEGY.md and TRACKING.md
+- [ ] Step 1 — Schema: translations/index.ts, projects.ts, experience.ts, courses.ts, EN/FR translation files
+- [ ] Step 2 — Update tests/unit/projects-data.test.ts and translations.test.ts for new schema
+- [ ] Step 3 — Assets: public/cv/ restructure, placeholder documents PDF
+- [ ] Step 4 — New standalone modules: contours.ts, trailPath.ts, GlobalTopoBackground.tsx, useHashScroll.ts
+- [ ] Step 5a — Delete DotPattern.tsx + Schematic type, rewire ClientShell.tsx
+- [ ] Step 5b — Add ContactFab.tsx, wire into ClientShell.tsx
+- [ ] Step 6 — Genericize hardcoded strings: layout.tsx, Footer.tsx, Navigation.tsx, ContactClient.tsx, robots.txt, sitemap.xml
+- [ ] Step 8 — Documentation rewrite (~15 files)
+- [ ] Home cards: drop to 3 (HomePage.tsx, ProjectSection.tsx, homeCards.ts)
+- [ ] Verification: lint, test:unit, validate:i18n, build, test:e2e:tier1
+- [ ] Manual click-through of every page
+- [ ] /merge-check before opening PR
 
 ## Decisions log
 
-### 2026-08-29 — Branched from `main`, not `dev/personalize-tim-kobler`
-`dev/personalize-tim-kobler` already has useful precedent (bracket-placeholder style, cleaned settings.json) but also has Tim's real contact info baked into metadata/contact/footer, which would need scrubbing right back out. Branching from `main` means one transformation (Clément → generic) instead of two (Clément → Tim → generic).
+### 2026-09-21 — Never merge/cherry-pick from main
+Branches diverged in both directions with content mixed into structural diffs throughout. Decided to use `git checkout main -- <path>` only for confirmed-zero-personal-content files, and hand-edit (diffed, not retyped) everything else against a saved reference. See STRATEGY.md Approach.
 
-### 2026-08-29 — Real EPFL course/professor references kept, fictional projects
-Per Tim's explicit instruction to keep "professional writing style, the EPFL references, and some example projects." EPFL course codes and the professors who teach them are public institutional facts, not Clément's personal data — pairing them with fictional example projects is a legitimate template pattern (a friend who's also at EPFL could genuinely reuse the pairing for real work).
+### 2026-09-21 — Keep /hobby live, diverge from main
+Main parked `/hobby` into an About "Beyond Engineering" section — a personal-narrative choice. pm review argued a template benefits more from a live example of "how to add a top-level page." User confirmed: keep `/hobby` live and generic. This means the About page and translations do NOT get main's GPA-removal/Beyond-Engineering restructuring.
 
-### 2026-08-29 — `/flight` deleted, not emptied
-Considered keeping the route with placeholder data. Rejected: the page is 5 custom components (cockpit dashboard, radar map, live clock) built specifically for flight-log content — keeping the shell would mean a friend either fights that bespoke layout to repurpose it or deletes it anyway. A minimal, generic `/hobby` page demonstrates the same "portfolio can hold non-project content" idea with far less to strip out.
+### 2026-09-21 — Drop home cards from 4 to 3
+Confirmed with user: mirror main's 3-card layout, dropping the redundant project-spotlight card (pm's reasoning: it duplicates the Projects page nav link, not just "because main did it").
 
-### 2026-08-29 — tier1 e2e failures traced to pre-existing repo flakiness, not this branch
-First tier1 run (after fixing an unrelated Playwright-browsers-not-installed environment issue) showed 232 passed / 16 failed. Rather than assume any were caused by this branch's changes, stashed all changes and ran the identical suite against clean `main`: **22 failed** there — a superset covering every category seen on `template` (mobile `language-toggle.spec.ts` FR/EN switching and persistence on `iphone-se`/`iphone-14`; `navigation.spec.ts` hamburger-menu close/backdrop tests; `project-cards.spec.ts` dark/light theme alternation). This matches the flakiness this repo's own `TRACKING.md` (from the unrelated `bug/mobile-locale-toggle` branch) already documented for `navigation.spec.ts:90/103/121`.
-
-Three `template`-only test/project combinations weren't in the `main` baseline list: `navigation.spec.ts:129` (menu → correct page) on chromium-desktop/webkit-desktop/ultrawide, and `navigation.spec.ts:156` (route transition) on ultrawide. Restored the stash and re-ran just those with `--retries=2`: 4/9 passed outright, 3/9 were flaky (failed then passed on retry), 2/9 failed all three attempts — both on chromium-desktop, both with the same `toHaveCSS` assertion-timing error signature as the confirmed-pre-existing hamburger-menu failures. Conclusion: same underlying CSS-transition-timing race as the rest of `navigation.spec.ts`, not a regression — the specific browser/project it lands on is simply non-deterministic between runs (already true on unmodified `main`, where `:90` and `:103` swapped which browser failed between the two runs performed here).
+### 2026-09-21 — Spread new project fields across separate examples
+pm review: don't bundle `documents`/`link`/`sourceLink` onto one placeholder project — each needs its own example so a template user sees every field actually rendered.
 
 ## Blockers
-
-None. `src/app/favicon.ico` (binary, Clément's mark) intentionally left untouched — flagged in STRATEGY.md, not fixable with text-editing tools here.
+None currently.
 
 ## Team consultations during execution
-
-None — Tim gave direct, specific scope in conversation (placeholder-vs-real-content split, image strategy, EPFL/example-project retention, hobby-page concept) covering what a `pm`/`tech-lead` consult would normally surface for a `dev/` feature. Treated as equivalent to Phase 1 discovery.
+- **2026-09-21 — pm, tech-lead** (Phase 1 discovery, parallel): see STRATEGY.md "Panel input" for full summary. Conflict surfaced (pm vs. mirroring main on /hobby) was escalated to the user rather than resolved unilaterally.

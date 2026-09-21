@@ -1,33 +1,50 @@
-# Blank template branch — Strategy
+# Sync template with main — Strategy
 
-## Context
+## Goal
+Bring `template`'s code, features, and documentation up to date with `main` (64 commits ahead) — the animated-canvas background, floating contact button, project taxonomy, and data schema all drifted out of sync — while keeping `template`'s actual content (bio, projects, CV) generic and placeholder, never Tim's real personal data.
 
-This repo started as Clément Chalut's real portfolio. Tim adapted it for himself on `dev/personalize-tim-kobler`. This is a separate, third thing: a genuinely generic template — no Clément, no Tim, just placeholder identity and example content — so a friend can clone this branch and add their own content directly instead of first stripping someone else's.
+## Visitor value
+The visitor here is a future template user cloning this repo to build their own portfolio. They need working, current code (not a stale architecture) and documentation that describes what's actually in the repo, not a deleted subsystem.
 
-This branch does **not** fit the repo's five standard workflow prefixes (`dev/`, `bug/`, `audit/`, `doc/`, `claude/`) — it's not a feature shipping to Tim's live site, it's a parallel standalone reference other people clone from. Named `template`, no PR back to `main` is planned. Branched from `main` (Clément's original, unmodified) rather than `dev/personalize-tim-kobler`, to avoid a second round of scrubbing Tim's real contact info back out.
+## Scope
 
-## Scope decisions
+### In scope
+- Port the `GlobalTopoBackground`/`contours.ts`/`trailPath.ts` static background system, replacing the deleted `DotPattern`/`Schematic` canvas.
+- Add `ContactFab.tsx` (site-wide floating contact button).
+- Migrate data schema: project-domain taxonomy rename, `ProjectDocument`/`link`/`sourceLink` fields, `ExperienceCategory` enum change (add education/volunteering, drop music), `courses.ts` `professor` field removal.
+- Drop the redundant 4th home card (project spotlight), matching main — 3 cards.
+- Genericize hardcoded personal strings (name, email, socials, CV filenames, metadata) picked up incidentally while porting the files that contain them.
+- Rewrite ~15 documentation files that still describe the deleted `DotPattern`/`Schematic`/`flight` systems.
+- Bring over new template-appropriate docs/skills already written generically on `main`: `MAINTAINING.md`, `public/cv/README.md`, `add-project`/`add-activity` skills, `.vscode/settings.json`.
+- Restructure `public/cv/` to match main's path convention.
 
-1. **Identity**: every name/contact field replaced with an obvious placeholder ("Your Name", `you@example.com`, `example.com`, `your-username`) rather than a fictional filled-in persona — a friend should never wonder "wait, is this a real person?"
-2. **Example content stays real-feeling**: projects, experience, and course references keep Clément's professional writing style and register (metrics over adjectives, EPFL course codes, real EPFL professor names on real public EPFL courses) — but the four example projects, the two experience entries, and the trimmed curriculum are fictional/generic, not Clément's actual work. Reduced from 13 projects to 4 (one per domain) and 8 experience entries to 2, so a friend edits rather than deletes their way to a clean slate.
-3. **EPFL references kept** per Tim's explicit request — this is meant to still read like a specific, credible engineering student's site, not a generic Lorem Ipsum shell.
-4. **Bio/hero/about copy**: explicit bracketed placeholders (`[Add your bio here...]`-style prose) rather than invented biography, since this is content a friend must personally write — no defensible "example" version exists for someone's actual life story.
-5. **Images**: no real photos ship. Three hand-authored SVG placeholders (`public/images/placeholders/{wide,square,logo}.svg`) — flat gradient + simple line icon, "REPLACE THIS IMAGE" / "YOUR PHOTO" / "LOGO" labels — cover every image slot (project heroes, home cards, domain tiles, experience logos, profile photo). All of Clément's real images deleted from `public/images/`.
-6. **`/flight` → `/hobby`**: the elaborate cockpit-dashboard flight log (5 components, live clock, flight table, radar map) is Clément's real hobby data and a lot of bespoke UI. Replaced with a deliberately minimal page (`src/app/hobby/`) — heading, one paragraph, three placeholder highlight cards — whose only job is to demonstrate that a portfolio can hold a non-project page. `flightLog.ts` and the `/flight` route/components are deleted outright, not just emptied.
-7. **`.claude/` docs**: agent personas and workflow docs still say "Your Name" throughout rather than a fictional name, and a few sentences that made specific factual claims about Clément (age, degree, a claim used as a recruiter-agent calibration anchor) were rewritten as generic guidance instead of carried over as false facts about a placeholder person.
-8. **`.claude/settings.json`**: the permission allowlist had Clément's real ProtonMail address and absolute machine path baked into several Bash patterns (same issue found and fixed on `dev/personalize-tim-kobler`). Removed rather than repointed — a template shouldn't ship anyone's local filesystem path.
+### Out of scope
+- `main`'s real personal content: real project descriptions, real bio, real CV, real photos, real employer names.
+- `DIAGNOSTIC-DEPLOIEMENT.md` (Tim's personal debugging notes).
+- The Typst CV pipeline (`cv/`) — untouched.
+- Parking `/hobby` into an About "Beyond Engineering" section.
 
-## What's still a known gap
+### Non-goals
+- Making `template` byte-identical to `main`. Template deliberately diverges where main's choices are personal-narrative rather than structural (see `/hobby` below).
+- Adding new features beyond what main already built.
 
-- **`src/app/favicon.ico`**: binary file, left untouched — no text-editing tool can meaningfully replace an `.ico`, and SETUP.md already tells template users to replace it themselves. Flagged, not fixed.
-- **CV PDFs**: `cv/data/personal.typ` source updated to placeholders, but `public/cv-*.pdf` are gitignored build artifacts requiring the local `typst` CLI to regenerate — not run here.
-- **`src/data/courses.ts` curriculum**: trimmed from Clément's full multi-year transcript to a compact 2-year, ~7-course example. Real EPFL course codes/professors kept (public info), fictional grades.
+## Approach
+Never merge or cherry-pick from `main` — the branches have diverged in both directions and nearly every file mixes structural changes with Tim's real content, which a merge tool can't distinguish. Instead: `git checkout main -- <path>` for files confirmed to carry zero personal content (new standalone modules, generic docs, tests), and hand-edit everything else against a saved `git show main:<path>` reference, diffed rather than retyped. Schema/type changes land first so `tsc --noEmit` surfaces every consuming file that needs updating; documentation is rewritten last, once the code it describes is final. Full detail in the approved plan at `/Users/tk/.claude/plans/my-main-branch-is-foamy-lollipop.md`.
 
-## Verification run
+## Risks
+- Translation EN/FR parity drifting during the multi-field rename — mitigated by editing both locales for the same field in the same step, then `npm run validate:i18n`.
+- Accidentally porting a hardcoded personal string (name/email/photo) buried in an otherwise-generic file — mitigated by the explicit file list in the plan and a final grep pass for "Tim"/"Kobler"/"timkobler" before opening the PR.
+- Doc rewrite is large (~15 files) and could drift from what the code actually does if written before the code is final — mitigated by doing docs last.
+- Deleting `DotPattern.tsx`/`Schematic` and adding `ContactFab` were flagged by tech-lead as two unrelated changes — kept as separate verified checkpoints (5a/5b) rather than one bundled step.
 
-- `npm run lint` — clean
-- `npm run build` — static export succeeds, all 4 example project detail pages generate, `/hobby` present, `/flight` gone
-- `npm run validate:i18n` — 138/138 keys match EN/FR (down from 292 — expected, given far less content)
-- `npm run test:unit` — 17/17 pass (removed `flight-stats.test.ts`, which tested a file that no longer exists)
-- `npm run test:e2e:tier1` — run since this touched routing/navigation (`/flight` → `/hobby`), per CLAUDE.md's testing rule
-- Full-repo grep for "Clément"/"Chalut" (case-insensitive): zero hits in `src/`, `public/`, `cv/`, `.claude/`
+## Tradeoffs
+- Diverging from main on `/hobby` (keeping it live vs. parking it) means the template's About page and translations do NOT get main's GPA-card removal / Beyond Engineering restructuring. Rejected alternative: mirror main exactly — rejected because pm's review found the parked-page teaching value (a template's only example of adding a new top-level page) worth more than matching main 1:1.
+- Doing docs in the same PR as the code (not a separate `doc/` branch) — rejected the cleaner separation in favor of never shipping template with new code and stale docs, even temporarily.
+
+## Test plan
+`npx tsc --noEmit` after every step; full `npm run build` after the canvas swap (5a/5b), after string genericization (step 6), and at the end. `npm run lint`, `npm run test:unit`, `npm run validate:i18n` before PR. `npm run test:e2e:tier1` (nav/project-cards changed). Manual click-through of every page. `/merge-check` before opening the PR.
+
+## Panel input (from Phase 1)
+- **pm**: agrees with dropping to 3 home cards, but for a different reason than "matches main" (the 4th card was redundant with the Projects page nav — that's the real justification, not mirroring main for its own sake). Disagreed with parking `/hobby` — sided with keeping it live as a template teaching pattern. Flagged that bundling all three new project fields (`documents`/`link`/`sourceLink`) onto one example project under-demonstrates the schema — spread them across separate examples instead.
+- **tech-lead**: approved the "checkout for generic files, hand-edit-against-diff for mixed files, never merge" git strategy, with one refinement (diff the saved reference against template's copy rather than reading-and-retyping, to avoid silently dropped hunks). Flagged that deleting `DotPattern`/`Schematic` and adding `ContactFab` are unrelated changes that shouldn't share one verification checkpoint. Recommended `tsc --noEmit` after every step instead of a full build, reserving full builds for natural checkpoints. Recommended scripting the taxonomy rename rather than hand-typing it in N places.
+- **Conflicts surfaced**: pm vs. the plan's original "mirror main" instinct on `/hobby` — resolved by asking the user directly, who chose to keep `/hobby` live (diverging from main).
