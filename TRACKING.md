@@ -1,23 +1,53 @@
-# Tracking — downloadable project documents
+# Site-wide contact FAB — Tracking
 
-- [x] Confirm scope with author (all projects with a PDF; skip ARTORG; compress)
-- [x] Identify and verify the eight source PDFs
-- [x] Compress into `public/documents/<project-id>/` (54 MB -> 17 MB)
-- [x] Verify compression did not damage text (rendered page compare vs original)
-- [x] Add `ProjectDocument` type + `documents` field
-- [x] Render the documents block on the project detail page
-- [x] Wire up the eight projects (EN + FR)
-- [x] Add `documentsLabel` to both locales
-- [x] lint / test:unit / validate:i18n / build (all green)
+## Current status
+Branch created, strategy agreed, no code written yet.
+Last updated: 2026-09-21
 
-## Note on where the block renders
-`/projects/[id]` is a stub that redirects to `/projects`, and nothing imports
-`ProjectDetailPage.tsx` — the card content is rendered inline by `ProjectsPage.tsx`.
-The documents block was therefore added to `ProjectsPage.tsx`, and mirrored into
-`ProjectDetailPage.tsx` so the two stay in sync for whenever detail pages return.
+## Tasks
+- [x] Phase 1 discovery — panel consulted (pm, tech-lead, ui-designer, ux-designer)
+- [x] Verify panel claims against the codebase before acting on them
+- [x] Create STRATEGY.md and TRACKING.md
+- [ ] Capture BEFORE screenshots of `/projects`, `/experience`, `/about`
+- [ ] Move `ContactFab` from `components/home/` to `components/layout/`
+- [ ] Add the route denylist (`/contact`, `/admin`) via `usePathname()`
+- [ ] Mount in `ClientShell` beside `Navigation`, outside `PageTransition`
+- [ ] Remove the local mount and import from `HomePage`
+- [ ] Fix the hover border so the pill stays legible over dark sections
+- [ ] Correct the two stale "home page only" comments
+- [ ] Capture AFTER screenshots at the same viewports
+- [ ] Run lint, unit, tier1, validate:i18n
+- [ ] Report the `/about` and `/projects` corner collisions to Tim with evidence
+- [ ] `/merge-check`, then open the PR and stop for validation
 
-## Test notes
-- `project-cards.spec.ts`: 80/80 pass.
-- tier1 also surfaces 5 pre-existing `language-toggle` failures on iphone-se/iphone-14
-  and flaky `navigation.spec.ts` failures on ultrawide. Both reproduce on the
-  unmodified tree, so they are not from this change.
+## Decisions log
+
+### 2026-09-21 — Global mount over per-page imports
+Two approaches were on the table: import `<ContactFab />` into each page component (mirroring what
+`HomePage` does today), or mount it once in `ClientShell` with a route denylist. Chose the global
+mount. `ClientShell` carries an explicit comment that `position: fixed` elements must stay outside
+`PageTransition`, and the per-page approach would violate that on every page while leaving four
+import sites to drift apart. tech-lead and pm independently reached the same conclusion.
+
+### 2026-09-21 — `/projects/[id]` dropped from scope as moot
+Tim asked for the button on project detail pages. Verification showed
+`src/app/projects/[id]/ProjectDetailClient.tsx` renders `null` and immediately calls
+`router.replace("/projects")` — the route is a redirect stub with no content. There is nothing to
+mount a button on. Reported to Tim; project content is covered by the `/projects` listing.
+
+### 2026-09-21 — Polish scope trimmed to the hover-border fix
+ui-designer asked for four changes beyond the mount. Two of them (`--fab-inset` re-alignment,
+removing the pulse animation) would alter the home page's button, which Tim did not ask to change.
+Tim chose to take only the hover-border fix now and to see screenshot evidence of the `/about` and
+`/projects` corner collisions before deciding on spacing.
+
+### 2026-09-21 — Two panel claims rejected on verification
+ui-designer flagged a missing `/flight` route: no such route exists (`flightLog.ts` has no consuming
+page, `_hobby` is underscore-parked). ux-designer's advice to exclude `/projects/[id]` was correct in
+spirit but moot for the reason logged above. Recorded so the reasoning survives the branch.
+
+## Blockers
+None.
+
+## Team consultations during execution
+None yet.
