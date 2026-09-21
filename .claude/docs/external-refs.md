@@ -3,7 +3,7 @@
 Pointers to things outside this repo. Fill in as you learn them — empty entries are prompts, not facts.
 
 ## Hosting & deployment
-- **GitHub repo**: `ccka/Personnal-Website`
+- **GitHub repo**: _(fill in — your fork's `owner/repo`)_
 - **Deploy target**: GitHub Pages via `.github/workflows/` on push to `main`
 - **Custom domain**: see [public/CNAME](../../public/CNAME)
 - **Live URL**: _(fill in)_
@@ -11,7 +11,7 @@ Pointers to things outside this repo. Fill in as you learn them — empty entrie
 ## Search & SEO
 - **Sitemap**: [public/sitemap.xml](../../public/sitemap.xml)
 - **Robots**: [public/robots.txt](../../public/robots.txt)
-- **Bing verification**: [public/BingSiteAuth.xml](../../public/BingSiteAuth.xml)
+- **Bing verification**: _(not shipped in this template — Bing provides a `BingSiteAuth.xml` file if you register; drop it in `public/` then)_
 - **Google Search Console**: _(fill in if used)_
 
 ## Environment variables

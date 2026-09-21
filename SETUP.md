@@ -25,7 +25,7 @@ npm --version
 
 1. Fork this repo to your own GitHub account, OR clone it and push to a new repo of yours:
    ```bash
-   git clone https://github.com/ccka/Personnal-Website.git my-portfolio
+   git clone <this-repo's-clone-url> my-portfolio
    cd my-portfolio
    rm -rf .git
    git init && git add . && git commit -m "initial import"
