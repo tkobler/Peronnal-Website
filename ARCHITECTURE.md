@@ -106,8 +106,10 @@ The overview of how i18n is organized lives in [project-map.md](./.claude/docs/p
 ### Locale detection flow
 
 1. An **inline `<script>`** in [layout.tsx](./src/app/layout.tsx) runs **before React hydrates**. It reads `localStorage` → `navigator.language` → defaults to `"en"`, and writes the result to `window.__LOCALE__`.
-2. **`LanguageContext`** ([src/context/LanguageContext.tsx](./src/context/LanguageContext.tsx)) reads `window.__LOCALE__` synchronously in its `useState` initializer. No effect, no flash.
+2. **`LanguageContext`** ([src/context/LanguageContext.tsx](./src/context/LanguageContext.tsx)) initializes its `useState` to `"en"` unconditionally — **not** by reading `window.__LOCALE__` in the initializer. A `useEffect` (deferred one frame via `requestAnimationFrame`, to satisfy `react-hooks/set-state-in-effect`) then calls `detectLocale()` and swaps state if the result isn't `"en"`.
 3. **`getTranslations(locale)`** returns the full translation object for that locale. This is called in the provider and passed down via context.
+
+**Why not read `window.__LOCALE__` synchronously in the `useState` initializer, even though the inline script has already run by then?** That initializer runs during the client's first (hydration) render, and the static-export server HTML is always built in English — reading a non-English locale there makes the client's first render diverge from the server's, which is a real text-content hydration mismatch (React logs "Hydration failed" and does a full client-side re-render to recover), not just a cosmetic flash. Starting at `"en"` unconditionally guarantees the first hydration pass always matches the server exactly; the real locale then applies as a normal, single post-mount state update.
 
 ### Translation file layout
 
@@ -122,9 +124,9 @@ Each section file is typed as `Translations["sectionName"]` for compile-time saf
 
 ### Hydration strategy
 
-Server always renders `"en"`. Client may render `"fr"`. `suppressHydrationWarning` on `<html>` and `<body>` prevents React from crashing on the mismatch. In static export this is a single-frame switch — the inline `<script>` has already run by the time React hydrates, so `LanguageContext`'s initial state is already correct.
+Server always renders `"en"`. Client's first render also renders `"en"` (see above) — they match, so there's no text-content mismatch to suppress. `suppressHydrationWarning` on `<html>` and `<body>` exists only for the `lang` **attribute**, which `setLocale()` updates directly via `document.documentElement.lang` outside of React's render cycle. A French-preferring visitor sees one English frame, then a normal state-driven re-render to French — not a hydration error, and not an instant switch either. This is a real, visible (if brief) flash on first load, traded deliberately for correctness; there's no way to know the visitor's locale before the client executes at all on a static export with no server-side per-request logic.
 
-Don't remove `suppressHydrationWarning` or move the inline `<script>` — the whole pattern depends on script-before-hydrate ordering.
+Don't move the inline `<script>` in [layout.tsx](./src/app/layout.tsx) — `LanguageContext`'s `detectLocale()` still depends on `window.__LOCALE__` being set before it runs, even though it's no longer read synchronously during the first render.
 
 ---
 
