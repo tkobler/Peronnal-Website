@@ -1,7 +1,7 @@
 # Sync template with main — Tracking
 
 ## Current status
-Steps 1–6 and step 8 (documentation rewrite) are both done. Rewrote or fixed ~20 doc/agent/skill files across the repo (ARCHITECTURE.md, project-map.md, glossary.md, SETUP.md, CLAUDE.md, README.md, commands.md, pre-pr-checklist.md, frontend-guidelines.md, testing-strategy.md, coding-rules.md, feature-development.md, workflow.md, frontend-eng.md, tech-lead.md, ui-designer.md, data-scientist.md, team.md, audit/SKILL.md, merge-check/SKILL.md) to stop describing the deleted DotPattern/Schematic/flight systems and describe GlobalTopoBackground/contours.ts/trailPath.ts/ContactFab instead. Along the way found and fixed a real leaked identity (a third party's actual GitHub username used as a fallback value and in docs) and a real admin-panel bug (broken Hobby/Flight section mapping) that predates the fork on both branches. Starting final verification.
+All planned work is done and verified. Final verification pass: lint clean, 16/16 unit tests, validate:i18n 145/145 keys, full build succeeds (all 9 routes + 4 project detail pages generate), tier1 e2e 248/256 passed (8 failures are the same pre-existing hamburger-menu/dialog-transition flakiness confirmed against clean `template` earlier — different random subset this run, same failure signature, no new failure categories; the 6 hydration-mismatch failures from the earlier run are now gone). Smoke-checked the actual built static output: all 7 routes return 200, zero leaked personal-identity strings anywhere in `out/`, new taxonomy and `/cv/cv-*.pdf` links render correctly. Ready for `/merge-check` and PR.
 Last updated: 2026-09-21
 
 ## Tasks
@@ -27,8 +27,8 @@ Last updated: 2026-09-21
 - [x] Step 8 — Documentation rewrite: ~20 files across root, .claude/docs/, .claude/agents/, .claude/skills/ (see decisions log for the full list and what changed in each)
 - [x] Scrubbed a leaked real identity (ccka/Clément Chalut) from SETUP.md, useSaveAndDeploy.ts, external-refs.md
 - [x] Fixed a real admin-panel bug (broken Hobby/Flight section+file mapping) found during the doc sweep, pre-existing on main too
-- [ ] Final verification: lint, test:unit, validate:i18n, build, test:e2e:tier1 (re-run after doc changes)
-- [ ] Manual click-through of every page
+- [x] Final verification: lint, test:unit (16/16), validate:i18n (145/145), build (all routes generate), test:e2e:tier1 (248/256, 8 known-flaky)
+- [x] Manual click-through substitute: served the actual built `out/` static output, confirmed all 7 routes return 200, grepped for leaked personal identifiers (zero hits) and spot-checked taxonomy/CV-link content in the HTML
 - [ ] /merge-check before opening PR
 
 ## Decisions log
