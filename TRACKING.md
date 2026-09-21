@@ -1,7 +1,7 @@
 # Sync template with main — Tracking
 
 ## Current status
-Steps 1–6 done. Ran a systematic diff sweep (every touched file compared against main) after the hydration-bug near-miss made clear that "port the parts I already know about" wasn't catching everything — found and fixed several more real, generic bugs (missing documents/link/sourceLink UI, a broken `/projects/${id}` link, a filter-pill-clipping hero height bug, dead DotPattern-era event code, an unwired trailPath.ts). Every touched file now diffs clean against main except the deliberate hobby/about/personal-content divergences. Starting step 8 (documentation rewrite).
+Steps 1–6 and step 8 (documentation rewrite) are both done. Rewrote or fixed ~20 doc/agent/skill files across the repo (ARCHITECTURE.md, project-map.md, glossary.md, SETUP.md, CLAUDE.md, README.md, commands.md, pre-pr-checklist.md, frontend-guidelines.md, testing-strategy.md, coding-rules.md, feature-development.md, workflow.md, frontend-eng.md, tech-lead.md, ui-designer.md, data-scientist.md, team.md, audit/SKILL.md, merge-check/SKILL.md) to stop describing the deleted DotPattern/Schematic/flight systems and describe GlobalTopoBackground/contours.ts/trailPath.ts/ContactFab instead. Along the way found and fixed a real leaked identity (a third party's actual GitHub username used as a fallback value and in docs) and a real admin-panel bug (broken Hobby/Flight section mapping) that predates the fork on both branches. Starting final verification.
 Last updated: 2026-09-21
 
 ## Tasks
@@ -24,8 +24,10 @@ Last updated: 2026-09-21
 - [x] Fixed a real LanguageProvider hydration-mismatch bug (ported the regression test before realizing the underlying fix wasn't ported — corrected in the next commit)
 - [x] Ran test:e2e:tier1, investigated all 14 failures — see decisions log
 - [x] Diff sweep — compared every touched component/page against main, found and fixed 6 more real issues (see decisions log); all touched files now diff clean against main except deliberate divergences
-- [ ] Step 8 — Documentation rewrite (~15 files)
-- [ ] Final verification: lint, test:unit, validate:i18n, build (re-run after doc changes)
+- [x] Step 8 — Documentation rewrite: ~20 files across root, .claude/docs/, .claude/agents/, .claude/skills/ (see decisions log for the full list and what changed in each)
+- [x] Scrubbed a leaked real identity (ccka/Clément Chalut) from SETUP.md, useSaveAndDeploy.ts, external-refs.md
+- [x] Fixed a real admin-panel bug (broken Hobby/Flight section+file mapping) found during the doc sweep, pre-existing on main too
+- [ ] Final verification: lint, test:unit, validate:i18n, build, test:e2e:tier1 (re-run after doc changes)
 - [ ] Manual click-through of every page
 - [ ] /merge-check before opening PR
 
@@ -65,6 +67,14 @@ After the hydration-mismatch near-miss (ported a regression test without realizi
 6. **`ProjectsPage.tsx` had its own hand-rolled hash-scroll `useEffect`/`useRef` duplicate of `useHashScroll`** — refactored to use the shared hook.
 
 Lesson applied going forward: for every file touched via hand-editing (not a straight `git checkout main --`), do the `diff`-against-main check immediately rather than assuming the edit was complete.
+
+### 2026-09-21 — Documentation rewrite surfaced two real bugs, not just stale prose
+While rewriting SETUP.md (the worst-affected file — it described a `public/images/{profile,home,domains,flight}/` structure that never matched reality; the actual structure is three shared placeholder SVGs under `public/images/placeholders/`), found:
+
+1. **A leaked real identity**: the clone instructions pointed at `ccka/Personnal-Website.git` — a real, unrelated person's (Clément Chalut, the pre-Tim original author) actual GitHub repo, not a placeholder. Grepping further found the same username hardcoded as `useSaveAndDeploy.ts`'s admin-panel fallback owner and listed as "the GitHub repo" in `external-refs.md`. None of this is Tim's data either, but a template must not ship any real third party's identity. Fixed all three to genuine placeholders.
+2. **A real admin-panel bug**: `sectionConfig.ts` and `fileSerializer.ts` still mapped a "Flight" section to `flightLog.ts` (doesn't exist) and had no entry at all for "Hobby" — meaning the admin panel could not edit Hobby content (would throw `Unknown translation key segment "hobby"`) and had a dead Flight section. Confirmed this predates the fork: `git diff template main` on both files is empty, so it's shared inherited debt, not something to reconcile with main. Fixed both mappings.
+
+Also touched `scripts/image-to-bitmap.ts` (a DotPattern-bitmap-schematic generator, now fully dead) only by inspection, not by edit — main has the identical dead script, and it's harmless/non-blocking (not referenced by any npm script or by SETUP.md), so left it as shared out-of-scope debt rather than expanding scope further.
 
 ## Blockers
 None currently.
