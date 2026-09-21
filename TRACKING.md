@@ -21,6 +21,9 @@ Last updated: 2026-09-21
 
 ## Decisions log
 
+### 2026-09-21 — Overwrote template's original STRATEGY.md/TRACKING.md without reading them first
+Mistake: wrote fresh STRATEGY.md/TRACKING.md for this sync work without reading the files already at those paths on `template`, which turned out to hold the branch's founding history (Clément Chalut's original portfolio → Tim's personalization → this generic template, plus the rationale for keeping EPFL references and replacing `/flight` with a minimal `/hobby`). Recovered the content via `git show`, since the prior commit still has it, and folded a summary into this branch's STRATEGY.md under "Prior branch history" rather than losing it. Lesson for next time: always Read a file before Write, even one this tool assumed was new — the tool's own instructions say so for exactly this reason.
+
 ### 2026-09-21 — Never merge/cherry-pick from main
 Branches diverged in both directions with content mixed into structural diffs throughout. Decided to use `git checkout main -- <path>` only for confirmed-zero-personal-content files, and hand-edit (diffed, not retyped) everything else against a saved reference. See STRATEGY.md Approach.
 

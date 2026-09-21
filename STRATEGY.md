@@ -1,5 +1,13 @@
 # Sync template with main — Strategy
 
+## Prior branch history (superseded by this file, preserved here)
+
+This is not the first strategy document `template` has had. The branch was originally created from Clément Chalut's real portfolio (the repo's actual `main` before Tim personalized it on `dev/personalize-tim-kobler`) — deliberately branched from that *original*, pre-personalization `main` rather than from Tim's version, specifically to avoid a second round of scrubbing Tim's real contact info back out. That founding work (2026-08-29) is recorded in `git show <this-branch's-parent-commit>~1:STRATEGY.md` and `TRACKING.md`, now overwritten by this file per the repo's normal per-branch-doc convention. Key decisions from that history worth carrying forward rather than re-deriving:
+
+- **EPFL references are kept deliberately**, per Tim's explicit instruction — professional writing style, EPFL course codes, and real (public) EPFL professor names paired with fictional example projects, so the template still reads like a credible engineering student's site rather than a generic Lorem Ipsum shell.
+- **`/flight` (Clément's real cockpit-dashboard hobby feature: 5 components, live clock, radar map) was deleted outright and replaced with a deliberately minimal `/hobby` page** — heading, one paragraph, placeholder highlight cards — "whose only job is to demonstrate that a portfolio can hold a non-project page." Keeping a parked/shell version was explicitly considered and rejected: it would leave a friend fighting bespoke layout to repurpose it rather than just writing content into an already-minimal page. **This is the same reasoning the pm review independently gave for keeping `/hobby` live now** (see Panel input below) — this sync's choice to diverge from `main`'s hobby-parking is consistent with, not contrary to, the template's founding design.
+- Images ship as three hand-authored placeholder SVGs, not real photos; identity fields are obvious placeholders (`Your Name`, `you@example.com`); bio/about copy is left as explicit bracketed prompts, not invented biography.
+
 ## Goal
 Bring `template`'s code, features, and documentation up to date with `main` (64 commits ahead) — the animated-canvas background, floating contact button, project taxonomy, and data schema all drifted out of sync — while keeping `template`'s actual content (bio, projects, CV) generic and placeholder, never Tim's real personal data.
 
