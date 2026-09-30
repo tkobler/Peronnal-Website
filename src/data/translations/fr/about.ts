@@ -5,8 +5,8 @@ export const about: Translations["about"] = {
   bioTitle: "Qui je suis",
   bio: [
     "Je suis étudiant en Master de Robotique à l'EPFL, et l'essentiel de ce que je sais vraiment, je l'ai appris par la pratique : l'électronique basse tension et la logique de contrôle qui coordonne tous les sous-systèmes du bateau à hydrogène à foils de Swiss Solar Boat, un outil d'insertion d'implant cochléaire au Centre ARTORG à Berne, des cartes pour un CanSat et pour l'ordinateur de bord de la mission CHESS.",
-    "Quand un projet me prend, j'y vais à fond. Sur le bateau, j'ai tout donné, et nous sommes revenus champions du Monaco Energy Boat Challenge 2026. Ce que j'aime, c'est travailler sur des problèmes difficiles et développer la solution.",
-    "Seul sur un problème, je peux tenir des heures, mais je préfère largement le faire avec d'autres ! J'aime mener une équipe où chacun se sent camarade de cordée : ambiance détendue avec l'envie de faire avancer les choses. J'ai peu de patience pour ce qui tourne en rond. En ce moment, je cherche un projet de master ou un stage où cette combinaison compte.",
+    "Quand un projet me prend, j'y vais à fond. Ce que j'aime, c'est travailler sur des problèmes difficiles et développer la solution. Je suis très fier d'avoir fait partie de l'équipe Swiss Solar Boat qui a remporté la première place au Monaco Energy Boat Challenge 2026.",
+    "Seul sur un problème, je peux tenir des heures, mais je préfère largement le faire avec d'autres ! J'aime mener une équipe où chacun se sent camarade de cordée : ambiance détendue avec l'envie de faire avancer les choses. En ce moment, je cherche un projet de master ou un stage où cette combinaison compte.",
   ],
   educationTitle: "Éducation",
   degree: "École Polytechnique Fédérale de Lausanne (EPFL)",
